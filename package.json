@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack --mode production",
-    "lint": "eslint src/**/*.tsx",
+    "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -51,6 +51,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
     "@types/react": "^17.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
