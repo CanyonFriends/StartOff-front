@@ -10,6 +10,12 @@ const theme = {
     color_brightness_700: '#aaaaaa',
     color_brightness_800: '#dcdcdc',
     color_brightness_900: '#ffffff',
+
+    color_primary_100: '#666980',
+    color_primary_200: '#808CFF',
+    color_primary_300: '#ccd1fe',
+    color_primary_400: '#404680',
+    color_primary_500: '#A3A7CC',
   },
 };
 
