@@ -2,6 +2,7 @@ import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import Button from '.';
+import Icon from '../Icon';
 import StyleWrapper from '../../../../common/styleWrapper';
 
 export default {
@@ -101,6 +102,14 @@ export const linkButton = (): React.ReactElement => {
   return (
     <Button theme="primary" size="medium" to="/signin" onClick={onClickAction}>
       {label}
+    </Button>
+  );
+};
+
+export const iconOnlyButton = (): React.ReactElement => {
+  return (
+    <Button iconOnly>
+      <Icon icon="leftChevron" size="large" />
     </Button>
   );
 };

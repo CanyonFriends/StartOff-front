@@ -51,29 +51,7 @@ export const buttonSizeSelector: { [size in ButtonSizeType]: SerializedStyles } 
 };
 
 export const iconOnlyTheme = css`
-  &:hover {
-    opacity: 0.8;
-  }
-  &:active {
-    opacity: 0.9;
+  &:active svg {
+    fill: ${theme.color.color_primary_300};
   }
 `;
-
-export const iconOnlySizeSelector: { [size in ButtonSizeType]: SerializedStyles } = {
-  small: css`
-    height: 2.5rem;
-    width: 2.5rem;
-  `,
-  medium: css`
-    height: 3.5rem;
-    width: 3.5rem;
-  `,
-  large: css`
-    height: 4.6rem;
-    width: 4.6rem;
-  `,
-  extraLarge: css`
-    height: 5.6rem;
-    width: 5.6rem;
-  `,
-};

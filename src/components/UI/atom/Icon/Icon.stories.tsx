@@ -7,7 +7,7 @@ export default {
   component: Icon,
 };
 
-export const icon = (): React.ReactElement => {
+export const iconSize = (): React.ReactElement => {
   return (
     <StyleWrapper>
       <div>

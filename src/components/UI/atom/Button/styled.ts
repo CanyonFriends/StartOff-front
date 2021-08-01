@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { ButtonSizeType, ButtonThemeType } from '../../@types/index';
-import { buttonSizeSelector, buttonThemeSelector, iconOnlyTheme, iconOnlySizeSelector } from './style-selector';
+import { buttonSizeSelector, buttonThemeSelector, iconOnlyTheme } from './style-selector';
 
 interface ButtonStyleProps {
   width: string;
@@ -21,5 +21,5 @@ export const Button = styled.button<ButtonStyleProps>`
   font-weight: bold;
 
   ${(props) => (props.iconOnly ? iconOnlyTheme : buttonThemeSelector[props.theme as ButtonThemeType])};
-  ${(props) => (props.iconOnly ? iconOnlySizeSelector[props.size] : buttonSizeSelector[props.size])}
+  ${(props) => !props.iconOnly && buttonSizeSelector[props.size]}
 `;
