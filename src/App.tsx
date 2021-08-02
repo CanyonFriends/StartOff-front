@@ -1,13 +1,15 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import theme from './common/theme';
+import { Switch, Route } from 'react-router-dom';
 
-const Div = styled.div`
-  color: ${theme.color.color_brightness_500};
-`;
+import * as Routes from './Routes';
+import HomePage from './pages/Home';
 
 function App() {
-  return <Div>hello-world</Div>;
+  return (
+    <Switch>
+      <Route exact path={Routes.homePath} component={HomePage} />
+    </Switch>
+  );
 }
 
 export default App;
