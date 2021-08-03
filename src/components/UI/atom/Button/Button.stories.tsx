@@ -109,7 +109,7 @@ export const linkButton = (): React.ReactElement => {
 export const iconOnlyButton = (): React.ReactElement => {
   return (
     <Button iconOnly>
-      <Icon icon="leftChevron" size="large" />
+      <Icon icon="LeftChevron" size="large" />
     </Button>
   );
 };
