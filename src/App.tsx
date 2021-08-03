@@ -3,12 +3,16 @@ import { Switch, Route } from 'react-router-dom';
 
 import * as Routes from './Routes';
 import HomePage from './pages/Home';
+import CommonHeader from './components/Layout/CommonHeader';
 
 function App() {
   return (
-    <Switch>
-      <Route exact path={Routes.homePath} component={HomePage} />
-    </Switch>
+    <>
+      <CommonHeader />
+      <Switch>
+        <Route exact path={Routes.homePath} component={HomePage} />
+      </Switch>
+    </>
   );
 }
 
