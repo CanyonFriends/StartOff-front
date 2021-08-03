@@ -7,6 +7,9 @@ interface IconStyleProps {
 }
 
 export const Container = styled.div<IconStyleProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 
   ${(props) => iconSizeSelector[props.size]}

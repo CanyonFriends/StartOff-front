@@ -12,19 +12,19 @@ export const iconSize = (): React.ReactElement => {
     <StyleWrapper>
       <div>
         <div className="description">Small</div>
-        <Icon icon="leftChevron" size="small" />
+        <Icon icon="LeftChevron" size="small" />
       </div>
       <div>
         <div className="description">Medium</div>
-        <Icon icon="leftChevron" size="medium" />
+        <Icon icon="LeftChevron" size="medium" />
       </div>
       <div>
         <div className="description">Large</div>
-        <Icon icon="leftChevron" size="large" />
+        <Icon icon="LeftChevron" size="large" />
       </div>
       <div>
         <div className="description">extraLarge</div>
-        <Icon icon="leftChevron" size="extraLarge" />
+        <Icon icon="LeftChevron" size="extraLarge" />
       </div>
     </StyleWrapper>
   );
@@ -34,8 +34,8 @@ export const iconType = (): React.ReactElement => {
   return (
     <StyleWrapper>
       <div>
-        <div className="description">leftChevron</div>
-        <Icon icon="leftChevron" size="medium" />
+        <div className="description">LeftChevron</div>
+        <Icon icon="LeftChevron" size="medium" />
       </div>
       <div>
         <div className="description">Login</div>
