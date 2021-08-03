@@ -8,3 +8,5 @@ export type IconSizeType = 'small' | 'medium' | 'large' | 'extraLarge';
 export type LabelSizeType = 'small' | 'medium' | 'large' | 'extraLarge';
 
 export type InputType = 'text' | 'email' | 'password';
+
+export type AnchorSizeType = 'small' | 'medium' | 'large' | 'extraLarge';
