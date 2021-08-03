@@ -3,16 +3,16 @@ import { IconSizeType } from '../../@types/index';
 
 export const iconSizeSelector: { [size in IconSizeType]: SerializedStyles } = {
   small: css`
-    width: 1rem;
-    height: 1rem;
+    width: 3rem;
+    height: 3rem;
   `,
   medium: css`
-    width: 2rem;
-    height: 2rem;
-  `,
-  large: css`
     width: 4rem;
     height: 4rem;
+  `,
+  large: css`
+    width: 6rem;
+    height: 6rem;
   `,
   extraLarge: css`
     width: 10rem;
