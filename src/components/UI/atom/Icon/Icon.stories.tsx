@@ -29,3 +29,26 @@ export const iconSize = (): React.ReactElement => {
     </StyleWrapper>
   );
 };
+
+export const iconType = (): React.ReactElement => {
+  return (
+    <StyleWrapper>
+      <div>
+        <div className="description">leftChevron</div>
+        <Icon icon="leftChevron" size="medium" />
+      </div>
+      <div>
+        <div className="description">Login</div>
+        <Icon icon="Login" size="medium" />
+      </div>
+      <div>
+        <div className="description">Logo</div>
+        <Icon icon="Logo" size="medium" />
+      </div>
+      <div>
+        <div className="description">Logout</div>
+        <Icon icon="Logout" size="medium" />
+      </div>
+    </StyleWrapper>
+  );
+};
