@@ -45,7 +45,7 @@ export const inputWithLabel = (): React.ReactElement => {
 
   return (
     <div>
-      <Label group={groupName}>{label}</Label>
+      <Label group={groupName} content={label} />
       <Input value={text} id={groupName} onChange={(event) => setText(event.target.value)} />
     </div>
   );

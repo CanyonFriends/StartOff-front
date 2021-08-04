@@ -2,7 +2,7 @@ import React from 'react';
 import * as Style from './styled';
 import { InputType } from '../../@types/index';
 
-interface InputProps {
+export interface InputProps {
   value: string;
   id?: string;
   placeholder?: string;

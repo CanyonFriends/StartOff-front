@@ -18,27 +18,19 @@ export const sizeLabel = (): React.ReactElement => {
     <StyleWrapper>
       <div>
         <div className="description">Small</div>
-        <Label size="small" color={textColor}>
-          {label}
-        </Label>
+        <Label size="small" color={textColor} content={label} />
       </div>
       <div>
         <div className="description">Medium</div>
-        <Label size="medium" color={textColor}>
-          {label}
-        </Label>
+        <Label size="medium" color={textColor} content={label} />
       </div>
       <div>
         <div className="description">Large</div>
-        <Label size="large" color={textColor}>
-          {label}
-        </Label>
+        <Label size="large" color={textColor} content={label} />
       </div>
       <div>
         <div className="description">Large</div>
-        <Label size="extraLarge" color={textColor}>
-          {label}
-        </Label>
+        <Label size="extraLarge" color={textColor} content={label} />
       </div>
     </StyleWrapper>
   );
