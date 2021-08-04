@@ -2,6 +2,7 @@ import React from 'react';
 import * as Style from './styled';
 
 interface TextAreaProps {
+  value: string;
   id?: string;
   placeholder?: string;
   name?: string;
