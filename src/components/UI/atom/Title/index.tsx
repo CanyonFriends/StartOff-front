@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledComponent } from '@emotion/styled';
 import * as Style from './styled';
 import theme from '../../../../common/theme';
 import { TitleSizeType } from '../../@types/index';
@@ -9,55 +10,23 @@ interface TitleProps {
   fontsize?: TitleSizeType;
 }
 
+type TitleStyleType = StyledComponent<{ color: string; fontsize: TitleSizeType }>;
+
+const titleDispenser: { [title in TitleSizeType]: TitleStyleType } = {
+  h1: Style.Title1,
+  h2: Style.Title2,
+  h3: Style.Title3,
+  h4: Style.Title4,
+  h5: Style.Title5,
+  h6: Style.Title6,
+};
+
 function Title({ children, color = theme.color.color_brightness_000, fontsize = 'h1' }: TitleProps) {
+  const TitleComponent = titleDispenser[fontsize];
   return (
-    // <Style.Title color={color} fontsize={fontsize}>
-    //   {children}
-    // </Style.Title>
-    <div>
-      {(() => {
-        switch (fontsize) {
-          case 'h1':
-            return (
-              <Style.Title1 color={color} fontsize={fontsize}>
-                {children}
-              </Style.Title1>
-            );
-          case 'h2':
-            return (
-              <Style.Title2 color={color} fontsize={fontsize}>
-                {children}
-              </Style.Title2>
-            );
-          case 'h3':
-            return (
-              <Style.Title3 color={color} fontsize={fontsize}>
-                {children}
-              </Style.Title3>
-            );
-          case 'h4':
-            return (
-              <Style.Title4 color={color} fontsize={fontsize}>
-                {children}
-              </Style.Title4>
-            );
-          case 'h5':
-            return (
-              <Style.Title5 color={color} fontsize={fontsize}>
-                {children}
-              </Style.Title5>
-            );
-          case 'h6':
-            return (
-              <Style.Title6 color={color} fontsize={fontsize}>
-                {children}
-              </Style.Title6>
-            );
-          default:
-            return null;
-        }
-      })()}
-    </div>
+    <TitleComponent color={color} fontsize={fontsize}>
+      {children}
+    </TitleComponent>
   );
 }
 

@@ -39,7 +39,6 @@ export const sizeTitle = (): React.ReactElement => {
         <Title fontsize="h4" color={textColor}>
           {title}
         </Title>
-        <h1>hello</h1>
       </div>
       <div>
         <div className="description">h5</div>
