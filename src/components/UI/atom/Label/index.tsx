@@ -3,17 +3,17 @@ import * as Style from './styled';
 import theme from '../../../../common/theme';
 import { LabelSizeType } from '../../@types/index';
 
-interface LabelProps {
-  children: React.ReactNode;
+export interface LabelProps {
+  content: string;
   group?: string;
   color?: string;
   size?: LabelSizeType;
 }
 
-function Label({ children, group = '', color = theme.color.color_brightness_000, size = 'small' }: LabelProps) {
+function Label({ content, group = '', color = theme.color.color_brightness_000, size = 'small' }: LabelProps) {
   return (
     <Style.Container htmlFor={group} color={color} size={size}>
-      {children}
+      {content}
     </Style.Container>
   );
 }
