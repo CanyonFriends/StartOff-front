@@ -9,7 +9,7 @@ export default {
   decorators: [withKnobs],
 };
 
-export const TextAreawithPlaceholder = (): React.ReactElement => {
+export const TextAreawithPlaceholder10by30 = (): React.ReactElement => {
   const [text, setText] = useState('text');
   return (
     <StyleWrapper>
@@ -23,6 +23,14 @@ export const TextAreawithPlaceholder = (): React.ReactElement => {
           onChange={(event) => setText(event.target.value)}
         />
       </div>
+    </StyleWrapper>
+  );
+};
+
+export const TextAreawithPlaceholder5by30 = (): React.ReactElement => {
+  const [text, setText] = useState('text');
+  return (
+    <StyleWrapper>
       <div>
         <div className="description">Textbox 5 x 10</div>
         <TextArea
