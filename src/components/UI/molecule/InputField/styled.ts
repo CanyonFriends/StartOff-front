@@ -6,6 +6,8 @@ interface ContainerStyleProps {
 }
 
 export const Container = styled.div<ContainerStyleProps>`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: ${(props) => props.sortDirection};
   justify-content: space-between;
