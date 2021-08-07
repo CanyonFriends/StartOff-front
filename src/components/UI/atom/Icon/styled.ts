@@ -4,6 +4,7 @@ import { iconSizeSelector } from './style-selector';
 
 interface IconStyleProps {
   size: IconSizeType;
+  svgColor: string;
 }
 
 export const Container = styled.div<IconStyleProps>`
@@ -13,4 +14,8 @@ export const Container = styled.div<IconStyleProps>`
   cursor: pointer;
 
   ${(props) => iconSizeSelector[props.size]}
+
+  svg {
+    fill: ${(props) => props.svgColor};
+  }
 `;

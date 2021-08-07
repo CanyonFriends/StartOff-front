@@ -12,6 +12,7 @@ export const InputTag = styled.input<InputStyleProps>`
   padding-left: 5px;
   font-size: 1.8rem;
   outline: none;
+  background-color: transparent;
 
   &::placeholder {
     color: ${theme.color.color_brightness_700};
