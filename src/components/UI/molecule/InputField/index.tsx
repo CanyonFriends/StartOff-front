@@ -4,17 +4,18 @@ import Label, { LabelProps } from '../../atom/Label/index';
 import Input, { InputProps } from '../../atom/Input';
 import { SortDirectionType } from '../../@types/index';
 
-interface InputFieldProps {
+export interface InputFieldProps {
+  group?: string;
   labelProps: LabelProps;
   inputProps: InputProps;
   sortDirection?: SortDirectionType;
 }
 
-function InputField({ labelProps, inputProps, sortDirection = 'row' }: InputFieldProps) {
+function InputField({ group = '', labelProps, inputProps, sortDirection = 'row' }: InputFieldProps) {
   return (
     <Style.Container sortDirection={sortDirection}>
-      <Label {...labelProps} />
-      <Input {...inputProps} />
+      <Label {...labelProps} group={group} />
+      <Input {...inputProps} id={group} />
     </Style.Container>
   );
 }
