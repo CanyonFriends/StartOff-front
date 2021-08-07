@@ -12,7 +12,13 @@ export const Container = styled.form`
 
 export const InputWrapper = styled.div`
   width: 100%;
-  height: 50px;
+  height: 70px;
+  &:first-child {
+    padding-bottom: 1rem;
+  }
+  &:nth-child(2) {
+    padding-top: 1rem;
+  }
 `;
 
 export const Error = styled.span`

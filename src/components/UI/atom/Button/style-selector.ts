@@ -25,6 +25,17 @@ export const buttonThemeSelector: { [theme in ButtonThemeType]: SerializedStyles
       opacity: 0.9;
     }
   `,
+  github: css`
+    color: ${theme.color.color_brightness_900};
+    background-color: ${theme.color.color_brightness_000};
+
+    &:hover {
+      opacity: 0.8;
+    }
+    &:active {
+      opacity: 0.9;
+    }
+  `,
 };
 
 export const buttonSizeSelector: { [size in ButtonSizeType]: SerializedStyles } = {

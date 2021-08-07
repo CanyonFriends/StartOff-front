@@ -3,7 +3,7 @@ import { AnchorSizeType } from '../../@types/index';
 
 export const anchorSizeSelector: { [size in AnchorSizeType]: SerializedStyles } = {
   small: css`
-    font-size: 1rem;
+    font-size: 1.6rem;
   `,
   medium: css`
     font-size: 2rem;

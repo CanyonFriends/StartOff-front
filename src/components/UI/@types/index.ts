@@ -1,5 +1,5 @@
 /** Atom */
-export type ButtonThemeType = 'primary' | 'secondary';
+export type ButtonThemeType = 'primary' | 'secondary' | 'github';
 export type ButtonSizeType = 'small' | 'medium' | 'large' | 'extraLarge';
 
 export type IconType = 'LeftChevron' | 'Login' | 'Logout' | 'Logo';
