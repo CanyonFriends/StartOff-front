@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import theme from '../../../../common/theme';
 import * as Style from './styled';
-import { AnchorSizeType } from '../../@types/index';
+import { SizeType } from '../../@types/index';
 
 interface AnchorProps {
   children: React.ReactNode;
   to: string;
-  size?: AnchorSizeType;
+  size?: SizeType;
   color?: string;
   bolder?: boolean;
   hoverColor?: string;

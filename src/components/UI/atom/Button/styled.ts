@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
-import { ButtonSizeType, ButtonThemeType } from '../../@types/index';
+import { SizeType, ButtonThemeType } from '../../@types/index';
 import { buttonSizeSelector, buttonThemeSelector, iconOnlyTheme } from './style-selector';
 
 interface ButtonStyleProps {
   width: string;
   theme: ButtonThemeType;
-  size: ButtonSizeType;
+  size: SizeType;
   iconOnly: boolean;
 }
 

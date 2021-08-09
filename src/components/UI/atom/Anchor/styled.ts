@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { anchorSizeSelector } from './style-selector';
-import { AnchorSizeType } from '../../@types/index';
+import { SizeType } from '../../@types/index';
 
 interface LinkStyleProps {
   textColor: string;
   hoverColor: string;
   bolder: boolean;
-  size: AnchorSizeType;
+  size: SizeType;
 }
 
 export const Container = styled.div<LinkStyleProps>`

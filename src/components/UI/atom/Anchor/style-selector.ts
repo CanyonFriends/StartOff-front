@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { AnchorSizeType } from '../../@types/index';
+import { SizeType } from '../../@types/index';
 
-export const anchorSizeSelector: { [size in AnchorSizeType]: SerializedStyles } = {
+export const anchorSizeSelector: { [size in SizeType]: SerializedStyles } = {
   small: css`
     font-size: 1.6rem;
   `,

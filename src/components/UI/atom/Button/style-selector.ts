@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from '@emotion/react';
 import theme from '../../../../common/theme';
-import { ButtonThemeType, ButtonSizeType } from '../../@types/index';
+import { ButtonThemeType, SizeType } from '../../@types/index';
 
 export const buttonThemeSelector: { [theme in ButtonThemeType]: SerializedStyles } = {
   primary: css`
@@ -38,7 +38,7 @@ export const buttonThemeSelector: { [theme in ButtonThemeType]: SerializedStyles
   `,
 };
 
-export const buttonSizeSelector: { [size in ButtonSizeType]: SerializedStyles } = {
+export const buttonSizeSelector: { [size in SizeType]: SerializedStyles } = {
   small: css`
     height: 2.5rem;
     font-size: 1.2rem;
