@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as Style from './styled';
-import { ButtonSizeType, ButtonThemeType } from '../../@types/index';
+import { SizeType, ButtonThemeType } from '../../@types/index';
 
 export interface ButtonProps {
   children: React.ReactNode;
   to?: string;
   width?: string;
   theme?: ButtonThemeType;
-  size?: ButtonSizeType;
+  size?: SizeType;
   iconOnly?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }

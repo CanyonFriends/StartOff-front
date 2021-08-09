@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { LabelSizeType } from '../../@types/index';
+import { SizeType } from '../../@types/index';
 
-export const labelSizeSelector: { [size in LabelSizeType]: SerializedStyles } = {
+export const labelSizeSelector: { [size in SizeType]: SerializedStyles } = {
   small: css`
     font-size: 1.5rem;
   `,

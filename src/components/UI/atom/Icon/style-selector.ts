@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { IconSizeType } from '../../@types/index';
+import { SizeType } from '../../@types/index';
 
-export const iconSizeSelector: { [size in IconSizeType]: SerializedStyles } = {
+export const iconSizeSelector: { [size in SizeType]: SerializedStyles } = {
   small: css`
     width: 3rem;
     height: 3rem;

@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
-import { IconSizeType } from '../../@types/index';
+import { SizeType } from '../../@types/index';
 import { iconSizeSelector } from './style-selector';
 
 interface IconStyleProps {
-  size: IconSizeType;
+  size: SizeType;
   svgColor: string;
 }
 
