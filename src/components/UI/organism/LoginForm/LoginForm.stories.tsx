@@ -17,7 +17,3 @@ const handleSubmit = (_: LoginInfoType) => {
 export const loginForm = (): React.ReactElement => {
   return <LoginForm handleSubmit={handleSubmit} />;
 };
-
-export const loginFormWithError = (): React.ReactElement => {
-  return <LoginForm handleSubmit={handleSubmit} />;
-};
