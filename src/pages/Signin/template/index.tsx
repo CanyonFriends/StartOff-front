@@ -9,7 +9,7 @@ import theme from '../../../common/theme';
 function SigninPageTemplate() {
   // TODO: API구현
   // eslint-disable-next-line no-unused-vars
-  const handleSigninAPI = ({ id, pw }: LoginInfoType) => {
+  const handleSigninAPI = async ({ id, pw }: LoginInfoType) => {
     return '';
   };
 
