@@ -3,7 +3,7 @@ import { useState } from 'react';
 interface UseFormProps<T> {
   initialState: T;
   validator: (value: any) => string;
-  onSubmit: (values: any) => string;
+  onSubmit: (values: any) => Promise<string>;
 }
 
 function useForm<T>({ initialState, validator, onSubmit }: UseFormProps<T>) {
@@ -14,13 +14,13 @@ function useForm<T>({ initialState, validator, onSubmit }: UseFormProps<T>) {
     setValues(value);
   };
 
-  const handleSubmitWithErrorControl = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitWithErrorControl = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const error = validator(values);
     setError(error);
     if (!error.length) {
-      const error = onSubmit(values);
+      const error = await onSubmit(values);
       setError(error);
     }
   };

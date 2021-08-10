@@ -9,7 +9,7 @@ export default {
 };
 
 const onSubmitAction = action('form submitted');
-const handleSubmit = (_: LoginInfoType) => {
+const handleSubmit = async (_: LoginInfoType) => {
   onSubmitAction(_);
   return '';
 };

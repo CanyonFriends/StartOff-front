@@ -7,7 +7,7 @@ import useForm from '../../../../hooks/useForm';
 import loginValidator, { LoginInfoType } from '../../../../validator/loginValidator';
 
 export interface LoginFormProps {
-  handleSubmit: ({ id, pw }: LoginInfoType) => string;
+  handleSubmit: ({ id, pw }: LoginInfoType) => Promise<string>;
 }
 
 function LoginForm({ handleSubmit }: LoginFormProps) {

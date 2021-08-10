@@ -7,7 +7,7 @@ import useForm from '../../../../hooks/useForm';
 import signupValidator, { SignupInfoType } from '../../../../validator/signupValidator';
 
 interface SignupFormProps {
-  handleSubmit: ({ id, pw, nickname }: SignupInfoType) => string;
+  handleSubmit: ({ id, pw, nickname }: SignupInfoType) => Promise<string>;
 }
 
 function SignupForm({ handleSubmit }: SignupFormProps) {
@@ -29,6 +29,10 @@ function SignupForm({ handleSubmit }: SignupFormProps) {
     handleChange({ ...values, confirmPW: event.target.value });
   };
 
+  const handleNicknameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    handleChange({ ...values, nickname: event.target.value });
+  };
+
   const idFormInfo: InputFieldProps = {
     group: 'email',
     sortDirection: 'column',
@@ -47,14 +51,14 @@ function SignupForm({ handleSubmit }: SignupFormProps) {
     group: 'confirmPassword',
     sortDirection: 'column',
     labelProps: { content: 'confirm password', color: theme.color.color_primary_400 },
-    inputProps: { value: values.pw, type: 'password', onChange: handleConfirmPWChange },
+    inputProps: { value: values.confirmPW || '', type: 'password', onChange: handleConfirmPWChange },
   };
 
   const nicknameFormInfo: InputFieldProps = {
-    group: 'email',
+    group: 'nickname',
     sortDirection: 'column',
     labelProps: { content: 'nickname', color: theme.color.color_primary_400 },
-    inputProps: { value: values.id, type: 'text', onChange: handleIdChange },
+    inputProps: { value: values.nickname, type: 'text', onChange: handleNicknameChange },
   };
 
   return (
