@@ -1,15 +1,21 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import * as Style from './styled';
 import { Button, Anchor, Title, Icon } from '../../../components/UI/atom';
 import { BoxWithIcon } from '../../../components/UI/molecule';
 import SignupForm from '../../../components/UI/organism/SignupForm';
 import { SignupInfoType } from '../../../validator/signupValidator';
 import theme from '../../../common/theme';
+import { signupAPI } from '../../../api/user';
+import { homePath } from '../../../Routes';
 
 function SigninPageTemplate() {
-  // TODO: API구현
-  // eslint-disable-next-line no-unused-vars
-  const handleSignupAPI = ({ id, pw }: SignupInfoType) => {
+  const history = useHistory();
+
+  const handleSignupAPI = async (signupInfo: SignupInfoType) => {
+    await signupAPI(signupInfo);
+
+    history.push(homePath);
     return '';
   };
 
