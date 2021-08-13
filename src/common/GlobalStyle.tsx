@@ -28,6 +28,10 @@ function GlobalStyle(): React.ReactElement {
         li {
           list-style: none;
         }
+
+        input {
+          background-color: transparent;
+        }
       `}
     />
   );

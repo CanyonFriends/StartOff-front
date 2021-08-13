@@ -13,10 +13,10 @@ export const Container = styled.form`
 export const InputWrapper = styled.div`
   width: 100%;
   height: 70px;
-  &:first-child {
+  &:first-of-type {
     padding-bottom: 1rem;
   }
-  &:nth-child(2) {
+  &:nth-of-type(2) {
     padding-top: 1rem;
   }
 `;
