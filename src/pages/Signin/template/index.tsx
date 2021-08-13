@@ -1,15 +1,26 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState } from 'react';
 import * as Style from './styled';
 import { Button, Anchor, Title, Icon } from '../../../components/UI/atom';
 import { BoxWithIcon } from '../../../components/UI/molecule';
 import LogininForm from '../../../components/UI/organism/LoginForm';
 import { LoginInfoType } from '../../../validator/loginValidator';
 import theme from '../../../common/theme';
+import { signinAPI, isFailed, SigninResponseType } from '../../../api/user';
+import { setCookie } from '../../../utils/cookie';
 
 function SigninPageTemplate() {
-  // TODO: API구현
-  // eslint-disable-next-line no-unused-vars
-  const handleSigninAPI = async ({ id, pw }: LoginInfoType) => {
+  const [isModal, setIsModal] = useState(false);
+
+  const handleSigninAPI = async (signinInfo: LoginInfoType) => {
+    const response = await signinAPI(signinInfo);
+    if (isFailed<SigninResponseType>(response)) {
+      alert(response.error);
+      return '';
+    }
+    setCookie('soc', response.access_token);
+
     return '';
   };
 
