@@ -18,6 +18,7 @@ const theme = {
     color_primary_500: '#A3A7CC',
 
     color_warning_100: '#D32F2F',
+    color_success_100: '#33CD32',
   },
 };
 
