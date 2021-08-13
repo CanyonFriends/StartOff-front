@@ -7,7 +7,7 @@ import SignupForm from '../../../components/UI/organism/SignupForm';
 import { SignupInfoType } from '../../../validator/signupValidator';
 import theme from '../../../common/theme';
 import { signupAPI } from '../../../api/user';
-import { homePath } from '../../../Routes';
+import { signinPath } from '../../../Routes';
 
 function SigninPageTemplate() {
   const history = useHistory();
@@ -15,7 +15,7 @@ function SigninPageTemplate() {
   const handleSignupAPI = async (signupInfo: SignupInfoType) => {
     await signupAPI(signupInfo);
 
-    history.push(homePath);
+    history.push(signinPath);
     return '';
   };
 
