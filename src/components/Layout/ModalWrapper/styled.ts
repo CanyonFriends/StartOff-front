@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
+import theme from '../../../common/theme';
 
 interface OverlayProps {
-  backgroundColor: string;
+  isBlur: boolean;
 }
 
 export const Overlay = styled.div<OverlayProps>`
@@ -9,7 +10,8 @@ export const Overlay = styled.div<OverlayProps>`
   width: 100vw;
   height: 100vh;
 
-  background-color: ${(props) => props.backgroundColor};
+  opacity: ${(props) => (props.isBlur ? 0.3 : 0)};
+  background-color: ${theme.color.color_brightness_000};
 `;
 
 export const Container = styled.div`

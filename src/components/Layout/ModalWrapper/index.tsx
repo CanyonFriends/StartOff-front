@@ -4,18 +4,20 @@ import * as Style from './styled';
 
 interface ModalWrapperProps {
   children: React.ReactNode;
-  backgroundColor?: string;
+  clickModalOutside: () => void;
+  isBlur?: boolean;
 }
 
-function ModalWrapper({ children, backgroundColor = 'transparent' }: ModalWrapperProps) {
+function ModalWrapper({ children, clickModalOutside, isBlur = false }: ModalWrapperProps) {
   const modalTag = document.getElementById('modal');
 
   return (
     modalTag &&
     ReactDOM.createPortal(
-      <Style.Overlay backgroundColor={backgroundColor}>
-        <Style.Container>{children}</Style.Container>;
-      </Style.Overlay>,
+      <>
+        <Style.Overlay isBlur={isBlur} onClick={clickModalOutside} />
+        <Style.Container>{children}</Style.Container>
+      </>,
       modalTag,
     )
   );
