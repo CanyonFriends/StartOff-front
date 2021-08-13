@@ -7,8 +7,11 @@ interface OverlayProps {
 
 export const Overlay = styled.div<OverlayProps>`
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 1000;
 
   opacity: ${(props) => (props.isBlur ? 0.3 : 0)};
   background-color: ${theme.color.color_brightness_000};
@@ -19,4 +22,5 @@ export const Container = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2000;
 `;

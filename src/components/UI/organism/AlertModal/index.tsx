@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Style from './styled';
 import ModalWrapper from '../../../Layout/ModalWrapper/index';
 import { Icon, Button, Title } from '../../atom';
@@ -6,18 +6,13 @@ import theme from '../../../../common/theme';
 
 interface AlertModalProps {
   content: string;
-  isSuccess: boolean;
+  isSuccess?: boolean;
+  clickCloseButton: () => void;
 }
 
-function AlertModal({ content, isSuccess }: AlertModalProps) {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const handleCloseButton = () => {
-    setIsOpen(false);
-  };
-
-  return isOpen ? (
-    <ModalWrapper clickModalOutside={handleCloseButton} isBlur>
+function AlertModal({ content, isSuccess = false, clickCloseButton }: AlertModalProps) {
+  return (
+    <ModalWrapper clickModalOutside={clickCloseButton} isBlur>
       <Style.Container>
         <Icon
           icon={isSuccess ? 'Check' : 'Warning'}
@@ -26,13 +21,11 @@ function AlertModal({ content, isSuccess }: AlertModalProps) {
         />
         <Title fontsize="h2">{isSuccess ? '성공' : '실패'}</Title>
         <Style.Text>{content}</Style.Text>
-        <Button onClick={handleCloseButton} width="100%" size="large">
+        <Button onClick={clickCloseButton} width="100%" size="large">
           닫기
         </Button>
       </Style.Container>
     </ModalWrapper>
-  ) : (
-    <></>
   );
 }
 
