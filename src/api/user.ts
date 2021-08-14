@@ -20,16 +20,20 @@ export const isFailed = <T>(arg: T | ErrorType): arg is ErrorType => {
 
 // FIXME: 백엔드쪽 api구현이 완료되지않아 추후 수정 필요
 export const signupAPI = async ({ id, pw, nickname }: SignupInfoType) => {
-  const response = await axios({
-    method: 'POST',
-    url: '/v1/signup',
-    data: {
-      nickname,
-      email: id,
-      password: pw,
-    },
-  });
-  return response;
+  try {
+    const response = await axios({
+      method: 'POST',
+      url: '/v1/signup',
+      data: {
+        nickname,
+        email: id,
+        password: pw,
+      },
+    });
+    return response;
+  } catch (error) {
+    return { error: error.response.data.errorMsg } as ErrorType;
+  }
 };
 
 export const signinAPI = async ({ id, pw }: LoginInfoType): Promise<ErrorType | SigninResponseType> => {
@@ -44,6 +48,6 @@ export const signinAPI = async ({ id, pw }: LoginInfoType): Promise<ErrorType | 
     });
     return response.data as SigninResponseType;
   } catch (error) {
-    return { error: '로그인 실패' } as ErrorType;
+    return { error: error.response.data.errorMsg } as ErrorType;
   }
 };
