@@ -11,7 +11,11 @@ export interface SigninResponseType {
   user_id: string;
 }
 
-export const signupAPI = async ({ id, pw, nickname }: SignupInfoType) => {
+export interface SignupResponseType {
+  user_id: string;
+}
+
+export const signupAPI = async ({ id, pw, nickname }: SignupInfoType): Promise<ErrorType | SignupResponseType> => {
   try {
     const response = await axios({
       method: 'POST',
@@ -22,7 +26,7 @@ export const signupAPI = async ({ id, pw, nickname }: SignupInfoType) => {
         password: pw,
       },
     });
-    return response;
+    return response.data as SignupResponseType;
   } catch (error) {
     return { error: error.response.data.errorMsg } as ErrorType;
   }
