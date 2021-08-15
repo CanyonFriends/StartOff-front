@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as Style from './styled';
 import { Button, Anchor, Title, Icon } from '../../../components/UI/atom';
 import { BoxWithIcon } from '../../../components/UI/molecule';
-import SignupForm from '../../../components/UI/organism/SignupForm';
+import { SignupForm, AlertModal } from '../../../components/UI/organism';
 import { SignupInfoType } from '../../../validator/signupValidator';
 import theme from '../../../common/theme';
-import { signupAPI } from '../../../api/user';
+import { signupAPI, SignupResponseType } from '../../../api/user';
 import { signinPath } from '../../../Routes';
+import { isFailed } from '../../../api/error';
 
 function SigninPageTemplate() {
+  const [modalMessage, setModalMessage] = useState('');
   const history = useHistory();
 
   const handleSignupAPI = async (signupInfo: SignupInfoType) => {
-    await signupAPI(signupInfo);
+    const response = await signupAPI(signupInfo);
+    if (isFailed<SignupResponseType>(response)) {
+      setModalMessage(response.error);
+      return '';
+    }
 
     history.push(signinPath);
     return '';
@@ -21,8 +27,13 @@ function SigninPageTemplate() {
 
   const handleGithubButton = () => {};
 
+  const handleModalCloseButton = () => {
+    setModalMessage('');
+  };
+
   return (
     <Style.Container>
+      {!!modalMessage.length && <AlertModal content={modalMessage} clickCloseButton={handleModalCloseButton} />}
       <BoxWithIcon iconType="Logo" iconSize="extraLarge" sortDirection="column">
         <Title fontsize="h1">SIGNUP</Title>
       </BoxWithIcon>
