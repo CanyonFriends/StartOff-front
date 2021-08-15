@@ -13,7 +13,17 @@ export interface InputProps {
 }
 
 function Input({ id = '', placeholder = '', type = 'text', name = '', width = '100%', ...props }: InputProps) {
-  return <Style.InputTag id={id} name={name} placeholder={placeholder} type={type} width={width} {...props} />;
+  return (
+    <Style.InputTag
+      id={id}
+      aria-label={id}
+      name={name}
+      placeholder={placeholder}
+      type={type}
+      width={width}
+      {...props}
+    />
+  );
 }
 
 export default Input;
