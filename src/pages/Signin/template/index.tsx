@@ -7,7 +7,8 @@ import { BoxWithIcon } from '../../../components/UI/molecule';
 import { LoginForm, AlertModal } from '../../../components/UI/organism';
 import { LoginInfoType } from '../../../validator/loginValidator';
 import theme from '../../../common/theme';
-import { signinAPI, isFailed, SigninResponseType } from '../../../api/user';
+import { signinAPI, SigninResponseType } from '../../../api/user';
+import { isFailed } from '../../../api/error';
 import { setCookie } from '../../../utils/cookie';
 
 function SigninPageTemplate() {

@@ -1,10 +1,7 @@
 import axios from 'axios';
 import { SignupInfoType } from '../validator/signupValidator';
 import { LoginInfoType } from '../validator/loginValidator';
-
-export interface ErrorType {
-  error: string;
-}
+import { ErrorType } from './error';
 
 export interface SigninResponseType {
   access_token: string;
@@ -14,11 +11,6 @@ export interface SigninResponseType {
   user_id: string;
 }
 
-export const isFailed = <T>(arg: T | ErrorType): arg is ErrorType => {
-  return (arg as ErrorType).error !== undefined;
-};
-
-// FIXME: 백엔드쪽 api구현이 완료되지않아 추후 수정 필요
 export const signupAPI = async ({ id, pw, nickname }: SignupInfoType) => {
   try {
     const response = await axios({
