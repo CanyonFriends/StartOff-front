@@ -9,7 +9,8 @@
     "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "jest"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
