@@ -13,6 +13,7 @@ bower_components
 build
 src/config/index.ts
 .eslintcache
+coverage
 
 *.sublime*
 
