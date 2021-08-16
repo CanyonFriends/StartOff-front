@@ -1,7 +1,8 @@
 import GlobalStyle from '../src/common/GlobalStyle';
 import React from 'react';
-import { addDecorator } from '@storybook/react';
 import { MemoryRouter } from 'react-router';
+import { Provider } from 'react-redux';
+import store from '../src/redux/store';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -15,9 +16,11 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <MemoryRouter initialEntries={['/']}>
-      <Story />
-      <GlobalStyle />
-    </MemoryRouter>
+    <Provider store={store}>
+      <MemoryRouter initialEntries={['/']}>
+        <Story />
+        <GlobalStyle />
+      </MemoryRouter>
+    </Provider>
   ),
 ];
