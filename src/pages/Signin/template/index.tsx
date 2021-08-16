@@ -1,27 +1,35 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Style from './styled';
 import { Button, Anchor, Title, Icon } from '../../../components/UI/atom';
 import { BoxWithIcon } from '../../../components/UI/molecule';
 import { LoginForm, AlertModal } from '../../../components/UI/organism';
 import { LoginInfoType } from '../../../validator/loginValidator';
 import theme from '../../../common/theme';
-import { signinAPI, SigninResponseType } from '../../../api/user';
-import { isFailed } from '../../../api/error';
-import { setCookie } from '../../../utils/cookie';
+import { actions } from '../../../redux/user';
+import { RootState } from '../../../redux/store';
+import { UserState } from '../../../redux/user/types';
+import { homePath } from '../../../Routes';
 
 function SigninPageTemplate() {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [modalMessage, setModalMessage] = useState('');
+  const { error, isSignin } = useSelector<RootState>((state) => state.user) as UserState;
+
+  useEffect(() => {
+    setModalMessage(error);
+  }, [error]);
+
+  useEffect(() => {
+    if (isSignin) {
+      history.push(homePath);
+    }
+  }, [isSignin]);
 
   const handleSigninAPI = async (signinInfo: LoginInfoType) => {
-    const response = await signinAPI(signinInfo);
-    if (isFailed<SigninResponseType>(response)) {
-      setModalMessage(response.error);
-      return '';
-    }
-    setCookie('soc', response.access_token);
-
+    dispatch(actions.loginRequest(signinInfo));
     return '';
   };
 
@@ -33,7 +41,7 @@ function SigninPageTemplate() {
 
   return (
     <Style.Container>
-      {!!modalMessage.length && <AlertModal content={modalMessage} clickCloseButton={handleModalCloseButton} />}
+      {!!modalMessage.length && <AlertModal content={error} clickCloseButton={handleModalCloseButton} />}
       <BoxWithIcon iconType="Logo" iconSize="extraLarge" sortDirection="column">
         <Title fontsize="h1">LOGIN</Title>
       </BoxWithIcon>
