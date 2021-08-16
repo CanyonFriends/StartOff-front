@@ -50,7 +50,7 @@ describe('<Signin> 페이지', () => {
   });
 
   it('로그인 실패', () => {
-    signinMockAPI.mockReturnValue(signinFailMockInfo);
+    signinMockAPI.mockReturnValue(new Promise((res) => res(signinFailMockInfo)));
 
     const component = render(<SigninPage />);
     const emailInput = component.getByLabelText('email') as HTMLInputElement;

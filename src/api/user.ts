@@ -28,7 +28,7 @@ export const signupAPI = async ({ id, pw, nickname }: SignupInfoType): Promise<E
     });
     return response.data as SignupResponseType;
   } catch (error) {
-    return { error: error.response.data.errorMsg } as ErrorType;
+    return { errorMsg: error.response.data.errorMsg } as ErrorType;
   }
 };
 
@@ -44,6 +44,6 @@ export const signinAPI = async ({ id, pw }: LoginInfoType): Promise<ErrorType | 
     });
     return response.data as SigninResponseType;
   } catch (error) {
-    return { error: error.response.data.errorMsg } as ErrorType;
+    return { errorMsg: error.response.data.errorMsg } as ErrorType;
   }
 };
