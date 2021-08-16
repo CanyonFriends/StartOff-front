@@ -82,7 +82,7 @@ describe('<Signup> 페이지', () => {
   });
 
   it('회원가입 실패', () => {
-    signupMockAPI.mockReturnValue(signupFailMockInfo);
+    signupMockAPI.mockReturnValue(new Promise((res) => res(signupFailMockInfo)));
 
     const component = render(<SignupPage />);
     const emailInput = component.getByLabelText('email') as HTMLInputElement;

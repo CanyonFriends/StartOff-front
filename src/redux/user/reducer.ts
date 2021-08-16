@@ -16,5 +16,5 @@ export const loginSuccess = (state: UserState, action: PayloadAction<SigninRespo
 };
 
 export const loginFailure = (state: UserState, action: PayloadAction<ErrorType>) => {
-  state.error = action.payload.error;
+  state.error = action.payload.errorMsg;
 };

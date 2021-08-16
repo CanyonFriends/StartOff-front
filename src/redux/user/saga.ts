@@ -9,7 +9,7 @@ import { setCookie } from '../../utils/cookie';
 function* signin(action: PayloadAction<LoginInfoType>) {
   const result: ErrorType | SigninResponseType = yield call(signinAPI, action.payload);
   if (isFailed<SigninResponseType>(result)) {
-    yield put(actions.loginFailure({ error: result.error }));
+    yield put(actions.loginFailure({ errorMsg: result.errorMsg }));
     return;
   }
   yield put(actions.loginSuccess(result));
