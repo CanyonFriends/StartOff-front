@@ -3,7 +3,7 @@ import { SigninResponseType, SignupResponseType } from '../api/user';
 
 export const signinSuccessMockInfo: SigninResponseType = {
   access_token: 'access_token',
-  refresh_token: 'refresh_token',
+  uuid: 'uuid',
   email: 'email@email.com',
   token_type: 'bearer',
   user_id: '1',
