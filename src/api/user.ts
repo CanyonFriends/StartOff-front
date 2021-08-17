@@ -5,7 +5,7 @@ import { ErrorType } from './error';
 
 export interface SigninResponseType {
   access_token: string;
-  refresh_token: string;
+  uuid: string;
   email: string;
   token_type: string;
   user_id: string;
