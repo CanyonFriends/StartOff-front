@@ -44,3 +44,28 @@ export const TextAreawithPlaceholder5by30 = (): React.ReactElement => {
     </StyleWrapper>
   );
 };
+
+export const textareaSize = (): React.ReactElement => {
+  const placeholderText = '';
+
+  return (
+    <StyleWrapper>
+      <div>
+        <div className="description">placeholder</div>
+        <TextArea size="small" value={placeholderText} onChange={() => {}} placeholder="placeholder" />
+      </div>
+      <div>
+        <div className="description">placeholder</div>
+        <TextArea size="medium" value={placeholderText} onChange={() => {}} placeholder="placeholder" />
+      </div>
+      <div>
+        <div className="description">placeholder</div>
+        <TextArea size="large" value={placeholderText} onChange={() => {}} placeholder="placeholder" />
+      </div>
+      <div>
+        <div className="description">placeholder</div>
+        <TextArea size="extraLarge" value={placeholderText} onChange={() => {}} placeholder="placeholder" />
+      </div>
+    </StyleWrapper>
+  );
+};

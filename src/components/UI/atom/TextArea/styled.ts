@@ -1,9 +1,12 @@
 import styled from '@emotion/styled';
 import theme from '../../../../common/theme';
+import { SizeType } from '../../@types/index';
+import { textareaSizeSelector } from './style-selector';
 
 interface TextAreaStyleProps {
   cols: number;
   rows: number;
+  size: SizeType;
 }
 
 export const TextArea = styled.textarea<TextAreaStyleProps>`
@@ -11,6 +14,8 @@ export const TextArea = styled.textarea<TextAreaStyleProps>`
   padding: 2px;
   font-size: 1.8rem;
   outline: none;
+
+  ${(props) => textareaSizeSelector[props.size]}
   &::placeholder {
     color: ${theme.color.color_brightness_700};
   }
