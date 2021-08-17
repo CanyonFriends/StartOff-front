@@ -3,21 +3,21 @@ import { TitleSizeType } from '../../@types/index';
 
 export const titleSizeSelector: { [size in TitleSizeType]: SerializedStyles } = {
   h1: css`
-    font-size: 32px;
+    font-size: 3.2rem;
   `,
   h2: css`
-    font-size: 24px;
+    font-size: 2.4rem;
   `,
   h3: css`
-    font-size: 21.28px;
+    font-size: 2.1rem;
   `,
   h4: css`
-    font-size: 18.72px;
+    font-size: 1.8rem;
   `,
   h5: css`
-    font-size: 13.28px;
+    font-size: 1.5rem;
   `,
   h6: css`
-    font-size: 10.72px;
+    font-size: 1.2rem;
   `,
 };
