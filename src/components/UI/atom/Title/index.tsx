@@ -4,8 +4,8 @@ import * as Style from './styled';
 import theme from '../../../../common/theme';
 import { TitleSizeType } from '../../@types/index';
 
-interface TitleProps {
-  children: React.ReactNode;
+export interface TitleProps {
+  children?: React.ReactNode;
   color?: string;
   fontsize?: TitleSizeType;
 }
