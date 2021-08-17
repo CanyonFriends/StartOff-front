@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Style from './styled';
-import { InputType } from '../../@types/index';
+import { InputType, SizeType } from '../../@types/index';
 
 export interface InputProps {
   value: string;
@@ -9,13 +9,23 @@ export interface InputProps {
   type?: InputType;
   name?: string;
   width?: string;
+  size?: SizeType;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Input({ id = '', placeholder = '', type = 'text', name = '', width = '100%', ...props }: InputProps) {
+function Input({
+  id = '',
+  size = 'medium',
+  placeholder = '',
+  type = 'text',
+  name = '',
+  width = '100%',
+  ...props
+}: InputProps) {
   return (
     <Style.InputTag
       id={id}
+      inputSize={size}
       aria-label={id}
       name={name}
       placeholder={placeholder}

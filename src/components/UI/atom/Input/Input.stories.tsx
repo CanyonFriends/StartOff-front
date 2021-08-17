@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { withKnobs, text as textKnob } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 import Input from '.';
-import Label from '../Label';
 import StyleWrapper from '../../../../common/styleWrapper';
 
 export default {
@@ -38,15 +37,27 @@ export const inputType = (): React.ReactElement => {
   );
 };
 
-export const inputWithLabel = (): React.ReactElement => {
-  const [text, setText] = useState('text');
-  const label = textKnob('LABEL', 'Label');
-  const groupName = 'group';
+export const inputSize = (): React.ReactElement => {
+  const placeholderText = '';
 
   return (
-    <div>
-      <Label group={groupName} content={label} />
-      <Input value={text} id={groupName} onChange={(event) => setText(event.target.value)} />
-    </div>
+    <StyleWrapper>
+      <div>
+        <div className="description">placeholder</div>
+        <Input type="text" size="small" value={placeholderText} onChange={() => {}} placeholder="placeholder" />
+      </div>
+      <div>
+        <div className="description">placeholder</div>
+        <Input type="text" size="medium" value={placeholderText} onChange={() => {}} placeholder="placeholder" />
+      </div>
+      <div>
+        <div className="description">placeholder</div>
+        <Input type="text" size="large" value={placeholderText} onChange={() => {}} placeholder="placeholder" />
+      </div>
+      <div>
+        <div className="description">placeholder</div>
+        <Input type="text" size="extraLarge" value={placeholderText} onChange={() => {}} placeholder="placeholder" />
+      </div>
+    </StyleWrapper>
   );
 };
