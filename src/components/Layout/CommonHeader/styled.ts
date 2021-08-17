@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
+interface ButtonContainerProps {
+  singleButton: boolean;
+}
+
 export const Container = styled.header`
   display: flex;
   justify-content: space-between;
@@ -18,4 +22,9 @@ export const NavItem = styled.li`
   margin: 0 1.5rem;
 `;
 
-export const ButtonContainer = styled.div``;
+export const ButtonContainer = styled.div<ButtonContainerProps>`
+  width: 10rem;
+  display: flex;
+  justify-content: ${(props) => (props.singleButton ? 'flex-end' : 'space-between')};
+  align-items: center;
+`;
