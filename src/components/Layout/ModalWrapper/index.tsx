@@ -11,11 +11,16 @@ interface ModalWrapperProps {
 function ModalWrapper({ children, clickModalOutside, isBlur = false }: ModalWrapperProps) {
   const modalTag = document.getElementById('modal');
 
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    clickModalOutside();
+  };
+
   return (
     modalTag &&
     ReactDOM.createPortal(
       <>
-        <Style.Overlay isBlur={isBlur} onClick={clickModalOutside} />
+        <Style.Overlay isBlur={isBlur} onClick={handleClick} />
         <Style.Container>{children}</Style.Container>
       </>,
       modalTag,

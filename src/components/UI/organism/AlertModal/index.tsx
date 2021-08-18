@@ -11,6 +11,11 @@ interface AlertModalProps {
 }
 
 function AlertModal({ content, isSuccess = false, clickCloseButton }: AlertModalProps) {
+  const handleCloseButton = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    clickCloseButton();
+  };
+
   return (
     <ModalWrapper clickModalOutside={clickCloseButton} isBlur>
       <Style.Container>
@@ -21,7 +26,7 @@ function AlertModal({ content, isSuccess = false, clickCloseButton }: AlertModal
         />
         <Title fontsize="h2">{isSuccess ? '성공' : '실패'}</Title>
         <Style.Text>{content}</Style.Text>
-        <Button onClick={clickCloseButton} width="100%" size="large">
+        <Button onClick={handleCloseButton} width="100%" size="large">
           닫기
         </Button>
       </Style.Container>
