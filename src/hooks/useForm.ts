@@ -25,7 +25,11 @@ function useForm<T>({ initialState, validator, onSubmit }: UseFormProps<T>) {
     }
   };
 
-  return { values, error, handleChange, handleSubmitWithErrorControl };
+  const clearError = () => {
+    setError('');
+  };
+
+  return { values, error, clearError, handleChange, handleSubmitWithErrorControl };
 }
 
 export default useForm;
