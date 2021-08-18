@@ -3,10 +3,10 @@ import { TitleSizeType } from '../../@types/index';
 
 export const titleSizeSelector: { [size in TitleSizeType]: SerializedStyles } = {
   h1: css`
-    font-size: 3.2rem;
+    font-size: 4rem;
   `,
   h2: css`
-    font-size: 2.4rem;
+    font-size: 3.2rem;
   `,
   h3: css`
     font-size: 2.1rem;

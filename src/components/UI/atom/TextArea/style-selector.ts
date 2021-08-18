@@ -10,9 +10,9 @@ export const textareaSizeSelector: { [size in SizeType]: SerializedStyles } = {
     font-size: 1.8rem;
   `,
   large: css`
-    font-size: 2.4rem;
+    font-size: 3.2rem;
   `,
   extraLarge: css`
-    font-size: 3.2rem;
+    font-size: 4rem;
   `,
 };
