@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Style from './styled';
 import { Icon, Anchor } from '../../UI/atom';
 import { BoxWithIcon } from '../../UI/molecule';
@@ -7,6 +7,7 @@ import { homePath, signinPath } from '../../../Routes';
 import theme from '../../../common/theme';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';
+import { actions } from '../../../redux/user';
 
 // FIXME: 이름, 경로 변경
 const menu = [
@@ -16,7 +17,12 @@ const menu = [
 ];
 
 function CommonHeader() {
+  const dispatch = useDispatch();
   const { isSignin } = useSelector<RootState>((state) => state.user) as UserState;
+
+  const handleLogout = () => {
+    dispatch(actions.logoutRequest());
+  };
 
   return (
     <Style.Container>
@@ -38,7 +44,7 @@ function CommonHeader() {
           </Anchor>
         )}
         <Anchor to={isSignin ? homePath : signinPath}>
-          <Icon icon={isSignin ? 'Logout' : 'Login'} size="medium" />
+          <Icon icon={isSignin ? 'Logout' : 'Login'} size="medium" onClick={isSignin ? handleLogout : undefined} />
         </Anchor>
       </Style.ButtonContainer>
     </Style.Container>
