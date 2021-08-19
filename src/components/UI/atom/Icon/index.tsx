@@ -4,16 +4,17 @@ import * as icons from './svg';
 import { SizeType, IconType } from '../../@types/index';
 import theme from '../../../../common/theme';
 
-interface IconProps {
+export interface IconProps {
   icon: IconType;
   color?: string;
   size?: SizeType;
+  onClick?: () => void;
 }
 
-function Icon({ size = 'small', color = theme.color.color_brightness_000, icon }: IconProps) {
+function Icon({ size = 'small', color = theme.color.color_brightness_000, icon, onClick }: IconProps) {
   const SVGIcon = icons[icon];
   return (
-    <Style.Container size={size} svgColor={color}>
+    <Style.Container size={size} svgColor={color} onClick={onClick}>
       <SVGIcon />
     </Style.Container>
   );
