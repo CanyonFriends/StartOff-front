@@ -1,5 +1,5 @@
 import { ErrorType } from '../api/error';
-import { SigninResponseType, SignupResponseType } from '../api/user';
+import { SigninResponseType, SignupResponseType } from '../api/auth';
 
 export const signinSuccessMockInfo: SigninResponseType = {
   access_token: 'access_token',

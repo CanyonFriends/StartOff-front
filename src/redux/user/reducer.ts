@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { UserState } from './types';
 import { LoginInfoType } from '../../validator/loginValidator';
-import { SigninResponseType } from '../../api/user';
+import { SigninResponseType } from '../../api/auth';
 import { ErrorType } from '../../api/error';
 
 // login
