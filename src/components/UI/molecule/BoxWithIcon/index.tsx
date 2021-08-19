@@ -1,22 +1,37 @@
 import React from 'react';
 import * as Style from './styled';
 import { Icon } from '../../atom';
-import { SortDirectionType } from '../../@types/index';
+import { SortDirectionType, IconPosition } from '../../@types/index';
 import { IconProps } from '../../atom/Icon';
 
 interface BoxWithIconProps {
   children: React.ReactElement;
-  // iconType: IconType;
-  sortDirection?: SortDirectionType;
-  // iconSize?: SizeType;
   iconProps: IconProps;
+  isContinuous?: boolean;
+  sortDirection?: SortDirectionType;
+  iconPosition?: IconPosition;
 }
 
-function BoxWithIcon({ children, iconProps, sortDirection = 'row' }: BoxWithIconProps) {
+function BoxWithIcon({
+  children,
+  iconProps,
+  isContinuous = false,
+  iconPosition = 'left',
+  sortDirection = 'row',
+}: BoxWithIconProps) {
   return (
-    <Style.Container sortDirection={sortDirection}>
-      <Icon {...iconProps} />
-      {children}
+    <Style.Container isContinuous={isContinuous} sortDirection={sortDirection}>
+      {iconPosition === 'left' ? (
+        <>
+          <Icon {...iconProps} />
+          {children}
+        </>
+      ) : (
+        <>
+          {children}
+          <Icon {...iconProps} />
+        </>
+      )}
     </Style.Container>
   );
 }
