@@ -68,6 +68,9 @@ export const logoutAPI = async ({
     const response = await axios({
       method: 'POST',
       url: '/v1/logout',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
       data: {
         email,
         accessToken,
