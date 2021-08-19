@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { actions } from '.';
-import { signinAPI, SigninResponseType, logoutAPI } from '../../api/user';
+import { signinAPI, SigninResponseType, logoutAPI } from '../../api/auth';
 import { LoginInfoType } from '../../validator/loginValidator';
 import { ErrorType, isFailed } from '../../api/error';
 import { setCookie, getCookie, removeCookie } from '../../utils/cookie';
