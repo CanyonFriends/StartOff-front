@@ -5,7 +5,7 @@ export const signinSuccessMockInfo: SigninResponseType = {
   access_token: 'access_token',
   uuid: 'uuid',
   email: 'email@email.com',
-  token_type: 'bearer',
+  nickname: 'nickname',
   user_id: '1',
 };
 
