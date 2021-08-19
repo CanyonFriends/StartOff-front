@@ -6,7 +6,7 @@ import { BoxWithIcon } from '../../../components/UI/molecule';
 import { SignupForm, AlertModal } from '../../../components/UI/organism';
 import { SignupInfoType } from '../../../validator/signupValidator';
 import theme from '../../../common/theme';
-import { signupAPI, SignupResponseType } from '../../../api/user';
+import { signupAPI, SignupResponseType } from '../../../api/auth';
 import { signinPath } from '../../../Routes';
 import { isFailed } from '../../../api/error';
 

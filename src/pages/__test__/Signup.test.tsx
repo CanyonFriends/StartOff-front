@@ -6,9 +6,9 @@ import { fireEvent, waitFor } from '@testing-library/react';
 import { render } from '../../test-utils';
 import SignupPage from '../Signup';
 import { signupFailMockInfo } from '../../__test__/mock-dats';
-import { signupAPI } from '../../api/user';
+import { signupAPI } from '../../api/auth';
 
-jest.mock('../../api/user');
+jest.mock('../../api/auth');
 
 const signupMockAPI = signupAPI as jest.MockedFunction<typeof signupAPI>;
 
