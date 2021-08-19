@@ -3,7 +3,16 @@ export type SizeType = 'small' | 'medium' | 'large' | 'extraLarge';
 
 export type ButtonThemeType = 'primary' | 'secondary' | 'github';
 
-export type IconType = 'LeftChevron' | 'Login' | 'Logout' | 'Logo' | 'Check' | 'Warning' | 'Profile';
+export type IconType =
+  | 'LeftChevron'
+  | 'Login'
+  | 'Logout'
+  | 'Logo'
+  | 'Check'
+  | 'Warning'
+  | 'Profile'
+  | 'Pencil'
+  | 'Disk';
 
 export type InputType = 'text' | 'email' | 'password';
 
