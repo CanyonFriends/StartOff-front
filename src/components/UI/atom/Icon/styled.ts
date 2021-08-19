@@ -12,6 +12,7 @@ export const Container = styled.div<IconStyleProps>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  margin-right: 1rem;
 
   ${(props) => iconSizeSelector[props.size]}
 
