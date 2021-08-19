@@ -5,3 +5,5 @@ export { default as Logo } from './Logo';
 export { default as Check } from './Check';
 export { default as Warning } from './Warning';
 export { default as Profile } from './Profile';
+export { default as Pencil } from './Pencil';
+export { default as Disk } from './Disk';
