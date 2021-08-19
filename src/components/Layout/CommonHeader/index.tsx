@@ -20,7 +20,7 @@ function CommonHeader() {
 
   return (
     <Style.Container>
-      <BoxWithIcon iconType="Logo" iconSize="large">
+      <BoxWithIcon iconProps={{ icon: 'Logo', size: 'large' }}>
         <Style.Nav>
           {menu.map((item) => (
             <Style.NavItem key={item.name}>
