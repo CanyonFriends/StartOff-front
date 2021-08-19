@@ -19,13 +19,13 @@ export const boxWithIconAndOther = (): React.ReactElement => {
     <StyleWrapper>
       <div style={{ width: '100px' }}>
         <div className="description">with text</div>
-        <BoxWithIcon iconType={iconSelect}>
+        <BoxWithIcon iconProps={{ icon: iconSelect }}>
           <div>{boxText}</div>
         </BoxWithIcon>
       </div>
       <div style={{ width: '100px' }}>
         <div className="description">with input</div>
-        <BoxWithIcon iconType={iconSelect}>
+        <BoxWithIcon iconProps={{ icon: iconSelect }}>
           <Input value={value} onChange={(event) => setValue(event.target.value)} />
         </BoxWithIcon>
       </div>
@@ -41,13 +41,13 @@ export const boxWithIconSortDirection = (): React.ReactElement => {
     <StyleWrapper>
       <div style={{ width: '100px' }}>
         <div className="description">row</div>
-        <BoxWithIcon iconType={iconSelect} sortDirection="row">
+        <BoxWithIcon iconProps={{ icon: iconSelect }} sortDirection="row">
           <div>{boxText}</div>
         </BoxWithIcon>
       </div>
       <div style={{ width: '100px' }}>
         <div className="description">column</div>
-        <BoxWithIcon iconType={iconSelect} sortDirection="column">
+        <BoxWithIcon iconProps={{ icon: iconSelect }} sortDirection="column">
           <div>{boxText}</div>
         </BoxWithIcon>
       </div>

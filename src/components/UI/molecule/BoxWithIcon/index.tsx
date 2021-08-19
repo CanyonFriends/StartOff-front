@@ -1,19 +1,21 @@
 import React from 'react';
 import * as Style from './styled';
 import { Icon } from '../../atom';
-import { SizeType, IconType, SortDirectionType } from '../../@types/index';
+import { SortDirectionType } from '../../@types/index';
+import { IconProps } from '../../atom/Icon';
 
 interface BoxWithIconProps {
   children: React.ReactElement;
-  iconType: IconType;
+  // iconType: IconType;
   sortDirection?: SortDirectionType;
-  iconSize?: SizeType;
+  // iconSize?: SizeType;
+  iconProps: IconProps;
 }
 
-function BoxWithIcon({ children, iconType, iconSize = 'large', sortDirection = 'row' }: BoxWithIconProps) {
+function BoxWithIcon({ children, iconProps, sortDirection = 'row' }: BoxWithIconProps) {
   return (
     <Style.Container sortDirection={sortDirection}>
-      <Icon size={iconSize} icon={iconType} />
+      <Icon {...iconProps} />
       {children}
     </Style.Container>
   );

@@ -34,7 +34,7 @@ function SigninPageTemplate() {
   return (
     <Style.Container>
       {!!modalMessage.length && <AlertModal content={modalMessage} clickCloseButton={handleModalCloseButton} />}
-      <BoxWithIcon iconType="Logo" iconSize="extraLarge" sortDirection="column">
+      <BoxWithIcon iconProps={{ icon: 'Logo', size: 'extraLarge' }} sortDirection="column">
         <Title fontsize="h1">SIGNUP</Title>
       </BoxWithIcon>
       <Button width="100%" size="large" theme="github" onClick={handleGithubButton}>

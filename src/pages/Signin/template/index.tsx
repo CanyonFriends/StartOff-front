@@ -42,7 +42,7 @@ function SigninPageTemplate() {
   return (
     <Style.Container>
       {!!modalMessage.length && <AlertModal content={error} clickCloseButton={handleModalCloseButton} />}
-      <BoxWithIcon iconType="Logo" iconSize="extraLarge" sortDirection="column">
+      <BoxWithIcon iconProps={{ icon: 'Logo', size: 'extraLarge' }} sortDirection="column">
         <Title fontsize="h1">LOGIN</Title>
       </BoxWithIcon>
       <LoginForm handleSubmit={handleSigninAPI} />
