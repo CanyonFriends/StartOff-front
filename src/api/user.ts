@@ -7,12 +7,23 @@ export interface SigninResponseType {
   access_token: string;
   uuid: string;
   email: string;
-  token_type: string;
+  nickname: string;
   user_id: string;
 }
 
 export interface SignupResponseType {
   user_id: string;
+}
+
+export interface LogoutRequestType {
+  email: string;
+  accessToken: string;
+  uuid: string;
+}
+
+export interface LogoutResponseType {
+  msg: string;
+  success: boolean;
 }
 
 export const signupAPI = async ({ id, pw, nickname }: SignupInfoType): Promise<ErrorType | SignupResponseType> => {
@@ -43,6 +54,27 @@ export const signinAPI = async ({ id, pw }: LoginInfoType): Promise<ErrorType | 
       },
     });
     return response.data as SigninResponseType;
+  } catch (error) {
+    return { errorMsg: error.response.data.errorMsg } as ErrorType;
+  }
+};
+
+export const logoutAPI = async ({
+  email,
+  accessToken,
+  uuid,
+}: LogoutRequestType): Promise<ErrorType | LogoutResponseType> => {
+  try {
+    const response = await axios({
+      method: 'POST',
+      url: '/v1/logout',
+      data: {
+        email,
+        accessToken,
+        uuid,
+      },
+    });
+    return response.data as LogoutResponseType;
   } catch (error) {
     return { errorMsg: error.response.data.errorMsg } as ErrorType;
   }
