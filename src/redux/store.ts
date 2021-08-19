@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { all, fork } from 'redux-saga/effects';
 
-import { watchSignin } from './user/saga';
+import { watchSignin, watchLogout } from './user/saga';
 import { userReducer } from './user/index';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -16,7 +16,7 @@ const store = configureStore({
 });
 
 function* rootSaga() {
-  yield all([fork(watchSignin)]);
+  yield all([fork(watchSignin), fork(watchLogout)]);
 }
 sagaMiddleware.run(rootSaga);
 
