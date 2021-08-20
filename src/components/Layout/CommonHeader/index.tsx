@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Style from './styled';
 import { Icon, Anchor } from '../../UI/atom';
 import { BoxWithIcon } from '../../UI/molecule';
-import { homePath, signinPath } from '../../../Routes';
+import { homePath, signinPath, profilePath } from '../../../Routes';
 import theme from '../../../common/theme';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';
@@ -39,7 +39,7 @@ function CommonHeader() {
       </BoxWithIcon>
       <Style.ButtonContainer singleButton={!isSignin}>
         {isSignin && (
-          <Anchor to="/profile">
+          <Anchor to={profilePath}>
             <Icon icon="Profile" size="medium" />
           </Anchor>
         )}
