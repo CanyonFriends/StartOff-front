@@ -3,7 +3,7 @@ import theme from '../../../../common/theme';
 
 export const Container = styled.div`
   width: 34rem;
-  height: 25rem;
+  height: 26rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

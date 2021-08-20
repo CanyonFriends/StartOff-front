@@ -10,7 +10,7 @@ export const signinSuccessMockInfo: SigninResponseType = {
 };
 
 export const signinFailMockInfo: ErrorType = {
-  errorMsg: '에러 발생',
+  error_msg: '에러 발생',
 };
 
 export const signupSuccessMockInfo: SignupResponseType = {
@@ -18,5 +18,5 @@ export const signupSuccessMockInfo: SignupResponseType = {
 };
 
 export const signupFailMockInfo: ErrorType = {
-  errorMsg: '에러 발생',
+  error_msg: '에러 발생',
 };
