@@ -39,7 +39,7 @@ export const signupAPI = async ({ id, pw, nickname }: SignupInfoType): Promise<E
     });
     return response.data as SignupResponseType;
   } catch (error) {
-    return { errorMsg: error.response.data.errorMsg } as ErrorType;
+    return { error_msg: error.response.data.error_msg } as ErrorType;
   }
 };
 
@@ -55,7 +55,7 @@ export const signinAPI = async ({ id, pw }: LoginInfoType): Promise<ErrorType | 
     });
     return response.data as SigninResponseType;
   } catch (error) {
-    return { errorMsg: error.response.data.errorMsg } as ErrorType;
+    return { error_msg: error.response.data.error_msg } as ErrorType;
   }
 };
 
@@ -73,12 +73,12 @@ export const logoutAPI = async ({
       },
       data: {
         email,
-        accessToken,
         uuid,
+        access_token: accessToken,
       },
     });
     return response.data as LogoutResponseType;
   } catch (error) {
-    return { errorMsg: error.response.data.errorMsg } as ErrorType;
+    return { error_msg: error.response.data.error_msg } as ErrorType;
   }
 };
