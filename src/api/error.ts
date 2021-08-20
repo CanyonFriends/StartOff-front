@@ -1,7 +1,7 @@
 export interface ErrorType {
-  errorMsg: string;
+  error_msg: string;
 }
 
 export const isFailed = <T>(arg: T | ErrorType): arg is ErrorType => {
-  return (arg as ErrorType).errorMsg !== undefined;
+  return (arg as ErrorType).error_msg !== undefined;
 };

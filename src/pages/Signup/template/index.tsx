@@ -17,7 +17,7 @@ function SigninPageTemplate() {
   const handleSignupAPI = async (signupInfo: SignupInfoType) => {
     const response = await signupAPI(signupInfo);
     if (isFailed<SignupResponseType>(response)) {
-      setModalMessage(response.errorMsg);
+      setModalMessage(response.error_msg);
       return '';
     }
 
