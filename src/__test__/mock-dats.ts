@@ -1,6 +1,8 @@
 import { ErrorType } from '../api/error';
 import { SigninResponseType, SignupResponseType } from '../api/auth';
+import { TagProps } from '../components/UI/atom/Tag/index';
 
+// api
 export const signinSuccessMockInfo: SigninResponseType = {
   access_token: 'access_token',
   uuid: 'uuid',
@@ -20,3 +22,19 @@ export const signupSuccessMockInfo: SignupResponseType = {
 export const signupFailMockInfo: ErrorType = {
   error_msg: '에러 발생',
 };
+
+// data
+export const tags: TagProps[] = [
+  {
+    text: 'typescript',
+  },
+  {
+    text: 'python',
+  },
+  {
+    text: 'c',
+  },
+  {
+    text: 'c#',
+  },
+];
