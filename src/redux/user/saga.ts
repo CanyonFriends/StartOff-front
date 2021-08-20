@@ -6,11 +6,12 @@ import { LoginInfoType } from '../../validator/loginValidator';
 import { ErrorType, isFailed } from '../../api/error';
 import { setCookie, getCookie, removeCookie } from '../../utils/cookie';
 import { RootState } from '../store';
+import { getSelfAPI, GetSelfResponse } from '../../api/user';
 
 function* signin(action: PayloadAction<LoginInfoType>) {
   const result: ErrorType | SigninResponseType = yield call(signinAPI, action.payload);
   if (isFailed<SigninResponseType>(result)) {
-    yield put(actions.loginFailure({ errorMsg: result.errorMsg }));
+    yield put(actions.loginFailure({ error_msg: result.error_msg }));
     return;
   }
   yield put(actions.loginSuccess(result));
@@ -32,10 +33,24 @@ function* logout() {
   removeCookie('socu');
 }
 
+function* self() {
+  const accessToken = getCookie('soca');
+  const result: ErrorType | GetSelfResponse = yield call(getSelfAPI, { accessToken });
+  if (isFailed<GetSelfResponse>(result)) {
+    yield put(actions.selfFailure({ error_msg: result.error_msg }));
+    return;
+  }
+  yield put(actions.selfSuccess(result));
+}
+
 export function* watchSignin() {
   yield takeLatest(actions.loginRequest.type, signin);
 }
 
 export function* watchLogout() {
   yield takeLatest(actions.logoutRequest.type, logout);
+}
+
+export function* watchSelf() {
+  yield takeLatest(actions.selfRequest.type, self);
 }
