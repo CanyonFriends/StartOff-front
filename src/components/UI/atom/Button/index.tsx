@@ -5,6 +5,7 @@ import { SizeType, ButtonThemeType } from '../../@types/index';
 
 export interface ButtonProps {
   children: React.ReactNode;
+  formButton?: boolean;
   to?: string;
   width?: string;
   theme?: ButtonThemeType;
@@ -17,13 +18,21 @@ function Button({
   children,
   onClick,
   to,
+  formButton = true,
   theme = 'primary',
   size = 'small',
   iconOnly = false,
   width = 'fit-content',
 }: ButtonProps) {
   return (
-    <Style.Button onClick={onClick} theme={theme} size={size} iconOnly={iconOnly} width={width}>
+    <Style.Button
+      type={formButton ? 'submit' : 'button'}
+      onClick={onClick}
+      theme={theme}
+      size={size}
+      iconOnly={iconOnly}
+      width={width}
+    >
       {to ? <Link to={to}>{children}</Link> : children}
     </Style.Button>
   );
