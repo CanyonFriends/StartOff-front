@@ -39,15 +39,18 @@ function ProfileIntroduce({
     setEditable(!editable);
   };
 
-  const clickSaveButton = () => {
-    //
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const result = await handleSubmitWithErrorControl(event);
+    if (!result) setEditable(true);
   };
 
   const handleNicknameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.length > 10) return;
     handleChange({ ...values, nickname: event.target.value });
   };
 
   const handleIntroduceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.length > 50) return;
     handleChange({ ...values, introduce: event.target.value });
   };
 
@@ -55,10 +58,12 @@ function ProfileIntroduce({
     value: values.nickname,
     onChange: handleNicknameChange,
     size: 'extraLarge',
+    placeholder: '별명을 입력해주세요',
   };
   const introduceInfo: InputProps = {
     value: values.introduce,
     onChange: handleIntroduceChange,
+    placeholder: '자기소개를 입력해주세요 (50자)',
   };
 
   const closeModal = () => {
@@ -66,7 +71,7 @@ function ProfileIntroduce({
   };
 
   return (
-    <Style.Form onSubmit={handleSubmitWithErrorControl}>
+    <Style.Form onSubmit={handleFormSubmit}>
       {error && <AlertModal content={error} clickCloseButton={closeModal} />}
       <Style.Top>
         <Style.DummyImage />
@@ -74,7 +79,7 @@ function ProfileIntroduce({
           <EditableText isEditable={editable} textType="title" inputProps={nicknameInfo} />
         </Style.NicknameWrapper>
         {editableAuthority && (
-          <Button size="medium" onClick={editable ? clickSaveButton : toggleEditable}>
+          <Button size="medium" onClick={toggleEditable} formButton={!editable}>
             {editable ? '저장' : '수정'}
           </Button>
         )}
