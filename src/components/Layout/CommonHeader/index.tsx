@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Style from './styled';
 import { Icon, Anchor } from '../../UI/atom';
 import { BoxWithIcon } from '../../UI/molecule';
-import { homePath, signinPath, profilePath } from '../../../Routes';
+import { homePath, signinPath, buildProfilePath } from '../../../Routes';
 import theme from '../../../common/theme';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';
@@ -18,7 +18,7 @@ const menu = [
 
 function CommonHeader() {
   const dispatch = useDispatch();
-  const { isSignin } = useSelector<RootState>((state) => state.user) as UserState;
+  const { isSignin, userId } = useSelector<RootState>((state) => state.user) as UserState;
 
   const handleLogout = () => {
     dispatch(actions.logoutRequest());
@@ -39,7 +39,7 @@ function CommonHeader() {
       </BoxWithIcon>
       <Style.ButtonContainer singleButton={!isSignin}>
         {isSignin && (
-          <Anchor to={profilePath}>
+          <Anchor to={buildProfilePath(userId)}>
             <Icon icon="Profile" size="medium" />
           </Anchor>
         )}
