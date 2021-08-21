@@ -23,6 +23,7 @@ function useForm<T>({ initialState, validator, onSubmit }: UseFormProps<T>) {
       const error = await onSubmit(values);
       setError(error);
     }
+    return !error;
   };
 
   const clearError = () => {
