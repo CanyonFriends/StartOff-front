@@ -13,7 +13,7 @@ export const loginRequest = (state: UserState, _: PayloadAction<LoginInfoType>) 
 export const loginSuccess = (state: UserState, action: PayloadAction<SigninResponseType>) => {
   state.email = action.payload.email;
   state.nickname = action.payload.nickname;
-  state.userId = action.payload.user_id;
+  state.userId = String(action.payload.user_id);
   state.isSignin = true;
 };
 
@@ -39,7 +39,7 @@ export const selfRequest = (state: UserState) => {
 export const selfSuccess = (state: UserState, action: PayloadAction<GetSelfResponse>) => {
   state.email = action.payload.email;
   state.nickname = action.payload.nickname;
-  state.userId = action.payload.user_id;
+  state.userId = String(action.payload.user_id);
   state.isSignin = true;
 };
 
