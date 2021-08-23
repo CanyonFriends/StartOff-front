@@ -12,7 +12,8 @@ export type IconType =
   | 'Warning'
   | 'Profile'
   | 'Pencil'
-  | 'Disk';
+  | 'Disk'
+  | 'Home';
 
 export type InputType = 'text' | 'email' | 'password';
 
