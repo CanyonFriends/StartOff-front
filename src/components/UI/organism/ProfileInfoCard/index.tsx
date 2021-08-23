@@ -9,14 +9,15 @@ import { IconType } from '../../@types/index';
 import modifyProfileInfoCard, { ModifyProfileInfoCardType } from '../../../../validator/modifyProfileInfoCard';
 import { AlertModal } from '..';
 
-interface ProfileInfoCardProps {
+export interface ProfileInfoCardProps {
+  editableAuthority: boolean;
   title: string;
   textValue: string;
   iconType: IconType;
   handleSubmit: (data: ModifyProfileInfoCardType) => Promise<string>;
 }
 
-function ProfileInfoCard({ title, textValue, iconType, handleSubmit }: ProfileInfoCardProps) {
+function ProfileInfoCard({ editableAuthority, title, textValue, iconType, handleSubmit }: ProfileInfoCardProps) {
   const [isEditable, setIsEditable] = useState(false);
   const { values, error, clearError, handleChange, handleSubmitWithErrorControl } = useForm<ModifyProfileInfoCardType>({
     onSubmit: handleSubmit,
@@ -51,9 +52,13 @@ function ProfileInfoCard({ title, textValue, iconType, handleSubmit }: ProfileIn
   return (
     <Style.Container onSubmit={handleSubmitWithErrorControl}>
       {error && <AlertModal content={error} clickCloseButton={closeModal} />}
-      <BoxWithIcon iconPosition="right" iconProps={modifyIconProps}>
-        <Title fontsize="h2">{title}</Title>
-      </BoxWithIcon>
+      {editableAuthority ? (
+        <BoxWithIcon iconPosition="right" iconProps={modifyIconProps}>
+          <Title fontsize="h3">{title}</Title>
+        </BoxWithIcon>
+      ) : (
+        <Title fontsize="h3">{title}</Title>
+      )}
       <BoxWithIcon isContinuous iconProps={signatureIconProps}>
         <EditableText isEditable={isEditable} textType="paragraph" inputProps={inputProps} />
       </BoxWithIcon>
