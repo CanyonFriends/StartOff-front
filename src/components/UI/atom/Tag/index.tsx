@@ -3,21 +3,24 @@ import * as Style from './styled';
 import theme from '../../../../common/theme';
 
 export interface TagProps {
-  text: string;
+  // text: string;
+  // color?: string;
+  // backgroundColor?: string;
+  skillName: string;
   color?: string;
-  backgroundColor?: string;
+  textColor?: string;
   onClickClose?: () => void;
 }
 
 function Tag({
-  text,
+  skillName,
   color = theme.color.color_brightness_000,
-  backgroundColor = theme.color.color_brightness_800,
+  textColor = theme.color.color_brightness_800,
   onClickClose,
 }: TagProps) {
   return (
-    <Style.Container color={color} backgroundColor={backgroundColor} availableClose={!!onClickClose}>
-      {text}
+    <Style.Container textColor={textColor} color={color} availableClose={!!onClickClose}>
+      {skillName}
       {onClickClose && <Style.CloseButton onClick={onClickClose}>x</Style.CloseButton>}
     </Style.Container>
   );

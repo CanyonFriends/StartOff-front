@@ -21,11 +21,11 @@ export const unavailableCloseTag = (): React.ReactElement => {
     <StyleWrapper>
       <div>
         <div className="description">no color</div>
-        <Tag text={label} />
+        <Tag skillName={label} />
       </div>
       <div>
         <div className="description">primary color</div>
-        <Tag backgroundColor={backgroundColor} text={label} />
+        <Tag color={backgroundColor} skillName={label} />
       </div>
     </StyleWrapper>
   );
@@ -39,11 +39,11 @@ export const availableCloseTag = (): React.ReactElement => {
     <StyleWrapper>
       <div>
         <div className="description">no color</div>
-        <Tag onClickClose={onClickAction} text={label} />
+        <Tag onClickClose={onClickAction} skillName={label} />
       </div>
       <div>
         <div className="description">primary color</div>
-        <Tag onClickClose={onClickAction} backgroundColor={backgroundColor} text={label} />
+        <Tag onClickClose={onClickAction} color={backgroundColor} skillName={label} />
       </div>
     </StyleWrapper>
   );

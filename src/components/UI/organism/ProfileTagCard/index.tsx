@@ -36,10 +36,10 @@ function ProfileTagCard({ title, editableAuthority, tagContents }: ProfileTagCar
       </BoxWithIcon>
       <Style.TagWrapper>
         {tagContents.map((tag) => (
-          <Style.TagItem key={tag.text}>
+          <Style.TagItem key={tag.skillName}>
             <Tag
-              text={tag.text}
-              backgroundColor={tag.backgroundColor}
+              skillName={tag.skillName}
+              textColor={tag.textColor}
               color={tag.color}
               onClickClose={editableAuthority ? handleClickTagClose : undefined}
             />
