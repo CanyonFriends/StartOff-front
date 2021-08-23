@@ -10,12 +10,11 @@ interface AxiosRequest {
 
 const request = async ({ data = '', ...request }: AxiosRequest) => {
   const accessToken = getCookie('soca');
+  const isAuthUrl = request.url.includes('login') || request.url.includes('signup');
   const config = {
     ...request,
     data,
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
+    headers: isAuthUrl ? {} : { Authorization: `Bearer ${accessToken}` },
   };
 
   const response = await axios(config);
