@@ -9,7 +9,7 @@ export const titleSizeSelector: { [size in TitleSizeType]: SerializedStyles } = 
     font-size: 3.2rem;
   `,
   h3: css`
-    font-size: 2.1rem;
+    font-size: 2.7rem;
   `,
   h4: css`
     font-size: 1.8rem;
