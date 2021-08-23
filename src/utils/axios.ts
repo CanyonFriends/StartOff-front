@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getCookie } from './cookie';
 
 type MethodType = 'POST' | 'GET' | 'PUT' | 'DELETE';
 interface AxiosRequest {
@@ -8,13 +9,12 @@ interface AxiosRequest {
 }
 
 const request = async ({ data = '', ...request }: AxiosRequest) => {
-  const accessToken = localStorage.getItem('soca');
-
+  const accessToken = getCookie('soca');
   const config = {
     ...request,
     data,
     headers: {
-      Authorization: `bearer ${accessToken}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   };
 
