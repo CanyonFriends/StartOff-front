@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 import theme from '../../../../common/theme';
 
-export const Form = styled.form``;
+export const Form = styled.form`
+  height: 12.5rem;
+`;
 
 export const Top = styled.div`
   width: 50rem;
