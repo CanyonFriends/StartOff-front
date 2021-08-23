@@ -3,7 +3,7 @@ import theme from '../../../../common/theme';
 
 interface TagStyleProps {
   color: string;
-  backgroundColor: string;
+  textColor: string;
   availableClose: boolean;
 }
 
@@ -12,8 +12,8 @@ export const Container = styled.span<TagStyleProps>`
 
   font-size: 1.5rem;
   border-radius: 0.25rem;
-  color: ${(props) => props.color};
-  background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.textColor};
+  background-color: ${(props) => props.color};
 `;
 
 export const CloseButton = styled.span`
