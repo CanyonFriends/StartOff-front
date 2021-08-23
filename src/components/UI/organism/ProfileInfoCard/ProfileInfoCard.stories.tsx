@@ -19,5 +19,13 @@ const handleSubmit = async (_: ModifyProfileInfoCardType) => {
 export const profileInfoCard = (): React.ReactElement => {
   const textValue = text('GITHUB', 'https://github.com/qkrdmstlr3');
 
-  return <ProfileInfoCard title="Github" iconType="Logo" textValue={textValue} handleSubmit={handleSubmit} />;
+  return (
+    <ProfileInfoCard
+      editableAuthority
+      title="Github"
+      iconType="Logo"
+      textValue={textValue}
+      handleSubmit={handleSubmit}
+    />
+  );
 };

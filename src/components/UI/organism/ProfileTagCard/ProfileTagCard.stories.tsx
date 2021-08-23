@@ -12,11 +12,11 @@ export default {
 export const editable = (): React.ReactElement => {
   const title = text('TITLE', '주요기술');
 
-  return <ProfileTagCard editableAuthority title={title} tagContent={tags} />;
+  return <ProfileTagCard editableAuthority title={title} tagContents={tags} />;
 };
 
 export const uneditable = (): React.ReactElement => {
   const title = text('TITLE', '주요기술');
 
-  return <ProfileTagCard editableAuthority={false} title={title} tagContent={tags} />;
+  return <ProfileTagCard editableAuthority={false} title={title} tagContents={tags} />;
 };

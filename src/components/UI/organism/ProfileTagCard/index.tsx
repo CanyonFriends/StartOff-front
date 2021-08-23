@@ -5,13 +5,13 @@ import { TagProps } from '../../atom/Tag';
 import { BoxWithIcon } from '../../molecule';
 import { IconProps } from '../../atom/Icon';
 
-interface ProfileTagCardProps {
+export interface ProfileTagCardProps {
   title: string;
   editableAuthority: boolean;
-  tagContent: TagProps[];
+  tagContents: TagProps[];
 }
 
-function ProfileTagCard({ title, editableAuthority, tagContent }: ProfileTagCardProps) {
+function ProfileTagCard({ title, editableAuthority, tagContents }: ProfileTagCardProps) {
   const [isEditable, setIsEditable] = useState(false);
 
   const toggleEditable = () => {
@@ -29,14 +29,14 @@ function ProfileTagCard({ title, editableAuthority, tagContent }: ProfileTagCard
     <Style.Container>
       <BoxWithIcon iconPosition="right" iconProps={modifyIconProps}>
         <Style.Form>
-          <Title fontsize="h2">{title}</Title>
+          <Title fontsize="h3">{title}</Title>
           {/* TODO: 여기 드롭다운 적용되어야 할 듯? icon은 없어도 될듯? */}
           {isEditable && <></>}
         </Style.Form>
       </BoxWithIcon>
       <Style.TagWrapper>
-        {tagContent.map((tag) => (
-          <Style.TagItem>
+        {tagContents.map((tag) => (
+          <Style.TagItem key={tag.text}>
             <Tag
               text={tag.text}
               backgroundColor={tag.backgroundColor}
