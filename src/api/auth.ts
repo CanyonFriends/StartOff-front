@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../utils/axios';
 import { SignupInfoType } from '../validator/signupValidator';
 import { LoginInfoType } from '../validator/loginValidator';
 import { ErrorType } from './error';
@@ -68,9 +68,6 @@ export const logoutAPI = async ({
     const response = await axios({
       method: 'POST',
       url: '/v1/logout',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
       data: {
         email,
         uuid,
