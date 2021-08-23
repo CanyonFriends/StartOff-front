@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../utils/axios';
 import { ErrorType } from './error';
 
 interface GetSelfRequest {
@@ -16,9 +16,6 @@ export const getSelfAPI = async ({ accessToken }: GetSelfRequest) => {
     const response = await axios({
       method: 'GET',
       url: '/v1/users/self',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
     });
 
     return response.data as GetSelfResponse;
