@@ -1,8 +1,9 @@
 import { ProjectServerType, SkillServerType } from '../@types/server';
 import axios from '../utils/axios';
 import { ErrorType } from './error';
-import { ProfileType } from '../@types/client';
+import { ProfileType, SkillType } from '../@types/client';
 import { profileResponse2Type } from '../converter/profile';
+import { skillServerType2ClientType } from '../converter/skill';
 
 export interface GetProfileRequest {
   userId: string;
@@ -32,6 +33,11 @@ export interface UpdateProfileGithubRequest {
 export interface UpdateProfileBlogRequest {
   userId: string;
   blogUrl: string;
+}
+
+export interface UpdateUserSkillRequest {
+  userId: string;
+  skillName: string;
 }
 
 export const getProfileAPI = async ({ userId }: GetProfileRequest): Promise<ProfileType | ErrorType> => {
@@ -97,6 +103,24 @@ export const updateBlogIntroduce = async ({
       },
     });
     return true;
+  } catch (error) {
+    return { error_msg: error.response.data.error_msg } as ErrorType;
+  }
+};
+
+export const updateUserSkillAPI = async ({
+  userId,
+  skillName,
+}: UpdateUserSkillRequest): Promise<SkillType | ErrorType> => {
+  try {
+    const response = await axios({
+      method: 'PUT',
+      url: `/v1/users/${userId}/skills`,
+      data: {
+        skill_name: skillName,
+      },
+    });
+    return skillServerType2ClientType(response.data as SkillServerType);
   } catch (error) {
     return { error_msg: error.response.data.error_msg } as ErrorType;
   }

@@ -7,7 +7,7 @@ import { SkillType } from '../../../../@types/client';
 export interface SkillDropdownProps {
   placeholder: string;
   skills: SkillType[];
-  clickItem: (skillId: string) => void;
+  clickItem: (skillName: string) => void;
 }
 
 function SkillDropdown({ placeholder, skills, clickItem }: SkillDropdownProps) {
@@ -15,6 +15,11 @@ function SkillDropdown({ placeholder, skills, clickItem }: SkillDropdownProps) {
 
   const toggleDropdown = () => {
     setOpen(!open);
+  };
+
+  const handleClickItem = (skillName: string) => {
+    clickItem(skillName);
+    toggleDropdown();
   };
 
   return (
@@ -26,7 +31,7 @@ function SkillDropdown({ placeholder, skills, clickItem }: SkillDropdownProps) {
         <Style.MenuWrapper>
           <Overlay clickModalOutside={toggleDropdown} />
           {skills.map((skill) => (
-            <Style.SkillItem key={skill.skillId} id={skill.skillId} onClick={() => clickItem(skill.skillId)}>
+            <Style.SkillItem key={skill.skillId} id={skill.skillId} onClick={() => handleClickItem(skill.skillName)}>
               {skill.skillName}
             </Style.SkillItem>
           ))}
