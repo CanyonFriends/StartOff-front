@@ -2,7 +2,11 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div``;
 
-export const Form = styled.form``;
+export const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 export const TagWrapper = styled.ul`
   display: flex;
