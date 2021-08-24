@@ -25,8 +25,14 @@ function ProfileInfoCard({ editableAuthority, title, textValue, iconType, handle
     validator: modifyProfileInfoCard,
   });
 
-  const toggleEditable = () => {
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     setIsEditable(!isEditable);
+    if (!isEditable) return;
+
+    const result = await handleSubmitWithErrorControl(event);
+    if (!result) setIsEditable(true);
   };
 
   const handleTextValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +45,6 @@ function ProfileInfoCard({ editableAuthority, title, textValue, iconType, handle
 
   const modifyIconProps: IconProps = {
     icon: isEditable ? 'Disk' : 'Pencil',
-    onClick: toggleEditable,
   };
   const signatureIconProps: IconProps = {
     icon: iconType,
@@ -50,10 +55,10 @@ function ProfileInfoCard({ editableAuthority, title, textValue, iconType, handle
   };
 
   return (
-    <Style.Container onSubmit={handleSubmitWithErrorControl}>
+    <Style.Container onSubmit={handleFormSubmit}>
       {error && <AlertModal content={error} clickCloseButton={closeModal} />}
       {editableAuthority ? (
-        <BoxWithIcon iconPosition="right" iconProps={modifyIconProps}>
+        <BoxWithIcon isIconButton iconPosition="right" iconProps={modifyIconProps}>
           <Title fontsize="h3">{title}</Title>
         </BoxWithIcon>
       ) : (

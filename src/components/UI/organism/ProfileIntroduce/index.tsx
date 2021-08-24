@@ -35,11 +35,12 @@ function ProfileIntroduce({
     },
   );
 
-  const toggleEditable = () => {
-    setEditable(!editable);
-  };
-
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setEditable(!editable);
+    if (!editable) return;
+
     const result = await handleSubmitWithErrorControl(event);
     if (!result) setEditable(true);
   };
@@ -78,11 +79,7 @@ function ProfileIntroduce({
         <Style.NicknameWrapper>
           <EditableText isEditable={editable} textType="title" inputProps={nicknameInfo} />
         </Style.NicknameWrapper>
-        {editableAuthority && (
-          <Button size="medium" onClick={toggleEditable} formButton={!editable}>
-            {editable ? '저장' : '수정'}
-          </Button>
-        )}
+        {editableAuthority && <Button size="medium">{editable ? '저장' : '수정'}</Button>}
       </Style.Top>
       <Style.Bottom>
         <EditableText isEditable={editable} textType="paragraph" inputProps={introduceInfo} />
