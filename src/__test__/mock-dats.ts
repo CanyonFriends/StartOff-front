@@ -1,6 +1,7 @@
 import { ErrorType } from '../api/error';
 import { SigninResponseType, SignupResponseType } from '../api/auth';
 import { TagProps } from '../components/UI/atom/Tag/index';
+import { SkillType } from '../@types/client';
 
 // api
 export const signinSuccessMockInfo: SigninResponseType = {
@@ -40,5 +41,32 @@ export const tags: TagProps[] = [
   {
     skillId: '4',
     skillName: 'c#',
+  },
+];
+
+export const skills: SkillType[] = [
+  {
+    skillId: '1',
+    skillName: 'typescript',
+    color: '#eeeeee',
+    textColor: '#000000',
+  },
+  {
+    skillId: '2',
+    skillName: 'python',
+    color: '#eeeeee',
+    textColor: '#000000',
+  },
+  {
+    skillId: '3',
+    skillName: 'c',
+    color: '#eeeeee',
+    textColor: '#000000',
+  },
+  {
+    skillId: '4',
+    skillName: 'c#',
+    color: '#eeeeee',
+    textColor: '#000000',
   },
 ];

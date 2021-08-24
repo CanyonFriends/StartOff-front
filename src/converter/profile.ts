@@ -1,15 +1,7 @@
-import { ProfileType, ProjectType, SkillType } from '../@types/client';
-import { ProjectServerType, SkillServerType } from '../@types/server';
+import { ProfileType, ProjectType } from '../@types/client';
+import { ProjectServerType } from '../@types/server';
 import { GetProfileResponse } from '../api/profile';
-
-export const skillServerType2ClientType = (skill: SkillServerType): SkillType => {
-  return {
-    skillId: String(skill.skill_id),
-    color: skill.color,
-    skillName: skill.skill_name,
-    textColor: skill.text_color,
-  };
-};
+import { skillServerType2ClientType } from './skill';
 
 export const projectServerType2ClientType = (project: ProjectServerType): ProjectType => {
   return {

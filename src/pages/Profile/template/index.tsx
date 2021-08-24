@@ -9,6 +9,7 @@ import { ProfileTagCardProps } from '../../../components/UI/organism/ProfileTagC
 import { TagProps } from '../../../components/UI/atom/Tag/index';
 import { updateProfileIntroduce, updateGithubIntroduce, updateBlogIntroduce } from '../../../api/profile';
 import { isFailed } from '../../../api/error';
+import { SkillType } from '../../../@types/client';
 
 interface ProfileTemplateProps {
   userId: string;
@@ -18,7 +19,10 @@ interface ProfileTemplateProps {
   imageUrl: string;
   github: string;
   blog: string;
+  // 나의 스킬 목록
   tagContents: TagProps[];
+  // 서버의 스킬 목록
+  totalSkillList: SkillType[];
 }
 
 function ProfileTemplate({
@@ -30,6 +34,7 @@ function ProfileTemplate({
   github,
   blog,
   tagContents,
+  totalSkillList,
 }: ProfileTemplateProps) {
   const handleSubmitIntroduce = async ({ nickname, introduce, imageurl }: ModifyProfileIntroduceType) => {
     const response = await updateProfileIntroduce({ userId, nickname, introduce });
@@ -73,6 +78,7 @@ function ProfileTemplate({
   const tagInfo: ProfileTagCardProps = {
     editableAuthority,
     tagContents,
+    totalSkillList,
     clickTagItem: handleClickTagItem,
     title: '기술 스택',
   };

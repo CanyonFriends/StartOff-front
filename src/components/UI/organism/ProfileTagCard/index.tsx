@@ -4,19 +4,21 @@ import { Tag, Title } from '../../atom';
 import { TagProps } from '../../atom/Tag';
 import TagDropdown from '../../molecule/TagDropdown';
 import { DropdownTagType } from '../../molecule/TagDropdown/index';
+import { SkillType } from '../../../../@types/client';
 
 export interface ProfileTagCardProps {
   title: string;
   editableAuthority: boolean;
   tagContents: TagProps[];
+  totalSkillList: SkillType[];
   clickTagItem: (tagName: string) => void;
 }
 
-function ProfileTagCard({ title, editableAuthority, tagContents, clickTagItem }: ProfileTagCardProps) {
+function ProfileTagCard({ title, editableAuthority, tagContents, clickTagItem, totalSkillList }: ProfileTagCardProps) {
   const tagForDropdown: DropdownTagType[] = useMemo(() => {
-    return tagContents.map((tag) => ({
-      id: tag.skillId,
-      content: tag.skillName,
+    return totalSkillList.map((skill) => ({
+      id: skill.skillId,
+      content: skill.skillName,
     }));
   }, [tagContents]);
 
