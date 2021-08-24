@@ -42,6 +42,7 @@ function Profile() {
       {!!error.length && <AlertModal content={error} clickCloseButton={handleModalCloseButton} />}
       {profileData ? (
         <ProfileTemplate
+          userId={userState.userId}
           editableAuthority={editableAuthority}
           nickname={profileData.nickname}
           introduce={profileData.introduce}
