@@ -8,7 +8,7 @@ export const Header = styled.div`
   justify-content: space-between;
 `;
 
-export const TagWrapper = styled.ul`
+export const SkillWrapper = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   margin: 0;
@@ -16,6 +16,6 @@ export const TagWrapper = styled.ul`
   list-style: none;
 `;
 
-export const TagItem = styled.li`
+export const SkillItem = styled.li`
   margin-right: 1rem;
 `;

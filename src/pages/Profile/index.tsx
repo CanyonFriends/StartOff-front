@@ -24,7 +24,7 @@ function Profile() {
 
   useEffect(() => {
     getProfileInfo();
-    getSkillTag();
+    getTotalSkills();
   }, []);
 
   const getProfileInfo = async () => {
@@ -37,7 +37,7 @@ function Profile() {
     return '';
   };
 
-  const getSkillTag = async () => {
+  const getTotalSkills = async () => {
     const response = await getSkillsAPI();
     if (isFailed<SkillType[]>(response)) {
       setError(response.error_msg);
@@ -63,7 +63,7 @@ function Profile() {
           imageUrl=""
           github={profileData.githubUrl}
           blog={profileData.blogUrl}
-          tagContents={profileData.userSkills}
+          mySkillList={profileData.userSkills}
           totalSkillList={totalSkills}
         />
       ) : (
