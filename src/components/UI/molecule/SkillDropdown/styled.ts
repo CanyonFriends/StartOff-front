@@ -22,7 +22,7 @@ export const MenuWrapper = styled.ul`
   overflow: hidden;
 `;
 
-export const TagItem = styled.li`
+export const SkillItem = styled.li`
   padding: 0.2rem 0.5rem;
   font-size: 1.8rem;
   cursor: pointer;
