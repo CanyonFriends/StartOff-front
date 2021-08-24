@@ -24,6 +24,16 @@ export interface UpdateProfileIntroduceRequest {
   nickname: string;
 }
 
+export interface UpdateProfileGithubRequest {
+  userId: string;
+  githubUrl: string;
+}
+
+export interface UpdateProfileBlogRequest {
+  userId: string;
+  blogUrl: string;
+}
+
 export const getProfileAPI = async ({ userId }: GetProfileRequest): Promise<ProfileType | ErrorType> => {
   try {
     const response = await axios({
@@ -48,6 +58,42 @@ export const updateProfileIntroduce = async ({
       data: {
         introduce,
         nickname,
+      },
+    });
+    return true;
+  } catch (error) {
+    return { error_msg: error.response.data.error_msg } as ErrorType;
+  }
+};
+
+export const updateGithubIntroduce = async ({
+  userId,
+  githubUrl,
+}: UpdateProfileGithubRequest): Promise<boolean | ErrorType> => {
+  try {
+    await axios({
+      method: 'PUT',
+      url: `/v1/users/${userId}/github-url`,
+      data: {
+        github_url: githubUrl,
+      },
+    });
+    return true;
+  } catch (error) {
+    return { error_msg: error.response.data.error_msg } as ErrorType;
+  }
+};
+
+export const updateBlogIntroduce = async ({
+  userId,
+  blogUrl,
+}: UpdateProfileBlogRequest): Promise<boolean | ErrorType> => {
+  try {
+    await axios({
+      method: 'PUT',
+      url: `/v1/users/${userId}/blog-url`,
+      data: {
+        blog_url: blogUrl,
       },
     });
     return true;
