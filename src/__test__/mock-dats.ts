@@ -26,15 +26,19 @@ export const signupFailMockInfo: ErrorType = {
 // data
 export const tags: TagProps[] = [
   {
+    skillId: '1',
     skillName: 'typescript',
   },
   {
+    skillId: '2',
     skillName: 'python',
   },
   {
+    skillId: '3',
     skillName: 'c',
   },
   {
+    skillId: '4',
     skillName: 'c#',
   },
 ];

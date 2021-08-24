@@ -15,6 +15,7 @@ export interface ProjectServerType {
 
 export interface SkillServerType {
   color: string;
+  skill_id: string;
   skill_name: string;
   text_color: string;
 }
