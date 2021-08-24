@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import * as Style from './styled';
 import { Tag, Title } from '../../atom';
 import SkillDropdown from '../../molecule/SkillDropdown';
@@ -20,13 +20,16 @@ function ProfileSkillCard({
   totalSkillList,
 }: ProfileSkillCardProps) {
   const handleClickSkillClose = () => {};
+  const totalSkillListExceptMine = useMemo(() => {
+    return totalSkillList.filter((skill) => !mySkillList.find((mySkill) => mySkill.skillName === skill.skillName));
+  }, [mySkillList.length]);
 
   return (
     <Style.Container>
       <Style.Header>
         <Title fontsize="h3">{title}</Title>
         {editableAuthority && (
-          <SkillDropdown placeholder="스택 추가" clickItem={clickTotalSkillItem} skills={totalSkillList} />
+          <SkillDropdown placeholder="스택 추가" clickItem={clickTotalSkillItem} skills={totalSkillListExceptMine} />
         )}
       </Style.Header>
       <Style.SkillWrapper>
