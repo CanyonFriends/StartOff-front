@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Style from './styled';
 import CommonHeader from '../../../components/Layout/CommonHeader';
 import { ProfileIntroduce, ProfileInfoCard, ProfileSkillCard } from '../../../components/UI/organism';
@@ -6,7 +6,12 @@ import { ModifyProfileInfoCardType } from '../../../validator/modifyProfileInfoC
 import { ModifyProfileIntroduceType } from '../../../validator/modifyProfileIntroduce';
 import { ProfileInfoCardProps } from '../../../components/UI/organism/ProfileInfoCard';
 import { ProfileSkillCardProps } from '../../../components/UI/organism/ProfileSkillCard/index';
-import { updateProfileIntroduce, updateGithubIntroduce, updateBlogIntroduce } from '../../../api/profile';
+import {
+  updateProfileIntroduce,
+  updateGithubIntroduce,
+  updateBlogIntroduce,
+  updateUserSkillAPI,
+} from '../../../api/profile';
 import { isFailed } from '../../../api/error';
 import { SkillType } from '../../../@types/client';
 
@@ -18,9 +23,7 @@ interface ProfileTemplateProps {
   imageUrl: string;
   github: string;
   blog: string;
-  // 나의 스킬 목록
   mySkillList: SkillType[];
-  // 서버의 스킬 목록
   totalSkillList: SkillType[];
 }
 
@@ -35,6 +38,8 @@ function ProfileTemplate({
   mySkillList,
   totalSkillList,
 }: ProfileTemplateProps) {
+  const [mySkillListState, setMySkillListState] = useState<SkillType[]>(mySkillList);
+
   const handleSubmitIntroduce = async ({ nickname, introduce, imageurl }: ModifyProfileIntroduceType) => {
     const response = await updateProfileIntroduce({ userId, nickname, introduce });
     if (isFailed<boolean>(response)) {
@@ -58,7 +63,14 @@ function ProfileTemplate({
     }
     return '';
   };
-  const handleClickTotalItem = async () => {};
+  const handleClickTotalItem = async (skillName: string) => {
+    const response = await updateUserSkillAPI({ userId, skillName });
+    if (isFailed<SkillType>(response)) {
+      return response.error_msg;
+    }
+    setMySkillListState([...mySkillListState, response]);
+    return '';
+  };
 
   const githubInfo: ProfileInfoCardProps = {
     editableAuthority,
@@ -76,7 +88,7 @@ function ProfileTemplate({
   };
   const skillInfo: ProfileSkillCardProps = {
     editableAuthority,
-    mySkillList,
+    mySkillList: mySkillListState,
     totalSkillList,
     clickTotalSkillItem: handleClickTotalItem,
     title: '기술 스택',
