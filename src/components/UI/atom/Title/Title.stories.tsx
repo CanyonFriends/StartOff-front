@@ -11,7 +11,7 @@ export default {
 };
 
 export const sizeTitle = (): React.ReactElement => {
-  const title = text('TAG', 'typescript');
+  const title = text('TITLE', 'typescript');
   const textColor = color('COLOR', theme.color.color_primary_400);
 
   return (

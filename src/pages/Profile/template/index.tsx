@@ -1,12 +1,11 @@
 import React from 'react';
 import * as Style from './styled';
 import CommonHeader from '../../../components/Layout/CommonHeader';
-import { ProfileIntroduce, ProfileInfoCard, ProfileTagCard } from '../../../components/UI/organism';
+import { ProfileIntroduce, ProfileInfoCard, ProfileSkillCard } from '../../../components/UI/organism';
 import { ModifyProfileInfoCardType } from '../../../validator/modifyProfileInfoCard';
 import { ModifyProfileIntroduceType } from '../../../validator/modifyProfileIntroduce';
 import { ProfileInfoCardProps } from '../../../components/UI/organism/ProfileInfoCard';
-import { ProfileTagCardProps } from '../../../components/UI/organism/ProfileTagCard/index';
-import { TagProps } from '../../../components/UI/atom/Tag/index';
+import { ProfileSkillCardProps } from '../../../components/UI/organism/ProfileSkillCard/index';
 import { updateProfileIntroduce, updateGithubIntroduce, updateBlogIntroduce } from '../../../api/profile';
 import { isFailed } from '../../../api/error';
 import { SkillType } from '../../../@types/client';
@@ -20,7 +19,7 @@ interface ProfileTemplateProps {
   github: string;
   blog: string;
   // 나의 스킬 목록
-  tagContents: TagProps[];
+  mySkillList: SkillType[];
   // 서버의 스킬 목록
   totalSkillList: SkillType[];
 }
@@ -33,7 +32,7 @@ function ProfileTemplate({
   imageUrl,
   github,
   blog,
-  tagContents,
+  mySkillList,
   totalSkillList,
 }: ProfileTemplateProps) {
   const handleSubmitIntroduce = async ({ nickname, introduce, imageurl }: ModifyProfileIntroduceType) => {
@@ -59,7 +58,7 @@ function ProfileTemplate({
     }
     return '';
   };
-  const handleClickTagItem = async () => {};
+  const handleClickTotalItem = async () => {};
 
   const githubInfo: ProfileInfoCardProps = {
     editableAuthority,
@@ -75,11 +74,11 @@ function ProfileTemplate({
     iconType: 'Home',
     handleSubmit: handleSubmitBlog,
   };
-  const tagInfo: ProfileTagCardProps = {
+  const skillInfo: ProfileSkillCardProps = {
     editableAuthority,
-    tagContents,
+    mySkillList,
     totalSkillList,
-    clickTagItem: handleClickTagItem,
+    clickTotalSkillItem: handleClickTotalItem,
     title: '기술 스택',
   };
   return (
@@ -98,7 +97,7 @@ function ProfileTemplate({
         <Style.ProfileInfoWrapper>
           <ProfileInfoCard {...githubInfo} />
           <ProfileInfoCard {...blogInfo} />
-          <ProfileTagCard {...tagInfo} />
+          <ProfileSkillCard {...skillInfo} />
         </Style.ProfileInfoWrapper>
         <Style.ProfileImageWrapper>
           <></>

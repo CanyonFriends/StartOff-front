@@ -1,6 +1,5 @@
 import { ErrorType } from '../api/error';
 import { SigninResponseType, SignupResponseType } from '../api/auth';
-import { TagProps } from '../components/UI/atom/Tag/index';
 import { SkillType } from '../@types/client';
 
 // api
@@ -25,24 +24,6 @@ export const signupFailMockInfo: ErrorType = {
 };
 
 // data
-export const tags: TagProps[] = [
-  {
-    skillId: '1',
-    skillName: 'typescript',
-  },
-  {
-    skillId: '2',
-    skillName: 'python',
-  },
-  {
-    skillId: '3',
-    skillName: 'c',
-  },
-  {
-    skillId: '4',
-    skillName: 'c#',
-  },
-];
 
 export const skills: SkillType[] = [
   {

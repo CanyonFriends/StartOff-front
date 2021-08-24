@@ -2,20 +2,15 @@ import React, { useState } from 'react';
 import Overlay from '../../../Layout/Overlay';
 import { Button } from '../../atom';
 import * as Style from './styled';
+import { SkillType } from '../../../../@types/client';
 
-export interface DropdownTagType {
-  id: string;
-  content: string;
-}
-
-export interface TagDropdownProps {
+export interface SkillDropdownProps {
   placeholder: string;
-  tags: DropdownTagType[];
-  clickItem: (tagId: string) => void;
+  skills: SkillType[];
+  clickItem: (skillId: string) => void;
 }
 
-// FIXME: SKILLDROPDOWN
-function TagDropdown({ placeholder, tags, clickItem }: TagDropdownProps) {
+function SkillDropdown({ placeholder, skills, clickItem }: SkillDropdownProps) {
   const [open, setOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -30,10 +25,10 @@ function TagDropdown({ placeholder, tags, clickItem }: TagDropdownProps) {
       {open && (
         <Style.MenuWrapper>
           <Overlay clickModalOutside={toggleDropdown} />
-          {tags.map((tag) => (
-            <Style.TagItem key={tag.id} id={tag.id} onClick={() => clickItem(tag.id)}>
-              {tag.content}
-            </Style.TagItem>
+          {skills.map((skill) => (
+            <Style.SkillItem key={skill.skillId} id={skill.skillId} onClick={() => clickItem(skill.skillId)}>
+              {skill.skillName}
+            </Style.SkillItem>
           ))}
         </Style.MenuWrapper>
       )}
@@ -41,4 +36,4 @@ function TagDropdown({ placeholder, tags, clickItem }: TagDropdownProps) {
   );
 }
 
-export default TagDropdown;
+export default SkillDropdown;
