@@ -14,6 +14,7 @@ export interface TagDropdownProps {
   clickItem: (tagId: string) => void;
 }
 
+// FIXME: SKILLDROPDOWN
 function TagDropdown({ placeholder, tags, clickItem }: TagDropdownProps) {
   const [open, setOpen] = useState(false);
 
@@ -30,8 +31,8 @@ function TagDropdown({ placeholder, tags, clickItem }: TagDropdownProps) {
         <Style.MenuWrapper>
           <Overlay clickModalOutside={toggleDropdown} />
           {tags.map((tag) => (
-            <Style.TagItem id={tag.id} onClick={() => clickItem(tag.id)}>
-              {tag}
+            <Style.TagItem key={tag.id} id={tag.id} onClick={() => clickItem(tag.id)}>
+              {tag.content}
             </Style.TagItem>
           ))}
         </Style.MenuWrapper>

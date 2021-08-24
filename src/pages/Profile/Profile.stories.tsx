@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileTemplate from './template';
-import { tags } from '../../__test__/mock-dats';
+import { tags, skills } from '../../__test__/mock-dats';
 
 export default {
   title: 'Template/Profile',
@@ -21,6 +21,7 @@ export const editableProfile = (): React.ReactElement => {
       introduce="introduce"
       imageUrl=""
       tagContents={tags}
+      totalSkillList={skills}
     />
   );
 };
@@ -40,6 +41,7 @@ export const uneditableProfile = (): React.ReactElement => {
       introduce="introduce"
       imageUrl=""
       tagContents={tags}
+      totalSkillList={skills}
     />
   );
 };
