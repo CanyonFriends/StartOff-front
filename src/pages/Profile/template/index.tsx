@@ -7,7 +7,7 @@ import { ModifyProfileIntroduceType } from '../../../validator/modifyProfileIntr
 import { ProfileInfoCardProps } from '../../../components/UI/organism/ProfileInfoCard';
 import { ProfileTagCardProps } from '../../../components/UI/organism/ProfileTagCard/index';
 import { TagProps } from '../../../components/UI/atom/Tag/index';
-import { updateProfileIntroduce } from '../../../api/profile';
+import { updateProfileIntroduce, updateGithubIntroduce, updateBlogIntroduce } from '../../../api/profile';
 import { isFailed } from '../../../api/error';
 
 interface ProfileTemplateProps {
@@ -40,10 +40,18 @@ function ProfileTemplate({
   };
 
   const handleSubmitGithub = async (data: ModifyProfileInfoCardType) => {
+    const response = await updateGithubIntroduce({ userId, githubUrl: data.textValue });
+    if (isFailed<boolean>(response)) {
+      return response.error_msg;
+    }
     return '';
   };
 
   const handleSubmitBlog = async (data: ModifyProfileInfoCardType) => {
+    const response = await updateBlogIntroduce({ userId, blogUrl: data.textValue });
+    if (isFailed<boolean>(response)) {
+      return response.error_msg;
+    }
     return '';
   };
 
