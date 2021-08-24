@@ -22,6 +22,7 @@ export interface ProjectType {
 }
 
 export interface SkillType {
+  skillId: string;
   color: string;
   skillName: string;
   textColor: string;
