@@ -7,8 +7,11 @@ import { ModifyProfileIntroduceType } from '../../../validator/modifyProfileIntr
 import { ProfileInfoCardProps } from '../../../components/UI/organism/ProfileInfoCard';
 import { ProfileTagCardProps } from '../../../components/UI/organism/ProfileTagCard/index';
 import { TagProps } from '../../../components/UI/atom/Tag/index';
+import { updateProfileIntroduce } from '../../../api/profile';
+import { isFailed } from '../../../api/error';
 
 interface ProfileTemplateProps {
+  userId: string;
   editableAuthority: boolean;
   nickname: string;
   introduce: string;
@@ -19,6 +22,7 @@ interface ProfileTemplateProps {
 }
 
 function ProfileTemplate({
+  userId,
   editableAuthority,
   nickname,
   introduce,
@@ -27,7 +31,11 @@ function ProfileTemplate({
   blog,
   tagContents,
 }: ProfileTemplateProps) {
-  const handleSubmitIntroduce = async (data: ModifyProfileIntroduceType) => {
+  const handleSubmitIntroduce = async ({ nickname, introduce, imageurl }: ModifyProfileIntroduceType) => {
+    const response = await updateProfileIntroduce({ userId, nickname, introduce });
+    if (isFailed<boolean>(response)) {
+      return response.error_msg;
+    }
     return '';
   };
 

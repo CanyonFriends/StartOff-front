@@ -8,10 +8,12 @@ export default {
 };
 
 export const editableProfile = (): React.ReactElement => {
+  const userId = '1';
   const github = 'https://github.com/qkrdmstlr3';
   const blog = 'https://shellboylog.com';
   return (
     <ProfileTemplate
+      userId={userId}
       editableAuthority
       github={github}
       blog={blog}
@@ -24,11 +26,13 @@ export const editableProfile = (): React.ReactElement => {
 };
 
 export const uneditableProfile = (): React.ReactElement => {
+  const userId = '1';
   const github = 'https://github.com/qkrdmstlr3';
   const blog = 'https://shellboylog.com';
 
   return (
     <ProfileTemplate
+      userId={userId}
       editableAuthority={false}
       github={github}
       blog={blog}

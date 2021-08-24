@@ -1,6 +1,8 @@
 import { ProjectServerType, SkillServerType } from '../@types/server';
 import axios from '../utils/axios';
 import { ErrorType } from './error';
+import { ProfileType } from '../@types/client';
+import { profileResponse2Type } from '../converter/profile';
 
 export interface GetProfileRequest {
   userId: string;
@@ -16,13 +18,39 @@ export interface GetProfileResponse {
   user_skills: SkillServerType[];
 }
 
-export const getProfile = async ({ userId }: GetProfileRequest): Promise<GetProfileResponse | ErrorType> => {
+export interface UpdateProfileIntroduceRequest {
+  userId: string;
+  introduce: string;
+  nickname: string;
+}
+
+export const getProfileAPI = async ({ userId }: GetProfileRequest): Promise<ProfileType | ErrorType> => {
   try {
     const response = await axios({
       method: 'GET',
       url: `/v1/users/${userId}/profile`,
     });
-    return response.data as GetProfileResponse;
+    return profileResponse2Type(response.data as GetProfileResponse);
+  } catch (error) {
+    return { error_msg: error.response.data.error_msg } as ErrorType;
+  }
+};
+
+export const updateProfileIntroduce = async ({
+  userId,
+  introduce,
+  nickname,
+}: UpdateProfileIntroduceRequest): Promise<boolean | ErrorType> => {
+  try {
+    await axios({
+      method: 'PUT',
+      url: `/v1/users/${userId}/introduce`,
+      data: {
+        introduce,
+        nickname,
+      },
+    });
+    return true;
   } catch (error) {
     return { error_msg: error.response.data.error_msg } as ErrorType;
   }
