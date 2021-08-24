@@ -1,43 +1,38 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import * as Style from './styled';
 import { Tag, Title } from '../../atom';
 import { TagProps } from '../../atom/Tag';
-import { BoxWithIcon } from '../../molecule';
-import { IconProps } from '../../atom/Icon';
+import TagDropdown from '../../molecule/TagDropdown';
+import { DropdownTagType } from '../../molecule/TagDropdown/index';
 
 export interface ProfileTagCardProps {
   title: string;
   editableAuthority: boolean;
   tagContents: TagProps[];
+  clickTagItem: (tagName: string) => void;
 }
 
-function ProfileTagCard({ title, editableAuthority, tagContents }: ProfileTagCardProps) {
-  const [isEditable, setIsEditable] = useState(false);
-
-  const toggleEditable = () => {
-    setIsEditable(!isEditable);
-  };
+function ProfileTagCard({ title, editableAuthority, tagContents, clickTagItem }: ProfileTagCardProps) {
+  const tagForDropdown: DropdownTagType[] = useMemo(() => {
+    return tagContents.map((tag) => ({
+      id: tag.skillId,
+      content: tag.skillName,
+    }));
+  }, [tagContents]);
 
   const handleClickTagClose = () => {};
 
-  const modifyIconProps: IconProps = {
-    icon: isEditable ? 'Disk' : 'Pencil',
-    onClick: toggleEditable,
-  };
-
   return (
     <Style.Container>
-      <BoxWithIcon iconPosition="right" iconProps={modifyIconProps}>
-        <Style.Form>
-          <Title fontsize="h3">{title}</Title>
-          {/* TODO: 여기 드롭다운 적용되어야 할 듯? icon은 없어도 될듯? */}
-          {isEditable && <></>}
-        </Style.Form>
-      </BoxWithIcon>
+      <Style.Header>
+        <Title fontsize="h3">{title}</Title>
+        {editableAuthority && <TagDropdown placeholder="스택 추가" clickItem={clickTagItem} tags={tagForDropdown} />}
+      </Style.Header>
       <Style.TagWrapper>
         {tagContents.map((tag) => (
           <Style.TagItem key={tag.skillName}>
             <Tag
+              skillId={tag.skillId}
               skillName={tag.skillName}
               textColor={tag.textColor}
               color={tag.color}

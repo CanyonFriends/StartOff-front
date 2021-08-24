@@ -54,6 +54,7 @@ function ProfileTemplate({
     }
     return '';
   };
+  const handleClickTagItem = async () => {};
 
   const githubInfo: ProfileInfoCardProps = {
     editableAuthority,
@@ -72,6 +73,7 @@ function ProfileTemplate({
   const tagInfo: ProfileTagCardProps = {
     editableAuthority,
     tagContents,
+    clickTagItem: handleClickTagItem,
     title: '기술 스택',
   };
   return (
