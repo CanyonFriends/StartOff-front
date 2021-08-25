@@ -15,25 +15,35 @@ interface AccountInfoModalProps {
 }
 
 function AccountInfoModal({ handleCloseModal, changePassword, deleteUser }: AccountInfoModalProps) {
-  const { values, error, handleChange, handleSubmitWithErrorControl } = useForm({
+  const { values, error, handleChange, handleSubmitWithErrorControl } = useForm<UpdatePasswordValidatorType>({
     onSubmit: changePassword,
-    initialState: { pw: '', confirmPW: '' },
+    initialState: { currentPW: '', afterPW: '', confirmPW: '' },
     validator: updatePasswordValidator,
   });
 
-  const handlePwChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    handleChange({ ...values, pw: event.target.value });
+  const handleCurrentPW = (event: React.ChangeEvent<HTMLInputElement>) => {
+    handleChange({ ...values, currentPW: event.target.value });
+  };
+
+  const handleAfterPW = (event: React.ChangeEvent<HTMLInputElement>) => {
+    handleChange({ ...values, afterPW: event.target.value });
   };
 
   const handleConfirmPwChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     handleChange({ ...values, confirmPW: event.target.value });
   };
 
-  const pwInputInfo: InputFieldProps = {
-    group: 'pw',
+  const currentPWInputInfo: InputFieldProps = {
+    group: 'currentpw',
     sortDirection: 'column',
-    labelProps: { content: 'password', color: theme.color.color_primary_400 },
-    inputProps: { value: values.pw, type: 'password', onChange: handlePwChange },
+    labelProps: { content: 'current password', color: theme.color.color_primary_400 },
+    inputProps: { value: values.currentPW, type: 'password', onChange: handleCurrentPW },
+  };
+  const afterPWInputInfo: InputFieldProps = {
+    group: 'afterpw',
+    sortDirection: 'column',
+    labelProps: { content: 'after password', color: theme.color.color_primary_400 },
+    inputProps: { value: values.afterPW, type: 'password', onChange: handleAfterPW },
   };
   const confirmPWInputInfo: InputFieldProps = {
     group: 'confirmpw',
@@ -47,7 +57,10 @@ function AccountInfoModal({ handleCloseModal, changePassword, deleteUser }: Acco
         <Style.Form onSubmit={handleSubmitWithErrorControl}>
           <Title fontsize="h3">비밀번호 변경하기</Title>
           <Style.InputWrapper>
-            <InputField {...pwInputInfo} />
+            <InputField {...currentPWInputInfo} />
+          </Style.InputWrapper>
+          <Style.InputWrapper>
+            <InputField {...afterPWInputInfo} />
           </Style.InputWrapper>
           <Style.InputWrapper>
             <InputField {...confirmPWInputInfo} />
