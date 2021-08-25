@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Style from './styled';
 import CommonHeader from '../../../components/Layout/CommonHeader';
-import { ProfileIntroduce, ProfileInfoCard, ProfileSkillCard } from '../../../components/UI/organism';
+import { ProfileIntroduce, ProfileInfoCard, ProfileSkillCard, AccountInfoModal } from '../../../components/UI/organism';
 import { ModifyProfileInfoCardType } from '../../../validator/modifyProfileInfoCard';
 import { ModifyProfileIntroduceType } from '../../../validator/modifyProfileIntroduce';
 import { ProfileInfoCardProps } from '../../../components/UI/organism/ProfileInfoCard';
@@ -15,6 +15,7 @@ import {
 } from '../../../api/profile';
 import { isFailed } from '../../../api/error';
 import { SkillType } from '../../../@types/client';
+import { Button } from '../../../components/UI/atom';
 
 interface ProfileTemplateProps {
   userId: string;
@@ -39,6 +40,7 @@ function ProfileTemplate({
   mySkillList,
   totalSkillList,
 }: ProfileTemplateProps) {
+  const [accountInfoModalOpen, setAccountInfoModalOpen] = useState(false);
   const [mySkillListState, setMySkillListState] = useState<SkillType[]>(mySkillList);
 
   const handleSubmitIntroduce = async ({ nickname, introduce, imageurl }: ModifyProfileIntroduceType) => {
@@ -83,6 +85,16 @@ function ProfileTemplate({
     return '';
   };
 
+  const toggleAccountInfoModal = () => {
+    setAccountInfoModalOpen(!accountInfoModalOpen);
+  };
+
+  const changePassword = async () => {
+    return '';
+  };
+
+  const deleteUser = async () => {};
+
   const githubInfo: ProfileInfoCardProps = {
     editableAuthority,
     title: 'Github',
@@ -107,6 +119,13 @@ function ProfileTemplate({
   };
   return (
     <>
+      {accountInfoModalOpen && (
+        <AccountInfoModal
+          handleCloseModal={toggleAccountInfoModal}
+          changePassword={changePassword}
+          deleteUser={deleteUser}
+        />
+      )}
       <CommonHeader />
       <Style.Container>
         <Style.ProfileHeaderWrapper>
@@ -118,6 +137,11 @@ function ProfileTemplate({
             handleSubmit={handleSubmitIntroduce}
           />
         </Style.ProfileHeaderWrapper>
+        <Style.UpdateAccountInfoWrapper>
+          <Button size="medium" onClick={toggleAccountInfoModal}>
+            계정 정보 변경
+          </Button>
+        </Style.UpdateAccountInfoWrapper>
         <Style.ProfileInfoWrapper>
           <ProfileInfoCard {...githubInfo} />
           <ProfileInfoCard {...blogInfo} />

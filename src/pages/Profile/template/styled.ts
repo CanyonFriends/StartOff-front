@@ -8,13 +8,19 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto auto;
   grid-template-areas:
-    'header .'
+    'header account'
     'info image'
     'project project';
 `;
 
 export const ProfileHeaderWrapper = styled.div`
   grid-area: header;
+`;
+
+export const UpdateAccountInfoWrapper = styled.div`
+  grid-area: account;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export const ProfileInfoWrapper = styled.div`
