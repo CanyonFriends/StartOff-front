@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import * as Style from './styled';
 import CommonHeader from '../../../components/Layout/CommonHeader';
-import { ProfileIntroduce, ProfileInfoCard, ProfileSkillCard, AccountInfoModal } from '../../../components/UI/organism';
+import {
+  ProfileIntroduce,
+  ProfileInfoCard,
+  ProfileSkillCard,
+  AccountInfoModal,
+  AlertModal,
+} from '../../../components/UI/organism';
 import { ModifyProfileInfoCardType } from '../../../validator/modifyProfileInfoCard';
 import { ModifyProfileIntroduceType } from '../../../validator/modifyProfileIntroduce';
 import { ProfileInfoCardProps } from '../../../components/UI/organism/ProfileInfoCard';
@@ -16,6 +22,8 @@ import {
 import { isFailed } from '../../../api/error';
 import { SkillType } from '../../../@types/client';
 import { Button } from '../../../components/UI/atom';
+import { UpdatePasswordValidatorType } from '../../../validator/updatePasswordValidator';
+import { updatePasswordAPI } from '../../../api/user';
 
 interface ProfileTemplateProps {
   userId: string;
@@ -41,6 +49,7 @@ function ProfileTemplate({
   totalSkillList,
 }: ProfileTemplateProps) {
   const [accountInfoModalOpen, setAccountInfoModalOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
   const [mySkillListState, setMySkillListState] = useState<SkillType[]>(mySkillList);
 
   const handleSubmitIntroduce = async ({ nickname, introduce, imageurl }: ModifyProfileIntroduceType) => {
@@ -89,11 +98,22 @@ function ProfileTemplate({
     setAccountInfoModalOpen(!accountInfoModalOpen);
   };
 
-  const changePassword = async () => {
+  const changePassword = async ({ currentPW, afterPW }: UpdatePasswordValidatorType) => {
+    const response = await updatePasswordAPI({ userId, afterPW, beforePW: currentPW });
+    if (isFailed<boolean>(response)) {
+      return response.error_msg;
+    }
+
+    toggleAccountInfoModal();
+    setSuccessMessage('비밀번호를 변경하였습니다');
     return '';
   };
 
   const deleteUser = async () => {};
+
+  const handleAlertModalClose = () => {
+    setSuccessMessage('');
+  };
 
   const githubInfo: ProfileInfoCardProps = {
     editableAuthority,
@@ -125,6 +145,9 @@ function ProfileTemplate({
           changePassword={changePassword}
           deleteUser={deleteUser}
         />
+      )}
+      {!!successMessage.length && (
+        <AlertModal content={successMessage} clickCloseButton={handleAlertModalClose} isSuccess />
       )}
       <CommonHeader />
       <Style.Container>
