@@ -109,7 +109,9 @@ function ProfileTemplate({
     return '';
   };
 
-  const deleteUser = async () => {};
+  const deleteUser = async () => {
+    // TODO: 추후 구현
+  };
 
   const handleAlertModalClose = () => {
     setSuccessMessage('');
