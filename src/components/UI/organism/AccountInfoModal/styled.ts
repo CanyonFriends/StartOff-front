@@ -14,16 +14,17 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 25rem;
+  height: 30rem;
 `;
 
 export const InputWrapper = styled.div`
   width: 100%;
   height: 6rem;
-  &:first-of-type {
+  &:first-of-type,
+  &:nth-child(2) {
     padding-bottom: 1rem;
   }
-  &:nth-of-type(2) {
+  &:nth-of-type(3) {
     padding-top: 1rem;
   }
 `;
