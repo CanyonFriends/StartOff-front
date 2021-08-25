@@ -10,6 +10,7 @@ export interface ProfileSkillCardProps {
   mySkillList: SkillType[];
   totalSkillList: SkillType[];
   clickTotalSkillItem: (skillName: string) => void;
+  deleteMySkill: (skillId: string) => void;
 }
 
 function ProfileSkillCard({
@@ -18,8 +19,8 @@ function ProfileSkillCard({
   mySkillList,
   clickTotalSkillItem,
   totalSkillList,
+  deleteMySkill,
 }: ProfileSkillCardProps) {
-  const handleClickSkillClose = () => {};
   const totalSkillListExceptMine = useMemo(() => {
     return totalSkillList.filter((skill) => !mySkillList.find((mySkill) => mySkill.skillName === skill.skillName));
   }, [mySkillList.length]);
@@ -40,7 +41,7 @@ function ProfileSkillCard({
               name={skill.skillName}
               textColor={skill.textColor}
               color={skill.color}
-              onClickClose={editableAuthority ? handleClickSkillClose : undefined}
+              onClickClose={editableAuthority ? deleteMySkill : undefined}
             />
           </Style.SkillItem>
         ))}

@@ -11,6 +11,7 @@ import {
   updateGithubIntroduce,
   updateBlogIntroduce,
   updateUserSkillAPI,
+  deleteUserSkillAPI,
 } from '../../../api/profile';
 import { isFailed } from '../../../api/error';
 import { SkillType } from '../../../@types/client';
@@ -72,6 +73,16 @@ function ProfileTemplate({
     return '';
   };
 
+  const handleDeleteMySkill = async (skillId: string) => {
+    const response = await deleteUserSkillAPI({ userId, skillId });
+    if (isFailed<boolean>(response)) {
+      return response.error_msg;
+    }
+    const newSkillListState = mySkillListState.filter((skill) => skill.skillId !== skillId);
+    setMySkillListState(newSkillListState);
+    return '';
+  };
+
   const githubInfo: ProfileInfoCardProps = {
     editableAuthority,
     title: 'Github',
@@ -87,11 +98,12 @@ function ProfileTemplate({
     handleSubmit: handleSubmitBlog,
   };
   const skillInfo: ProfileSkillCardProps = {
-    editableAuthority,
-    mySkillList: mySkillListState,
     totalSkillList,
-    clickTotalSkillItem: handleClickTotalItem,
+    editableAuthority,
     title: '기술 스택',
+    mySkillList: mySkillListState,
+    clickTotalSkillItem: handleClickTotalItem,
+    deleteMySkill: handleDeleteMySkill,
   };
   return (
     <>

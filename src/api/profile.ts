@@ -40,6 +40,11 @@ export interface UpdateUserSkillRequest {
   skillName: string;
 }
 
+export interface DeleteUserSkillRequest {
+  userId: string;
+  skillId: string;
+}
+
 export const getProfileAPI = async ({ userId }: GetProfileRequest): Promise<ProfileType | ErrorType> => {
   try {
     const response = await axios({
@@ -121,6 +126,18 @@ export const updateUserSkillAPI = async ({
       },
     });
     return skillServerType2ClientType(response.data as SkillServerType);
+  } catch (error) {
+    return { error_msg: error.response.data.error_msg } as ErrorType;
+  }
+};
+
+export const deleteUserSkillAPI = async ({ userId, skillId }: DeleteUserSkillRequest): Promise<boolean | ErrorType> => {
+  try {
+    await axios({
+      method: 'DELETE',
+      url: `/v1/users/${userId}/skills/${skillId}`,
+    });
+    return true;
   } catch (error) {
     return { error_msg: error.response.data.error_msg } as ErrorType;
   }
