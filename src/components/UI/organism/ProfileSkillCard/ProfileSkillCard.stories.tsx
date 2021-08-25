@@ -19,6 +19,7 @@ export const editable = (): React.ReactElement => {
     <ProfileSkillCard
       editableAuthority
       clickTotalSkillItem={onClickAction}
+      deleteMySkill={onClickAction}
       title={title}
       mySkillList={skills}
       totalSkillList={skills}
@@ -32,6 +33,7 @@ export const uneditable = (): React.ReactElement => {
   return (
     <ProfileSkillCard
       editableAuthority={false}
+      deleteMySkill={onClickAction}
       clickTotalSkillItem={onClickAction}
       title={title}
       mySkillList={skills}

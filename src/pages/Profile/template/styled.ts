@@ -18,7 +18,7 @@ export const ProfileHeaderWrapper = styled.div`
 `;
 
 export const ProfileInfoWrapper = styled.div`
-  height: 280px;
+  height: 35rem;
   grid-area: info;
   margin-top: 2rem;
   display: flex;

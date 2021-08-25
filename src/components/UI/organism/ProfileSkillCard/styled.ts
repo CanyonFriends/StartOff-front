@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  height: 13.5rem;
+`;
 
 export const Header = styled.div`
   display: flex;
@@ -9,8 +11,9 @@ export const Header = styled.div`
 `;
 
 export const SkillWrapper = styled.ul`
+  width: 88%;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -18,4 +21,5 @@ export const SkillWrapper = styled.ul`
 
 export const SkillItem = styled.li`
   margin-right: 1rem;
+  margin-bottom: 1rem;
 `;
