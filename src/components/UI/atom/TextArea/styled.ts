@@ -4,8 +4,6 @@ import { SizeType } from '../../@types/index';
 import { textareaSizeSelector } from './style-selector';
 
 interface TextAreaStyleProps {
-  cols: number;
-  rows: number;
   size: SizeType;
 }
 
@@ -14,6 +12,9 @@ export const TextArea = styled.textarea<TextAreaStyleProps>`
   padding: 2px;
   font-size: 1.8rem;
   outline: none;
+  height: 100%;
+  width: 100%;
+  resize: none;
 
   ${(props) => textareaSizeSelector[props.size]}
   &::placeholder {

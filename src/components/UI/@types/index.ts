@@ -15,7 +15,7 @@ export type IconType =
   | 'Disk'
   | 'Home';
 
-export type InputType = 'text' | 'email' | 'password';
+export type InputType = 'text' | 'email' | 'password' | 'checkbox';
 
 export type TitleSizeType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
