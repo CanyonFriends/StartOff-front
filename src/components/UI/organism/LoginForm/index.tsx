@@ -11,8 +11,6 @@ export interface LoginFormProps {
 }
 
 function LoginForm({ handleSubmit }: LoginFormProps) {
-  // TODO: 로그인 실패시 사용할 에러
-  // const [submitError, setSubmitError] = useState('');
   const { values, error, handleChange, handleSubmitWithErrorControl } = useForm<LoginInfoType>({
     onSubmit: handleSubmit,
     initialState: { id: '', pw: '' },
