@@ -5,9 +5,11 @@ import { skillServerType2ClientType } from './skill';
 
 export const projectServerType2ClientType = (project: ProjectServerType): ProjectType => {
   return {
+    title: project.title,
     content: project.content,
     deployUrl: project.deploy_url,
-    endDate: project.end_date,
+    startDate: new Date(project.start_date),
+    endDate: new Date(project.end_date),
     githubUrl: project.github_url,
     id: project.id,
     introduce: project.introduce,
