@@ -10,6 +10,7 @@ export interface InputProps {
   name?: string;
   width?: string;
   size?: SizeType;
+  checked?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
