@@ -7,24 +7,12 @@ export interface TextAreaProps {
   id?: string;
   placeholder?: string;
   name?: string;
-  cols?: number;
-  rows?: number;
   size?: SizeType;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-function TextArea({
-  id = '',
-  placeholder = '',
-  name = '',
-  cols = 20,
-  rows = 20,
-  size = 'medium',
-  ...props
-}: TextAreaProps) {
-  return (
-    <Style.TextArea id={id} size={size} name={name} placeholder={placeholder} cols={cols} rows={rows} {...props} />
-  );
+function TextArea({ id = '', placeholder = '', name = '', size = 'medium', ...props }: TextAreaProps) {
+  return <Style.TextArea id={id} size={size} name={name} placeholder={placeholder} {...props} />;
 }
 
 export default TextArea;

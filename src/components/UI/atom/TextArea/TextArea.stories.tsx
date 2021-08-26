@@ -15,13 +15,7 @@ export const TextAreawithPlaceholder10by30 = (): React.ReactElement => {
     <StyleWrapper>
       <div>
         <div className="description">Textbox 10 x 30</div>
-        <TextArea
-          rows={10}
-          cols={30}
-          placeholder="placeholder"
-          value={text}
-          onChange={(event) => setText(event.target.value)}
-        />
+        <TextArea placeholder="placeholder" value={text} onChange={(event) => setText(event.target.value)} />
       </div>
     </StyleWrapper>
   );
@@ -33,13 +27,7 @@ export const TextAreawithPlaceholder5by30 = (): React.ReactElement => {
     <StyleWrapper>
       <div>
         <div className="description">Textbox 5 x 10</div>
-        <TextArea
-          rows={5}
-          cols={10}
-          placeholder="placeholder"
-          value={text}
-          onChange={(event) => setText(event.target.value)}
-        />
+        <TextArea placeholder="placeholder" value={text} onChange={(event) => setText(event.target.value)} />
       </div>
     </StyleWrapper>
   );
