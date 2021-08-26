@@ -4,7 +4,7 @@ import { Tag, Title } from '../../atom';
 import SkillDropdown from '../../molecule/SkillDropdown';
 import { SkillType } from '../../../../@types/client';
 
-export interface ProfileSkillCardProps {
+export interface SkillListProps {
   title: string;
   editableAuthority: boolean;
   mySkillList: SkillType[];
@@ -13,14 +13,14 @@ export interface ProfileSkillCardProps {
   deleteMySkill: (skillId: string) => void;
 }
 
-function ProfileSkillCard({
+function SkillList({
   title,
   editableAuthority,
   mySkillList,
   clickTotalSkillItem,
   totalSkillList,
   deleteMySkill,
-}: ProfileSkillCardProps) {
+}: SkillListProps) {
   const totalSkillListExceptMine = useMemo(() => {
     return totalSkillList.filter((skill) => !mySkillList.find((mySkill) => mySkill.skillName === skill.skillName));
   }, [mySkillList.length]);
@@ -50,4 +50,4 @@ function ProfileSkillCard({
   );
 }
 
-export default ProfileSkillCard;
+export default SkillList;
