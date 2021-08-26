@@ -4,14 +4,14 @@ import CommonHeader from '../../../components/Layout/CommonHeader';
 import {
   ProfileIntroduce,
   ProfileInfoCard,
-  ProfileSkillCard,
+  SkillList,
   AccountInfoModal,
   AlertModal,
 } from '../../../components/UI/organism';
 import { ModifyProfileInfoCardType } from '../../../validator/modifyProfileInfoCard';
 import { ModifyProfileIntroduceType } from '../../../validator/modifyProfileIntroduce';
 import { ProfileInfoCardProps } from '../../../components/UI/organism/ProfileInfoCard';
-import { ProfileSkillCardProps } from '../../../components/UI/organism/ProfileSkillCard/index';
+import { SkillListProps } from '../../../components/UI/organism/SkillList/index';
 import {
   updateProfileIntroduce,
   updateGithubIntroduce,
@@ -131,7 +131,7 @@ function ProfileTemplate({
     iconType: 'Home',
     handleSubmit: handleSubmitBlog,
   };
-  const skillInfo: ProfileSkillCardProps = {
+  const skillInfo: SkillListProps = {
     totalSkillList,
     editableAuthority,
     title: '기술 스택',
@@ -170,7 +170,7 @@ function ProfileTemplate({
         <Style.ProfileInfoWrapper>
           <ProfileInfoCard {...githubInfo} />
           <ProfileInfoCard {...blogInfo} />
-          <ProfileSkillCard {...skillInfo} />
+          <SkillList {...skillInfo} />
         </Style.ProfileInfoWrapper>
         <Style.ProfileImageWrapper>
           <></>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import ProfileSkillCard from '.';
+import SkillList from '.';
 import { skills } from '../../../../__test__/mock-dats';
 
 export default {
-  title: 'Organism/ProfileSkillCard',
-  component: ProfileSkillCard,
+  title: 'Organism/SkillList',
+  component: SkillList,
   decorators: [withKnobs],
 };
 
@@ -16,7 +16,7 @@ export const editable = (): React.ReactElement => {
   const title = text('TITLE', '주요기술');
 
   return (
-    <ProfileSkillCard
+    <SkillList
       editableAuthority
       clickTotalSkillItem={onClickAction}
       deleteMySkill={onClickAction}
@@ -31,7 +31,7 @@ export const uneditable = (): React.ReactElement => {
   const title = text('TITLE', '주요기술');
 
   return (
-    <ProfileSkillCard
+    <SkillList
       editableAuthority={false}
       deleteMySkill={onClickAction}
       clickTotalSkillItem={onClickAction}
