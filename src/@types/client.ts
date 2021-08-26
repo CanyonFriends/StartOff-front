@@ -12,9 +12,11 @@ export interface ProfileType {
 }
 
 export interface ProjectType {
+  title: string;
   content: string;
   deployUrl: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   githubUrl: string;
   id: number;
   introduce: string;

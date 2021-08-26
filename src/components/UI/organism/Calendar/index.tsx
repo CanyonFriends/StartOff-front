@@ -32,6 +32,7 @@ function Calendar({ isRange = false, startPlaceholder, endPlaceholder }: Calenda
     return `${year}-${month}-${day}`;
   };
 
+  // TODO: 달력 close시 제출되게
   return (
     <>
       {isCalendarOpen && <Overlay clickModalOutside={() => setIsCalendarOpen(false)} />}
