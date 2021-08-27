@@ -13,7 +13,8 @@ export type IconType =
   | 'Profile'
   | 'Pencil'
   | 'Disk'
-  | 'Home';
+  | 'Home'
+  | 'Plus';
 
 export type InputType = 'text' | 'email' | 'password' | 'checkbox';
 
