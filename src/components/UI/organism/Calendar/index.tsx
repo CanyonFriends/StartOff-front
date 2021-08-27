@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import * as Style from './styled';
 import 'react-datepicker/dist/react-datepicker.css';
 import Overlay from '../../../Layout/Overlay';
+import { dateToString } from '../../../../utils/date';
 
 interface CalendarProps {
   isRange?: boolean;
@@ -30,14 +31,6 @@ function Calendar({ isRange = false, start, end, startPlaceholder, endPlaceholde
     setStartDate(date);
   };
 
-  const dateToString = (date: Date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  };
-
-  // TODO: 달력 close시 제출되게
   return (
     <>
       {isCalendarOpen && <Overlay clickModalOutside={() => setIsCalendarOpen(false)} />}
