@@ -8,3 +8,4 @@ export { default as SkillList } from './SkillList';
 export { default as AccountInfoModal } from './AccountInfoModal';
 export { default as Calendar } from './Calendar';
 export { default as ProjectModal } from './ProjectModal';
+export { default as ProjectItem } from './ProjectItem';
