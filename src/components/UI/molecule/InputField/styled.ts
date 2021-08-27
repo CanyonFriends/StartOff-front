@@ -7,7 +7,7 @@ interface ContainerStyleProps {
 
 export const Container = styled.div<ContainerStyleProps>`
   width: 100%;
-  height: 100%;
+  height: ${(props) => (props.sortDirection === 'column' ? '100%' : 'auto')};
   display: flex;
   flex-direction: ${(props) => props.sortDirection};
   justify-content: space-between;
