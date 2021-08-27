@@ -24,7 +24,7 @@ function SkillDropdown({ placeholder, skills, clickItem }: SkillDropdownProps) {
 
   return (
     <Style.Container>
-      <Button size="medium" onClick={toggleDropdown}>
+      <Button formButton={false} size="medium" onClick={toggleDropdown}>
         {placeholder}
       </Button>
       {open && (

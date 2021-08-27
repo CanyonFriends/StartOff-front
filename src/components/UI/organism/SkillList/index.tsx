@@ -3,9 +3,11 @@ import * as Style from './styled';
 import { Tag, Title } from '../../atom';
 import SkillDropdown from '../../molecule/SkillDropdown';
 import { SkillType } from '../../../../@types/client';
+import Label, { LabelProps } from '../../atom/Label/index';
 
 export interface SkillListProps {
-  title: string;
+  title?: string;
+  label?: LabelProps;
   editableAuthority: boolean;
   mySkillList: SkillType[];
   totalSkillList: SkillType[];
@@ -15,6 +17,7 @@ export interface SkillListProps {
 
 function SkillList({
   title,
+  label,
   editableAuthority,
   mySkillList,
   clickTotalSkillItem,
@@ -28,7 +31,8 @@ function SkillList({
   return (
     <Style.Container>
       <Style.Header>
-        <Title fontsize="h3">{title}</Title>
+        {title && <Title fontsize="h3">{title}</Title>}
+        {label && <Label {...label} />}
         {editableAuthority && (
           <SkillDropdown placeholder="스택 추가" clickItem={clickTotalSkillItem} skills={totalSkillListExceptMine} />
         )}

@@ -15,6 +15,7 @@ export const TextArea = styled.textarea<TextAreaStyleProps>`
   height: 100%;
   width: 100%;
   resize: none;
+  border: 1px solid ${theme.color.color_brightness_000};
 
   ${(props) => textareaSizeSelector[props.size]}
   &::placeholder {
