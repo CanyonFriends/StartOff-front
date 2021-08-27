@@ -1,4 +1,4 @@
-import { ProjectServerType, SkillServerType } from '../@types/server';
+import { ProjectServerResponseType, SkillServerType } from '../@types/server';
 import axios from '../utils/axios';
 import { ErrorType } from './error';
 import { ProfileType, SkillType } from '../@types/client';
@@ -15,7 +15,7 @@ export interface GetProfileResponse {
   github_url: string;
   introduce: string;
   nickname: string;
-  projects: ProjectServerType[];
+  projects: ProjectServerResponseType[];
   user_skills: SkillServerType[];
 }
 
