@@ -48,3 +48,11 @@ export const ProjectHeader = styled.div`
   display: flex;
   align-items: center;
 `;
+
+export const ProjectList = styled.ul`
+  padding: 0;
+`;
+
+export const ProjectItem = styled.li`
+  margin-bottom: 2rem;
+`;

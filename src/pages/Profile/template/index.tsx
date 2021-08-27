@@ -8,6 +8,7 @@ import {
   SkillList,
   AccountInfoModal,
   AlertModal,
+  ProjectItem,
 } from '../../../components/UI/organism';
 import { ModifyProfileInfoCardType } from '../../../validator/modifyProfileInfoCard';
 import { ModifyProfileIntroduceType } from '../../../validator/modifyProfileIntroduce';
@@ -141,6 +142,10 @@ function ProfileTemplate({
     return '';
   };
 
+  const handleDeleteProjectItem = async () => {};
+
+  const handleModifyProjectItem = async () => {};
+
   const handleAlertModalClose = () => {
     setSuccessMessage('');
   };
@@ -220,6 +225,18 @@ function ProfileTemplate({
             <Title fontsize="h2">프로젝트</Title>
             <Icon icon="Plus" onClick={toggleProjectCreateModal} />
           </Style.ProjectHeader>
+          <Style.ProjectList>
+            {projectsState.map((project) => (
+              <Style.ProjectItem>
+                <ProjectItem
+                  editableAuthority={editableAuthority}
+                  project={project}
+                  handleDeleteItem={handleDeleteProjectItem}
+                  handleModifyItem={handleModifyProjectItem}
+                />
+              </Style.ProjectItem>
+            ))}
+          </Style.ProjectList>
         </Style.ProfileProjectsWrapper>
       </Style.Container>
     </>
