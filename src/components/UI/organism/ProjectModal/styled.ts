@@ -30,6 +30,7 @@ export const TextAreaWrapper = styled.div`
 
 export const Error = styled.span`
   height: 15px;
+  margin: 1rem 0;
   font-size: 1.5rem;
   color: ${theme.color.color_warning_100};
 `;

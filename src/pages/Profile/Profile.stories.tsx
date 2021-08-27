@@ -22,6 +22,7 @@ export const editableProfile = (): React.ReactElement => {
       imageUrl=""
       mySkillList={skills}
       totalSkillList={skills}
+      projects={[]}
     />
   );
 };
@@ -42,6 +43,7 @@ export const uneditableProfile = (): React.ReactElement => {
       imageUrl=""
       mySkillList={skills}
       totalSkillList={skills}
+      projects={[]}
     />
   );
 };
