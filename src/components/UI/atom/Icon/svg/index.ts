@@ -9,3 +9,4 @@ export { default as Pencil } from './Pencil';
 export { default as Disk } from './Disk';
 export { default as Home } from './Home';
 export { default as Plus } from './Plus';
+export { default as TrashCan } from './TrashCan';
