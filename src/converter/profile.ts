@@ -1,21 +1,7 @@
-import { ProfileType, ProjectType } from '../@types/client';
-import { ProjectServerType } from '../@types/server';
+import { ProfileType } from '../@types/client';
 import { GetProfileResponse } from '../api/profile';
+import { projectServerType2ClientType } from './project';
 import { skillServerType2ClientType } from './skill';
-
-export const projectServerType2ClientType = (project: ProjectServerType): ProjectType => {
-  return {
-    title: project.title,
-    content: project.content,
-    deployUrl: project.deploy_url,
-    startDate: new Date(project.start_date),
-    endDate: new Date(project.end_date),
-    githubUrl: project.github_url,
-    id: project.id,
-    introduce: project.introduce,
-    projectSklls: project.project_skills.map((skill) => skillServerType2ClientType(skill)),
-  };
-};
 
 export const profileResponse2Type = (profileResponse: GetProfileResponse): ProfileType => {
   return {
