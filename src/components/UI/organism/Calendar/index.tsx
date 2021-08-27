@@ -6,22 +6,27 @@ import Overlay from '../../../Layout/Overlay';
 
 interface CalendarProps {
   isRange?: boolean;
+  start?: Date;
+  end?: Date;
   startPlaceholder: string;
   endPlaceholder?: string;
+  handleChangeDate: (dates: Date[]) => void;
 }
 
-function Calendar({ isRange = false, startPlaceholder, endPlaceholder }: CalendarProps) {
-  const [startDate, setStartDate] = useState<Date | undefined>(undefined);
-  const [endDate, setEndDate] = useState<Date | undefined>(undefined);
+function Calendar({ isRange = false, start, end, startPlaceholder, endPlaceholder, handleChangeDate }: CalendarProps) {
+  const [startDate, setStartDate] = useState<Date | undefined>(start);
+  const [endDate, setEndDate] = useState<Date | undefined>(end);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const onChangeIfRangeTrue = (dates: [Date, Date]) => {
     const [start, end] = dates;
+    handleChangeDate(dates);
     setStartDate(start);
     setEndDate(end);
   };
 
   const onChangeIfRangeFalse = (date: Date) => {
+    handleChangeDate([date]);
     setStartDate(date);
   };
 
