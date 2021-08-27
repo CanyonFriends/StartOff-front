@@ -8,11 +8,18 @@ export interface LabelProps {
   group?: string;
   color?: string;
   size?: SizeType;
+  bolder?: boolean;
 }
 
-function Label({ content, group = '', color = theme.color.color_brightness_000, size = 'small' }: LabelProps) {
+function Label({
+  content,
+  group = '',
+  color = theme.color.color_brightness_000,
+  size = 'small',
+  bolder = false,
+}: LabelProps) {
   return (
-    <Style.Container htmlFor={group} color={color} size={size}>
+    <Style.Container htmlFor={group} color={color} size={size} bolder={bolder}>
       {content}
     </Style.Container>
   );
