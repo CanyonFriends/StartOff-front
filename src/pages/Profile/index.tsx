@@ -65,6 +65,7 @@ function Profile() {
           blog={profileData.blogUrl}
           mySkillList={profileData.userSkills}
           totalSkillList={totalSkills}
+          projects={profileData.projects}
         />
       ) : (
         <></>
