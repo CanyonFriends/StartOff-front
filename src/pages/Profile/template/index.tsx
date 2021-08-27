@@ -4,6 +4,7 @@ import CommonHeader from '../../../components/Layout/CommonHeader';
 import {
   ProfileIntroduce,
   ProfileInfoCard,
+  ProjectModal,
   SkillList,
   AccountInfoModal,
   AlertModal,
@@ -20,10 +21,12 @@ import {
   deleteUserSkillAPI,
 } from '../../../api/profile';
 import { isFailed } from '../../../api/error';
-import { SkillType } from '../../../@types/client';
-import { Button } from '../../../components/UI/atom';
+import { ProjectType, SkillType } from '../../../@types/client';
+import { Button, Icon, Title } from '../../../components/UI/atom';
 import { UpdatePasswordValidatorType } from '../../../validator/updatePasswordValidator';
 import { updatePasswordAPI } from '../../../api/user';
+import { ProjectValidatorType } from '../../../validator/projectValidator';
+import { createProjectAPI } from '../../../api/project';
 
 interface ProfileTemplateProps {
   userId: string;
@@ -35,6 +38,7 @@ interface ProfileTemplateProps {
   blog: string;
   mySkillList: SkillType[];
   totalSkillList: SkillType[];
+  projects: ProjectType[];
 }
 
 function ProfileTemplate({
@@ -47,10 +51,13 @@ function ProfileTemplate({
   blog,
   mySkillList,
   totalSkillList,
+  projects,
 }: ProfileTemplateProps) {
   const [accountInfoModalOpen, setAccountInfoModalOpen] = useState(false);
+  const [projectModalOpen, setProjectModalOpen] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [mySkillListState, setMySkillListState] = useState<SkillType[]>(mySkillList);
+  const [projectsState, setProjectsState] = useState<ProjectType[]>(projects);
 
   const handleSubmitIntroduce = async ({ nickname, introduce, imageurl }: ModifyProfileIntroduceType) => {
     const response = await updateProfileIntroduce({ userId, nickname, introduce });
@@ -113,8 +120,33 @@ function ProfileTemplate({
     // TODO: 추후 구현
   };
 
+  const createProject = async (projectWithProgress: ProjectValidatorType) => {
+    const project: ProjectType = {
+      id: 0,
+      title: projectWithProgress.title,
+      content: projectWithProgress.content,
+      introduce: projectWithProgress.introduce,
+      deployUrl: projectWithProgress.deployUrl,
+      githubUrl: projectWithProgress.githubUrl,
+      startDate: projectWithProgress.startDate as Date,
+      endDate: projectWithProgress.endDate as Date,
+      projectSklls: projectWithProgress.projectSklls,
+    };
+    const response = await createProjectAPI({ userId, project });
+    if (isFailed<ProjectType>(response)) {
+      return response.error_msg;
+    }
+    setProjectsState([...projectsState, response]);
+    toggleProjectCreateModal();
+    return '';
+  };
+
   const handleAlertModalClose = () => {
     setSuccessMessage('');
+  };
+
+  const toggleProjectCreateModal = () => {
+    setProjectModalOpen(!projectModalOpen);
   };
 
   const githubInfo: ProfileInfoCardProps = {
@@ -148,6 +180,14 @@ function ProfileTemplate({
           deleteUser={deleteUser}
         />
       )}
+      {projectModalOpen && (
+        <ProjectModal
+          isModify={false}
+          totalSkillList={totalSkillList}
+          handleModalClose={toggleProjectCreateModal}
+          onSubmit={createProject}
+        />
+      )}
       {!!successMessage.length && (
         <AlertModal content={successMessage} clickCloseButton={handleAlertModalClose} isSuccess />
       )}
@@ -176,7 +216,10 @@ function ProfileTemplate({
           <></>
         </Style.ProfileImageWrapper>
         <Style.ProfileProjectsWrapper>
-          <></>
+          <Style.ProjectHeader>
+            <Title fontsize="h2">프로젝트</Title>
+            <Icon icon="Plus" onClick={toggleProjectCreateModal} />
+          </Style.ProjectHeader>
         </Style.ProfileProjectsWrapper>
       </Style.Container>
     </>

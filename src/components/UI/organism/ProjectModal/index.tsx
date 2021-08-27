@@ -17,7 +17,7 @@ interface ProjectModalProps {
   isModify: boolean;
   project?: ProjectType;
   totalSkillList: SkillType[];
-  onSubmit: () => Promise<string>;
+  onSubmit: (data: ProjectValidatorType) => Promise<string>;
   handleModalClose: () => void;
 }
 

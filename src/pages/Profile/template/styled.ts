@@ -43,3 +43,8 @@ export const ProfileImageWrapper = styled.div`
 export const ProfileProjectsWrapper = styled.div`
   grid-area: project;
 `;
+
+export const ProjectHeader = styled.div`
+  display: flex;
+  align-items: center;
+`;
