@@ -27,7 +27,7 @@ import { Button, Icon, Title } from '../../../components/UI/atom';
 import { UpdatePasswordValidatorType } from '../../../validator/updatePasswordValidator';
 import { updatePasswordAPI } from '../../../api/user';
 import { ProjectValidatorType } from '../../../validator/projectValidator';
-import { createProjectAPI, deleteProjectAPI } from '../../../api/project';
+import { createProjectAPI, deleteProjectAPI, updateProjectAPI } from '../../../api/project';
 
 interface ProfileTemplateProps {
   userId: string;
@@ -152,7 +152,27 @@ function ProfileTemplate({
     setProjectsState(projectsStateExceptDeleted);
   };
 
-  const handleModifyProjectItem = async () => {
+  const handleModifyProjectItem = async (projectWithProgress: ProjectValidatorType) => {
+    const project: ProjectType = {
+      id: projectWithProgress.id || 0,
+      title: projectWithProgress.title,
+      content: projectWithProgress.content,
+      introduce: projectWithProgress.introduce,
+      deployUrl: projectWithProgress.deployUrl,
+      githubUrl: projectWithProgress.githubUrl,
+      startDate: projectWithProgress.startDate as Date,
+      endDate: projectWithProgress.endDate as Date,
+      projectSklls: projectWithProgress.projectSklls,
+    };
+    const response = await updateProjectAPI({ userId, project, projectId: projectWithProgress.id || 0 });
+    if (isFailed<ProjectType>(response)) {
+      return response.error_msg;
+    }
+    const updatedProjectsState = projectsState.map((project) => {
+      if (project.id !== projectWithProgress.id) return project;
+      return response;
+    });
+    setProjectsState(updatedProjectsState);
     return '';
   };
 
