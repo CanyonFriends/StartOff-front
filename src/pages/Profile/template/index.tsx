@@ -27,7 +27,7 @@ import { Button, Icon, Title } from '../../../components/UI/atom';
 import { UpdatePasswordValidatorType } from '../../../validator/updatePasswordValidator';
 import { updatePasswordAPI } from '../../../api/user';
 import { ProjectValidatorType } from '../../../validator/projectValidator';
-import { createProjectAPI } from '../../../api/project';
+import { createProjectAPI, deleteProjectAPI } from '../../../api/project';
 
 interface ProfileTemplateProps {
   userId: string;
@@ -142,9 +142,19 @@ function ProfileTemplate({
     return '';
   };
 
-  const handleDeleteProjectItem = async () => {};
+  const handleDeleteProjectItem = async (projectId: number) => {
+    // TODO: confirm모달로 확인받기
+    const response = await deleteProjectAPI({ userId, projectId });
+    if (isFailed<boolean>(response)) {
+      return;
+    }
+    const projectsStateExceptDeleted = projectsState.filter((project) => project.id !== projectId);
+    setProjectsState(projectsStateExceptDeleted);
+  };
 
-  const handleModifyProjectItem = async () => {};
+  const handleModifyProjectItem = async () => {
+    return '';
+  };
 
   const handleAlertModalClose = () => {
     setSuccessMessage('');
@@ -227,10 +237,11 @@ function ProfileTemplate({
           </Style.ProjectHeader>
           <Style.ProjectList>
             {projectsState.map((project) => (
-              <Style.ProjectItem>
+              <Style.ProjectItem key={project.id}>
                 <ProjectItem
                   editableAuthority={editableAuthority}
                   project={project}
+                  totalSkillList={totalSkillList}
                   handleDeleteItem={handleDeleteProjectItem}
                   handleModifyItem={handleModifyProjectItem}
                 />
