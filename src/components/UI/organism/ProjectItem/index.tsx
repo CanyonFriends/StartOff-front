@@ -28,6 +28,14 @@ function ProjectItem({
     setProjectModalOpen(!projectModalOpen);
   };
 
+  const handleModifySubmit = async (data: ProjectValidatorType) => {
+    const error = await handleModifyItem(data);
+    if (!error.length) {
+      toggleProjectModifyModal();
+    }
+    return error;
+  };
+
   return (
     <>
       {projectModalOpen && (
@@ -36,7 +44,7 @@ function ProjectItem({
           project={project}
           totalSkillList={totalSkillList}
           handleModalClose={toggleProjectModifyModal}
-          onSubmit={handleModifyItem}
+          onSubmit={handleModifySubmit}
         />
       )}
       <Style.Container>

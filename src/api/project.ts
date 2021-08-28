@@ -1,10 +1,17 @@
 import axios from '../utils/axios';
 import { ErrorType } from './error';
 import { ProjectType } from '../@types/client';
-import { projectClientType2ServerReqeustType } from '../converter/project';
+import { projectClientType2ServerReqeustType, projectServerType2ClientType } from '../converter/project';
+import { ProjectServerResponseType } from '../@types/server';
 
 export interface CreateProjectRequest {
   userId: string;
+  project: ProjectType;
+}
+
+export interface UpdateProjectRequest {
+  userId: string;
+  projectId: number;
   project: ProjectType;
 }
 
@@ -22,7 +29,26 @@ export const createProjectAPI = async ({ userId, project }: CreateProjectRequest
         ...projectClientType2ServerReqeustType(project),
       },
     });
-    return response.data as ProjectType;
+    return projectServerType2ClientType(response.data as ProjectServerResponseType);
+  } catch (error) {
+    return { error_msg: error.response.data.error_msg } as ErrorType;
+  }
+};
+
+export const updateProjectAPI = async ({
+  userId,
+  projectId,
+  project,
+}: UpdateProjectRequest): Promise<ProjectType | ErrorType> => {
+  try {
+    const response = await axios({
+      method: 'PUT',
+      url: `/v1/users/${userId}/projects/${projectId}`,
+      data: {
+        ...projectClientType2ServerReqeustType(project),
+      },
+    });
+    return projectServerType2ClientType(response.data as ProjectServerResponseType);
   } catch (error) {
     return { error_msg: error.response.data.error_msg } as ErrorType;
   }
