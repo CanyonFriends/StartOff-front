@@ -8,7 +8,12 @@ export interface CreateProjectRequest {
   project: ProjectType;
 }
 
-export const createProjectAPI = async ({ userId, project }: CreateProjectRequest) => {
+export interface DeleteProjectRequest {
+  userId: string;
+  projectId: number;
+}
+
+export const createProjectAPI = async ({ userId, project }: CreateProjectRequest): Promise<ProjectType | ErrorType> => {
   try {
     const response = await axios({
       method: 'POST',
@@ -18,6 +23,18 @@ export const createProjectAPI = async ({ userId, project }: CreateProjectRequest
       },
     });
     return response.data as ProjectType;
+  } catch (error) {
+    return { error_msg: error.response.data.error_msg } as ErrorType;
+  }
+};
+
+export const deleteProjectAPI = async ({ userId, projectId }: DeleteProjectRequest): Promise<boolean | ErrorType> => {
+  try {
+    await axios({
+      method: 'DELETE',
+      url: `v1/users/${userId}/projects/${projectId}`,
+    });
+    return true;
   } catch (error) {
     return { error_msg: error.response.data.error_msg } as ErrorType;
   }
