@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import * as Style from './styled';
-import 'react-datepicker/dist/react-datepicker.css';
+// import 'react-datepicker/dist/react-datepicker.css';
 import Overlay from '../../../Layout/Overlay';
 import { dateToString } from '../../../../utils/date';
 

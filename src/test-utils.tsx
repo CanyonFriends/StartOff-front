@@ -7,6 +7,7 @@ import store from './redux/store';
 const AllTheProviders: FC = ({ children }) => {
   return (
     <Provider store={store}>
+      <div id="modal" />
       <BrowserRouter>{children}</BrowserRouter>
     </Provider>
   );
