@@ -15,7 +15,8 @@ export type IconType =
   | 'Disk'
   | 'Home'
   | 'Plus'
-  | 'TrashCan';
+  | 'TrashCan'
+  | 'Search';
 
 export type InputType = 'text' | 'email' | 'password' | 'checkbox';
 
