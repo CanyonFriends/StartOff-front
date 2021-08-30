@@ -4,3 +4,5 @@ export const signupPath = '/signup';
 
 export const profilePath = '/profile/:userId';
 export const buildProfilePath = (userId: string) => `/profile/${userId}`;
+
+export const studyBoardPath = '/board/study';
