@@ -45,11 +45,13 @@ function ProfileInfoCard({ editableAuthority, title, textValue, iconType, handle
 
   const modifyIconProps: IconProps = {
     icon: isEditable ? 'Disk' : 'Pencil',
+    id: isEditable ? `${iconType.toLowerCase()}-disk` : `${iconType.toLowerCase()}-pencil`,
   };
   const signatureIconProps: IconProps = {
     icon: iconType,
   };
   const inputProps: InputProps = {
+    id: title.toLowerCase(),
     value: values.textValue,
     onChange: handleTextValueChange,
   };
