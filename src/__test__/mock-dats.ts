@@ -1,6 +1,6 @@
 import { ErrorType } from '../api/error';
 import { SigninResponseType, SignupResponseType } from '../api/auth';
-import { SkillType, ProjectType } from '../@types/client';
+import { SkillType, ProjectType, ProfileType } from '../@types/client';
 
 // api
 export const signinSuccessMockInfo: SigninResponseType = {
@@ -55,25 +55,22 @@ export const skills: SkillType[] = [
 export const project: ProjectType = {
   id: 1,
   title: 'project',
-  deployUrl: 'https://shellboylog.com',
+  deployUrl: 'https://shellboylog.com/list',
   githubUrl: 'https://github.com/qkrdmstlr3/devlog',
   introduce: 'introduce introduce introduce',
   startDate: new Date('1998-01-22'),
   endDate: new Date('2021-01-22'),
   content:
     'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
-  projectSklls: [
-    {
-      skillId: '3',
-      skillName: 'c',
-      color: '#eeeeee',
-      textColor: '#000000',
-    },
-    {
-      skillId: '4',
-      skillName: 'c#',
-      color: '#eeeeee',
-      textColor: '#000000',
-    },
-  ],
+  projectSklls: skills.slice(0, 1),
+};
+
+export const profile: ProfileType = {
+  baekjoonId: 'shellboy',
+  blogUrl: 'https://shellboylog.com',
+  githubUrl: 'https://github.com/qkrdmstlr3',
+  introduce: 'hello my name is shellboy',
+  nickname: 'shellboy',
+  projects: [project],
+  userSkills: skills.slice(2),
 };

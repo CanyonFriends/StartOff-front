@@ -9,7 +9,8 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
       class="css-2fxwiq"
     >
       <div
-        class="css-bd0jsv"
+        aria-label=""
+        class="css-17ymrk1"
       >
         <svg
           viewBox="0 0 24 24"
@@ -21,7 +22,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
         </svg>
       </div>
       <h1
-        class="css-uuiks8"
+        class="css-1hznjvn"
         color="#000000"
       >
         LOGIN
@@ -37,7 +38,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
           class="css-1bechv"
         >
           <label
-            class="css-dmfm6n"
+            class="css-1d3b76u"
             color="#404680"
             for="email"
           >
@@ -62,7 +63,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
           class="css-1bechv"
         >
           <label
-            class="css-dmfm6n"
+            class="css-1d3b76u"
             color="#404680"
             for="password"
           >
@@ -85,6 +86,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
       />
       <button
         class="css-7rx0q1"
+        type="submit"
         width="100%"
       >
         로그인
@@ -110,10 +112,12 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
     </div>
     <button
       class="css-gp1fgf"
+      type="submit"
       width="100%"
     >
       <div
-        class="css-n23gqh"
+        aria-label=""
+        class="css-13sc1m2"
       >
         <svg
           viewBox="0 0 24 24"
