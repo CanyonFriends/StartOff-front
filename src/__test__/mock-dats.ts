@@ -1,6 +1,7 @@
 import { ErrorType } from '../api/error';
 import { SigninResponseType, SignupResponseType } from '../api/auth';
-import { SkillType, ProjectType, ProfileType } from '../@types/client';
+import { SkillType, ProjectType, ProfileType, SummarizedPostType } from '../@types/client';
+import generateUUID from '../utils/generateUUID';
 
 // api
 export const signinSuccessMockInfo: SigninResponseType = {
@@ -73,4 +74,22 @@ export const profile: ProfileType = {
   nickname: 'shellboy',
   projects: [project],
   userSkills: skills.slice(2),
+};
+
+export const makeMockSummarizedPost = ({
+  postId = generateUUID(),
+  title = 'title',
+  currentPeople = 5,
+  maxPeople = 10,
+  nickname = 'user',
+  postSkills = skills,
+}): SummarizedPostType => {
+  return {
+    postId,
+    title,
+    currentPeople,
+    maxPeople,
+    postSkills,
+    user: { nickname },
+  };
 };
