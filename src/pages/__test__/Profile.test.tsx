@@ -9,10 +9,13 @@ import { getProfileAPI, updateProfileIntroduce, updateGithubIntroduce, updateBlo
 import { getSkillsAPI } from '../../api/skill';
 import { profile, skills, project } from '../../__test__/mock-dats';
 import { dateToString } from '../../utils/date';
+import { updatePasswordAPI } from '../../api/user';
 
+jest.mock('../../api/user');
 jest.mock('../../api/profile');
 jest.mock('../../api/skill');
 
+const updatePassworMociAPI = updatePasswordAPI as jest.MockedFunction<typeof updatePasswordAPI>;
 const getProfileMockAPI = getProfileAPI as jest.MockedFunction<typeof getProfileAPI>;
 const getSkillsMockAPI = getSkillsAPI as jest.MockedFunction<typeof getSkillsAPI>;
 const updateProfileIntroduceMockAPI = updateProfileIntroduce as jest.MockedFunction<typeof updateProfileIntroduce>;
@@ -31,8 +34,44 @@ describe('<Profile> 페이지', () => {
     await waitFor(() => expect(component.container).toMatchSnapshot());
   });
 
+  describe('비밀번호 변경 기능', () => {
+    it('비밀번호 변경 모달 렌더링', async () => {
+      const component = render(<ProfilePage />);
+
+      await waitFor(() => {
+        const modalButton = component.getByText('계정 정보 변경');
+        fireEvent.click(modalButton);
+
+        const currentPasswordInput = component.getByLabelText('currentpw') as HTMLInputElement;
+        const afterPasswirdInput = component.getByLabelText('afterpw') as HTMLInputElement;
+        const confirmPasswordinput = component.getByLabelText('confirmpw') as HTMLInputElement;
+        expect(currentPasswordInput.value).toBe('');
+        expect(afterPasswirdInput.value).toBe('');
+        expect(confirmPasswordinput.value).toBe('');
+      });
+    });
+
+    it('비밀번호 변경', async () => {
+      updatePassworMociAPI.mockReturnValue(new Promise((res) => res(true)));
+      const component = render(<ProfilePage />);
+
+      await waitFor(() => {
+        const modalButton = component.getByText('계정 정보 변경');
+        fireEvent.click(modalButton);
+
+        const currentPasswordInput = component.getByLabelText('currentpw');
+        const afterPasswirdInput = component.getByLabelText('afterpw');
+        const confirmPasswordinput = component.getByLabelText('confirmpw');
+
+        fireEvent.change(currentPasswordInput, { target: { value: `currentpassword` } });
+        fireEvent.change(afterPasswirdInput, { target: { value: `afterpassword` } });
+        fireEvent.change(confirmPasswordinput, { target: { value: `confirmpassword` } });
+      });
+    });
+  });
+
   describe('introduce기능', () => {
-    it('렌더링이', async () => {
+    it('렌더링', async () => {
       const component = render(<ProfilePage />);
 
       await waitFor(() => {

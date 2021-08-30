@@ -21,7 +21,7 @@ export const InputWrapper = styled.div`
   width: 100%;
   height: 6rem;
   &:first-of-type,
-  &:nth-child(2) {
+  &:nth-of-type(2) {
     padding-bottom: 1rem;
   }
   &:nth-of-type(3) {

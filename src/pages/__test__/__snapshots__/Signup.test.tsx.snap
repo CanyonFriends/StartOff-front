@@ -2,6 +2,9 @@
 
 exports[`<Signup> 페이지 snapshot 체크 1`] = `
 <div>
+  <div
+    id="modal"
+  />
   <main
     class="css-sapy0t"
   >
