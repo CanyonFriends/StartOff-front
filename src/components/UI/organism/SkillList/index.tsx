@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import * as Style from './styled';
 import { Tag, Title } from '../../atom';
-import SkillDropdown from '../../molecule/SkillDropdown';
+import { Dropdown } from '../../molecule';
 import { SkillType } from '../../../../@types/client';
 import Label, { LabelProps } from '../../atom/Label/index';
 
@@ -34,7 +34,12 @@ function SkillList({
         {title && <Title fontsize="h3">{title}</Title>}
         {label && <Label {...label} />}
         {editableAuthority && (
-          <SkillDropdown placeholder="스택 추가" clickItem={clickTotalSkillItem} skills={totalSkillListExceptMine} />
+          <Dropdown
+            isClickValueText
+            placeholder="스택 추가"
+            clickItem={clickTotalSkillItem}
+            items={totalSkillListExceptMine.map((skill) => ({ id: skill.skillId, text: skill.skillName }))}
+          />
         )}
       </Style.Header>
       <Style.SkillWrapper>
