@@ -81,6 +81,7 @@ export const makeMockSummarizedPost = ({
   title = 'title',
   currentPeople = 5,
   maxPeople = 10,
+  createAt = new Date(),
   nickname = 'user',
   postSkills = skills,
 }): SummarizedPostType => {
@@ -89,6 +90,7 @@ export const makeMockSummarizedPost = ({
     title,
     currentPeople,
     maxPeople,
+    createAt,
     postSkills,
     user: { nickname },
   };

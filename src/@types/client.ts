@@ -35,6 +35,7 @@ export interface SummarizedPostType {
   title: string;
   currentPeople?: number;
   maxPeople?: number;
+  createAt: Date;
   user: { nickname: string };
   postSkills: SkillType[];
 }
