@@ -12,7 +12,7 @@ export interface TextAreaProps {
 }
 
 function TextArea({ id = '', placeholder = '', name = '', size = 'medium', ...props }: TextAreaProps) {
-  return <Style.TextArea id={id} size={size} name={name} placeholder={placeholder} {...props} />;
+  return <Style.TextArea aria-label={id} id={id} size={size} name={name} placeholder={placeholder} {...props} />;
 }
 
 export default TextArea;

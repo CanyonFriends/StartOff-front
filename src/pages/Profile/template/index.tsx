@@ -253,7 +253,7 @@ function ProfileTemplate({
         <Style.ProfileProjectsWrapper>
           <Style.ProjectHeader>
             <Title fontsize="h2">프로젝트</Title>
-            <Icon icon="Plus" onClick={toggleProjectCreateModal} />
+            <Icon id="plus-icon" icon="Plus" onClick={toggleProjectCreateModal} />
           </Style.ProjectHeader>
           <Style.ProjectList>
             {projectsState.map((project) => (

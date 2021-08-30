@@ -19,7 +19,7 @@ function Profile() {
   const [profileData, setProfileData] = useState<ProfileType | undefined>();
   const [totalSkills, setTotalSkills] = useState<SkillType[]>([]);
   const userState = useSelector<RootState>((state) => state.user) as UserState;
-  const { userId } = useParams<ParamProps>();
+  const userId = useParams<ParamProps>().userId || '';
   const editableAuthority = userState.userId === userId;
 
   useEffect(() => {

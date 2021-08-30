@@ -56,12 +56,14 @@ function ProfileIntroduce({
   };
 
   const nicknameInfo: InputProps = {
+    id: 'nickname',
     value: values.nickname,
     onChange: handleNicknameChange,
     size: 'extraLarge',
     placeholder: '별명을 입력해주세요',
   };
   const introduceInfo: InputProps = {
+    id: 'introduce',
     value: values.introduce,
     onChange: handleIntroduceChange,
     placeholder: '자기소개를 입력해주세요 (50자)',
