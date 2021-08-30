@@ -77,6 +77,7 @@ export const updateProfileIntroduce = async ({
   }
 };
 
+// TODO: 이름 변경
 export const updateGithubIntroduce = async ({
   userId,
   githubUrl,
