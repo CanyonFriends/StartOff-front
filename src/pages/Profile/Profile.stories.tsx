@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileTemplate from './template';
-import { skills } from '../../__test__/mock-dats';
+import { skills, project } from '../../__test__/mock-dats';
 
 export default {
   title: 'Template/Profile',
@@ -22,7 +22,7 @@ export const editableProfile = (): React.ReactElement => {
       imageUrl=""
       mySkillList={skills}
       totalSkillList={skills}
-      projects={[]}
+      projects={[project]}
     />
   );
 };
