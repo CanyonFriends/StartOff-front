@@ -11,10 +11,11 @@ interface ItemProps {
 export interface DropdownProps {
   placeholder: string;
   items: ItemProps[];
+  isClickValueText?: boolean;
   clickItem: (id: string) => void;
 }
 
-function Dropdown({ placeholder, items, clickItem }: DropdownProps) {
+function Dropdown({ placeholder, items, clickItem, isClickValueText = false }: DropdownProps) {
   const [open, setOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -35,7 +36,11 @@ function Dropdown({ placeholder, items, clickItem }: DropdownProps) {
         <Style.MenuWrapper>
           <Overlay clickModalOutside={toggleDropdown} />
           {items.map((item) => (
-            <Style.Item key={item.id} id={item.id} onClick={() => handleClickItem(item.text)}>
+            <Style.Item
+              key={item.id}
+              id={item.id}
+              onClick={() => handleClickItem(isClickValueText ? item.text : item.id)}
+            >
               {item.text}
             </Style.Item>
           ))}

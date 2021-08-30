@@ -4,13 +4,13 @@ import SkillDropdown from '.';
 import { skills } from '../../../../__test__/mock-dats';
 
 export default {
-  title: 'Molecule/SkillDropdown',
+  title: 'Molecule/Dropdown',
   component: SkillDropdown,
 };
 
 const onClickAction = action('click');
 
-export const skilldropdown = (): React.ReactElement => {
+export const dropdown = (): React.ReactElement => {
   const placeholder = '스택 추가';
   return (
     <SkillDropdown
