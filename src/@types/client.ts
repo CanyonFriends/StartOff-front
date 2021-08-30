@@ -29,3 +29,12 @@ export interface SkillType {
   skillName: string;
   textColor: string;
 }
+
+export interface SummarizedPostType {
+  postId: string;
+  title: string;
+  currentPeople?: number;
+  maxPeople?: number;
+  user: { nickname: string };
+  postSkills: SkillType[];
+}
