@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileTemplate from './template';
-import { makeSkillMock, makeProjectMock } from '../../__mocks__/mock-dats';
+import { makeSkillMock, makeProjectMock } from '../../__mocks__/client-mock-data';
 
 export default {
   title: 'Template/Profile',
