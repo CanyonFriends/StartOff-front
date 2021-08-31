@@ -5,7 +5,7 @@ import React from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { render } from '../../test-utils';
 import SigninPage from '../Signin';
-import { signinFailMockInfo } from '../../__mocks__/mock-dats';
+import { signinFailMockInfo } from '../../__mocks__/client-mock-data';
 import { signinAPI } from '../../api/auth';
 
 jest.mock('../../api/auth');

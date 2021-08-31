@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import ProjectItem from '.';
-import { makeProjectMock, makeSkillMock } from '../../../../__mocks__/mock-dats';
+import { makeProjectMock, makeSkillMock } from '../../../../__mocks__/client-mock-data';
 
 export default {
   title: 'Organism/ProjectItem',

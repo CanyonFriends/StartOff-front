@@ -1,4 +1,4 @@
-import { makeProjectMock } from '../../__mocks__/mock-dats';
+import { makeProjectMock } from '../../__mocks__/client-mock-data';
 import loginValidator from '../loginValidator';
 import modifyProfileInfoCardValidator from '../modifyProfileInfoCardValidator';
 import modifyProfileIntroduceValidator from '../modifyProfileIntroduceValidator';
