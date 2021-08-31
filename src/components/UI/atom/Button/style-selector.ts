@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 import { ButtonThemeType, SizeType } from '../../@types/index';
 
 export const buttonThemeSelector: { [theme in ButtonThemeType]: SerializedStyles } = {

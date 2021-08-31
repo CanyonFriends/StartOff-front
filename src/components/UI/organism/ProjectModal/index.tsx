@@ -8,7 +8,7 @@ import ModalWrapper from '../../../Layout/ModalWrapper/index';
 import useForm from '../../../../hooks/useForm';
 import projectValidator, { ProjectValidatorType } from '../../../../validator/projectValidator';
 import { InputFieldProps } from '../../molecule/InputField';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 import { TextAreaFieldProps } from '../../molecule/TextAreaField/index';
 import SkillList from '../SkillList';
 import { LabelProps } from '../../atom/Label';

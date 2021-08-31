@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 import * as Style from './styled';
 import { SizeType } from '../../@types/index';
 

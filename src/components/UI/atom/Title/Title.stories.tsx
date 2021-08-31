@@ -1,7 +1,7 @@
 import React from 'react';
 import { withKnobs, text, color } from '@storybook/addon-knobs';
-import StyleWrapper from '../../../../common/styleWrapper';
-import theme from '../../../../common/theme';
+import StyleWrapper from '../../../../style/styleWrapper';
+import theme from '../../../../style/theme';
 import Title from '.';
 
 export default {

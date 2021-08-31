@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import EditableText from '.';
-import StyleWrapper from '../../../../common/styleWrapper';
+import StyleWrapper from '../../../../style/styleWrapper';
 import { InputProps } from '../../atom/Input';
 import { TitleProps } from '../../atom/Title/index';
 

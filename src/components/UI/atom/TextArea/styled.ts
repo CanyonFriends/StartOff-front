@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 import { SizeType } from '../../@types/index';
 import { textareaSizeSelector } from './style-selector';
 

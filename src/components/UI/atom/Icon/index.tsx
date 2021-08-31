@@ -2,7 +2,7 @@ import React from 'react';
 import * as Style from './styled';
 import * as icons from './svg';
 import { SizeType, IconType } from '../../@types/index';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 
 export interface IconProps {
   id?: string;

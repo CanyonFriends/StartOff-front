@@ -2,7 +2,7 @@ import React from 'react';
 import * as Style from './styled';
 import ModalWrapper from '../../../Layout/ModalWrapper/index';
 import { Icon, Button, Title } from '../../atom';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 
 interface AlertModalProps {
   content: string;

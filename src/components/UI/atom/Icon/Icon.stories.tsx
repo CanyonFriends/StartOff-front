@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '.';
-import StyleWrapper from '../../../../common/styleWrapper';
+import StyleWrapper from '../../../../style/styleWrapper';
 
 export default {
   title: 'Atom/Icon',
