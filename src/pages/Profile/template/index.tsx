@@ -10,8 +10,8 @@ import {
   AlertModal,
   ProjectItem,
 } from '../../../components/UI/organism';
-import { ModifyProfileInfoCardType } from '../../../validator/modifyProfileInfoCard';
-import { ModifyProfileIntroduceType } from '../../../validator/modifyProfileIntroduce';
+import { ModifyProfileInfoCardValidatorType } from '../../../validator/modifyProfileInfoCardValidator';
+import { ModifyProfileIntroduceValidatorType } from '../../../validator/modifyProfileIntroduceValidator';
 import { ProfileInfoCardProps } from '../../../components/UI/organism/ProfileInfoCard';
 import { SkillListProps } from '../../../components/UI/organism/SkillList/index';
 import {
@@ -60,7 +60,7 @@ function ProfileTemplate({
   const [mySkillListState, setMySkillListState] = useState<SkillType[]>(mySkillList);
   const [projectsState, setProjectsState] = useState<ProjectType[]>(projects);
 
-  const handleSubmitIntroduce = async ({ nickname, introduce, imageurl }: ModifyProfileIntroduceType) => {
+  const handleSubmitIntroduce = async ({ nickname, introduce, imageurl }: ModifyProfileIntroduceValidatorType) => {
     const response = await updateProfileIntroduce({ userId, nickname, introduce });
     if (isFailed<boolean>(response)) {
       return response.error_msg;
@@ -68,7 +68,7 @@ function ProfileTemplate({
     return '';
   };
 
-  const handleSubmitGithub = async (data: ModifyProfileInfoCardType) => {
+  const handleSubmitGithub = async (data: ModifyProfileInfoCardValidatorType) => {
     const response = await updateGithubIntroduce({ userId, githubUrl: data.textValue });
     if (isFailed<boolean>(response)) {
       return response.error_msg;
@@ -76,7 +76,7 @@ function ProfileTemplate({
     return '';
   };
 
-  const handleSubmitBlog = async (data: ModifyProfileInfoCardType) => {
+  const handleSubmitBlog = async (data: ModifyProfileInfoCardValidatorType) => {
     const response = await updateBlogIntroduce({ userId, blogUrl: data.textValue });
     if (isFailed<boolean>(response)) {
       return response.error_msg;

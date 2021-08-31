@@ -5,8 +5,8 @@ import { Button } from '../../atom';
 import useForm from '../../../../hooks/useForm';
 import { InputProps } from '../../atom/Input/index';
 import modifyProfileIntroduceValidator, {
-  ModifyProfileIntroduceType,
-} from '../../../../validator/modifyProfileIntroduce';
+  ModifyProfileIntroduceValidatorType,
+} from '../../../../validator/modifyProfileIntroduceValidator';
 import AlertModal from '../AlertModal';
 
 interface ProfileIntroduceProps {
@@ -15,7 +15,7 @@ interface ProfileIntroduceProps {
   introduce: string;
   imageurl: string;
   isEditable?: boolean;
-  handleSubmit: (data: ModifyProfileIntroduceType) => Promise<string>;
+  handleSubmit: (data: ModifyProfileIntroduceValidatorType) => Promise<string>;
 }
 
 function ProfileIntroduce({
@@ -27,13 +27,12 @@ function ProfileIntroduce({
   handleSubmit,
 }: ProfileIntroduceProps) {
   const [editable, setEditable] = useState<boolean>(!!isEditable);
-  const { values, error, clearError, handleChange, handleSubmitWithErrorControl } = useForm<ModifyProfileIntroduceType>(
-    {
+  const { values, error, clearError, handleChange, handleSubmitWithErrorControl } =
+    useForm<ModifyProfileIntroduceValidatorType>({
       onSubmit: handleSubmit,
       initialState: { imageurl, nickname, introduce },
       validator: modifyProfileIntroduceValidator,
-    },
-  );
+    });
 
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
