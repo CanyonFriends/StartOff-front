@@ -2,9 +2,9 @@ import axios from '../utils/axios';
 import { ErrorType } from './error';
 import { SkillServerType } from '../@types/server';
 import { skillServerType2ClientType } from '../converter/skill';
-import { SkillType } from '../@types/client';
+import { SkillClientType } from '../@types/client';
 
-export const getSkillsAPI = async (): Promise<SkillType[] | ErrorType> => {
+export const getSkillsAPI = async (): Promise<SkillClientType[] | ErrorType> => {
   try {
     const response = await axios({
       method: 'GET',

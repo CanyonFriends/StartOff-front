@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as Style from './styled';
-import { ProjectType, SkillType } from '../../../../@types/client';
+import { ProjectClientType, SkillClientType } from '../../../../@types/client';
 import { Icon, Title, Paragraph, Tag, Anchor } from '../../atom';
 import { dateToString } from '../../../../utils/date';
 import { BoxWithIcon } from '../../molecule';
@@ -8,9 +8,9 @@ import { ProjectModal } from '..';
 import { ProjectValidatorType } from '../../../../validator/projectValidator';
 
 interface ProjectItemProps {
-  project: ProjectType;
+  project: ProjectClientType;
   editableAuthority: boolean;
-  totalSkillList: SkillType[];
+  totalSkillList: SkillClientType[];
   handleDeleteItem: (projectId: number) => void;
   handleModifyItem: (data: ProjectValidatorType) => Promise<string>;
 }

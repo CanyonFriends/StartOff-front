@@ -22,7 +22,7 @@ import {
   deleteUserSkillAPI,
 } from '../../../api/profile';
 import { isFailed } from '../../../api/error';
-import { ProjectType, SkillType } from '../../../@types/client';
+import { ProjectClientType, SkillClientType } from '../../../@types/client';
 import { Button, Icon, Title } from '../../../components/UI/atom';
 import { UpdatePasswordValidatorType } from '../../../validator/updatePasswordValidator';
 import { updatePasswordAPI } from '../../../api/user';
@@ -37,9 +37,9 @@ interface ProfileTemplateProps {
   imageUrl: string;
   github: string;
   blog: string;
-  mySkillList: SkillType[];
-  totalSkillList: SkillType[];
-  projects: ProjectType[];
+  mySkillList: SkillClientType[];
+  totalSkillList: SkillClientType[];
+  projects: ProjectClientType[];
 }
 
 function ProfileTemplate({
@@ -57,8 +57,8 @@ function ProfileTemplate({
   const [accountInfoModalOpen, setAccountInfoModalOpen] = useState(false);
   const [projectModalOpen, setProjectModalOpen] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-  const [mySkillListState, setMySkillListState] = useState<SkillType[]>(mySkillList);
-  const [projectsState, setProjectsState] = useState<ProjectType[]>(projects);
+  const [mySkillListState, setMySkillListState] = useState<SkillClientType[]>(mySkillList);
+  const [projectsState, setProjectsState] = useState<ProjectClientType[]>(projects);
 
   const handleSubmitIntroduce = async ({ nickname, introduce, imageurl }: ModifyProfileIntroduceValidatorType) => {
     const response = await updateProfileIntroduce({ userId, nickname, introduce });
@@ -85,7 +85,7 @@ function ProfileTemplate({
   };
   const handleClickTotalItem = async (skillName: string) => {
     const response = await updateUserSkillAPI({ userId, skillName });
-    if (isFailed<SkillType>(response)) {
+    if (isFailed<SkillClientType>(response)) {
       return response.error_msg;
     }
     setMySkillListState([...mySkillListState, response]);
@@ -122,7 +122,7 @@ function ProfileTemplate({
   };
 
   const createProject = async (projectWithProgress: ProjectValidatorType) => {
-    const project: ProjectType = {
+    const project: ProjectClientType = {
       id: 0,
       title: projectWithProgress.title,
       content: projectWithProgress.content,
@@ -134,7 +134,7 @@ function ProfileTemplate({
       projectSklls: projectWithProgress.projectSklls,
     };
     const response = await createProjectAPI({ userId, project });
-    if (isFailed<ProjectType>(response)) {
+    if (isFailed<ProjectClientType>(response)) {
       return response.error_msg;
     }
     setProjectsState([...projectsState, response]);
@@ -153,7 +153,7 @@ function ProfileTemplate({
   };
 
   const handleModifyProjectItem = async (projectWithProgress: ProjectValidatorType) => {
-    const project: ProjectType = {
+    const project: ProjectClientType = {
       id: projectWithProgress.id || 0,
       title: projectWithProgress.title,
       content: projectWithProgress.content,
@@ -165,7 +165,7 @@ function ProfileTemplate({
       projectSklls: projectWithProgress.projectSklls,
     };
     const response = await updateProjectAPI({ userId, project, projectId: projectWithProgress.id || 0 });
-    if (isFailed<ProjectType>(response)) {
+    if (isFailed<ProjectClientType>(response)) {
       return response.error_msg;
     }
     const updatedProjectsState = projectsState.map((project) => {

@@ -7,11 +7,11 @@ export interface ProfileClientType {
   githubUrl: string;
   introduce: string;
   nickname: string;
-  projects: ProjectType[];
-  userSkills: SkillType[];
+  projects: ProjectClientType[];
+  userSkills: SkillClientType[];
 }
 
-export interface ProjectType {
+export interface ProjectClientType {
   title: string;
   content: string;
   deployUrl: string;
@@ -20,22 +20,22 @@ export interface ProjectType {
   githubUrl: string;
   id: number;
   introduce: string;
-  projectSklls: SkillType[];
+  projectSklls: SkillClientType[];
 }
 
-export interface SkillType {
+export interface SkillClientType {
   skillId: string;
   color: string;
   skillName: string;
   textColor: string;
 }
 
-export interface SummarizedPostType {
+export interface SummarizedPostClientType {
   postId: string;
   title: string;
   currentPeople?: number;
   maxPeople?: number;
   createAt: Date;
   user: { nickname: string };
-  postSkills: SkillType[];
+  postSkills: SkillClientType[];
 }

@@ -1,18 +1,18 @@
 import axios from '../utils/axios';
 import { ErrorType } from './error';
-import { ProjectType } from '../@types/client';
+import { ProjectClientType } from '../@types/client';
 import { projectClientType2ServerReqeustType, projectServerType2ClientType } from '../converter/project';
 import { ProjectServerResponseType } from '../@types/server';
 
 export interface CreateProjectRequest {
   userId: string;
-  project: ProjectType;
+  project: ProjectClientType;
 }
 
 export interface UpdateProjectRequest {
   userId: string;
   projectId: number;
-  project: ProjectType;
+  project: ProjectClientType;
 }
 
 export interface DeleteProjectRequest {
@@ -20,7 +20,10 @@ export interface DeleteProjectRequest {
   projectId: number;
 }
 
-export const createProjectAPI = async ({ userId, project }: CreateProjectRequest): Promise<ProjectType | ErrorType> => {
+export const createProjectAPI = async ({
+  userId,
+  project,
+}: CreateProjectRequest): Promise<ProjectClientType | ErrorType> => {
   try {
     const response = await axios({
       method: 'POST',
@@ -39,7 +42,7 @@ export const updateProjectAPI = async ({
   userId,
   projectId,
   project,
-}: UpdateProjectRequest): Promise<ProjectType | ErrorType> => {
+}: UpdateProjectRequest): Promise<ProjectClientType | ErrorType> => {
   try {
     const response = await axios({
       method: 'PUT',

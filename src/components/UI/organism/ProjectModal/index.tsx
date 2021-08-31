@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import * as Style from './styled';
-import { ProjectType, SkillType } from '../../../../@types/client';
+import { ProjectClientType, SkillClientType } from '../../../../@types/client';
 import { Button, Title } from '../../atom';
 import { InputField, TextAreaField } from '../../molecule';
 import { Calendar } from '..';
@@ -15,8 +15,8 @@ import { LabelProps } from '../../atom/Label';
 
 interface ProjectModalProps {
   isModify: boolean;
-  project?: ProjectType;
-  totalSkillList: SkillType[];
+  project?: ProjectClientType;
+  totalSkillList: SkillClientType[];
   onSubmit: (data: ProjectValidatorType) => Promise<string>;
   handleModalClose: () => void;
 }

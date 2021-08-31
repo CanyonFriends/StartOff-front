@@ -2,15 +2,15 @@ import React, { useMemo } from 'react';
 import * as Style from './styled';
 import { Tag, Title } from '../../atom';
 import { Dropdown } from '../../molecule';
-import { SkillType } from '../../../../@types/client';
+import { SkillClientType } from '../../../../@types/client';
 import Label, { LabelProps } from '../../atom/Label/index';
 
 export interface SkillListProps {
   title?: string;
   label?: LabelProps;
   editableAuthority: boolean;
-  mySkillList: SkillType[];
-  totalSkillList: SkillType[];
+  mySkillList: SkillClientType[];
+  totalSkillList: SkillClientType[];
   clickTotalSkillItem: (skillName: string) => void;
   deleteMySkill: (skillId: string) => void;
 }
