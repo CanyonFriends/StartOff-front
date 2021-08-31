@@ -40,7 +40,7 @@ export const makeSkillMock = ({
 };
 
 export const makeProjectMock = ({
-  id = 1,
+  id = Math.floor(Math.random() * 10000),
   title = 'project',
   deployUrl = 'https://shellboylog.com/list',
   githubUrl = 'https://github.com/qkrdmstlr3/devlog',
@@ -69,7 +69,7 @@ export const makeProfileMock = ({
   githubUrl = 'https://github.com/qkrdmstlr3',
   introduce = 'hello my name is shellboy',
   nickname = 'shellboy',
-  projects = [makeProjectMock({ id: 1 }), makeProjectMock({ id: 2 }), makeProjectMock({ id: 3 })],
+  projects = [makeProjectMock({}), makeProjectMock({}), makeProjectMock({})],
   userSkills = [makeSkillMock({ skillName: 'typescript' }), makeSkillMock({ skillName: 'c#' })],
 }): ProfileClientType => {
   return {
