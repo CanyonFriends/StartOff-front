@@ -6,7 +6,9 @@ import { Title } from '../../atom';
 import { IconProps } from '../../atom/Icon';
 import { InputProps } from '../../atom/Input';
 import { IconType } from '../../@types/index';
-import modifyProfileInfoCard, { ModifyProfileInfoCardType } from '../../../../validator/modifyProfileInfoCard';
+import modifyProfileInfoCardValidator, {
+  ModifyProfileInfoCardValidatorType,
+} from '../../../../validator/modifyProfileInfoCardValidator';
 import { AlertModal } from '..';
 
 export interface ProfileInfoCardProps {
@@ -14,16 +16,17 @@ export interface ProfileInfoCardProps {
   title: string;
   textValue: string;
   iconType: IconType;
-  handleSubmit: (data: ModifyProfileInfoCardType) => Promise<string>;
+  handleSubmit: (data: ModifyProfileInfoCardValidatorType) => Promise<string>;
 }
 
 function ProfileInfoCard({ editableAuthority, title, textValue, iconType, handleSubmit }: ProfileInfoCardProps) {
   const [isEditable, setIsEditable] = useState(false);
-  const { values, error, clearError, handleChange, handleSubmitWithErrorControl } = useForm<ModifyProfileInfoCardType>({
-    onSubmit: handleSubmit,
-    initialState: { textValue },
-    validator: modifyProfileInfoCard,
-  });
+  const { values, error, clearError, handleChange, handleSubmitWithErrorControl } =
+    useForm<ModifyProfileInfoCardValidatorType>({
+      onSubmit: handleSubmit,
+      initialState: { textValue },
+      validator: modifyProfileInfoCardValidator,
+    });
 
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

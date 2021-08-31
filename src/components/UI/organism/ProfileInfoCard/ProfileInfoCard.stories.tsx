@@ -2,7 +2,7 @@ import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import ProfileInfoCard from '.';
-import { ModifyProfileInfoCardType } from '../../../../validator/modifyProfileInfoCard';
+import { ModifyProfileInfoCardValidatorType } from '../../../../validator/modifyProfileInfoCardValidator';
 
 export default {
   title: 'Organism/ProfileInfoCard',
@@ -11,7 +11,7 @@ export default {
 };
 
 const onSubmitAction = action('form submitted');
-const handleSubmit = async (_: ModifyProfileInfoCardType) => {
+const handleSubmit = async (_: ModifyProfileInfoCardValidatorType) => {
   onSubmitAction(_);
   return '';
 };

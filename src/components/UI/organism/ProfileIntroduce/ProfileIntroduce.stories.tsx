@@ -3,7 +3,7 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import ProfileIntroduce from '.';
 import StyleWrapper from '../../../../common/styleWrapper';
-import { ModifyProfileIntroduceType } from '../../../../validator/modifyProfileIntroduce';
+import { ModifyProfileIntroduceValidatorType } from '../../../../validator/modifyProfileIntroduceValidator';
 
 export default {
   title: 'Organism/ProfileIntroduce',
@@ -12,7 +12,7 @@ export default {
 };
 
 const onSubmitAction = action('form submitted');
-const handleSubmit = async (_: ModifyProfileIntroduceType) => {
+const handleSubmit = async (_: ModifyProfileIntroduceValidatorType) => {
   onSubmitAction(_);
   return '';
 };
