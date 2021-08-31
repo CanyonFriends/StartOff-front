@@ -1,22 +1,12 @@
-import { ProjectServerResponseType, SkillServerType } from '../@types/server';
+import { SkillServerType, ProfileServerType } from '../@types/server';
 import axios from '../utils/axios';
 import { ErrorType } from './error';
-import { ProfileType, SkillType } from '../@types/client';
+import { ProfileClientType, SkillType } from '../@types/client';
 import { profileResponse2Type } from '../converter/profile';
 import { skillServerType2ClientType } from '../converter/skill';
 
 export interface GetProfileRequest {
   userId: string;
-}
-
-export interface GetProfileResponse {
-  baekjoon_id: string;
-  blog_url: string;
-  github_url: string;
-  introduce: string;
-  nickname: string;
-  projects: ProjectServerResponseType[];
-  user_skills: SkillServerType[];
 }
 
 export interface UpdateProfileIntroduceRequest {
@@ -45,13 +35,13 @@ export interface DeleteUserSkillRequest {
   skillId: string;
 }
 
-export const getProfileAPI = async ({ userId }: GetProfileRequest): Promise<ProfileType | ErrorType> => {
+export const getProfileAPI = async ({ userId }: GetProfileRequest): Promise<ProfileClientType | ErrorType> => {
   try {
     const response = await axios({
       method: 'GET',
       url: `/v1/users/${userId}/profile`,
     });
-    return profileResponse2Type(response.data as GetProfileResponse);
+    return profileResponse2Type(response.data as ProfileServerType);
   } catch (error) {
     return { error_msg: error.response.data.error_msg } as ErrorType;
   }

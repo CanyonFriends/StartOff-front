@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import SkillDropdown from '.';
-import { skills } from '../../../../__test__/mock-dats';
+import { skills } from '../../../../__mocks__/mock-dats';
 
 export default {
   title: 'Molecule/Dropdown',

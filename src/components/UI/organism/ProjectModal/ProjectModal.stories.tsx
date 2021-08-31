@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 import ProjectModal from '.';
-import { project, skills } from '../../../../__test__/mock-dats';
+import { project, skills } from '../../../../__mocks__/mock-dats';
 
 export default {
   title: 'Organism/CreateProjectModal',

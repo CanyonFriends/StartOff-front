@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getProfileAPI } from '../../api/profile';
 import ProfileTemplate from './template';
-import { ProfileType, SkillType } from '../../@types/client';
+import { ProfileClientType, SkillType } from '../../@types/client';
 import { isFailed } from '../../api/error';
 import { RootState } from '../../redux/store';
 import { UserState } from '../../redux/user/types';
@@ -16,7 +16,7 @@ interface ParamProps {
 
 function Profile() {
   const [error, setError] = useState('');
-  const [profileData, setProfileData] = useState<ProfileType | undefined>();
+  const [profileData, setProfileData] = useState<ProfileClientType | undefined>();
   const [totalSkills, setTotalSkills] = useState<SkillType[]>([]);
   const userState = useSelector<RootState>((state) => state.user) as UserState;
   const userId = useParams<ParamProps>().userId || '';
@@ -29,7 +29,7 @@ function Profile() {
 
   const getProfileInfo = async () => {
     const response = await getProfileAPI({ userId });
-    if (isFailed<ProfileType>(response)) {
+    if (isFailed<ProfileClientType>(response)) {
       setError(response.error_msg);
       return '';
     }

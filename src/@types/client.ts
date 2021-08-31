@@ -1,7 +1,7 @@
 /**
  * client data type
  */
-export interface ProfileType {
+export interface ProfileClientType {
   baekjoonId: string;
   blogUrl: string;
   githubUrl: string;

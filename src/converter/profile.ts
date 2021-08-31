@@ -1,9 +1,9 @@
-import { ProfileType } from '../@types/client';
-import { GetProfileResponse } from '../api/profile';
+import { ProfileClientType } from '../@types/client';
+import { ProfileServerType } from '../@types/server';
 import { projectServerType2ClientType } from './project';
 import { skillServerType2ClientType } from './skill';
 
-export const profileResponse2Type = (profileResponse: GetProfileResponse): ProfileType => {
+export const profileResponse2Type = (profileResponse: ProfileServerType): ProfileClientType => {
   return {
     baekjoonId: profileResponse.baekjoon_id,
     blogUrl: profileResponse.blog_url,
