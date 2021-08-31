@@ -1,7 +1,7 @@
 import React from 'react';
 import MockAdapter from 'axios-mock-adapter';
 import SignupTemplate from './template';
-import AxiosMock from '../../common/AxiosMock';
+import AxiosMock from '../../utils/AxiosMock';
 import { signupSuccessMockInfo, signupFailMockInfo } from '../../__mocks__/client-mock-data';
 
 export default {
