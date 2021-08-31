@@ -2,7 +2,7 @@ import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import SkillList from '.';
-import { makeSkillMock } from '../../../../__mocks__/mock-dats';
+import { makeSkillMock } from '../../../../__mocks__/client-mock-data';
 
 export default {
   title: 'Organism/SkillList',
