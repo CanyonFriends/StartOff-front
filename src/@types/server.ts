@@ -1,6 +1,16 @@
 /**
  * server data type
  */
+export interface ProfileServerType {
+  baekjoon_id: string;
+  blog_url: string;
+  github_url: string;
+  introduce: string;
+  nickname: string;
+  projects: ProjectServerResponseType[];
+  user_skills: SkillServerType[];
+}
+
 export interface ProjectServerResponseType {
   content: string;
   deploy_url: string;
