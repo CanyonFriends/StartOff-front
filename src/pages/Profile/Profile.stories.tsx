@@ -1,11 +1,20 @@
 import React from 'react';
 import ProfileTemplate from './template';
-import { skills, project } from '../../__mocks__/mock-dats';
+import { makeSkillMock, makeProjectMock } from '../../__mocks__/mock-dats';
 
 export default {
   title: 'Template/Profile',
   component: ProfileTemplate,
 };
+
+const totalSkills = [
+  makeSkillMock({ skillName: 'typescript' }),
+  makeSkillMock({ skillName: 'javascript' }),
+  makeSkillMock({ skillName: 'c#' }),
+  makeSkillMock({ skillName: 'python' }),
+];
+
+const mySkills = totalSkills.slice(0, 2);
 
 export const editableProfile = (): React.ReactElement => {
   const userId = '1';
@@ -20,9 +29,9 @@ export const editableProfile = (): React.ReactElement => {
       nickname="nickname"
       introduce="introduce"
       imageUrl=""
-      mySkillList={skills}
-      totalSkillList={skills}
-      projects={[project]}
+      mySkillList={mySkills}
+      totalSkillList={totalSkills}
+      projects={[makeProjectMock({}), makeProjectMock({})]}
     />
   );
 };
@@ -41,8 +50,8 @@ export const uneditableProfile = (): React.ReactElement => {
       nickname="nickname"
       introduce="introduce"
       imageUrl=""
-      mySkillList={skills}
-      totalSkillList={skills}
+      mySkillList={mySkills}
+      totalSkillList={totalSkills}
       projects={[]}
     />
   );

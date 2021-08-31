@@ -2,7 +2,7 @@ import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import SkillList from '.';
-import { skills } from '../../../../__mocks__/mock-dats';
+import { makeSkillMock } from '../../../../__mocks__/mock-dats';
 
 export default {
   title: 'Organism/SkillList',
@@ -11,6 +11,15 @@ export default {
 };
 
 const onClickAction = action('click');
+
+const totalSkills = [
+  makeSkillMock({ skillName: 'typescript' }),
+  makeSkillMock({ skillName: 'javascript' }),
+  makeSkillMock({ skillName: 'c#' }),
+  makeSkillMock({ skillName: 'python' }),
+];
+
+const mySkills = totalSkills.slice(0, 2);
 
 export const editable = (): React.ReactElement => {
   const title = text('TITLE', '주요기술');
@@ -21,8 +30,8 @@ export const editable = (): React.ReactElement => {
       clickTotalSkillItem={onClickAction}
       deleteMySkill={onClickAction}
       title={title}
-      mySkillList={skills}
-      totalSkillList={skills}
+      mySkillList={mySkills}
+      totalSkillList={totalSkills}
     />
   );
 };
@@ -36,8 +45,8 @@ export const uneditable = (): React.ReactElement => {
       deleteMySkill={onClickAction}
       clickTotalSkillItem={onClickAction}
       title={title}
-      mySkillList={skills}
-      totalSkillList={skills}
+      mySkillList={mySkills}
+      totalSkillList={totalSkills}
     />
   );
 };

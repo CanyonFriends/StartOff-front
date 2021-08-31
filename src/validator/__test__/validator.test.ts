@@ -1,4 +1,4 @@
-import { project } from '../../__mocks__/mock-dats';
+import { makeProjectMock } from '../../__mocks__/mock-dats';
 import loginValidator from '../loginValidator';
 import modifyProfileInfoCardValidator from '../modifyProfileInfoCardValidator';
 import modifyProfileIntroduceValidator from '../modifyProfileIntroduceValidator';
@@ -59,32 +59,32 @@ describe('Validator/modifyProfileIntroduceValidator', () => {
 
 describe('Validator/projectValidator', () => {
   it('모두 있을 경우', () => {
-    const dummyProject = { ...project };
+    const dummyProject = makeProjectMock({});
     const error = projectValidator(dummyProject);
     expect(error).toBe('');
   });
 
   it('프로젝트명이 없을 경우', () => {
-    const dummyProject = { ...project, title: '' };
-    const error = projectValidator(dummyProject);
+    const dummyProject = makeProjectMock({});
+    const error = projectValidator({ ...dummyProject, title: '' });
     expect(error).toBe('프로젝트명을 입력해주십시오');
   });
 
   it('시작일이 없을 경우', () => {
-    const dummyProject = { ...project, startDate: undefined };
-    const error = projectValidator(dummyProject);
+    const dummyProject = makeProjectMock({});
+    const error = projectValidator({ ...dummyProject, startDate: undefined });
     expect(error).toBe('시작일을 입력해주십시오');
   });
 
   it('진행중이지 않고 종료일이 없을 경우', () => {
-    const dummyProject = { ...project, endDate: undefined, isProgress: false };
-    const error = projectValidator(dummyProject);
+    const dummyProject = makeProjectMock({});
+    const error = projectValidator({ ...dummyProject, endDate: undefined, isProgress: false });
     expect(error).toBe('종료일을 입력해주십시오');
   });
 
   it('진행중이고 종료일이 없을 경우', () => {
-    const dummyProject = { ...project, endDate: undefined, isProgress: true };
-    const error = projectValidator(dummyProject);
+    const dummyProject = makeProjectMock({});
+    const error = projectValidator({ ...dummyProject, endDate: undefined, isProgress: true });
     expect(error).toBe('');
   });
 });
