@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TextAreaField from '.';
 import { LabelProps } from '../../atom/Label';
 import { TextAreaProps } from '../../atom/TextArea';
-import StyleWrapper from '../../../../common/styleWrapper';
+import StyleWrapper from '../../../../style/styleWrapper';
 
 export default {
   title: 'Molecule/TextAreaField',

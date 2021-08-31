@@ -2,7 +2,7 @@ import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import ProfileIntroduce from '.';
-import StyleWrapper from '../../../../common/styleWrapper';
+import StyleWrapper from '../../../../style/styleWrapper';
 import { ModifyProfileIntroduceValidatorType } from '../../../../validator/modifyProfileIntroduceValidator';
 
 export default {

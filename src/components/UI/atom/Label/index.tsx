@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Style from './styled';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 import { SizeType } from '../../@types/index';
 
 export interface LabelProps {

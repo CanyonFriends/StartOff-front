@@ -1,6 +1,6 @@
 import React from 'react';
 import Paragraph from '.';
-import StyleWrapper from '../../../../common/styleWrapper';
+import StyleWrapper from '../../../../style/styleWrapper';
 
 export default {
   title: 'Atom/Paragraph',

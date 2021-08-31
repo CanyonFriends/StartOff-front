@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledComponent } from '@emotion/styled';
 import * as Style from './styled';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 import { TitleSizeType } from '../../@types/index';
 
 export interface TitleProps {

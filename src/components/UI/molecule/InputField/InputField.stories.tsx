@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InputField from '.';
 import { LabelProps } from '../../atom/Label/index';
 import { InputProps } from '../../atom/Input/index';
-import StyleWrapper from '../../../../common/styleWrapper';
+import StyleWrapper from '../../../../style/styleWrapper';
 
 export default {
   title: 'Molecule/InputField',

@@ -1,6 +1,6 @@
 import React from 'react';
 import SummarizedPostItem from '.';
-import StyleWrapper from '../../../../common/styleWrapper';
+import StyleWrapper from '../../../../style/styleWrapper';
 import { makeMockSummarizedPost } from '../../../../__mocks__/client-mock-data';
 
 export default {

@@ -6,7 +6,7 @@ import * as Style from './styled';
 import useForm from '../../../../hooks/useForm';
 import { InputFieldProps } from '../../molecule/InputField/index';
 import updatePasswordValidator, { UpdatePasswordValidatorType } from '../../../../validator/updatePasswordValidator';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 
 interface AccountInfoModalProps {
   handleCloseModal: () => void;
