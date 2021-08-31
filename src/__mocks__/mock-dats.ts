@@ -1,6 +1,6 @@
 import { ErrorType } from '../api/error';
 import { SigninResponseType, SignupResponseType } from '../api/auth';
-import { SkillType, ProjectType, ProfileType, SummarizedPostType } from '../@types/client';
+import { SkillType, ProjectType, ProfileClientType, SummarizedPostType } from '../@types/client';
 import generateUUID from '../utils/generateUUID';
 
 // api
@@ -66,7 +66,7 @@ export const project: ProjectType = {
   projectSklls: skills.slice(0, 1),
 };
 
-export const profile: ProfileType = {
+export const profile: ProfileClientType = {
   baekjoonId: 'shellboy',
   blogUrl: 'https://shellboylog.com',
   githubUrl: 'https://github.com/qkrdmstlr3',

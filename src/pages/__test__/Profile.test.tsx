@@ -7,7 +7,7 @@ import { render } from '../../test-utils';
 import ProfilePage from '../Profile';
 import { getProfileAPI, updateProfileIntroduce, updateGithubIntroduce, updateBlogIntroduce } from '../../api/profile';
 import { getSkillsAPI } from '../../api/skill';
-import { profile, skills, project } from '../../__test__/mock-dats';
+import { profile, skills, project } from '../../__mocks__/mock-dats';
 import { dateToString } from '../../utils/date';
 import { updatePasswordAPI } from '../../api/user';
 

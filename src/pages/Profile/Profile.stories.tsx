@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileTemplate from './template';
-import { skills, project } from '../../__test__/mock-dats';
+import { skills, project } from '../../__mocks__/mock-dats';
 
 export default {
   title: 'Template/Profile',

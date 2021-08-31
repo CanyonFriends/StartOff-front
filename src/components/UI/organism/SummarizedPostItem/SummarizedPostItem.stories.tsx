@@ -1,7 +1,7 @@
 import React from 'react';
 import SummarizedPostItem from '.';
 import StyleWrapper from '../../../../common/styleWrapper';
-import { makeMockSummarizedPost } from '../../../../__test__/mock-dats';
+import { makeMockSummarizedPost } from '../../../../__mocks__/mock-dats';
 
 export default {
   title: 'Organism/SummarizedPostItem',
