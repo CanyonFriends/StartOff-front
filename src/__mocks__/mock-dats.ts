@@ -25,55 +25,62 @@ export const signupFailMockInfo: ErrorType = {
 };
 
 // data
-
-export const skills: SkillClientType[] = [
-  {
-    skillId: '1',
-    skillName: 'typescript',
-    color: '#eeeeee',
-    textColor: '#000000',
-  },
-  {
-    skillId: '2',
-    skillName: 'python',
-    color: '#eeeeee',
-    textColor: '#000000',
-  },
-  {
-    skillId: '3',
-    skillName: 'c',
-    color: '#eeeeee',
-    textColor: '#000000',
-  },
-  {
-    skillId: '4',
-    skillName: 'c#',
-    color: '#eeeeee',
-    textColor: '#000000',
-  },
-];
-
-export const project: ProjectClientType = {
-  id: 1,
-  title: 'project',
-  deployUrl: 'https://shellboylog.com/list',
-  githubUrl: 'https://github.com/qkrdmstlr3/devlog',
-  introduce: 'introduce introduce introduce',
-  startDate: new Date('1998-01-22'),
-  endDate: new Date('2021-01-22'),
-  content:
-    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
-  projectSklls: skills.slice(0, 1),
+export const makeSkillMock = ({
+  skillId = generateUUID(),
+  skillName = 'c#',
+  color = '#eeeeee',
+  textColor = '#000000',
+}): SkillClientType => {
+  return {
+    skillId,
+    skillName,
+    color,
+    textColor,
+  };
 };
 
-export const profile: ProfileClientType = {
-  baekjoonId: 'shellboy',
-  blogUrl: 'https://shellboylog.com',
-  githubUrl: 'https://github.com/qkrdmstlr3',
-  introduce: 'hello my name is shellboy',
-  nickname: 'shellboy',
-  projects: [project],
-  userSkills: skills.slice(2),
+export const makeProjectMock = ({
+  id = 1,
+  title = 'project',
+  deployUrl = 'https://shellboylog.com/list',
+  githubUrl = 'https://github.com/qkrdmstlr3/devlog',
+  introduce = 'introduce introduce introduce',
+  startDate = new Date('1998-01-22'),
+  endDate = new Date('2021-01-22'),
+  content = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
+  projectSklls = [makeSkillMock({ skillName: 'typescript' }), makeSkillMock({ skillName: 'c#' })],
+}): ProjectClientType => {
+  return {
+    id,
+    title,
+    deployUrl,
+    githubUrl,
+    introduce,
+    startDate,
+    endDate,
+    content,
+    projectSklls,
+  };
+};
+
+export const makeProfileMock = ({
+  baekjoonId = 'shellboy',
+  blogUrl = 'https://shellboylog.com',
+  githubUrl = 'https://github.com/qkrdmstlr3',
+  introduce = 'hello my name is shellboy',
+  nickname = 'shellboy',
+  projects = [makeProjectMock({ id: 1 }), makeProjectMock({ id: 2 }), makeProjectMock({ id: 3 })],
+  userSkills = [makeSkillMock({ skillName: 'typescript' }), makeSkillMock({ skillName: 'c#' })],
+}): ProfileClientType => {
+  return {
+    baekjoonId,
+    blogUrl,
+    githubUrl,
+    introduce,
+    nickname,
+    projects,
+    userSkills,
+  };
 };
 
 export const makeMockSummarizedPost = ({
@@ -83,7 +90,7 @@ export const makeMockSummarizedPost = ({
   maxPeople = 10,
   createAt = new Date(),
   nickname = 'user',
-  postSkills = skills,
+  postSkills = [makeSkillMock({ skillName: 'typescript' }), makeSkillMock({ skillName: 'c#' })],
 }): SummarizedPostClientType => {
   return {
     postId,

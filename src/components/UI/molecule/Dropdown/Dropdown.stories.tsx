@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import SkillDropdown from '.';
-import { skills } from '../../../../__mocks__/mock-dats';
+import { makeSkillMock } from '../../../../__mocks__/mock-dats';
 
 export default {
   title: 'Molecule/Dropdown',
@@ -12,6 +12,12 @@ const onClickAction = action('click');
 
 export const dropdown = (): React.ReactElement => {
   const placeholder = '스택 추가';
+  const skills = [
+    makeSkillMock({ skillName: 'typescript' }),
+    makeSkillMock({ skillName: 'javascript' }),
+    makeSkillMock({ skillName: 'c#' }),
+    makeSkillMock({ skillName: 'python' }),
+  ];
   return (
     <SkillDropdown
       placeholder={placeholder}
