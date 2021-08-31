@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 
 export const Container = styled.div`
   padding: 0 2rem 1rem 2rem;

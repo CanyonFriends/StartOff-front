@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import Input from '.';
-import StyleWrapper from '../../../../common/styleWrapper';
+import StyleWrapper from '../../../../style/styleWrapper';
 
 export default {
   title: 'Atom/Input',

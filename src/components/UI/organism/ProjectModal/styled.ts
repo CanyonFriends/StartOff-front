@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 
 export const Container = styled.form`
   padding: 2rem 4rem 4rem 4rem;

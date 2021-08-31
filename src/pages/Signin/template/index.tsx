@@ -6,7 +6,7 @@ import { Button, Anchor, Title, Icon } from '../../../components/UI/atom';
 import { BoxWithIcon } from '../../../components/UI/molecule';
 import { LoginForm, AlertModal } from '../../../components/UI/organism';
 import { LoginInfoType } from '../../../validator/loginValidator';
-import theme from '../../../common/theme';
+import theme from '../../../style/theme';
 import { actions } from '../../../redux/user';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';

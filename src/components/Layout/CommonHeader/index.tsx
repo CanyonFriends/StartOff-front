@@ -4,7 +4,7 @@ import * as Style from './styled';
 import { Icon, Anchor } from '../../UI/atom';
 import { BoxWithIcon } from '../../UI/molecule';
 import { homePath, signinPath, buildProfilePath, studyBoardPath } from '../../../Routes';
-import theme from '../../../common/theme';
+import theme from '../../../style/theme';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';
 import { actions } from '../../../redux/user';

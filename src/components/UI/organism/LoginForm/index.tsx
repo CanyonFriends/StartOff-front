@@ -2,7 +2,7 @@ import React from 'react';
 import * as Style from './styled';
 import InputField, { InputFieldProps } from '../../molecule/InputField';
 import { Button } from '../../atom';
-import theme from '../../../../common/theme';
+import theme from '../../../../style/theme';
 import useForm from '../../../../hooks/useForm';
 import loginValidator, { LoginInfoType } from '../../../../validator/loginValidator';
 

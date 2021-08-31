@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
 import BoxWithIcon from '.';
 import { Input } from '../../atom';
-import StyleWrapper from '../../../../common/styleWrapper';
+import StyleWrapper from '../../../../style/styleWrapper';
 
 export default {
   title: 'Molecule/BoxWithIcon',
