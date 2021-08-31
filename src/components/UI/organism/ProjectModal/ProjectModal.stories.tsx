@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 import ProjectModal from '.';
-import { project, skills } from '../../../../__mocks__/mock-dats';
+import { makeProjectMock, makeSkillMock } from '../../../../__mocks__/mock-dats';
 
 export default {
   title: 'Organism/CreateProjectModal',
@@ -15,11 +15,18 @@ const handleSubmit = async () => {
   return '';
 };
 
+const skills = [
+  makeSkillMock({ skillName: 'typescript' }),
+  makeSkillMock({ skillName: 'javascript' }),
+  makeSkillMock({ skillName: 'c#' }),
+  makeSkillMock({ skillName: 'python' }),
+];
+
 export const modifyProjectModal = (): React.ReactElement => {
   return (
     <ProjectModal
       isModify
-      project={project}
+      project={makeProjectMock({})}
       onSubmit={handleSubmit}
       handleModalClose={onClickAction}
       totalSkillList={skills}

@@ -7,7 +7,7 @@ import { render } from '../../test-utils';
 import ProfilePage from '../Profile';
 import { getProfileAPI, updateProfileIntroduce, updateGithubIntroduce, updateBlogIntroduce } from '../../api/profile';
 import { getSkillsAPI } from '../../api/skill';
-import { profile, skills, project } from '../../__mocks__/mock-dats';
+import { makeProfileMock, makeSkillMock } from '../../__mocks__/mock-dats';
 import { dateToString } from '../../utils/date';
 import { updatePasswordAPI } from '../../api/user';
 
@@ -22,10 +22,18 @@ const updateProfileIntroduceMockAPI = updateProfileIntroduce as jest.MockedFunct
 const updateGithubIntroduceMock = updateGithubIntroduce as jest.MockedFunction<typeof updateGithubIntroduce>;
 const updateBlogIntroduceMock = updateBlogIntroduce as jest.MockedFunction<typeof updateBlogIntroduce>;
 
+const profileMock = makeProfileMock({});
+const skillMockList = [
+  makeSkillMock({ skillName: 'typescript' }),
+  makeSkillMock({ skillName: 'javascript' }),
+  makeSkillMock({ skillName: 'c#' }),
+  makeSkillMock({ skillName: 'python' }),
+];
+
 beforeEach(() => {
   jest.resetAllMocks();
-  getProfileMockAPI.mockReturnValue(new Promise((res) => res(profile)));
-  getSkillsMockAPI.mockReturnValue(new Promise((res) => res(skills)));
+  getProfileMockAPI.mockReturnValue(new Promise((res) => res(profileMock)));
+  getSkillsMockAPI.mockReturnValue(new Promise((res) => res(skillMockList)));
 });
 
 describe('<Profile> 페이지', () => {
@@ -75,8 +83,8 @@ describe('<Profile> 페이지', () => {
       const component = render(<ProfilePage />);
 
       await waitFor(() => {
-        component.getByText(profile.nickname);
-        component.getByText(profile.introduce);
+        component.getByText(profileMock.nickname);
+        component.getByText(profileMock.introduce);
       });
     });
 
@@ -90,8 +98,8 @@ describe('<Profile> 페이지', () => {
         // input박스 전환여부 확인
         const nicknameInput = component.getByLabelText('nickname') as HTMLInputElement;
         const introduceInput = component.getByLabelText('introduce') as HTMLInputElement;
-        expect(nicknameInput.value).toBe(profile.nickname);
-        expect(introduceInput.value).toBe(profile.introduce);
+        expect(nicknameInput.value).toBe(profileMock.nickname);
+        expect(introduceInput.value).toBe(profileMock.introduce);
       });
     });
 
@@ -104,13 +112,13 @@ describe('<Profile> 페이지', () => {
         fireEvent.click(modifyButton);
         const nicknameInput = component.getByLabelText('nickname') as HTMLInputElement;
         const introduceInput = component.getByLabelText('introduce') as HTMLInputElement;
-        fireEvent.change(nicknameInput, { target: { value: `${profile.nickname}!` } });
-        fireEvent.change(introduceInput, { target: { value: `${profile.introduce}!` } });
+        fireEvent.change(nicknameInput, { target: { value: `${profileMock.nickname}!` } });
+        fireEvent.change(introduceInput, { target: { value: `${profileMock.introduce}!` } });
 
         const saveButton = component.getByText('저장');
         fireEvent.click(saveButton);
-        component.getByText(`${profile.nickname}!`);
-        component.getByText(`${profile.introduce}!`);
+        component.getByText(`${profileMock.nickname}!`);
+        component.getByText(`${profileMock.introduce}!`);
       });
     });
   });
@@ -120,7 +128,7 @@ describe('<Profile> 페이지', () => {
       const component = render(<ProfilePage />);
 
       await waitFor(() => {
-        component.getByText(profile.githubUrl);
+        component.getByText(profileMock.githubUrl);
       });
     });
 
@@ -132,7 +140,7 @@ describe('<Profile> 페이지', () => {
         fireEvent.click(modifyButton);
 
         const githubInput = component.getByLabelText('github') as HTMLInputElement;
-        expect(githubInput.value).toBe(profile.githubUrl);
+        expect(githubInput.value).toBe(profileMock.githubUrl);
       });
     });
 
@@ -144,11 +152,11 @@ describe('<Profile> 페이지', () => {
         const modifyButton = component.getByLabelText('logo-pencil');
         fireEvent.click(modifyButton);
         const githubInput = component.getByLabelText('github') as HTMLInputElement;
-        fireEvent.change(githubInput, { target: { value: `${profile.githubUrl}!` } });
+        fireEvent.change(githubInput, { target: { value: `${profileMock.githubUrl}!` } });
 
         const saveButton = component.getByLabelText('logo-disk');
         fireEvent.click(saveButton);
-        component.getByText(`${profile.githubUrl}!`);
+        component.getByText(`${profileMock.githubUrl}!`);
       });
     });
   });
@@ -158,7 +166,7 @@ describe('<Profile> 페이지', () => {
       const component = render(<ProfilePage />);
 
       await waitFor(() => {
-        component.getByText(profile.blogUrl);
+        component.getByText(profileMock.blogUrl);
       });
     });
 
@@ -170,7 +178,7 @@ describe('<Profile> 페이지', () => {
         fireEvent.click(modifyButton);
 
         const blogInput = component.getByLabelText('blog') as HTMLInputElement;
-        expect(blogInput.value).toBe(profile.blogUrl);
+        expect(blogInput.value).toBe(profileMock.blogUrl);
       });
     });
 
@@ -182,11 +190,11 @@ describe('<Profile> 페이지', () => {
         const modifyButton = component.getByLabelText('home-pencil');
         fireEvent.click(modifyButton);
         const blogInput = component.getByLabelText('blog') as HTMLInputElement;
-        fireEvent.change(blogInput, { target: { value: `${profile.blogUrl}!` } });
+        fireEvent.change(blogInput, { target: { value: `${profileMock.blogUrl}!` } });
 
         const saveButton = component.getByLabelText('home-disk');
         fireEvent.click(saveButton);
-        component.getByText(`${profile.blogUrl}!`);
+        component.getByText(`${profileMock.blogUrl}!`);
       });
     });
   });
@@ -196,8 +204,8 @@ describe('<Profile> 페이지', () => {
       const component = render(<ProfilePage />);
 
       await waitFor(() => {
-        component.getByText(profile.userSkills[0].skillName);
-        component.getByText(profile.userSkills[1].skillName);
+        component.getAllByText(profileMock.userSkills[0].skillName);
+        component.getAllByText(profileMock.userSkills[1].skillName);
       });
     });
   });
@@ -207,13 +215,15 @@ describe('<Profile> 페이지', () => {
       const component = render(<ProfilePage />);
 
       await waitFor(() => {
-        component.getByText(project.title);
-        component.getByText(project.deployUrl);
-        component.getByText(project.githubUrl);
-        component.getByText(project.introduce);
-        component.getByText(`${dateToString(project.startDate)} ~ ${dateToString(project.endDate)}`);
-        component.getByText(project.content);
-        component.getByText(skills[0].skillName);
+        component.getAllByText(profileMock.projects[0].title);
+        component.getAllByText(profileMock.projects[0].deployUrl);
+        component.getAllByText(profileMock.projects[0].githubUrl);
+        component.getAllByText(profileMock.projects[0].introduce);
+        component.getAllByText(
+          `${dateToString(profileMock.projects[0].startDate)} ~ ${dateToString(profileMock.projects[0].endDate)}`,
+        );
+        component.getAllByText(profileMock.projects[0].content);
+        component.getAllByText(profileMock.projects[0].projectSklls[0].skillName);
       });
     });
   });
