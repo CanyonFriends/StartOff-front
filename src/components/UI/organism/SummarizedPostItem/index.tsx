@@ -1,11 +1,11 @@
 import React from 'react';
 import * as Style from './styled';
-import { SummarizedPostType } from '../../../../@types/client';
+import { SummarizedPostClientType } from '../../../../@types/client';
 import { Tag, Title } from '../../atom';
 import { dateToString } from '../../../../utils/date';
 
 interface SummarizedPostItemProps {
-  post: SummarizedPostType;
+  post: SummarizedPostClientType;
 }
 
 function SummarizedPostItem({ post }: SummarizedPostItemProps) {

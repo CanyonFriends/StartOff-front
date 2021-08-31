@@ -1,7 +1,7 @@
 import { SkillServerType, ProfileServerType } from '../@types/server';
 import axios from '../utils/axios';
 import { ErrorType } from './error';
-import { ProfileClientType, SkillType } from '../@types/client';
+import { ProfileClientType, SkillClientType } from '../@types/client';
 import { profileResponse2Type } from '../converter/profile';
 import { skillServerType2ClientType } from '../converter/skill';
 
@@ -107,7 +107,7 @@ export const updateBlogIntroduce = async ({
 export const updateUserSkillAPI = async ({
   userId,
   skillName,
-}: UpdateUserSkillRequest): Promise<SkillType | ErrorType> => {
+}: UpdateUserSkillRequest): Promise<SkillClientType | ErrorType> => {
   try {
     const response = await axios({
       method: 'PUT',

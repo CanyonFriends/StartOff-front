@@ -1,6 +1,6 @@
 import { ErrorType } from '../api/error';
 import { SigninResponseType, SignupResponseType } from '../api/auth';
-import { SkillType, ProjectType, ProfileClientType, SummarizedPostType } from '../@types/client';
+import { SkillClientType, ProjectClientType, ProfileClientType, SummarizedPostClientType } from '../@types/client';
 import generateUUID from '../utils/generateUUID';
 
 // api
@@ -26,7 +26,7 @@ export const signupFailMockInfo: ErrorType = {
 
 // data
 
-export const skills: SkillType[] = [
+export const skills: SkillClientType[] = [
   {
     skillId: '1',
     skillName: 'typescript',
@@ -53,7 +53,7 @@ export const skills: SkillType[] = [
   },
 ];
 
-export const project: ProjectType = {
+export const project: ProjectClientType = {
   id: 1,
   title: 'project',
   deployUrl: 'https://shellboylog.com/list',
@@ -84,7 +84,7 @@ export const makeMockSummarizedPost = ({
   createAt = new Date(),
   nickname = 'user',
   postSkills = skills,
-}): SummarizedPostType => {
+}): SummarizedPostClientType => {
   return {
     postId,
     title,

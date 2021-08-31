@@ -1,9 +1,9 @@
-import { ProjectType } from '../@types/client';
+import { ProjectClientType } from '../@types/client';
 import { ProjectServerResponseType, ProjectServerRequestType } from '../@types/server';
 import { skillServerType2ClientType } from './skill';
 import { dateToString } from '../utils/date';
 
-export const projectServerType2ClientType = (project: ProjectServerResponseType): ProjectType => {
+export const projectServerType2ClientType = (project: ProjectServerResponseType): ProjectClientType => {
   return {
     title: project.title,
     content: project.content,
@@ -17,7 +17,7 @@ export const projectServerType2ClientType = (project: ProjectServerResponseType)
   };
 };
 
-export const projectClientType2ServerReqeustType = (project: ProjectType): ProjectServerRequestType => {
+export const projectClientType2ServerReqeustType = (project: ProjectClientType): ProjectServerRequestType => {
   return {
     title: project.title,
     content: project.content,

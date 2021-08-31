@@ -1,4 +1,4 @@
-import { SkillType } from '../@types/client';
+import { SkillClientType } from '../@types/client';
 
 export interface ProjectValidatorType {
   id: number | undefined;
@@ -9,7 +9,7 @@ export interface ProjectValidatorType {
   githubUrl: string;
   startDate: Date | undefined;
   endDate: Date | undefined;
-  projectSklls: SkillType[];
+  projectSklls: SkillClientType[];
   isProgress?: boolean;
 }
 
