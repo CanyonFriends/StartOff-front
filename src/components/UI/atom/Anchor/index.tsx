@@ -7,6 +7,7 @@ import { SizeType } from '../../@types/index';
 interface AnchorProps {
   children: React.ReactNode;
   to: string;
+  id?: string;
   size?: SizeType;
   color?: string;
   bolder?: boolean;
@@ -14,6 +15,7 @@ interface AnchorProps {
 }
 
 function Anchor({
+  id = '',
   children,
   to,
   size = 'small',
@@ -22,7 +24,7 @@ function Anchor({
   hoverColor = 'inherit',
 }: AnchorProps) {
   return (
-    <Style.Container bolder={bolder} textColor={color} hoverColor={hoverColor} size={size}>
+    <Style.Container aria-label={id} bolder={bolder} textColor={color} hoverColor={hoverColor} size={size}>
       <Link to={to}>{children}</Link>
     </Style.Container>
   );

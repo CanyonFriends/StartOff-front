@@ -6,6 +6,7 @@ import { TitleSizeType } from '../../@types/index';
 
 export interface TitleProps {
   children?: React.ReactNode;
+  id?: string;
   color?: string;
   fontsize?: TitleSizeType;
 }
@@ -21,7 +22,7 @@ const titleDispenser: { [title in TitleSizeType]: TitleStyleType } = {
   h6: Style.Title6,
 };
 
-function Title({ children, color = theme.color.color_brightness_000, fontsize = 'h1' }: TitleProps) {
+function Title({ id, children, color = theme.color.color_brightness_000, fontsize = 'h1' }: TitleProps) {
   const TitleComponent = titleDispenser[fontsize];
   return (
     <TitleComponent color={color} fontsize={fontsize}>

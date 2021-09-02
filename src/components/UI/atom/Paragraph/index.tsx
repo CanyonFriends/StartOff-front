@@ -4,11 +4,16 @@ import { SizeType } from '../../@types';
 
 export interface ParagraphProps {
   content: string;
-  size: SizeType;
+  id?: string;
+  size?: SizeType;
 }
 
-function Paragraph({ content, size }: ParagraphProps) {
-  return <Style.Paragraph size={size}>{content}</Style.Paragraph>;
+function Paragraph({ id = '', content, size = 'small' }: ParagraphProps) {
+  return (
+    <Style.Paragraph aria-label={id} size={size}>
+      {content}
+    </Style.Paragraph>
+  );
 }
 
 export default Paragraph;

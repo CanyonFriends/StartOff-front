@@ -1,4 +1,4 @@
-import GlobalStyle from '../src/common/GlobalStyle';
+import GlobalStyle from '../src/style/GlobalStyle';
 import React from 'react';
 import { MemoryRouter } from 'react-router';
 import { Provider } from 'react-redux';
