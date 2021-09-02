@@ -18,7 +18,7 @@ function Tag({
   onClickClose,
 }: TagProps) {
   return (
-    <Style.Container textColor={textColor} color={color} availableClose={!!onClickClose}>
+    <Style.Container aria-label={id} textColor={textColor} color={color} availableClose={!!onClickClose}>
       {name}
       {onClickClose && <Style.CloseButton onClick={() => onClickClose(id)}>x</Style.CloseButton>}
     </Style.Container>
