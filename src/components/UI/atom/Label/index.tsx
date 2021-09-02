@@ -5,6 +5,7 @@ import { SizeType } from '../../@types/index';
 
 export interface LabelProps {
   content: string;
+  id?: string;
   group?: string;
   color?: string;
   size?: SizeType;
@@ -13,13 +14,14 @@ export interface LabelProps {
 
 function Label({
   content,
+  id = '',
   group = '',
   color = theme.color.color_brightness_000,
   size = 'small',
   bolder = false,
 }: LabelProps) {
   return (
-    <Style.Container htmlFor={group} color={color} size={size} bolder={bolder}>
+    <Style.Container aria-label={id} htmlFor={group} color={color} size={size} bolder={bolder}>
       {content}
     </Style.Container>
   );

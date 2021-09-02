@@ -5,6 +5,7 @@ import { SizeType, ButtonThemeType } from '../../@types/index';
 
 export interface ButtonProps {
   children: React.ReactNode;
+  id?: string;
   formButton?: boolean;
   to?: string;
   width?: string;
@@ -17,6 +18,7 @@ export interface ButtonProps {
 function Button({
   children,
   onClick,
+  id,
   to,
   formButton = true,
   theme = 'primary',
@@ -26,6 +28,7 @@ function Button({
 }: ButtonProps) {
   return (
     <Style.Button
+      aria-label={id}
       type={formButton ? 'submit' : 'button'}
       onClick={onClick}
       theme={theme}

@@ -41,6 +41,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
           class="css-1bechv"
         >
           <label
+            aria-label=""
             class="css-1d3b76u"
             color="#404680"
             for="email"
@@ -66,6 +67,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
           class="css-1bechv"
         >
           <label
+            aria-label=""
             class="css-1d3b76u"
             color="#404680"
             for="password"
@@ -104,6 +106,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
         아직 계정이 없으시다면?
       </span>
       <div
+        aria-label=""
         class="css-5jx5gk"
       >
         <a
