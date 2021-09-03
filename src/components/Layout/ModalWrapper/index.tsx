@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Overlay from '../Overlay';
 import * as Style from './styled';
 
 interface ModalWrapperProps {
@@ -9,22 +9,15 @@ interface ModalWrapperProps {
 }
 
 function ModalWrapper({ children, clickModalOutside, isBlur = false }: ModalWrapperProps) {
-  const modalTag = document.getElementById('modal');
-
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
     clickModalOutside();
   };
 
   return (
-    modalTag &&
-    ReactDOM.createPortal(
-      <>
-        <Style.Overlay isBlur={isBlur} onClick={handleClick} />
-        <Style.Container>{children}</Style.Container>
-      </>,
-      modalTag,
-    )
+    <Overlay clickOverlay={handleClick} isBlur={isBlur}>
+      <Style.Container>{children}</Style.Container>
+    </Overlay>
   );
 }
 

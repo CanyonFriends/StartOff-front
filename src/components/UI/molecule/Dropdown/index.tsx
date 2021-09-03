@@ -35,7 +35,7 @@ function Dropdown({ ariaLabel = '', placeholder, items, clickItem, isClickValueT
       </Button>
       {open && (
         <Style.MenuWrapper>
-          <Overlay clickModalOutside={toggleDropdown} />
+          <Overlay clickOverlay={toggleDropdown} />
           {items.map((item) => (
             <Style.Item
               key={item.id}
