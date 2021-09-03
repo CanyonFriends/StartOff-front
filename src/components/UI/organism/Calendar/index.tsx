@@ -33,7 +33,7 @@ function Calendar({ isRange = false, start, end, startPlaceholder, endPlaceholde
 
   return (
     <>
-      {isCalendarOpen && <Overlay clickModalOutside={() => setIsCalendarOpen(false)} />}
+      {isCalendarOpen && <Overlay clickOverlay={() => setIsCalendarOpen(false)} />}
       <Style.Container>
         <Style.DateWrapper isDateSelected={!!startDate} onClick={() => setIsCalendarOpen(true)}>
           {startDate ? dateToString(startDate) : startPlaceholder}

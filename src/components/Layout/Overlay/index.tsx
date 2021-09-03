@@ -3,22 +3,25 @@ import ReactDOM from 'react-dom';
 import * as Style from './styled';
 
 interface OverlayProps {
-  clickModalOutside: () => void;
+  clickOverlay: (event: React.MouseEvent<HTMLDivElement>) => void;
+  isBlur?: boolean;
+  children?: React.ReactNode;
 }
 
-function Overlay({ clickModalOutside }: OverlayProps) {
+function Overlay({ clickOverlay, children, isBlur = false }: OverlayProps) {
   const modalTag = document.getElementById('modal');
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
-    clickModalOutside();
+    clickOverlay(event);
   };
 
   return (
     modalTag &&
     ReactDOM.createPortal(
       <>
-        <Style.Overlay onClick={handleClick} />
+        <Style.Overlay onClick={handleClick} isBlur={isBlur} />
+        {children}
       </>,
       modalTag,
     )
