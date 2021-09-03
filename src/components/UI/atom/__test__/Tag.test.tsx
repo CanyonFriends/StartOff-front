@@ -22,7 +22,7 @@ describe('Component/Atom/Tag', () => {
 
     const component = render(<Tag id="tag" name="typescript" onClickClose={clickEvent} />);
 
-    const tag = component.getByLabelText('tag');
+    const tag = component.getByText('x');
     fireEvent.click(tag);
     waitFor(() => {
       expect(text).toBe('tallmurf');
