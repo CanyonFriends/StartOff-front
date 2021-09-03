@@ -1,6 +1,5 @@
 import React from 'react';
-import * as Style from './styled';
-import { Input, Title } from '../../atom';
+import { Input, Paragraph, Title } from '../../atom';
 import { TextType } from '../../@types/index';
 import { InputProps } from '../../atom/Input/index';
 import { TitleProps } from '../../atom/Title';
@@ -17,7 +16,7 @@ function EditableText({ isEditable, titleProps, textType, inputProps }: Editable
     textType === 'title' ? (
       <Title {...titleProps}>{inputProps.value}</Title>
     ) : (
-      <Style.Paragraph>{inputProps.value}</Style.Paragraph>
+      <Paragraph size="large" content={inputProps.value} />
     );
 
   return isEditable ? <Input {...inputProps} /> : Component;

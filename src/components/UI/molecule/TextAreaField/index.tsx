@@ -6,14 +6,21 @@ import { SortDirectionType } from '../../@types/index';
 
 export interface TextAreaFieldProps {
   group?: string;
+  ariaLabel?: string;
   labelProps: LabelProps;
   textareaProps: TextAreaProps;
   sortDirection?: SortDirectionType;
 }
 
-function TextAreaField({ group = '', labelProps, textareaProps, sortDirection = 'row' }: TextAreaFieldProps) {
+function TextAreaField({
+  ariaLabel = '',
+  group = '',
+  labelProps,
+  textareaProps,
+  sortDirection = 'row',
+}: TextAreaFieldProps) {
   return (
-    <Style.Container sortDirection={sortDirection}>
+    <Style.Container aria-label={ariaLabel} sortDirection={sortDirection}>
       <Label {...labelProps} group={group} />
       <TextArea {...textareaProps} id={group} />
     </Style.Container>

@@ -11,11 +11,12 @@ interface ItemProps {
 export interface DropdownProps {
   placeholder: string;
   items: ItemProps[];
+  ariaLabel?: string;
   isClickValueText?: boolean;
   clickItem: (id: string) => void;
 }
 
-function Dropdown({ placeholder, items, clickItem, isClickValueText = false }: DropdownProps) {
+function Dropdown({ ariaLabel = '', placeholder, items, clickItem, isClickValueText = false }: DropdownProps) {
   const [open, setOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -28,7 +29,7 @@ function Dropdown({ placeholder, items, clickItem, isClickValueText = false }: D
   };
 
   return (
-    <Style.Container>
+    <Style.Container aria-label={ariaLabel}>
       <Button formButton={false} size="medium" onClick={toggleDropdown}>
         {placeholder}
       </Button>

@@ -9,6 +9,7 @@ exports[`<Signup> 페이지 snapshot 체크 1`] = `
     class="css-sapy0t"
   >
     <div
+      aria-label=""
       class="css-2fxwiq"
     >
       <div
@@ -62,6 +63,7 @@ exports[`<Signup> 페이지 snapshot 체크 1`] = `
         class="css-8tovm8"
       >
         <div
+          aria-label=""
           class="css-1bechv"
         >
           <label
@@ -88,6 +90,7 @@ exports[`<Signup> 페이지 snapshot 체크 1`] = `
         class="css-8tovm8"
       >
         <div
+          aria-label=""
           class="css-1bechv"
         >
           <label
@@ -114,6 +117,7 @@ exports[`<Signup> 페이지 snapshot 체크 1`] = `
         class="css-8tovm8"
       >
         <div
+          aria-label=""
           class="css-1bechv"
         >
           <label
@@ -140,6 +144,7 @@ exports[`<Signup> 페이지 snapshot 체크 1`] = `
         class="css-8tovm8"
       >
         <div
+          aria-label=""
           class="css-1bechv"
         >
           <label
