@@ -5,8 +5,9 @@ import { SortDirectionType, IconPosition } from '../../@types/index';
 import { IconProps } from '../../atom/Icon';
 
 interface BoxWithIconProps {
-  children: React.ReactElement;
+  children: React.ReactNode;
   iconProps: IconProps;
+  ariaLabel?: string;
   isIconButton?: boolean;
   isContinuous?: boolean;
   sortDirection?: SortDirectionType;
@@ -16,13 +17,14 @@ interface BoxWithIconProps {
 function BoxWithIcon({
   children,
   iconProps,
+  ariaLabel = '',
   isIconButton = false,
   isContinuous = false,
   iconPosition = 'left',
   sortDirection = 'row',
 }: BoxWithIconProps) {
   return (
-    <Style.Container isContinuous={isContinuous} sortDirection={sortDirection}>
+    <Style.Container aria-label={ariaLabel} isContinuous={isContinuous} sortDirection={sortDirection}>
       {iconPosition === 'left' ? (
         <>
           {isIconButton ? (

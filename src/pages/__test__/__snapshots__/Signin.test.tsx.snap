@@ -9,6 +9,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
     class="css-sapy0t"
   >
     <div
+      aria-label=""
       class="css-2fxwiq"
     >
       <div
@@ -38,6 +39,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
         class="css-1ydboqz"
       >
         <div
+          aria-label=""
           class="css-1bechv"
         >
           <label
@@ -64,6 +66,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
         class="css-1ydboqz"
       >
         <div
+          aria-label=""
           class="css-1bechv"
         >
           <label
