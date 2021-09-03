@@ -6,16 +6,17 @@ import { SortDirectionType } from '../../@types/index';
 
 export interface InputFieldProps {
   group?: string;
+  ariaLabel?: string;
   labelProps: LabelProps;
   inputProps: InputProps;
   sortDirection?: SortDirectionType;
 }
 
-function InputField({ group = '', labelProps, inputProps, sortDirection = 'row' }: InputFieldProps) {
+function InputField({ ariaLabel = '', group = '', labelProps, inputProps, sortDirection = 'row' }: InputFieldProps) {
   return (
-    <Style.Container sortDirection={sortDirection}>
+    <Style.Container aria-label={ariaLabel} sortDirection={sortDirection}>
       <Label {...labelProps} group={group} />
-      <Input {...inputProps} id={group} />
+      <Input {...inputProps} id={group || inputProps.id} />
     </Style.Container>
   );
 }

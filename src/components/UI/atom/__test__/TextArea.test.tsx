@@ -18,7 +18,7 @@ describe('Component/Atom/TextArea', () => {
   };
 
   it('value, id테스트', () => {
-    const component = render(<TextArea id="textarea" value={text} onChange={onChange} />);
+    const component = render(<TextArea id="textarea" ariaLabel="textarea" value={text} onChange={onChange} />);
 
     const textarea = component.getByLabelText('textarea');
     expect(textarea).toHaveProperty('value', text);
@@ -26,7 +26,7 @@ describe('Component/Atom/TextArea', () => {
   });
 
   it('onChange 테스트', () => {
-    const component = render(<TextArea id="textarea" value={text} onChange={onChange} />);
+    const component = render(<TextArea ariaLabel="textarea" value={text} onChange={onChange} />);
 
     const textarea = component.getByLabelText('textarea');
     fireEvent.change(textarea, { target: { value: 'shellboy' } });
@@ -36,7 +36,7 @@ describe('Component/Atom/TextArea', () => {
   });
 
   it('placeholder 테스트', () => {
-    const component = render(<TextArea id="textarea" value={text} onChange={onChange} placeholder="안뇽!" />);
+    const component = render(<TextArea ariaLabel="textarea" value={text} onChange={onChange} placeholder="안뇽!" />);
 
     const textarea = component.getByLabelText('textarea');
     expect(textarea).toHaveProperty('placeholder', '안뇽!');
@@ -44,7 +44,7 @@ describe('Component/Atom/TextArea', () => {
 
   describe('size 테스트', () => {
     it('small일 경우', () => {
-      const component = render(<TextArea id="textarea" value={text} onChange={onChange} size="small" />);
+      const component = render(<TextArea ariaLabel="textarea" value={text} onChange={onChange} size="small" />);
 
       const textarea = component.getByLabelText('textarea');
       expect(textarea).toHaveStyle({
@@ -53,7 +53,7 @@ describe('Component/Atom/TextArea', () => {
     });
 
     it('medium일 경우', () => {
-      const component = render(<TextArea id="textarea" value={text} onChange={onChange} size="medium" />);
+      const component = render(<TextArea ariaLabel="textarea" value={text} onChange={onChange} size="medium" />);
 
       const textarea = component.getByLabelText('textarea');
       expect(textarea).toHaveStyle({
@@ -62,7 +62,7 @@ describe('Component/Atom/TextArea', () => {
     });
 
     it('large일 경우', () => {
-      const component = render(<TextArea id="textarea" value={text} onChange={onChange} size="large" />);
+      const component = render(<TextArea ariaLabel="textarea" value={text} onChange={onChange} size="large" />);
 
       const textarea = component.getByLabelText('textarea');
       expect(textarea).toHaveStyle({
@@ -71,7 +71,7 @@ describe('Component/Atom/TextArea', () => {
     });
 
     it('extraLarge일 경우', () => {
-      const component = render(<TextArea id="textarea" value={text} onChange={onChange} size="extraLarge" />);
+      const component = render(<TextArea ariaLabel="textarea" value={text} onChange={onChange} size="extraLarge" />);
 
       const textarea = component.getByLabelText('textarea');
       expect(textarea).toHaveStyle({
