@@ -14,8 +14,8 @@ function useForm<T>({ initialState, validator, onSubmit }: UseFormProps<T>) {
     setValues(value);
   };
 
-  const handleSubmitWithErrorControl = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmitWithErrorControl = async (event?: React.FormEvent<HTMLFormElement>) => {
+    if (event) event.preventDefault();
 
     const error = validator(values);
     setError(error);
