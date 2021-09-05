@@ -20,6 +20,7 @@ function AlertModal({ content, isSuccess = false, clickCloseButton }: AlertModal
     <ModalWrapper clickModalOutside={clickCloseButton} isBlur>
       <Style.Container>
         <Icon
+          id={isSuccess ? 'success-icon' : 'warning-icon'}
           icon={isSuccess ? 'Check' : 'Warning'}
           size="large"
           color={isSuccess ? theme.color.color_success_100 : theme.color.color_warning_100}

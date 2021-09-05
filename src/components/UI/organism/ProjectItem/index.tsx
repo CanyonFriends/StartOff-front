@@ -53,8 +53,8 @@ function ProjectItem({
             <Title fontsize="h3">{project.title}</Title>
             {editableAuthority && (
               <Style.IconWrapper>
-                <Icon icon="Pencil" onClick={toggleProjectModifyModal} />
-                <Icon icon="TrashCan" onClick={() => handleDeleteItem(project.id)} />
+                <Icon id="pencil-icon" icon="Pencil" onClick={toggleProjectModifyModal} />
+                <Icon id="trashcan-icon" icon="TrashCan" onClick={() => handleDeleteItem(project.id)} />
               </Style.IconWrapper>
             )}
           </Style.Top>
@@ -79,10 +79,10 @@ function ProjectItem({
           </Style.SkillWrapper>
         </Style.Header>
         <Style.Left>
-          <BoxWithIcon isContinuous iconProps={{ icon: 'Logo' }}>
+          <BoxWithIcon isContinuous iconProps={{ id: 'logo-icon', icon: 'Logo' }}>
             <Anchor to={project.githubUrl}>{project.githubUrl}</Anchor>
           </BoxWithIcon>
-          <BoxWithIcon isContinuous iconProps={{ icon: 'Home' }}>
+          <BoxWithIcon isContinuous iconProps={{ id: 'home-icon', icon: 'Home' }}>
             <Anchor to={project.deployUrl}>{project.deployUrl}</Anchor>
           </BoxWithIcon>
         </Style.Left>

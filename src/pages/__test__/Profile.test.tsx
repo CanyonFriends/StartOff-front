@@ -139,7 +139,7 @@ describe('<Profile> 페이지', () => {
         const modifyButton = component.getByLabelText('logo-pencil');
         fireEvent.click(modifyButton);
 
-        const githubInput = component.getByLabelText('github') as HTMLInputElement;
+        const githubInput = component.getByLabelText('github-input') as HTMLInputElement;
         expect(githubInput.value).toBe(profileMock.githubUrl);
       });
     });
@@ -151,7 +151,7 @@ describe('<Profile> 페이지', () => {
       await waitFor(() => {
         const modifyButton = component.getByLabelText('logo-pencil');
         fireEvent.click(modifyButton);
-        const githubInput = component.getByLabelText('github') as HTMLInputElement;
+        const githubInput = component.getByLabelText('github-input') as HTMLInputElement;
         fireEvent.change(githubInput, { target: { value: `${profileMock.githubUrl}!` } });
 
         const saveButton = component.getByLabelText('logo-disk');
@@ -177,7 +177,7 @@ describe('<Profile> 페이지', () => {
         const modifyButton = component.getByLabelText('home-pencil');
         fireEvent.click(modifyButton);
 
-        const blogInput = component.getByLabelText('blog') as HTMLInputElement;
+        const blogInput = component.getByLabelText('blog-input') as HTMLInputElement;
         expect(blogInput.value).toBe(profileMock.blogUrl);
       });
     });
@@ -189,7 +189,7 @@ describe('<Profile> 페이지', () => {
       await waitFor(() => {
         const modifyButton = component.getByLabelText('home-pencil');
         fireEvent.click(modifyButton);
-        const blogInput = component.getByLabelText('blog') as HTMLInputElement;
+        const blogInput = component.getByLabelText('blog-input') as HTMLInputElement;
         fireEvent.change(blogInput, { target: { value: `${profileMock.blogUrl}!` } });
 
         const saveButton = component.getByLabelText('home-disk');

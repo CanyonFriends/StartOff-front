@@ -36,28 +36,28 @@ function SignupForm({ handleSubmit }: SignupFormProps) {
   const idFormInfo: InputFieldProps = {
     group: 'email',
     sortDirection: 'column',
-    labelProps: { content: 'email', color: theme.color.color_primary_400 },
+    labelProps: { id: 'email-label', content: 'email', color: theme.color.color_primary_400 },
     inputProps: { value: values.id, type: 'email', onChange: handleIdChange },
   };
 
   const pwFormInfo: InputFieldProps = {
     group: 'password',
     sortDirection: 'column',
-    labelProps: { content: 'password', color: theme.color.color_primary_400 },
+    labelProps: { id: 'password-label', content: 'password', color: theme.color.color_primary_400 },
     inputProps: { value: values.pw, type: 'password', onChange: handlePwChange },
   };
 
   const confirmPWFormInfo: InputFieldProps = {
     group: 'confirmPassword',
     sortDirection: 'column',
-    labelProps: { content: 'confirm password', color: theme.color.color_primary_400 },
+    labelProps: { id: 'confirm-password-label', content: 'confirm password', color: theme.color.color_primary_400 },
     inputProps: { value: values.confirmPW || '', type: 'password', onChange: handleConfirmPWChange },
   };
 
   const nicknameFormInfo: InputFieldProps = {
     group: 'nickname',
     sortDirection: 'column',
-    labelProps: { content: 'nickname', color: theme.color.color_primary_400 },
+    labelProps: { id: 'nickname-label', content: 'nickname', color: theme.color.color_primary_400 },
     inputProps: { value: values.nickname, type: 'text', onChange: handleNicknameChange },
   };
 
