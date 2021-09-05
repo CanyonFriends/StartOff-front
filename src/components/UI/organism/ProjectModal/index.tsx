@@ -45,6 +45,7 @@ function ProjectModal({ isModify, project, totalSkillList, onSubmit, handleModal
   }, [values.projectSklls.length]);
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.length > 20) return;
     handleChange({ ...values, title: event.target.value });
   };
 
@@ -166,7 +167,7 @@ function ProjectModal({ isModify, project, totalSkillList, onSubmit, handleModal
     sortDirection: 'column',
     labelProps: { content: '프로젝트 설명(200자)', color: theme.color.color_primary_400, bolder: true, size: 'medium' },
     textareaProps: {
-      id: 'project-content',
+      ariaLabel: 'project-content',
       value: values.content,
       onChange: handleContentChange,
       placeholder: '내용 입력',
@@ -177,7 +178,9 @@ function ProjectModal({ isModify, project, totalSkillList, onSubmit, handleModal
   return (
     <ModalWrapper clickModalOutside={handleModalClose} isBlur>
       <Style.Container onSubmit={handleSubmitWithErrorControl}>
-        <Title fontsize="h2">프로젝트 {isModify ? '수정' : '생성'}</Title>
+        <Title id="project-modal-title" fontsize="h2">
+          프로젝트 {isModify ? '수정' : '생성'}
+        </Title>
         <Style.InputWrapper>
           <InputField {...titleInputInfo} />
         </Style.InputWrapper>

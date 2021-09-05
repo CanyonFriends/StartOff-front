@@ -35,20 +35,28 @@ function Calendar({ isRange = false, start, end, startPlaceholder, endPlaceholde
     <>
       {isCalendarOpen && <Overlay clickOverlay={() => setIsCalendarOpen(false)} />}
       <Style.Container>
-        <Style.DateWrapper isDateSelected={!!startDate} onClick={() => setIsCalendarOpen(true)}>
+        <Style.DateWrapper
+          aria-label="calendar-start-date"
+          isDateSelected={!!startDate}
+          onClick={() => setIsCalendarOpen(true)}
+        >
           {startDate ? dateToString(startDate) : startPlaceholder}
         </Style.DateWrapper>
 
         {isRange && (
           <>
             ~
-            <Style.DateWrapper isDateSelected={!!endDate} onClick={() => setIsCalendarOpen(true)}>
+            <Style.DateWrapper
+              aria-label="calendar-end-date"
+              isDateSelected={!!endDate}
+              onClick={() => setIsCalendarOpen(true)}
+            >
               {endDate ? dateToString(endDate) : endPlaceholder}
             </Style.DateWrapper>
           </>
         )}
         {isCalendarOpen && (
-          <Style.CalendarWrapper>
+          <Style.CalendarWrapper aria-label="calendar-calendar">
             <DatePicker
               selected={startDate}
               onChange={isRange ? onChangeIfRangeTrue : onChangeIfRangeFalse}
