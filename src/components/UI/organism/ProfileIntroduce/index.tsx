@@ -14,19 +14,11 @@ interface ProfileIntroduceProps {
   nickname: string;
   introduce: string;
   imageurl: string;
-  isEditable?: boolean;
   handleSubmit: (data: ModifyProfileIntroduceValidatorType) => Promise<string>;
 }
 
-function ProfileIntroduce({
-  editableAuthority,
-  isEditable,
-  nickname,
-  introduce,
-  imageurl,
-  handleSubmit,
-}: ProfileIntroduceProps) {
-  const [editable, setEditable] = useState<boolean>(!!isEditable);
+function ProfileIntroduce({ editableAuthority, nickname, introduce, imageurl, handleSubmit }: ProfileIntroduceProps) {
+  const [editable, setEditable] = useState<boolean>(false);
   const { values, error, clearError, handleChange, handleSubmitWithErrorControl } =
     useForm<ModifyProfileIntroduceValidatorType>({
       onSubmit: handleSubmit,

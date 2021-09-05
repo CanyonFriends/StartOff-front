@@ -43,7 +43,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
           class="css-1bechv"
         >
           <label
-            aria-label=""
+            aria-label="email-label"
             class="css-1d3b76u"
             color="#404680"
             for="email"
@@ -70,7 +70,7 @@ exports[`<Signin> 페이지 snapshot 체크 1`] = `
           class="css-1bechv"
         >
           <label
-            aria-label=""
+            aria-label="password-label"
             class="css-1d3b76u"
             color="#404680"
             for="password"

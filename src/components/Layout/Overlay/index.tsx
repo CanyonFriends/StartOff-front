@@ -20,7 +20,7 @@ function Overlay({ clickOverlay, children, isBlur = false }: OverlayProps) {
     modalTag &&
     ReactDOM.createPortal(
       <>
-        <Style.Overlay onClick={handleClick} isBlur={isBlur} />
+        <Style.Overlay aria-label="overlay" onClick={handleClick} isBlur={isBlur} />
         {children}
       </>,
       modalTag,

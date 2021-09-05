@@ -37,19 +37,19 @@ function AccountInfoModal({ handleCloseModal, changePassword, deleteUser }: Acco
     group: 'currentpw',
     sortDirection: 'column',
     labelProps: { content: 'current password', color: theme.color.color_primary_400 },
-    inputProps: { value: values.currentPW, type: 'password', onChange: handleCurrentPW },
+    inputProps: { id: 'currentpw-input', value: values.currentPW, type: 'password', onChange: handleCurrentPW },
   };
   const afterPWInputInfo: InputFieldProps = {
     group: 'afterpw',
     sortDirection: 'column',
     labelProps: { content: 'after password', color: theme.color.color_primary_400 },
-    inputProps: { value: values.afterPW, type: 'password', onChange: handleAfterPW },
+    inputProps: { id: 'afterpw-input', value: values.afterPW, type: 'password', onChange: handleAfterPW },
   };
   const confirmPWInputInfo: InputFieldProps = {
     group: 'confirmpw',
     sortDirection: 'column',
     labelProps: { content: 'confirm password', color: theme.color.color_primary_400 },
-    inputProps: { value: values.confirmPW, type: 'password', onChange: handleConfirmPwChange },
+    inputProps: { id: 'confirmpw-input', value: values.confirmPW, type: 'password', onChange: handleConfirmPwChange },
   };
   return (
     <ModalWrapper clickModalOutside={handleCloseModal} isBlur>
@@ -71,7 +71,7 @@ function AccountInfoModal({ handleCloseModal, changePassword, deleteUser }: Acco
           </Button>
         </Style.Form>
         <Style.Line />
-        <Title fontsize="h4">탈퇴하기</Title>
+        <Title fontsize="h4">계정 탈퇴하기</Title>
         <Button theme="secondary" width="100%" size="medium" onClick={deleteUser}>
           탈퇴하기
         </Button>
