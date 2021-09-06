@@ -4,14 +4,14 @@ import { ProjectClientType, SkillClientType } from '../../../../@types/client';
 import { Icon, Title, Paragraph, Tag, Anchor } from '../../atom';
 import { dateToString } from '../../../../utils/date';
 import { BoxWithIcon } from '../../molecule';
-import { ProjectModal } from '..';
+import { ProjectModal, AlertModal } from '..';
 import { ProjectValidatorType } from '../../../../validator/projectValidator';
 
 interface ProjectItemProps {
   project: ProjectClientType;
   editableAuthority: boolean;
   totalSkillList: SkillClientType[];
-  handleDeleteItem: (projectId: number) => void;
+  handleDeleteItem: (projectId: number) => Promise<string>;
   handleModifyItem: (data: ProjectValidatorType) => Promise<string>;
 }
 
@@ -23,6 +23,7 @@ function ProjectItem({
   handleModifyItem,
 }: ProjectItemProps) {
   const [projectModalOpen, setProjectModalOpen] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
 
   const toggleProjectModifyModal = () => {
     setProjectModalOpen(!projectModalOpen);
@@ -36,8 +37,21 @@ function ProjectItem({
     return error;
   };
 
+  const handleDeleteSubmit = async () => {
+    const error = await handleDeleteItem(project.id);
+    if (!error.length) {
+      toggleProjectModifyModal();
+    }
+    setDeleteError(error);
+  };
+
+  const closeAlertModal = () => {
+    setDeleteError('');
+  };
+
   return (
     <>
+      {deleteError && <AlertModal content={deleteError} clickCloseButton={closeAlertModal} />}
       {projectModalOpen && (
         <ProjectModal
           isModify
@@ -53,8 +67,8 @@ function ProjectItem({
             <Title fontsize="h3">{project.title}</Title>
             {editableAuthority && (
               <Style.IconWrapper>
-                <Icon id="pencil-icon" icon="Pencil" onClick={toggleProjectModifyModal} />
-                <Icon id="trashcan-icon" icon="TrashCan" onClick={() => handleDeleteItem(project.id)} />
+                <Icon id="project-pencil-icon" icon="Pencil" onClick={toggleProjectModifyModal} />
+                <Icon id="project-trashcan-icon" icon="TrashCan" onClick={handleDeleteSubmit} />
               </Style.IconWrapper>
             )}
           </Style.Top>

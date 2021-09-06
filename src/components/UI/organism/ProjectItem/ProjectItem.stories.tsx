@@ -25,7 +25,7 @@ export const projectItemEditable = (): React.ReactElement => {
     <ProjectItem
       editableAuthority
       project={makeProjectMock({})}
-      handleDeleteItem={onClickAction}
+      handleDeleteItem={onClickAsyncAction}
       handleModifyItem={onClickAsyncAction}
       totalSkillList={skills}
     />
@@ -37,7 +37,7 @@ export const projectItemUnEditable = (): React.ReactElement => {
     <ProjectItem
       editableAuthority={false}
       project={makeProjectMock({})}
-      handleDeleteItem={onClickAction}
+      handleDeleteItem={onClickAsyncAction}
       handleModifyItem={onClickAsyncAction}
       totalSkillList={skills}
     />

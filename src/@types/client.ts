@@ -16,7 +16,7 @@ export interface ProjectClientType {
   content: string;
   deployUrl: string;
   startDate: Date;
-  endDate: Date;
+  endDate?: Date;
   githubUrl: string;
   id: number;
   introduce: string;
