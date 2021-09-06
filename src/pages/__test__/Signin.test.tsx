@@ -61,6 +61,10 @@ describe('<Signin> 페이지', () => {
     fireEvent.change(passwordInput, { target: { value: 'email@email.com' } });
     fireEvent.click(loginButton);
 
-    waitFor(() => component.getByText('에러 발생'));
+    waitFor(() => {
+      component.getByText('에러 발생');
+      const modalButton = component.getByText('닫기');
+      fireEvent.click(modalButton);
+    });
   });
 });

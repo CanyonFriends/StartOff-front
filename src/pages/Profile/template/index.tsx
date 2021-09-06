@@ -146,10 +146,11 @@ function ProfileTemplate({
     // TODO: confirm모달로 확인받기
     const response = await deleteProjectAPI({ userId, projectId });
     if (isFailed<boolean>(response)) {
-      return;
+      return response.error_msg;
     }
     const projectsStateExceptDeleted = projectsState.filter((project) => project.id !== projectId);
     setProjectsState(projectsStateExceptDeleted);
+    return '';
   };
 
   const handleModifyProjectItem = async (projectWithProgress: ProjectValidatorType) => {
@@ -206,6 +207,7 @@ function ProfileTemplate({
     clickTotalSkillItem: handleClickTotalItem,
     deleteMySkill: handleDeleteMySkill,
   };
+
   return (
     <>
       {accountInfoModalOpen && (
@@ -253,7 +255,7 @@ function ProfileTemplate({
         <Style.ProfileProjectsWrapper>
           <Style.ProjectHeader>
             <Title fontsize="h2">프로젝트</Title>
-            <Icon id="plus-icon" icon="Plus" onClick={toggleProjectCreateModal} />
+            <Icon id="project-plus-icon" icon="Plus" onClick={toggleProjectCreateModal} />
           </Style.ProjectHeader>
           <Style.ProjectList>
             {projectsState.map((project) => (
