@@ -97,6 +97,10 @@ describe('<Signup> 페이지', () => {
     fireEvent.change(nicknameInput, { target: { value: 'nickname' } });
     fireEvent.click(signupButton);
 
-    waitFor(() => component.getByText('에러 발생'));
+    waitFor(() => {
+      component.getByText('에러 발생');
+      const modalButton = component.getByText('닫기');
+      fireEvent.click(modalButton);
+    });
   });
 });

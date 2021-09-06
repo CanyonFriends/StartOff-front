@@ -11,7 +11,7 @@ import { dateToString } from '../../../../utils/date';
 describe('Component/Organism/ProjectItem', () => {
   const project = makeProjectMock({});
   const skills = [makeSkillMock({}), makeSkillMock({}), makeSkillMock({})];
-  const deleteItem = () => {};
+  const deleteItem = async () => '';
   const modifyItem = async () => '';
 
   it('렌더링 테스트(수정권한 없음)', () => {
@@ -46,8 +46,8 @@ describe('Component/Organism/ProjectItem', () => {
       />,
     );
 
-    component.getByLabelText('pencil-icon');
-    component.getByLabelText('trashcan-icon');
+    component.getByLabelText('project-pencil-icon');
+    component.getByLabelText('project-trashcan-icon');
     component.getByText(`${dateToString(project.startDate)} ~ ${dateToString(project.endDate)}`);
     component.getByText(project.title);
     component.getByText(project.introduce);
@@ -60,8 +60,9 @@ describe('Component/Organism/ProjectItem', () => {
 
   it('삭제 아이콘 클릭', () => {
     let text = '';
-    const deleteItem = () => {
+    const deleteItem = async () => {
       text = 'shellboy';
+      return '';
     };
     const component = render(
       <ProjectItem
@@ -73,7 +74,7 @@ describe('Component/Organism/ProjectItem', () => {
       />,
     );
 
-    const deleteIcon = component.getByLabelText('trashcan-icon');
+    const deleteIcon = component.getByLabelText('project-trashcan-icon');
     fireEvent.click(deleteIcon);
     waitFor(() => {
       expect(text).toBe('shellboy');
@@ -91,8 +92,26 @@ describe('Component/Organism/ProjectItem', () => {
       />,
     );
 
-    const modifyIcon = component.getByLabelText('pencil-icon');
+    const modifyIcon = component.getByLabelText('project-pencil-icon');
     fireEvent.click(modifyIcon);
     await component.findByText('프로젝트 수정');
+  });
+
+  it('delete시 에러 발생', async () => {
+    const deleteItem = async () => 'error';
+    const component = render(
+      <ProjectItem
+        editableAuthority
+        project={project}
+        totalSkillList={skills}
+        handleDeleteItem={deleteItem}
+        handleModifyItem={modifyItem}
+      />,
+    );
+    const deleteIcon = component.getByLabelText('project-trashcan-icon');
+    fireEvent.click(deleteIcon);
+    await component.findByText('error');
+    const closeButton = await component.findByText('닫기');
+    fireEvent.click(closeButton);
   });
 });

@@ -69,7 +69,7 @@ export const makeProfileMock = ({
   githubUrl = 'https://github.com/qkrdmstlr3',
   introduce = 'hello my name is shellboy',
   nickname = 'shellboy',
-  projects = [makeProjectMock({}), makeProjectMock({}), makeProjectMock({})],
+  projects = [makeProjectMock({})],
   userSkills = [makeSkillMock({ skillName: 'typescript' }), makeSkillMock({ skillName: 'c#' })],
 }): ProfileClientType => {
   return {
