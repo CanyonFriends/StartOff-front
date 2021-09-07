@@ -15,4 +15,11 @@ describe('<StudyBoard> 페이지', () => {
     const component = render(<StudyBoardPage />);
     await waitFor(() => expect(component.container).toMatchSnapshot());
   });
+
+  it('렌더링 테스트', async () => {
+    const component = render(<StudyBoardPage />);
+
+    component.getByText('글 쓰기');
+    component.getByText('검색');
+  });
 });
