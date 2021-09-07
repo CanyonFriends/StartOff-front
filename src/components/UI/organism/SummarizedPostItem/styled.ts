@@ -6,11 +6,15 @@ interface FinishTagProps {
 }
 
 export const Container = styled.li`
-  margin-bottom: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  padding: 2rem;
+
+  &:hover {
+    background-color: ${theme.color.color_brightness_800};
+  }
 `;
 
 export const Left = styled.div``;
