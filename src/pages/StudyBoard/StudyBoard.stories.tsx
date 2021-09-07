@@ -1,5 +1,6 @@
 import React from 'react';
 import StudyBoardTemplate from './template';
+import { makeMockSummarizedPost } from '../../__mocks__/client-mock-data';
 
 export default {
   title: 'Template/StudyBoard',
@@ -7,5 +8,6 @@ export default {
 };
 
 export const studyboardTemplate = (): React.ReactElement => {
-  return <StudyBoardTemplate />;
+  const summarizedPosts = [makeMockSummarizedPost({}), makeMockSummarizedPost({}), makeMockSummarizedPost({})];
+  return <StudyBoardTemplate posts={summarizedPosts} />;
 };
