@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CreatePost> 페이지 snapshot 체크 1`] = `
+<div>
+  <div
+    id="modal"
+  />
+</div>
+`;

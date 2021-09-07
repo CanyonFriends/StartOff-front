@@ -7,6 +7,7 @@ import SigninPage from './pages/Signin';
 import SignupPage from './pages/Signup';
 import ProfilePage from './pages/Profile';
 import StudyBoard from './pages/StudyBoard/index';
+import CreatePost from './pages/CreatePost/index';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path={Routes.signupPath} component={SignupPage} />
         <Route path={Routes.profilePath} component={ProfilePage} />
         <Route path={Routes.studyBoardPath} component={StudyBoard} />
+        <Route path={Routes.createPostPath} component={CreatePost} />
       </Switch>
     </>
   );
