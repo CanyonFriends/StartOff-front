@@ -30,7 +30,7 @@ function CommonHeader() {
     if (isFailed<string[]>(response)) {
       return;
     }
-    const categories = response.map((category) => ({ name: category, route: buildBoardPath(category) }));
+    const categories = response.map((category) => ({ name: category, route: buildBoardPath(category, 0) }));
     setCategories(categories);
   };
 
