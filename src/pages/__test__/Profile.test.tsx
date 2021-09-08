@@ -11,11 +11,13 @@ import { makeProfileMock, makeProjectMock, makeSkillMock } from '../../__mocks__
 import { dateToString } from '../../utils/date';
 import { updatePasswordAPI } from '../../api/user';
 import { createProjectAPI, updateProjectAPI, deleteProjectAPI } from '../../api/project';
+import { getCategoriesAPI } from '../../api/post';
 
 jest.mock('../../api/user');
 jest.mock('../../api/profile');
 jest.mock('../../api/skill');
 jest.mock('../../api/project');
+jest.mock('../../api/post');
 
 const updatePassworMockAPI = updatePasswordAPI as jest.MockedFunction<typeof updatePasswordAPI>;
 const getProfileMockAPI = getProfileAPI as jest.MockedFunction<typeof getProfileAPI>;
@@ -26,6 +28,7 @@ const updateBlogIntroduceMock = updateBlogIntroduce as jest.MockedFunction<typeo
 const updateProjectMockAPI = updateProjectAPI as jest.MockedFunction<typeof updateProjectAPI>;
 const createProjectMockAPI = createProjectAPI as jest.MockedFunction<typeof createProjectAPI>;
 const deleteProjectMockAPI = deleteProjectAPI as jest.MockedFunction<typeof deleteProjectAPI>;
+const getCategoriesMockAPI = getCategoriesAPI as jest.MockedFunction<typeof getCategoriesAPI>;
 
 const skillMockList = [
   makeSkillMock({ skillName: 'typescript' }),
@@ -42,6 +45,7 @@ beforeEach(() => {
   jest.resetAllMocks();
   getProfileMockAPI.mockReturnValue(new Promise((res) => res(profileMock)));
   getSkillsMockAPI.mockReturnValue(new Promise((res) => res(skillMockList)));
+  getCategoriesMockAPI.mockReturnValue(new Promise((res) => res([])));
 });
 
 describe('<Profile> 페이지', () => {
