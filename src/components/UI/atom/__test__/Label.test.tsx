@@ -45,7 +45,7 @@ describe('Component/Atom/Label', () => {
 
       const label = component.getByLabelText('label');
       expect(label).toHaveStyle({
-        fontSize: '2.5rem',
+        fontSize: '2.7rem',
       });
     });
   });

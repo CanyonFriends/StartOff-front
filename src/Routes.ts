@@ -7,4 +7,5 @@ export const buildProfilePath = (userId: string) => `/profile/${userId}`;
 
 export const studyBoardPath = '/board/study';
 
-export const createPostPath = '/create/post';
+export const createPostPath = '/create/post/:board';
+export const buildCreatePostPath = (board: string) => `/create/post/${board}`;
