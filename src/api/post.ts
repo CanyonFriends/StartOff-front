@@ -1,7 +1,8 @@
 import axios from '../utils/axios';
 import { ErrorType } from './error';
 import { BoardServerType } from '../@types/server';
-import { boardServerType2ClientType } from '../converter/post';
+import { boardServerType2ClientType, createPostClientType2ServerType } from '../converter/post';
+import { CreatePostClientType } from '../@types/client';
 
 export const getCategoriesAPI = async () => {
   try {
@@ -24,6 +25,21 @@ export const getPostsAPI = async (page: number, size: number, category: string) 
     });
 
     return boardServerType2ClientType(response.data as BoardServerType);
+  } catch (error) {
+    return { error_msg: error.response.data.error_msg } as ErrorType;
+  }
+};
+
+export const createPostAPI = async (post: CreatePostClientType) => {
+  try {
+    await axios({
+      method: 'POST',
+      url: '/v1/posts',
+      data: {
+        ...createPostClientType2ServerType(post),
+      },
+    });
+    return true;
   } catch (error) {
     return { error_msg: error.response.data.error_msg } as ErrorType;
   }

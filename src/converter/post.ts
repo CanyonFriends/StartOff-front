@@ -1,5 +1,5 @@
-import { BoardServerType, SummarizedPostServerType } from '../@types/server';
-import { BoardClientType, SummarizedPostClientType } from '../@types/client';
+import { BoardServerType, SummarizedPostServerType, CreatePostServerType } from '../@types/server';
+import { BoardClientType, SummarizedPostClientType, CreatePostClientType } from '../@types/client';
 import { skillServerType2ClientType } from './skill';
 
 export const summarizedPostServerType2ClientType = (
@@ -21,5 +21,17 @@ export const boardServerType2ClientType = (board: BoardServerType): BoardClientT
     content: board.content.map((post) => summarizedPostServerType2ClientType(post)),
     totalElements: board.totalElements,
     totalPages: board.totalPages,
+  };
+};
+
+export const createPostClientType2ServerType = (post: CreatePostClientType): CreatePostServerType => {
+  return {
+    category: post.category,
+    content: post.content,
+    current_people: post.currentPeople,
+    max_people: post.maxPeople,
+    post_skills: post.postSkills.map((skill) => skill.skillName),
+    title: post.title,
+    user_id: Number(post.userId),
   };
 };

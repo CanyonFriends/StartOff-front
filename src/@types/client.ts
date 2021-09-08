@@ -45,3 +45,13 @@ export interface BoardClientType {
   totalElements: number;
   totalPages: number;
 }
+
+export interface CreatePostClientType {
+  category: string;
+  content: string;
+  currentPeople: number;
+  maxPeople: number;
+  postSkills: SkillClientType[];
+  title: string;
+  userId: string;
+}
