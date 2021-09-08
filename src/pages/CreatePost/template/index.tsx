@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 import * as Style from './styled';
 import CommonHeader from '../../../components/Layout/CommonHeader';
 import { Dropdown, InputField } from '../../../components/UI/molecule';
@@ -9,13 +10,34 @@ import { InputFieldProps } from '../../../components/UI/molecule/InputField';
 import { SkillList, AlertModal } from '../../../components/UI/organism';
 import { SkillClientType } from '../../../@types/client';
 import { Button, Title } from '../../../components/UI/atom';
+import { createPostAPI } from '../../../api/post';
+import { isFailed } from '../../../api/error';
+import { buildBoardPath } from '../../../Routes';
 
 interface CreatePostTemplateProps {
   totalSkillList: SkillClientType[];
+  board: string;
+  userId: string;
 }
 
-function CreatePostTemplate({ totalSkillList }: CreatePostTemplateProps) {
-  const createPostSubmit = async () => {
+function CreatePostTemplate({ totalSkillList, board, userId }: CreatePostTemplateProps) {
+  const history = useHistory();
+  const createPostSubmit = async (values: PostFormValidatorType) => {
+    const response = await createPostAPI({
+      userId,
+      category: board,
+      content: values.content,
+      currentPeople: values.currentPeople,
+      maxPeople: values.maxPeople,
+      title: values.title,
+      postSkills: values.postSkills,
+    });
+
+    if (isFailed<boolean>(response)) {
+      return response.error_msg;
+    }
+
+    history.push(buildBoardPath(board, 0));
     return '';
   };
   const { values, error, clearError, handleChange, handleSubmitWithErrorControl } = useForm<PostFormValidatorType>({
@@ -32,11 +54,6 @@ function CreatePostTemplate({ totalSkillList }: CreatePostTemplateProps) {
   const peopleNumber = useMemo(() => {
     return new Array(31).fill(0).map((_, index) => ({ id: String(index), text: String(index) }));
   }, []);
-  const totalSkillListExceptSelected = useMemo(() => {
-    return totalSkillList.filter(
-      (skill) => !values.postSkills.find((selectedSkill) => selectedSkill.skillName === skill.skillName),
-    );
-  }, [values.postSkills.length]);
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.length > 20) return;
@@ -56,7 +73,7 @@ function CreatePostTemplate({ totalSkillList }: CreatePostTemplateProps) {
   };
 
   const clickTotalSkillItem = (skillName: string) => {
-    const selectedItem = totalSkillListExceptSelected.find((skill) => skill.skillName === skillName);
+    const selectedItem = totalSkillList.find((skill) => skill.skillName === skillName);
     if (!selectedItem) return;
     handleChange({ ...values, postSkills: [...values.postSkills, selectedItem] });
   };
@@ -101,7 +118,7 @@ function CreatePostTemplate({ totalSkillList }: CreatePostTemplateProps) {
             editableAuthority
             title="기술 스택"
             mySkillList={values.postSkills}
-            totalSkillList={totalSkillListExceptSelected}
+            totalSkillList={totalSkillList}
             clickTotalSkillItem={clickTotalSkillItem}
             deleteMySkill={deleteMySkill}
           />
