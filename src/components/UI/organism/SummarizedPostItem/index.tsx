@@ -35,7 +35,7 @@ function SummarizedPostItem({ post }: SummarizedPostItemProps) {
         </Style.SkillWrapper>
       </Style.Left>
       <Style.Right>
-        <Style.Nickname>{post.user.nickname}</Style.Nickname>
+        <Style.Nickname>{post.nickname}</Style.Nickname>
         <Style.Date>{dateToString(post.createAt)}</Style.Date>
       </Style.Right>
     </Style.Container>
