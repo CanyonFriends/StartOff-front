@@ -14,11 +14,9 @@ function SummarizedPostItem({ post }: SummarizedPostItemProps) {
       <Style.Left>
         <Style.TitleWrapper>
           <Title fontsize="h2">{post.title}</Title>
-          {post.currentPeople && post.maxPeople && (
-            <Style.FinishTag isFinished={post.currentPeople === post.maxPeople}>
-              {post.currentPeople} / {post.maxPeople}
-            </Style.FinishTag>
-          )}
+          <Style.FinishTag isFinished={post.currentPeople === post.maxPeople}>
+            {!post.maxPeople ? '제한없음' : `${post.currentPeople} / ${post.maxPeople}`}
+          </Style.FinishTag>
         </Style.TitleWrapper>
         <Style.SkillWrapper>
           {post.postSkills.map((skill) => (
