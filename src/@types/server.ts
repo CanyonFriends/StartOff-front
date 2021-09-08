@@ -56,3 +56,13 @@ export interface BoardServerType {
   totalElements: number;
   totalPages: number;
 }
+
+export interface CreatePostServerType {
+  category: string;
+  content: string;
+  current_people: number;
+  max_people: number;
+  post_skills: string[];
+  title: string;
+  user_id: number;
+}
