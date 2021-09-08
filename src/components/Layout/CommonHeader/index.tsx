@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Style from './styled';
 import { Icon, Anchor } from '../../UI/atom';
@@ -8,16 +8,31 @@ import theme from '../../../style/theme';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';
 import { actions } from '../../../redux/user';
+import { getCategoriesAPI } from '../../../api/post';
+import { isFailed } from '../../../api/error';
 
-// FIXME: 이름, 경로 변경
-const menu = [
-  { name: '스터디', route: buildBoardPath('study') },
-  { name: '자유게시판', route: buildBoardPath('free') },
-];
+interface CategoryType {
+  name: string;
+  route: string;
+}
 
 function CommonHeader() {
   const dispatch = useDispatch();
+  const [categories, setCategories] = useState<CategoryType[]>([]);
   const { isSignin, userId } = useSelector<RootState>((state) => state.user) as UserState;
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const getCategories = async () => {
+    const response = await getCategoriesAPI();
+    if (isFailed<string[]>(response)) {
+      return;
+    }
+    const categories = response.map((category) => ({ name: category, route: buildBoardPath(category) }));
+    setCategories(categories);
+  };
 
   const handleLogout = () => {
     dispatch(actions.logoutRequest());
@@ -27,10 +42,10 @@ function CommonHeader() {
     <Style.Container>
       <BoxWithIcon iconProps={{ icon: 'Logo', size: 'large' }}>
         <Style.Nav>
-          {menu.map((item) => (
-            <Style.NavItem key={item.name}>
-              <Anchor to={item.route} size="large" bolder hoverColor={theme.color.color_primary_500}>
-                {item.name}
+          {categories.map((category) => (
+            <Style.NavItem key={category.name}>
+              <Anchor to={category.route} size="large" bolder hoverColor={theme.color.color_primary_500}>
+                {category.name}
               </Anchor>
             </Style.NavItem>
           ))}
