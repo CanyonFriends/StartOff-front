@@ -1,4 +1,5 @@
 import React from 'react';
+import { makeSkillMock } from '../../__mocks__/client-mock-data';
 import CreatePostTemplate from './template';
 
 export default {
@@ -6,4 +7,9 @@ export default {
   component: CreatePostTemplate,
 };
 
-export const createPostTemplate = (): React.ReactElement => <CreatePostTemplate />;
+const totalSkillList = [
+  makeSkillMock({ skillName: 'typescript' }),
+  makeSkillMock({ skillName: 'javascript' }),
+  makeSkillMock({ skillName: 'python' }),
+];
+export const createPostTemplate = (): React.ReactElement => <CreatePostTemplate totalSkillList={totalSkillList} />;

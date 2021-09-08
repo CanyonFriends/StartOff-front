@@ -9,7 +9,7 @@ import { Dropdown, SearchBox } from '../../../components/UI/molecule';
 import { AlertModal, SummarizedPostItem } from '../../../components/UI/organism';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';
-import { createPostPath } from '../../../Routes';
+import { buildCreatePostPath } from '../../../Routes';
 
 interface StudyBoardTemplateProps {
   posts: SummarizedPostClientType[];
@@ -32,7 +32,7 @@ function StudyBoardTemplate({ posts }: StudyBoardTemplateProps) {
       return;
     }
 
-    history.push(createPostPath);
+    history.push(buildCreatePostPath('study'));
   };
 
   const closeAlertModal = () => {
