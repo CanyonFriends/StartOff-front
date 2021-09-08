@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import * as Style from './styled';
 import { SummarizedPostClientType } from '../../../@types/client';
 import CommonHeader from '../../../components/Layout/CommonHeader';
@@ -13,15 +13,11 @@ import { buildCreatePostPath } from '../../../Routes';
 
 interface BoardTemplateProps {
   posts: SummarizedPostClientType[];
-}
-
-interface ParamProps {
   board: string;
 }
 
-function BoardTemplate({ posts }: BoardTemplateProps) {
+function BoardTemplate({ posts, board }: BoardTemplateProps) {
   const history = useHistory();
-  const { board } = useParams<ParamProps>();
   const [error, setError] = useState('');
   const { isSignin } = useSelector<RootState>((state) => state.user) as UserState;
 
