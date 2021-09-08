@@ -1,6 +1,12 @@
 import { ErrorType } from '../api/error';
 import { SigninResponseType, SignupResponseType } from '../api/auth';
-import { SkillClientType, ProjectClientType, ProfileClientType, SummarizedPostClientType } from '../@types/client';
+import {
+  SkillClientType,
+  ProjectClientType,
+  ProfileClientType,
+  SummarizedPostClientType,
+  BoardClientType,
+} from '../@types/client';
 import generateUUID from '../utils/generateUUID';
 
 // api
@@ -100,6 +106,18 @@ export const makeMockSummarizedPost = ({
     createAt,
     postSkills,
     nickname,
+  };
+};
+
+export const makeMockBoard = ({
+  content = [makeMockSummarizedPost({})],
+  totalElements = 1,
+  totalPages = 1,
+}): BoardClientType => {
+  return {
+    content,
+    totalElements,
+    totalPages,
   };
 };
 
