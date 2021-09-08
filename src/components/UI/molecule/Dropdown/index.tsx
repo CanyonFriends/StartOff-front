@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Overlay from '../../../Layout/Overlay';
-import { Button } from '../../atom';
+import { Button, Icon } from '../../atom';
 import * as Style from './styled';
+import theme from '../../../../style/theme';
 
 interface ItemProps {
   id: string;
@@ -13,7 +14,7 @@ export interface DropdownProps {
   items: ItemProps[];
   ariaLabel?: string;
   isClickValueText?: boolean;
-  clickItem: (id: string) => void;
+  clickItem: (value: string) => void;
 }
 
 function Dropdown({ ariaLabel = '', placeholder, items, clickItem, isClickValueText = false }: DropdownProps) {
@@ -23,8 +24,8 @@ function Dropdown({ ariaLabel = '', placeholder, items, clickItem, isClickValueT
     setOpen(!open);
   };
 
-  const handleClickItem = (skillName: string) => {
-    clickItem(skillName);
+  const handleClickItem = (value: string) => {
+    clickItem(value);
     toggleDropdown();
   };
 
@@ -32,6 +33,7 @@ function Dropdown({ ariaLabel = '', placeholder, items, clickItem, isClickValueT
     <Style.Container aria-label={ariaLabel}>
       <Button formButton={false} size="medium" onClick={toggleDropdown}>
         {placeholder}
+        <Icon icon="BottomChevron" color={theme.color.color_brightness_900} size="small" />
       </Button>
       {open && (
         <Style.MenuWrapper>

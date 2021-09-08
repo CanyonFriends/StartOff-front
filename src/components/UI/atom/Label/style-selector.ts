@@ -12,6 +12,6 @@ export const labelSizeSelector: { [size in SizeType]: SerializedStyles } = {
     font-size: 2.1rem;
   `,
   extraLarge: css`
-    font-size: 2.5rem;
+    font-size: 2.7rem;
   `,
 };
