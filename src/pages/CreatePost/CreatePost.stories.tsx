@@ -12,4 +12,6 @@ const totalSkillList = [
   makeSkillMock({ skillName: 'javascript' }),
   makeSkillMock({ skillName: 'python' }),
 ];
-export const createPostTemplate = (): React.ReactElement => <CreatePostTemplate totalSkillList={totalSkillList} />;
+export const createPostTemplate = (): React.ReactElement => (
+  <CreatePostTemplate totalSkillList={totalSkillList} board="board" userId="1" />
+);
