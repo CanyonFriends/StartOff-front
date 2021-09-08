@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import axios from '../utils/axios';
 import { ErrorType } from './error';
 import { SkillServerType } from '../@types/server';
@@ -13,6 +14,6 @@ export const getSkillsAPI = async (): Promise<SkillClientType[] | ErrorType> => 
 
     return (response.data as SkillServerType[]).map((skill) => skillServerType2ClientType(skill));
   } catch (error) {
-    return { error_msg: error.response.data.error_msg } as ErrorType;
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
 };
