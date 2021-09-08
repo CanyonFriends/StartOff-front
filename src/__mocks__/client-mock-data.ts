@@ -99,7 +99,7 @@ export const makeMockSummarizedPost = ({
     maxPeople,
     createAt,
     postSkills,
-    user: { nickname },
+    nickname,
   };
 };
 

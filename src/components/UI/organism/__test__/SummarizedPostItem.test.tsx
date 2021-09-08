@@ -14,7 +14,7 @@ describe('Component/Organism/SummarizedPostItem', () => {
     const component = render(<SummarizedPostItem post={post} />);
 
     component.getByText(post.title);
-    component.getByText(post.user.nickname);
+    component.getByText(post.nickname);
     component.getByText(dateToString(post.createAt));
     component.getByText(post.postSkills[0].skillName);
     component.getByText(post.postSkills[1].skillName);
@@ -29,7 +29,7 @@ describe('Component/Organism/SummarizedPostItem', () => {
     const component = render(<SummarizedPostItem post={post} />);
 
     component.getByText(post.title);
-    component.getByText(post.user.nickname);
+    component.getByText(post.nickname);
     component.getByText(dateToString(post.createAt));
     component.getByText(post.postSkills[0].skillName);
     component.getByText(post.postSkills[1].skillName);

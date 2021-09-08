@@ -40,3 +40,19 @@ export interface SkillServerType {
   skill_name: string;
   text_color: string;
 }
+
+export interface SummarizedPostServerType {
+  post_id: number;
+  title: string;
+  nickname: string;
+  created_at: string;
+  current_people: number;
+  max_people: number;
+  post_skills: SkillServerType[];
+}
+
+export interface BoardServerType {
+  content: SummarizedPostServerType[];
+  totalElements: number;
+  totalPages: number;
+}

@@ -36,6 +36,12 @@ export interface SummarizedPostClientType {
   currentPeople?: number;
   maxPeople?: number;
   createAt: Date;
-  user: { nickname: string };
+  nickname: string;
   postSkills: SkillClientType[];
+}
+
+export interface BoardClientType {
+  content: SummarizedPostClientType[];
+  totalElements: number;
+  totalPages: number;
 }
