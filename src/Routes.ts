@@ -10,3 +10,6 @@ export const buildBoardPath = (board: string) => `/board/${board}`;
 
 export const createPostPath = '/create/post/:board';
 export const buildCreatePostPath = (board: string) => `/create/post/${board}`;
+
+export const postPath = '/board/:board/post/:postId';
+export const buildPostPath = (board: string, postId: string) => `/board/${board}/post/${postId}`;
