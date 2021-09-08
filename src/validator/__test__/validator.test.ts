@@ -5,6 +5,7 @@ import modifyProfileIntroduceValidator from '../modifyProfileIntroduceValidator'
 import projectValidator from '../projectValidator';
 import signupValidator from '../signupValidator';
 import updatePasswordValidator from '../updatePasswordValidator';
+import postFormValidator from '../postFormValidator';
 
 describe('Validator/loginValidator', () => {
   it('모두 있을 경우', () => {
@@ -150,5 +151,51 @@ describe('Validator/updatePasswordValidator', () => {
   it('바꿀 비밀번호 확인이 바꿀 비밀번호와 다른 경우', () => {
     const error = updatePasswordValidator({ currentPW: '1q2w3e4r', afterPW: '4r3e2w1q', confirmPW: '1q2w3e4r' });
     expect(error).toBe('비밀번호가 서로 다릅니다');
+  });
+});
+
+describe('Validator/postFormValidator', () => {
+  it('모두 있을 경우', () => {
+    const error = postFormValidator({
+      title: 'title',
+      content: 'content',
+      maxPeople: 10,
+      currentPeople: 5,
+      postSkills: [],
+    });
+    expect(error).toBe('');
+  });
+
+  it('제목이 다섯글자 이하인 경우', () => {
+    const error = postFormValidator({
+      title: 'ti',
+      content: 'content',
+      maxPeople: 10,
+      currentPeople: 5,
+      postSkills: [],
+    });
+    expect(error).toBe('제목은 5글자 이상이여야합니다');
+  });
+
+  it('내용이 없을 경우', () => {
+    const error = postFormValidator({
+      title: 'title',
+      content: '',
+      maxPeople: 10,
+      currentPeople: 5,
+      postSkills: [],
+    });
+    expect(error).toBe('내용을 입력해주십시오');
+  });
+
+  it('현재인원수가 최대인원수보다 클 경우', () => {
+    const error = postFormValidator({
+      title: 'title',
+      content: 'content',
+      maxPeople: 10,
+      currentPeople: 15,
+      postSkills: [],
+    });
+    expect(error).toBe('현재인원은 최대인원보다 클 수 없습니다');
   });
 });
