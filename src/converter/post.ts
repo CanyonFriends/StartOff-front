@@ -26,7 +26,7 @@ export const boardServerType2ClientType = (board: BoardServerType): BoardClientT
 
 export const createPostClientType2ServerType = (post: CreatePostClientType): CreatePostServerType => {
   return {
-    category: post.category,
+    category: post.category.toUpperCase(),
     content: post.content,
     current_people: post.currentPeople,
     max_people: post.maxPeople,

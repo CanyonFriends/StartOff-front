@@ -26,7 +26,7 @@ function SkillList({
 }: SkillListProps) {
   const totalSkillListExceptMine = useMemo(() => {
     return totalSkillList.filter((skill) => !mySkillList.find((mySkill) => mySkill.skillName === skill.skillName));
-  }, [mySkillList.length]);
+  }, [mySkillList.length, totalSkillList.length]);
 
   return (
     <Style.Container>
