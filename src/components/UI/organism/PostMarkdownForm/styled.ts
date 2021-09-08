@@ -11,7 +11,7 @@ export const Header = styled.header`
 export const Container = styled.div`
   font-size: 1.8rem;
   display: flex;
-  height: 100%;
+  height: 450px;
 `;
 
 export const TextareaContainer = styled.div`
