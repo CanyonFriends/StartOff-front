@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<StudyBoard> 페이지 snapshot 체크 1`] = `
+exports[`<Board> 페이지 snapshot 체크 1`] = `
 <div>
   <div
     id="modal"
