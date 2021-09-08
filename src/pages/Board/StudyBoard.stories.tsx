@@ -9,5 +9,5 @@ export default {
 
 export const boardTemplate = (): React.ReactElement => {
   const summarizedPosts = [makeMockSummarizedPost({}), makeMockSummarizedPost({}), makeMockSummarizedPost({})];
-  return <BoardTemplate posts={summarizedPosts} />;
+  return <BoardTemplate posts={summarizedPosts} board="board" />;
 };
