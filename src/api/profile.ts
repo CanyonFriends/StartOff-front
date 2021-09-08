@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import { SkillServerType, ProfileServerType } from '../@types/server';
 import axios from '../utils/axios';
 import { ErrorType } from './error';
@@ -43,7 +44,7 @@ export const getProfileAPI = async ({ userId }: GetProfileRequest): Promise<Prof
     });
     return profileResponse2Type(response.data as ProfileServerType);
   } catch (error) {
-    return { error_msg: error.response.data.error_msg } as ErrorType;
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
 };
 
@@ -63,7 +64,7 @@ export const updateProfileIntroduce = async ({
     });
     return true;
   } catch (error) {
-    return { error_msg: error.response.data.error_msg } as ErrorType;
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
 };
 
@@ -82,7 +83,7 @@ export const updateGithubIntroduce = async ({
     });
     return true;
   } catch (error) {
-    return { error_msg: error.response.data.error_msg } as ErrorType;
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
 };
 
@@ -100,7 +101,7 @@ export const updateBlogIntroduce = async ({
     });
     return true;
   } catch (error) {
-    return { error_msg: error.response.data.error_msg } as ErrorType;
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
 };
 
@@ -118,7 +119,7 @@ export const updateUserSkillAPI = async ({
     });
     return skillServerType2ClientType(response.data as SkillServerType);
   } catch (error) {
-    return { error_msg: error.response.data.error_msg } as ErrorType;
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
 };
 
@@ -130,6 +131,6 @@ export const deleteUserSkillAPI = async ({ userId, skillId }: DeleteUserSkillReq
     });
     return true;
   } catch (error) {
-    return { error_msg: error.response.data.error_msg } as ErrorType;
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
 };

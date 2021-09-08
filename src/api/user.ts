@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import axios from '../utils/axios';
 import { ErrorType } from './error';
 
@@ -26,7 +27,7 @@ export const getSelfAPI = async ({ accessToken }: GetSelfRequest) => {
 
     return response.data as GetSelfResponse;
   } catch (error) {
-    return { error_msg: error.response.data.error_msg } as ErrorType;
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
 };
 
@@ -47,6 +48,6 @@ export const updatePasswordAPI = async ({
 
     return true;
   } catch (error) {
-    return { error_msg: error.response.data.error_msg } as ErrorType;
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
 };
