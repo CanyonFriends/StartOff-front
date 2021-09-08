@@ -11,11 +11,11 @@ import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';
 import { buildCreatePostPath } from '../../../Routes';
 
-interface StudyBoardTemplateProps {
+interface BoardTemplateProps {
   posts: SummarizedPostClientType[];
 }
 
-function StudyBoardTemplate({ posts }: StudyBoardTemplateProps) {
+function BoardTemplate({ posts }: BoardTemplateProps) {
   const history = useHistory();
   const [error, setError] = useState('');
   const { isSignin } = useSelector<RootState>((state) => state.user) as UserState;
@@ -32,6 +32,7 @@ function StudyBoardTemplate({ posts }: StudyBoardTemplateProps) {
       return;
     }
 
+    // FIXME: url에서 가져오기
     history.push(buildCreatePostPath('study'));
   };
 
@@ -63,4 +64,4 @@ function StudyBoardTemplate({ posts }: StudyBoardTemplateProps) {
   );
 }
 
-export default StudyBoardTemplate;
+export default BoardTemplate;
