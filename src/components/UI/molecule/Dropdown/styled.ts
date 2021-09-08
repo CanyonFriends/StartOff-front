@@ -20,6 +20,7 @@ export const MenuWrapper = styled.ul`
   box-shadow: 5px 8px 27px 3px rgba(0, 0, 0, 0.39);
   border-radius: 0.5rem;
   overflow: hidden;
+  background-color: ${theme.color.color_brightness_900};
 `;
 
 export const Item = styled.li`
