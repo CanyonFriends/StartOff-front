@@ -56,7 +56,7 @@ function BoardTemplate({ posts, board }: BoardTemplateProps) {
         </Style.Header>
         <Style.PostList>
           {posts.map((post) => (
-            <SummarizedPostItem post={post} />
+            <SummarizedPostItem post={post} key={post.postId} />
           ))}
         </Style.PostList>
       </Style.Container>
