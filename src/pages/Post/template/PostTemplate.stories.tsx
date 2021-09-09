@@ -1,6 +1,6 @@
 import React from 'react';
-import { makePostMock } from '../../__mocks__/client-mock-data';
-import PostTemplate from './template';
+import { makePostMock } from '../../../__mocks__/client-mock-data';
+import PostTemplate from '.';
 
 export default {
   title: 'Template/Post',

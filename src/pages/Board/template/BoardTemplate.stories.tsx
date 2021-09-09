@@ -1,6 +1,6 @@
 import React from 'react';
-import BoardTemplate from './template';
-import { makeMockSummarizedPost } from '../../__mocks__/client-mock-data';
+import BoardTemplate from '.';
+import { makeMockSummarizedPost } from '../../../__mocks__/client-mock-data';
 
 export default {
   title: 'Template/Board',
