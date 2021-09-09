@@ -1,8 +1,12 @@
 import { AxiosError } from 'axios';
 import axios from '../utils/axios';
 import { ErrorType } from './error';
-import { BoardServerType } from '../@types/server';
-import { boardServerType2ClientType, createPostClientType2ServerType } from '../converter/post';
+import { BoardServerType, PostServerType } from '../@types/server';
+import {
+  boardServerType2ClientType,
+  createPostClientType2ServerType,
+  postServerType2ClientType,
+} from '../converter/post';
 import { CreatePostClientType } from '../@types/client';
 
 export const getCategoriesAPI = async () => {
@@ -41,6 +45,18 @@ export const createPostAPI = async (post: CreatePostClientType) => {
       },
     });
     return true;
+  } catch (error) {
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
+  }
+};
+
+export const getPost = async (postId: string) => {
+  try {
+    const response = await axios({
+      method: 'GET',
+      url: `/v1/posts/${postId}`,
+    });
+    return postServerType2ClientType(response.data as PostServerType);
   } catch (error) {
     return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
