@@ -61,3 +61,30 @@ export const getPostAPI = async (postId: string) => {
     return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
 };
+
+export const deletePostAPI = async (postId: string) => {
+  try {
+    await axios({
+      method: 'DELETE',
+      url: `/v1/posts/${postId}`,
+    });
+    return true;
+  } catch (error) {
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
+  }
+};
+
+export const updatePostAPI = async (postId: string, post: CreatePostClientType) => {
+  try {
+    await axios({
+      method: 'PUT',
+      url: `/v1/posts/${postId}`,
+      data: {
+        ...createPostClientType2ServerType(post),
+      },
+    });
+    return true;
+  } catch (error) {
+    return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
+  }
+};
