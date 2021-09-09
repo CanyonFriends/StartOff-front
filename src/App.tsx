@@ -7,9 +7,9 @@ import SigninPage from './pages/Signin';
 import SignupPage from './pages/Signup';
 import ProfilePage from './pages/Profile';
 import Board from './pages/Board';
-import CreatePost from './pages/ChangePost/CreatePost';
+import CreatePost from './pages/PostChange/PostCreation';
 import Post from './pages/Post';
-import ModifyPost from './pages/ChangePost/ModifyPost/index';
+import ModifyPost from './pages/PostChange/PostEdit/index';
 
 function App() {
   return (
