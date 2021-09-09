@@ -1,8 +1,8 @@
 import React from 'react';
 import MockAdapter from 'axios-mock-adapter';
-import SigninTemplate from './template';
-import AxiosMock from '../../utils/AxiosMock';
-import { signinSuccessMockInfo, signinFailMockInfo } from '../../__mocks__/client-mock-data';
+import SigninTemplate from '.';
+import AxiosMock from '../../../utils/AxiosMock';
+import { signinSuccessMockInfo, signinFailMockInfo } from '../../../__mocks__/client-mock-data';
 
 export default {
   title: 'Template/Signin',
