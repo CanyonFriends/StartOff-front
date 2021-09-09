@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { makeSkillMock } from '../../../__mocks__/client-mock-data';
-import CreatePostTemplate from '../template';
+import { makePostMock, makeSkillMock } from '../../../__mocks__/client-mock-data';
+import CreatePostTemplate from '.';
 
 export default {
   title: 'Template/CreatePost',
@@ -14,6 +14,7 @@ const totalSkillList = [
   makeSkillMock({ skillName: 'python' }),
 ];
 
+const postMock = makePostMock({});
 const changeAction = action('onChange');
 const changeAsyncAction = async () => {
   changeAction();
@@ -21,4 +22,8 @@ const changeAsyncAction = async () => {
 };
 export const createPostTemplate = (): React.ReactElement => (
   <CreatePostTemplate totalSkillList={totalSkillList} handleSubmit={changeAsyncAction} />
+);
+
+export const updatePostTemplate = (): React.ReactElement => (
+  <CreatePostTemplate post={postMock} totalSkillList={totalSkillList} handleSubmit={changeAsyncAction} />
 );

@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { SkillClientType } from '../../../@types/client';
 import { isFailed } from '../../../api/error';
 import { getSkillsAPI } from '../../../api/skill';
-import CreatePostTemplate from '../template';
+import ChangePostTemplate from '../template';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';
 import { createPostAPI } from '../../../api/post';
@@ -52,7 +52,7 @@ function CreatePost() {
     return '';
   };
 
-  return <CreatePostTemplate totalSkillList={totalSkills} handleSubmit={createPostSubmit} />;
+  return <ChangePostTemplate totalSkillList={totalSkills} handleSubmit={createPostSubmit} />;
 }
 
 export default CreatePost;
