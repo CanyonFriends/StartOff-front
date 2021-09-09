@@ -4,6 +4,7 @@ import {
   makeSkillMock as makeSkillServerMock,
   makeMockSummarizedPost as makeServerMockSummarizedPost,
   makeBoardMock,
+  makePostMock,
 } from '../../__mocks__/server-mock.data';
 import { makeCreatePost, makeProjectMock as makeProjectClientMock } from '../../__mocks__/client-mock-data';
 import { skillServerType2ClientType } from '../skill';
@@ -14,6 +15,7 @@ import {
   summarizedPostServerType2ClientType,
   boardServerType2ClientType,
   createPostClientType2ServerType,
+  postServerType2ClientType,
 } from '../post';
 
 jest.mock('../../utils/date');
@@ -118,5 +120,20 @@ describe('Converter/post', () => {
     expect(createPostServer.max_people).toBe(createPostClientMock.maxPeople);
     expect(createPostServer.user_id).toBe(Number(createPostClientMock.userId));
     expect(createPostServer.post_skills.length).toBe(createPostClientMock.postSkills.length);
+  });
+
+  it('postServerType2ClientType', () => {
+    const postServerMock = makePostMock({});
+    const postClient = postServerType2ClientType(postServerMock);
+
+    expect(postClient.postId).toBe(String(postServerMock.post_id));
+    expect(postClient.category).toBe(postServerMock.category);
+    expect(postClient.title).toBe(postServerMock.title);
+    expect(postClient.content).toBe(postServerMock.content);
+    expect(postClient.createdAt).toEqual(new Date(postServerMock.created_at));
+    expect(postClient.currentPeople).toBe(postServerMock.current_people);
+    expect(postClient.maxPeople).toBe(postServerMock.max_people);
+    expect(postClient.nickname).toBe(postServerMock.nickname);
+    expect(postClient.postSkills.length).toBe(postServerMock.post_skills.length);
   });
 });

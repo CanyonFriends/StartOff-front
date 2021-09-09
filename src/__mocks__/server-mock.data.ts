@@ -4,6 +4,7 @@ import {
   SkillServerType,
   SummarizedPostServerType,
   BoardServerType,
+  PostServerType,
 } from '../@types/server';
 import generateUUID from '../utils/generateUUID';
 
@@ -94,5 +95,29 @@ export const makeBoardMock = ({
     content,
     totalElements,
     totalPages,
+  };
+};
+
+export const makePostMock = ({
+  post_id = Math.floor(Math.random() * 10000),
+  category = 'category',
+  title = 'title',
+  content = 'content',
+  created_at = '1998-01-22',
+  current_people = 5,
+  max_people = 10,
+  nickname = 'shellboy',
+  post_skills = [makeSkillMock({})],
+}): PostServerType => {
+  return {
+    post_id,
+    category,
+    title,
+    content,
+    created_at,
+    current_people,
+    max_people,
+    nickname,
+    post_skills,
   };
 };
