@@ -14,7 +14,7 @@ exports[`<CreatePost> 페이지 snapshot 체크 1`] = `
     >
       <div
         aria-label=""
-        class="css-ximz1h"
+        class="css-1jmbjs2"
       >
         <svg
           viewBox="0 0 24 24"
@@ -41,7 +41,7 @@ exports[`<CreatePost> 페이지 snapshot 체크 1`] = `
         >
           <div
             aria-label=""
-            class="css-1q39o9r"
+            class="css-ghj28t"
           >
             <svg
               viewBox="0 0 24 24"
@@ -106,7 +106,7 @@ exports[`<CreatePost> 페이지 snapshot 체크 1`] = `
             현재 인원 : 0
             <div
               aria-label=""
-              class="css-13sc1m2"
+              class="css-4vb9q9"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -131,7 +131,7 @@ exports[`<CreatePost> 페이지 snapshot 체크 1`] = `
             모집 인원 : 0
             <div
               aria-label=""
-              class="css-13sc1m2"
+              class="css-4vb9q9"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -173,7 +173,7 @@ exports[`<CreatePost> 페이지 snapshot 체크 1`] = `
               스택 추가
               <div
                 aria-label=""
-                class="css-13sc1m2"
+                class="css-4vb9q9"
               >
                 <svg
                   viewBox="0 0 24 24"
