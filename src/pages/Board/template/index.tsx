@@ -9,7 +9,7 @@ import { Dropdown, SearchBox } from '../../../components/UI/molecule';
 import { AlertModal, SummarizedPostItem } from '../../../components/UI/organism';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';
-import { buildCreatePostPath } from '../../../Routes';
+import { buildCreatePostPath, buildPostPath } from '../../../Routes';
 
 interface BoardTemplateProps {
   posts: SummarizedPostClientType[];
@@ -56,7 +56,7 @@ function BoardTemplate({ posts, board }: BoardTemplateProps) {
         </Style.Header>
         <Style.PostList>
           {posts.map((post) => (
-            <Link to={`/board/${board}/post/${post.postId}`} key={post.postId}>
+            <Link to={buildPostPath(post.postId)} key={post.postId}>
               <SummarizedPostItem post={post} />
             </Link>
           ))}
