@@ -9,7 +9,6 @@ import { RootState } from '../../redux/store';
 import { UserState } from '../../redux/user/types';
 
 interface ParamProps {
-  board: string;
   postId: string;
 }
 
