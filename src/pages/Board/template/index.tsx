@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as Style from './styled';
 import { SummarizedPostClientType } from '../../../@types/client';
 import CommonHeader from '../../../components/Layout/CommonHeader';
@@ -56,7 +56,9 @@ function BoardTemplate({ posts, board }: BoardTemplateProps) {
         </Style.Header>
         <Style.PostList>
           {posts.map((post) => (
-            <SummarizedPostItem post={post} key={post.postId} />
+            <Link to={`/board/${board}/post/${post.postId}`} key={post.postId}>
+              <SummarizedPostItem post={post} />
+            </Link>
           ))}
         </Style.PostList>
       </Style.Container>
