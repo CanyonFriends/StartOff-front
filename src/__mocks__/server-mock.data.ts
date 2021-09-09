@@ -1,4 +1,10 @@
-import { ProfileServerType, ProjectServerResponseType, SkillServerType } from '../@types/server';
+import {
+  ProfileServerType,
+  ProjectServerResponseType,
+  SkillServerType,
+  SummarizedPostServerType,
+  BoardServerType,
+} from '../@types/server';
 import generateUUID from '../utils/generateUUID';
 
 export const makeSkillMock = ({
@@ -56,5 +62,37 @@ export const makeProfileMock = ({
     nickname,
     projects,
     user_skills,
+  };
+};
+
+export const makeMockSummarizedPost = ({
+  post_id = Math.floor(Math.random() * 10000),
+  title = 'title',
+  current_people = 5,
+  max_people = 10,
+  created_at = '1998-01-22',
+  nickname = 'user',
+  post_skills = [makeSkillMock({ skill_name: 'typescript' }), makeSkillMock({ skill_name: 'c#' })],
+}): SummarizedPostServerType => {
+  return {
+    post_id,
+    title,
+    current_people,
+    max_people,
+    created_at,
+    post_skills,
+    nickname,
+  };
+};
+
+export const makeBoardMock = ({
+  content = [makeMockSummarizedPost({})],
+  totalElements = 1,
+  totalPages = 1,
+}): BoardServerType => {
+  return {
+    content,
+    totalElements,
+    totalPages,
   };
 };
