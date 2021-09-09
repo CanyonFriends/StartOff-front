@@ -48,7 +48,7 @@ function CreatePost() {
       return response.error_msg;
     }
 
-    history.push(buildBoardPath(board, 0));
+    history.push(buildBoardPath(board));
     return '';
   };
 

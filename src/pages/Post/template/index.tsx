@@ -25,7 +25,7 @@ function PostPostTemplate({ editableAuthority, post }: PostTemplateProps) {
     if (isFailed<boolean>(response)) {
       return;
     }
-    history.push(buildBoardPath(post.category, 0));
+    history.push(buildBoardPath(post.category));
   };
 
   return (
