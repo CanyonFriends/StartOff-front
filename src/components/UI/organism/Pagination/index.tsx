@@ -10,6 +10,9 @@ interface PaginationProps {
   onClickPageButton: (pageNumber: number) => void;
 }
 
+/**
+ * 이 컴포넌트에서 page의 시작은 무조건 1로 간주한다
+ */
 function Pagination({ totalCount, showingPage = 5, currentPage, onClickPageButton }: PaginationProps) {
   const isFirstShowing = currentPage >= Math.ceil(showingPage / 2) + 1;
   const isLastShowing = currentPage < totalCount - Math.ceil(showingPage / 2) + 1;
