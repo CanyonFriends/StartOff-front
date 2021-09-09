@@ -5,8 +5,10 @@ export const signupPath = '/signup';
 export const profilePath = '/profile/:userId';
 export const buildProfilePath = (userId: string) => `/profile/${userId}`;
 
-export const boardPath = '/board/:board/:page';
-export const buildBoardPath = (board: string, page: number) => `/board/${board}/${page}`;
+export const boardPath = '/board/:board';
+export const buildBoardPath = (board: string) => `/board/${board}`;
+export const buildBoardPathWithQS = (board: string, page: number, size: number) =>
+  `/board/${board}?page=${page}&size=${size}`;
 
 export const createPostPath = '/create/post/:board';
 export const buildCreatePostPath = (board: string) => `/create/post/${board}`;
