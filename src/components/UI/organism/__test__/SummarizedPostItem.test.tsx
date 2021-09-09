@@ -20,7 +20,7 @@ describe('Component/Organism/SummarizedPostItem', () => {
     component.getByText(post.postSkills[1].skillName);
     const people = component.getByText(`${post.currentPeople} / ${post.maxPeople}`);
     expect(people).toHaveStyle({
-      backgroundColor: theme.color.color_warning_100,
+      backgroundColor: theme.color.color_success_100,
     });
   });
 
@@ -35,7 +35,7 @@ describe('Component/Organism/SummarizedPostItem', () => {
     component.getByText(post.postSkills[1].skillName);
     const people = component.getByText(`${post.currentPeople} / ${post.maxPeople}`);
     expect(people).toHaveStyle({
-      backgroundColor: theme.color.color_success_100,
+      backgroundColor: theme.color.color_warning_100,
     });
   });
 });
