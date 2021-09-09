@@ -6,7 +6,7 @@ import { SummarizedPostClientType } from '../../../@types/client';
 import CommonHeader from '../../../components/Layout/CommonHeader';
 import { Button } from '../../../components/UI/atom';
 import { Dropdown, SearchBox } from '../../../components/UI/molecule';
-import { AlertModal, SummarizedPostItem } from '../../../components/UI/organism';
+import { AlertModal, Pagination, SummarizedPostItem } from '../../../components/UI/organism';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';
 import { buildCreatePostPath, buildPostPath } from '../../../Routes';
@@ -14,9 +14,12 @@ import { buildCreatePostPath, buildPostPath } from '../../../Routes';
 interface BoardTemplateProps {
   posts: SummarizedPostClientType[];
   board: string;
+  totalPage: number;
+  currentPage: number;
+  handlePagination: (pageNumber: number) => void;
 }
 
-function BoardTemplate({ posts, board }: BoardTemplateProps) {
+function BoardTemplate({ posts, board, totalPage, currentPage, handlePagination }: BoardTemplateProps) {
   const history = useHistory();
   const [error, setError] = useState('');
   const { isSignin } = useSelector<RootState>((state) => state.user) as UserState;
@@ -61,6 +64,7 @@ function BoardTemplate({ posts, board }: BoardTemplateProps) {
             </Link>
           ))}
         </Style.PostList>
+        <Pagination totalCount={totalPage} currentPage={currentPage} onClickPageButton={handlePagination} />
       </Style.Container>
     </>
   );
