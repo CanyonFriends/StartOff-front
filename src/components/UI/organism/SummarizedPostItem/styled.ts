@@ -32,7 +32,7 @@ export const FinishTag = styled.div<FinishTagProps>`
   font-weight: bold;
   border-radius: 0.5rem;
   color: ${theme.color.color_brightness_900};
-  background-color: ${(props) => (props.isFinished ? theme.color.color_success_100 : theme.color.color_warning_100)};
+  background-color: ${(props) => (props.isFinished ? theme.color.color_warning_100 : theme.color.color_success_100)};
 `;
 
 export const SkillWrapper = styled.ul`
