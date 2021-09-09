@@ -66,3 +66,16 @@ export interface CreatePostServerType {
   title: string;
   user_id: number;
 }
+
+export interface PostServerType {
+  post_id: number;
+  category: string;
+  title: string;
+  content: string;
+  created_at: string;
+  current_people: number;
+  max_people: number;
+  nickname: string;
+  post_skills: SkillServerType[];
+  // TODO: comments 추가
+}

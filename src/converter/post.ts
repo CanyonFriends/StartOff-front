@@ -1,5 +1,5 @@
-import { BoardServerType, SummarizedPostServerType, CreatePostServerType } from '../@types/server';
-import { BoardClientType, SummarizedPostClientType, CreatePostClientType } from '../@types/client';
+import { BoardServerType, SummarizedPostServerType, CreatePostServerType, PostServerType } from '../@types/server';
+import { BoardClientType, SummarizedPostClientType, CreatePostClientType, PostClientType } from '../@types/client';
 import { skillServerType2ClientType } from './skill';
 
 export const summarizedPostServerType2ClientType = (
@@ -33,5 +33,19 @@ export const createPostClientType2ServerType = (post: CreatePostClientType): Cre
     post_skills: post.postSkills.map((skill) => skill.skillName),
     title: post.title,
     user_id: Number(post.userId),
+  };
+};
+
+export const postServerType2ClientType = (post: PostServerType): PostClientType => {
+  return {
+    postId: String(post.post_id),
+    category: post.category,
+    title: post.title,
+    content: post.content,
+    createdAt: new Date(post.created_at),
+    currentPeople: post.current_people,
+    maxPeople: post.max_people,
+    nickname: post.nickname,
+    postSkills: post.post_skills.map((skill) => skillServerType2ClientType(skill)),
   };
 };

@@ -55,3 +55,16 @@ export interface CreatePostClientType {
   title: string;
   userId: string;
 }
+
+export interface PostClientType {
+  postId: string;
+  category: string;
+  title: string;
+  content: string;
+  createdAt: Date;
+  currentPeople: number;
+  maxPeople: number;
+  nickname: string;
+  postSkills: SkillClientType[];
+  // TODO: comments 추가
+}

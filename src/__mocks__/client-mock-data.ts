@@ -7,6 +7,7 @@ import {
   SummarizedPostClientType,
   BoardClientType,
   CreatePostClientType,
+  PostClientType,
 } from '../@types/client';
 import generateUUID from '../utils/generateUUID';
 
@@ -139,6 +140,30 @@ export const makeCreatePost = ({
     postSkills,
     title,
     userId,
+  };
+};
+
+export const makePostMock = ({
+  postId = generateUUID(),
+  category = 'category',
+  title = 'title',
+  content = 'content',
+  createdAt = new Date('1998-01-22'),
+  currentPeople = 5,
+  maxPeople = 10,
+  nickname = 'shellboy',
+  postSkills = [makeSkillMock({})],
+}): PostClientType => {
+  return {
+    postId,
+    category,
+    title,
+    content,
+    createdAt,
+    currentPeople,
+    maxPeople,
+    nickname,
+    postSkills,
   };
 };
 
