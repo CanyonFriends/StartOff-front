@@ -17,7 +17,8 @@ export type IconType =
   | 'Plus'
   | 'TrashCan'
   | 'Search'
-  | 'BottomChevron';
+  | 'BottomChevron'
+  | 'RightChevron';
 
 export type InputType = 'text' | 'email' | 'password' | 'checkbox';
 
