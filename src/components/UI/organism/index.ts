@@ -10,3 +10,5 @@ export { default as Calendar } from './Calendar';
 export { default as ProjectModal } from './ProjectModal';
 export { default as ProjectItem } from './ProjectItem';
 export { default as SummarizedPostItem } from './SummarizedPostItem';
+export { default as PostMarkdownForm } from './PostMarkdownForm';
+export { default as PostTemplate } from './PostTemplate';
