@@ -50,7 +50,7 @@ export const createPostAPI = async (post: CreatePostClientType) => {
   }
 };
 
-export const getPost = async (postId: string) => {
+export const getPostAPI = async (postId: string) => {
   try {
     const response = await axios({
       method: 'GET',
