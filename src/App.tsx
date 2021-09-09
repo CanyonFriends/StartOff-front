@@ -9,6 +9,7 @@ import ProfilePage from './pages/Profile';
 import Board from './pages/Board';
 import CreatePost from './pages/ChangePost/CreatePost';
 import Post from './pages/Post';
+import ModifyPost from './pages/ChangePost/ModifyPost/index';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path={Routes.profilePath} component={ProfilePage} />
         <Route path={Routes.boardPath} component={Board} />
         <Route path={Routes.createPostPath} component={CreatePost} />
+        <Route path={Routes.modifyPath} component={ModifyPost} />
         <Route path={Routes.postPath} component={Post} />
       </Switch>
     </>
