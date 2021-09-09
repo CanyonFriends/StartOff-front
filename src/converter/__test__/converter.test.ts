@@ -2,12 +2,19 @@ import {
   makeProjectResponseMock,
   makeProfileMock as makeProfileServerMock,
   makeSkillMock as makeSkillServerMock,
+  makeMockSummarizedPost as makeServerMockSummarizedPost,
+  makeBoardMock,
 } from '../../__mocks__/server-mock.data';
-import { makeProjectMock as makeProjectClientMock } from '../../__mocks__/client-mock-data';
+import { makeCreatePost, makeProjectMock as makeProjectClientMock } from '../../__mocks__/client-mock-data';
 import { skillServerType2ClientType } from '../skill';
 import { projectServerType2ClientType, projectClientType2ServerReqeustType } from '../project';
 import { dateToString } from '../../utils/date';
 import { profileResponse2Type } from '../profile';
+import {
+  summarizedPostServerType2ClientType,
+  boardServerType2ClientType,
+  createPostClientType2ServerType,
+} from '../post';
 
 jest.mock('../../utils/date');
 
@@ -74,5 +81,42 @@ describe('Converter/profile', () => {
     expect(profileClient.nickname).toBe(profileServerMock.nickname);
     expect(profileClient.projects.length).toBe(profileServerMock.projects.length);
     expect(profileClient.userSkills.length).toBe(profileServerMock.user_skills.length);
+  });
+});
+
+describe('Converter/post', () => {
+  it('summarizedPostServerType2ClientType', () => {
+    const summarizedPostServerMock = makeServerMockSummarizedPost({});
+    const summarizedPostClient = summarizedPostServerType2ClientType(summarizedPostServerMock);
+
+    expect(summarizedPostClient.title).toBe(summarizedPostServerMock.title);
+    expect(summarizedPostClient.createAt).toEqual(new Date(summarizedPostServerMock.created_at));
+    expect(summarizedPostClient.nickname).toBe(summarizedPostServerMock.nickname);
+    expect(summarizedPostClient.maxPeople).toBe(summarizedPostServerMock.max_people);
+    expect(summarizedPostClient.currentPeople).toBe(summarizedPostServerMock.current_people);
+    expect(summarizedPostClient.postId).toBe(String(summarizedPostServerMock.post_id));
+    expect(summarizedPostClient.postSkills.length).toBe(summarizedPostServerMock.post_skills.length);
+  });
+
+  it('boardServerType2ClientType', () => {
+    const boardServerMock = makeBoardMock({});
+    const boardClient = boardServerType2ClientType(boardServerMock);
+
+    expect(boardClient.content.length).toBe(boardServerMock.content.length);
+    expect(boardClient.totalElements).toBe(boardServerMock.totalElements);
+    expect(boardClient.totalPages).toBe(boardServerMock.totalPages);
+  });
+
+  it('createPostClientType2ServerType', () => {
+    const createPostClientMock = makeCreatePost({});
+    const createPostServer = createPostClientType2ServerType(createPostClientMock);
+
+    expect(createPostServer.category).toBe(createPostClientMock.category.toUpperCase());
+    expect(createPostServer.content).toBe(createPostClientMock.content);
+    expect(createPostServer.title).toBe(createPostClientMock.title);
+    expect(createPostServer.current_people).toBe(createPostClientMock.currentPeople);
+    expect(createPostServer.max_people).toBe(createPostClientMock.maxPeople);
+    expect(createPostServer.user_id).toBe(Number(createPostClientMock.userId));
+    expect(createPostServer.post_skills.length).toBe(createPostClientMock.postSkills.length);
   });
 });

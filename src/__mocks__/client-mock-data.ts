@@ -6,6 +6,7 @@ import {
   ProfileClientType,
   SummarizedPostClientType,
   BoardClientType,
+  CreatePostClientType,
 } from '../@types/client';
 import generateUUID from '../utils/generateUUID';
 
@@ -118,6 +119,26 @@ export const makeMockBoard = ({
     content,
     totalElements,
     totalPages,
+  };
+};
+
+export const makeCreatePost = ({
+  category = 'category',
+  content = 'content',
+  currentPeople = 5,
+  maxPeople = 10,
+  postSkills = [makeSkillMock({})],
+  title = 'title',
+  userId = '1',
+}): CreatePostClientType => {
+  return {
+    category,
+    content,
+    currentPeople,
+    maxPeople,
+    postSkills,
+    title,
+    userId,
   };
 };
 
