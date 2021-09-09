@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { useHistory } from 'react-router-dom';
 import * as Style from './styled';
 import CommonHeader from '../../../components/Layout/CommonHeader';
 import { Dropdown, InputField } from '../../../components/UI/molecule';
@@ -8,48 +7,26 @@ import useForm from '../../../hooks/useForm';
 import postFormValidator, { PostFormValidatorType } from '../../../validator/postFormValidator';
 import { InputFieldProps } from '../../../components/UI/molecule/InputField';
 import { SkillList, AlertModal } from '../../../components/UI/organism';
-import { SkillClientType } from '../../../@types/client';
+import { PostClientType, SkillClientType } from '../../../@types/client';
 import { Button, Title } from '../../../components/UI/atom';
-import { createPostAPI } from '../../../api/post';
-import { isFailed } from '../../../api/error';
-import { buildBoardPath } from '../../../Routes';
 
-interface CreatePostTemplateProps {
+interface ChangePostTemplateProps {
+  post?: PostClientType;
   totalSkillList: SkillClientType[];
-  board: string;
-  userId: string;
+  handleSubmit: (values: PostFormValidatorType) => Promise<string>;
 }
 
-function CreatePostTemplate({ totalSkillList, board, userId }: CreatePostTemplateProps) {
-  const history = useHistory();
-  const createPostSubmit = async (values: PostFormValidatorType) => {
-    const response = await createPostAPI({
-      userId,
-      category: board,
-      content: values.content,
-      currentPeople: values.currentPeople,
-      maxPeople: values.maxPeople,
-      title: values.title,
-      postSkills: values.postSkills,
-    });
-
-    if (isFailed<boolean>(response)) {
-      return response.error_msg;
-    }
-
-    history.push(buildBoardPath(board, 0));
-    return '';
-  };
+function ChangePostTemplate({ post, totalSkillList, handleSubmit }: ChangePostTemplateProps) {
   const { values, error, clearError, handleChange, handleSubmitWithErrorControl } = useForm<PostFormValidatorType>({
     initialState: {
-      title: '',
-      content: '',
-      currentPeople: 0,
-      maxPeople: 0,
-      postSkills: [],
+      title: post ? post.title : '',
+      content: post ? post.content : '',
+      currentPeople: post ? post.currentPeople : 0,
+      maxPeople: post ? post.maxPeople : 0,
+      postSkills: post ? post.postSkills : [],
     },
     validator: postFormValidator,
-    onSubmit: createPostSubmit,
+    onSubmit: handleSubmit,
   });
   const peopleNumber = useMemo(() => {
     return new Array(31).fill(0).map((_, index) => ({ id: String(index), text: String(index) }));
@@ -134,4 +111,4 @@ function CreatePostTemplate({ totalSkillList, board, userId }: CreatePostTemplat
   );
 }
 
-export default CreatePostTemplate;
+export default ChangePostTemplate;
