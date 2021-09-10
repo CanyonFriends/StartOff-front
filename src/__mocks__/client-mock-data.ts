@@ -153,9 +153,11 @@ export const makePostMock = ({
   currentPeople = 5,
   maxPeople = 10,
   nickname = 'shellboy',
+  userId = '1',
   postSkills = [makeSkillMock({})],
 }): PostClientType => {
   return {
+    userId,
     postId,
     category,
     title,
