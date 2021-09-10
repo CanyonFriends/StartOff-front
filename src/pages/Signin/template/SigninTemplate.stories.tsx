@@ -2,7 +2,7 @@ import React from 'react';
 import MockAdapter from 'axios-mock-adapter';
 import SigninTemplate from '.';
 import AxiosMock from '../../../utils/AxiosMock';
-import { signinSuccessMockInfo, signinFailMockInfo } from '../../../__mocks__/client-mock-data';
+import { makeSigninSuccessInfoMock, makeErrorMock } from '../../../__mocks__/client-mock-data';
 
 export default {
   title: 'Template/Signin',
@@ -11,7 +11,7 @@ export default {
 
 export const signinSuccess = (): React.ReactElement => {
   const mock = (apiMock: MockAdapter) => {
-    apiMock.onPost('/v1/login').reply(200, signinSuccessMockInfo);
+    apiMock.onPost('/v1/login').reply(200, makeSigninSuccessInfoMock);
   };
 
   return (
@@ -23,7 +23,7 @@ export const signinSuccess = (): React.ReactElement => {
 
 export const signinFailure = (): React.ReactElement => {
   const mock = (apiMock: MockAdapter) => {
-    apiMock.onPost('/v1/login').reply(400, signinFailMockInfo);
+    apiMock.onPost('/v1/login').reply(400, makeErrorMock({}));
   };
 
   return (

@@ -6,7 +6,7 @@ import { BoxWithIcon } from '../../../components/UI/molecule';
 import { SignupForm, AlertModal } from '../../../components/UI/organism';
 import { SignupInfoType } from '../../../validator/signupValidator';
 import theme from '../../../style/theme';
-import { signupAPI, SignupResponseType } from '../../../api/auth';
+import { signupAPI } from '../../../api/auth';
 import { signinPath } from '../../../Routes';
 import { isFailed } from '../../../api/error';
 
@@ -16,7 +16,7 @@ function SigninPageTemplate() {
 
   const handleSignupAPI = async (signupInfo: SignupInfoType) => {
     const response = await signupAPI(signupInfo);
-    if (isFailed<SignupResponseType>(response)) {
+    if (isFailed<boolean>(response)) {
       setModalMessage(response.error_msg);
       return '';
     }
