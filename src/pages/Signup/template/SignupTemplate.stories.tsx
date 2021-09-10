@@ -2,7 +2,7 @@ import React from 'react';
 import MockAdapter from 'axios-mock-adapter';
 import SignupTemplate from '.';
 import AxiosMock from '../../../utils/AxiosMock';
-import { signupSuccessMockInfo, signupFailMockInfo } from '../../../__mocks__/client-mock-data';
+import { makeErrorMock } from '../../../__mocks__/client-mock-data';
 
 export default {
   title: 'Template/Signup',
@@ -11,7 +11,7 @@ export default {
 
 export const signupSuccess = (): React.ReactElement => {
   const mock = (apiMock: MockAdapter) => {
-    apiMock.onPost('/v1/signup').reply(200, signupSuccessMockInfo);
+    apiMock.onPost('/v1/signup').reply(200, true);
   };
 
   return (
@@ -23,7 +23,7 @@ export const signupSuccess = (): React.ReactElement => {
 
 export const signupFailure = (): React.ReactElement => {
   const mock = (apiMock: MockAdapter) => {
-    apiMock.onPost('/v1/signup').reply(400, signupFailMockInfo);
+    apiMock.onPost('/v1/signup').reply(400, makeErrorMock({}));
   };
 
   return (

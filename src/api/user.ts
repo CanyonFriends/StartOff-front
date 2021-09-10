@@ -2,10 +2,6 @@ import { AxiosError } from 'axios';
 import axios from '../utils/axios';
 import { ErrorType } from './error';
 
-interface GetSelfRequest {
-  accessToken: string;
-}
-
 export interface GetSelfResponse {
   user_id: string;
   nickname: string;
@@ -18,7 +14,7 @@ export interface UpdatePasswordRequest {
   afterPW: string;
 }
 
-export const getSelfAPI = async ({ accessToken }: GetSelfRequest) => {
+export const getSelfAPI = async () => {
   try {
     const response = await axios({
       method: 'GET',
