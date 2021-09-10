@@ -59,7 +59,7 @@ function BoardTemplate({ posts, board, totalPage, currentPage, handlePagination 
         </Style.Header>
         <Style.PostList>
           {posts.map((post) => (
-            <Link to={buildPostPath(post.postId)} key={post.postId}>
+            <Link to={buildPostPath(board, post.postId)} key={post.postId}>
               <SummarizedPostItem post={post} />
             </Link>
           ))}

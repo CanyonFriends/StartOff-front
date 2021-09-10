@@ -59,7 +59,7 @@ function ModifyPost() {
       return response.error_msg;
     }
 
-    history.push(buildPostPath(postId));
+    history.push(buildPostPath(post.category, postId));
     return '';
   };
 
