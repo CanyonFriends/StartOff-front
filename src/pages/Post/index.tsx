@@ -29,8 +29,7 @@ function Post() {
     setPost(response);
   };
 
-  // FIXME: 권한 검사를 id를 받아와서 해야될 것 같다.
-  return post ? <PostTemplate post={post} editableAuthority={userState.nickname === post.nickname} /> : <></>;
+  return post ? <PostTemplate post={post} editableAuthority={userState.userId === post.userId} /> : <></>;
 }
 
 export default Post;

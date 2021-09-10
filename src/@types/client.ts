@@ -65,6 +65,7 @@ export interface PostClientType {
   currentPeople: number;
   maxPeople: number;
   nickname: string;
+  userId: string;
   postSkills: SkillClientType[];
   // TODO: comments 추가
 }
