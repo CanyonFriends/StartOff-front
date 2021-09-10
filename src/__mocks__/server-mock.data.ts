@@ -100,6 +100,7 @@ export const makeBoardMock = ({
 
 export const makePostMock = ({
   post_id = Math.floor(Math.random() * 10000),
+  user_id = Math.floor(Math.random() * 10000),
   category = 'category',
   title = 'title',
   content = 'content',
@@ -111,6 +112,7 @@ export const makePostMock = ({
 }): PostServerType => {
   return {
     post_id,
+    user_id,
     category,
     title,
     content,
