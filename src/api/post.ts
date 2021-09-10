@@ -62,7 +62,7 @@ export const getPostAPI = async (postId: string) => {
   }
 };
 
-export const deletePostAPI = async (postId: string) => {
+export const deletePostAPI = async (postId: string): Promise<boolean | ErrorType> => {
   try {
     await axios({
       method: 'DELETE',
@@ -74,7 +74,7 @@ export const deletePostAPI = async (postId: string) => {
   }
 };
 
-export const updatePostAPI = async (postId: string, post: CreatePostClientType) => {
+export const updatePostAPI = async (postId: string, post: CreatePostClientType): Promise<boolean | ErrorType> => {
   try {
     await axios({
       method: 'PUT',
