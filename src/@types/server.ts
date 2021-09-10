@@ -76,6 +76,7 @@ export interface PostServerType {
   current_people: number;
   max_people: number;
   nickname: string;
+  user_id: number;
   post_skills: SkillServerType[];
   // TODO: comments 추가
 }

@@ -47,5 +47,6 @@ export const postServerType2ClientType = (post: PostServerType): PostClientType 
     maxPeople: post.max_people,
     nickname: post.nickname,
     postSkills: post.post_skills.map((skill) => skillServerType2ClientType(skill)),
+    userId: String(post.user_id),
   };
 };

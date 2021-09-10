@@ -127,6 +127,7 @@ describe('Converter/post', () => {
     const postClient = postServerType2ClientType(postServerMock);
 
     expect(postClient.postId).toBe(String(postServerMock.post_id));
+    expect(postClient.userId).toBe(String(postServerMock.user_id));
     expect(postClient.category).toBe(postServerMock.category);
     expect(postClient.title).toBe(postServerMock.title);
     expect(postClient.content).toBe(postServerMock.content);
