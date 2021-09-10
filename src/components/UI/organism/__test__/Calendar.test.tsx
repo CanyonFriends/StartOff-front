@@ -90,4 +90,27 @@ describe('Component/Organism/Calendar', () => {
     const overlay = await component.findByLabelText('overlay');
     fireEvent.click(overlay);
   });
+
+  it('range가 있을 때 달력 날짜 클릭 함수 테스트', () => {
+    let date;
+    const handleChangeDate = (dates: Date[]) => {
+      date = dates;
+    };
+    const component = render(
+      <Calendar
+        isRange
+        start={startDate}
+        end={endDate}
+        startPlaceholder="start date"
+        endPlaceholder="end date"
+        handleChangeDate={handleChangeDate}
+      />,
+    );
+
+    const endDateButton = component.getByLabelText('calendar-end-date');
+    fireEvent.click(endDateButton);
+    const calendarDate = component.getByText(20);
+    fireEvent.click(calendarDate);
+    expect(date).toHaveLength(2);
+  });
 });
