@@ -1,5 +1,5 @@
 import { ErrorType } from '../api/error';
-import { SigninResponseType, SignupResponseType } from '../api/auth';
+import { SigninResponseType } from '../api/auth';
 import {
   SkillClientType,
   ProjectClientType,
@@ -12,24 +12,25 @@ import {
 import generateUUID from '../utils/generateUUID';
 
 // api
-export const signinSuccessMockInfo: SigninResponseType = {
-  access_token: 'access_token',
-  uuid: 'uuid',
-  email: 'email@email.com',
-  nickname: 'nickname',
-  user_id: '1',
+export const makeSigninSuccessInfoMock = ({
+  access_token = 'access_token',
+  uuid = 'uuid',
+  email = 'email@email.com',
+  nickname = 'nickname',
+  user_id = '1',
+}): SigninResponseType => {
+  return {
+    access_token,
+    uuid,
+    email,
+    nickname,
+    user_id,
+  };
 };
 
-export const signinFailMockInfo: ErrorType = {
-  error_msg: '에러 발생',
-};
-
-export const signupSuccessMockInfo: SignupResponseType = {
-  user_id: '1',
-};
-
-export const signupFailMockInfo: ErrorType = {
-  error_msg: '에러 발생',
+// error
+export const makeErrorMock = ({ error_msg = '에러 발생' }): ErrorType => {
+  return { error_msg };
 };
 
 // data

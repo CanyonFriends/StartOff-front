@@ -5,7 +5,7 @@ import React from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { render } from '../../test-utils';
 import SignupPage from '../Signup';
-import { signupFailMockInfo } from '../../__mocks__/client-mock-data';
+import { makeErrorMock } from '../../__mocks__/client-mock-data';
 import { signupAPI } from '../../api/auth';
 
 jest.mock('../../api/auth');
@@ -82,7 +82,7 @@ describe('<Signup> 페이지', () => {
   });
 
   it('회원가입 실패', () => {
-    signupMockAPI.mockReturnValue(new Promise((res) => res(signupFailMockInfo)));
+    signupMockAPI.mockReturnValue(new Promise((res) => res(makeErrorMock({}))));
 
     const component = render(<SignupPage />);
     const emailInput = component.getByLabelText('email') as HTMLInputElement;

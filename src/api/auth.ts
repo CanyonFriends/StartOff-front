@@ -12,24 +12,15 @@ export interface SigninResponseType {
   user_id: string;
 }
 
-export interface SignupResponseType {
-  user_id: string;
-}
-
 export interface LogoutRequestType {
   email: string;
   accessToken: string;
   uuid: string;
 }
 
-export interface LogoutResponseType {
-  msg: string;
-  success: boolean;
-}
-
-export const signupAPI = async ({ id, pw, nickname }: SignupInfoType): Promise<ErrorType | SignupResponseType> => {
+export const signupAPI = async ({ id, pw, nickname }: SignupInfoType): Promise<ErrorType | boolean> => {
   try {
-    const response = await axios({
+    await axios({
       method: 'POST',
       url: '/v1/signup',
       data: {
@@ -38,7 +29,7 @@ export const signupAPI = async ({ id, pw, nickname }: SignupInfoType): Promise<E
         password: pw,
       },
     });
-    return response.data as SignupResponseType;
+    return true;
   } catch (error) {
     return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }
@@ -60,13 +51,9 @@ export const signinAPI = async ({ id, pw }: LoginInfoType): Promise<ErrorType | 
   }
 };
 
-export const logoutAPI = async ({
-  email,
-  accessToken,
-  uuid,
-}: LogoutRequestType): Promise<ErrorType | LogoutResponseType> => {
+export const logoutAPI = async ({ email, accessToken, uuid }: LogoutRequestType): Promise<ErrorType | boolean> => {
   try {
-    const response = await axios({
+    await axios({
       method: 'POST',
       url: '/v1/logout',
       data: {
@@ -75,7 +62,7 @@ export const logoutAPI = async ({
         access_token: accessToken,
       },
     });
-    return response.data as LogoutResponseType;
+    return true;
   } catch (error) {
     return { error_msg: (error as AxiosError).response?.data?.error_msg } as ErrorType;
   }

@@ -34,8 +34,7 @@ function* logout() {
 }
 
 function* self() {
-  const accessToken = getCookie('soca');
-  const result: ErrorType | GetSelfResponse = yield call(getSelfAPI, { accessToken });
+  const result: ErrorType | GetSelfResponse = yield call(getSelfAPI);
   if (isFailed<GetSelfResponse>(result)) {
     yield put(actions.selfFailure({ error_msg: result.error_msg }));
     return;
