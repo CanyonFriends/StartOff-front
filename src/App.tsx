@@ -20,7 +20,7 @@ function App() {
         <Route path={Routes.signinPath} component={SigninPage} />
         <Route path={Routes.signupPath} component={SignupPage} />
         <Route path={Routes.profilePath} component={ProfilePage} />
-        <Route path={Routes.boardPath} component={Board} />
+        <Route exact path={Routes.boardPath} component={Board} />
         <Route path={Routes.createPostPath} component={CreatePost} />
         <Route path={Routes.modifyPath} component={ModifyPost} />
         <Route path={Routes.postPath} component={Post} />

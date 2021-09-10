@@ -1,4 +1,5 @@
 export const homePath = '/';
+
 export const signinPath = '/signin';
 export const signupPath = '/signup';
 
@@ -13,8 +14,8 @@ export const buildBoardPathWithQS = (board: string, page: number, size: number) 
 export const createPostPath = '/create/post/:board';
 export const buildCreatePostPath = (board: string) => `/create/post/${board}`;
 
-export const postPath = '/post/:postId';
-export const buildPostPath = (postId: string) => `/post/${postId}`;
+export const postPath = '/board/:board/post/:postId';
+export const buildPostPath = (board: string, postId: string) => `/board/${board}/post/${postId}`;
 
 export const modifyPath = '/modify/post/:postId';
 export const buildModifyPath = (postId: string) => `/modify/post/${postId}`;
