@@ -35,7 +35,7 @@ export const getPostsAPI = async (page: number, size: number, category: string) 
   }
 };
 
-export const createPostAPI = async (post: CreatePostClientType) => {
+export const createPostAPI = async (post: CreatePostClientType): Promise<boolean | ErrorType> => {
   try {
     await axios({
       method: 'POST',

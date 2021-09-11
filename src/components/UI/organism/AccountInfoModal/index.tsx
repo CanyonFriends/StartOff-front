@@ -51,6 +51,7 @@ function AccountInfoModal({ handleCloseModal, changePassword, deleteUser }: Acco
     labelProps: { content: 'confirm password', color: theme.color.color_primary_400 },
     inputProps: { id: 'confirmpw-input', value: values.confirmPW, type: 'password', onChange: handleConfirmPwChange },
   };
+
   return (
     <ModalWrapper clickModalOutside={handleCloseModal} isBlur>
       <Style.Container>

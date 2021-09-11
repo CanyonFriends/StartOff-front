@@ -5,5 +5,6 @@ exports[`<Board> 페이지 snapshot 체크 1`] = `
   <div
     id="modal"
   />
+  게시글을 불러오는데 실패하였습니다
 </div>
 `;
