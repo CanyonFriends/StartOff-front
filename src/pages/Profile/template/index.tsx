@@ -57,6 +57,7 @@ function ProfileTemplate({
   const [accountInfoModalOpen, setAccountInfoModalOpen] = useState(false);
   const [projectModalOpen, setProjectModalOpen] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [error, setError] = useState('');
   const [mySkillListState, setMySkillListState] = useState<SkillClientType[]>(mySkillList);
   const [projectsState, setProjectsState] = useState<ProjectClientType[]>(projects);
 
@@ -86,20 +87,20 @@ function ProfileTemplate({
   const handleClickTotalItem = async (skillName: string) => {
     const response = await updateUserSkillAPI({ userId, skillName });
     if (isFailed<SkillClientType>(response)) {
-      return response.error_msg;
+      setError(response.error_msg);
+      return;
     }
     setMySkillListState([...mySkillListState, response]);
-    return '';
   };
 
   const handleDeleteMySkill = async (skillId: string) => {
     const response = await deleteUserSkillAPI({ userId, skillId });
     if (isFailed<boolean>(response)) {
-      return response.error_msg;
+      setError(response.error_msg);
+      return;
     }
     const newSkillListState = mySkillListState.filter((skill) => skill.skillId !== skillId);
     setMySkillListState(newSkillListState);
-    return '';
   };
 
   const toggleAccountInfoModal = () => {
@@ -179,6 +180,7 @@ function ProfileTemplate({
 
   const handleAlertModalClose = () => {
     setSuccessMessage('');
+    setError('');
   };
 
   const toggleProjectCreateModal = () => {
@@ -225,9 +227,8 @@ function ProfileTemplate({
           onSubmit={createProject}
         />
       )}
-      {!!successMessage.length && (
-        <AlertModal content={successMessage} clickCloseButton={handleAlertModalClose} isSuccess />
-      )}
+      {!!successMessage && <AlertModal content={successMessage} clickCloseButton={handleAlertModalClose} isSuccess />}
+      {!!error && <AlertModal content={error} clickCloseButton={handleAlertModalClose} />}
       <CommonHeader />
       <Style.Container>
         <Style.ProfileHeaderWrapper>

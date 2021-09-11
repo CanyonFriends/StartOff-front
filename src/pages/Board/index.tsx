@@ -43,7 +43,7 @@ function Board() {
       handlePagination={handlePagination}
     />
   ) : (
-    <></>
+    <>게시글을 불러오는데 실패하였습니다</>
   );
 }
 
