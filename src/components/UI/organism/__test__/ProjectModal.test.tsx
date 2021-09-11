@@ -32,7 +32,6 @@ describe('Component/Organism/ProjectModal', () => {
     );
 
     component.getByText('생성하기');
-    component.getByText('기술 스택');
     const titleInput = component.getByLabelText('title');
     const introduceInput = component.getByLabelText('introduce');
     const githubInput = component.getByLabelText('github');
@@ -156,5 +155,20 @@ describe('Component/Organism/ProjectModal', () => {
     const modifyButton = component.getByText('수정하기');
     fireEvent.click(modifyButton);
     await component.findByText('error');
+  });
+
+  it('skill 변경 테스트', async () => {
+    const component = render(
+      <ProjectModal isModify totalSkillList={totalSkill} onSubmit={onSubmit} handleModalClose={handleModalClose} />,
+    );
+
+    const skillDropdown = component.getByText('스택 추가');
+    fireEvent.click(skillDropdown);
+    const javascriptSkill = await component.findByText('javascript');
+    fireEvent.click(javascriptSkill);
+
+    await component.findByText('javascript');
+    const deleteSkillButton = await component.findByText('x');
+    fireEvent.click(deleteSkillButton);
   });
 });

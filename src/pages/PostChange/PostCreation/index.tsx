@@ -10,6 +10,7 @@ import { UserState } from '../../../redux/user/types';
 import { createPostAPI } from '../../../api/post';
 import { buildBoardPath } from '../../../Routes';
 import { PostFormValidatorType } from '../../../validator/postFormValidator';
+import { AlertModal } from '../../../components/UI/organism';
 
 interface ParamsProps {
   board: string;
@@ -18,6 +19,7 @@ interface ParamsProps {
 function CreatePost() {
   const history = useHistory();
   const { board } = useParams<ParamsProps>();
+  const [error, setError] = useState('');
   const [totalSkills, setTotalSkills] = useState<SkillClientType[]>([]);
   const { userId } = useSelector<RootState>((state) => state.user) as UserState;
 
@@ -28,6 +30,7 @@ function CreatePost() {
   const getTotalSkills = async () => {
     const response = await getSkillsAPI();
     if (isFailed<SkillClientType[]>(response)) {
+      setError(response.error_msg);
       return;
     }
     setTotalSkills(response);
@@ -52,7 +55,16 @@ function CreatePost() {
     return '';
   };
 
-  return <ChangePostTemplate totalSkillList={totalSkills} handleSubmit={createPostSubmit} />;
+  const handleModalCloseButton = () => {
+    history.push(buildBoardPath(board));
+  };
+
+  return (
+    <>
+      {!!error && <AlertModal content={error} clickCloseButton={handleModalCloseButton} />}
+      <ChangePostTemplate totalSkillList={totalSkills} handleSubmit={createPostSubmit} />
+    </>
+  );
 }
 
 export default CreatePost;

@@ -5,7 +5,14 @@ import React from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { render } from '../../test-utils';
 import ProfilePage from '../Profile';
-import { getProfileAPI, updateProfileIntroduce, updateGithubIntroduce, updateBlogIntroduce } from '../../api/profile';
+import {
+  getProfileAPI,
+  updateProfileIntroduce,
+  updateGithubIntroduce,
+  updateBlogIntroduce,
+  updateUserSkillAPI,
+  deleteUserSkillAPI,
+} from '../../api/profile';
 import { getSkillsAPI } from '../../api/skill';
 import { makeProfileMock, makeProjectMock, makeSkillMock } from '../../__mocks__/client-mock-data';
 import { dateToString } from '../../utils/date';
@@ -22,6 +29,8 @@ jest.mock('../../api/post');
 const updatePassworMockAPI = updatePasswordAPI as jest.MockedFunction<typeof updatePasswordAPI>;
 const getProfileMockAPI = getProfileAPI as jest.MockedFunction<typeof getProfileAPI>;
 const getSkillsMockAPI = getSkillsAPI as jest.MockedFunction<typeof getSkillsAPI>;
+const updateSkillMockAPI = updateUserSkillAPI as jest.MockedFunction<typeof updateUserSkillAPI>;
+const deleteSkillMockAPI = deleteUserSkillAPI as jest.MockedFunction<typeof deleteUserSkillAPI>;
 const updateProfileIntroduceMockAPI = updateProfileIntroduce as jest.MockedFunction<typeof updateProfileIntroduce>;
 const updateGithubIntroduceMock = updateGithubIntroduce as jest.MockedFunction<typeof updateGithubIntroduce>;
 const updateBlogIntroduceMock = updateBlogIntroduce as jest.MockedFunction<typeof updateBlogIntroduce>;
@@ -52,6 +61,28 @@ describe('<Profile> 페이지', () => {
   it('snapshot 체크', async () => {
     const component = render(<ProfilePage />);
     await waitFor(() => expect(component.container).toMatchSnapshot());
+  });
+
+  it('getProfile api에러', async () => {
+    getProfileMockAPI.mockReturnValue(new Promise((res) => res({ error_msg: 'error' })));
+    const component = render(<ProfilePage />);
+
+    await waitFor(() => {
+      component.getByText('error');
+      const closeButton = component.getByText('닫기');
+      fireEvent.click(closeButton);
+    });
+  });
+
+  it('getTodalSkills api에러', async () => {
+    getSkillsMockAPI.mockReturnValue(new Promise((res) => res({ error_msg: 'error' })));
+    const component = render(<ProfilePage />);
+
+    await waitFor(() => {
+      component.getByText('error');
+      const closeButton = component.getByText('닫기');
+      fireEvent.click(closeButton);
+    });
   });
 
   describe('비밀번호 변경 기능', () => {
@@ -90,7 +121,31 @@ describe('<Profile> 페이지', () => {
         const submitButton = component.getByText('변경하기');
         fireEvent.click(submitButton);
         component.getByText('비밀번호를 변경하였습니다');
+        const closeModalButton = component.getByText('닫기');
+        fireEvent.click(closeModalButton);
       });
+    });
+
+    it('비밀번호 변경 에러', async () => {
+      updatePassworMockAPI.mockReturnValue(new Promise((res) => res({ error_msg: 'error' })));
+      const component = render(<ProfilePage />);
+
+      await waitFor(() => {
+        const modalButton = component.getByText('계정 정보 변경');
+        fireEvent.click(modalButton);
+
+        const currentPasswordInput = component.getByLabelText('currentpw');
+        const afterPasswirdInput = component.getByLabelText('afterpw');
+        const confirmPasswordinput = component.getByLabelText('confirmpw');
+
+        fireEvent.change(currentPasswordInput, { target: { value: `currentpassword` } });
+        fireEvent.change(afterPasswirdInput, { target: { value: `afterpassword` } });
+        fireEvent.change(confirmPasswordinput, { target: { value: `afterpassword` } });
+
+        const submitButton = component.getByText('변경하기');
+        fireEvent.click(submitButton);
+      });
+      component.getByText('error');
     });
   });
 
@@ -274,6 +329,60 @@ describe('<Profile> 페이지', () => {
         component.getByText(profileMock.userSkills[0].skillName);
         component.getByText(profileMock.userSkills[1].skillName);
         component.getByText('스택 추가');
+      });
+    });
+
+    it('기술스택 선택', async () => {
+      updateSkillMockAPI.mockReturnValue(new Promise((res) => res(makeSkillMock({ skillName: 'python' }))));
+      const component = render(<ProfilePage />);
+
+      await waitFor(() => {
+        const skillDropdown = component.getByText('스택 추가');
+        fireEvent.click(skillDropdown);
+        const pythonSkill = component.getByText('python');
+        fireEvent.click(pythonSkill);
+        component.getByText('python');
+      });
+    });
+
+    it('기술스택 선택 에러', async () => {
+      updateSkillMockAPI.mockReturnValue(new Promise((res) => res({ error_msg: 'error' })));
+      const component = render(<ProfilePage />);
+
+      await waitFor(() => {
+        const skillDropdown = component.getByText('스택 추가');
+        fireEvent.click(skillDropdown);
+        const pythonSkill = component.getByText('python');
+        fireEvent.click(pythonSkill);
+        component.getByText('error');
+        const closeModalButton = component.getByText('닫기');
+        fireEvent.click(closeModalButton);
+      });
+    });
+
+    it('기술스택 삭제', async () => {
+      deleteSkillMockAPI.mockReturnValue(new Promise((res) => res(true)));
+      const component = render(<ProfilePage />);
+
+      await waitFor(() => {
+        const deleteSkillButtons = component.getAllByText('x');
+        expect(deleteSkillButtons).toHaveLength(2);
+
+        fireEvent.click(deleteSkillButtons[0]);
+      });
+    });
+
+    it('기술스택 삭제 에러', async () => {
+      deleteSkillMockAPI.mockReturnValue(new Promise((res) => res({ error_msg: 'error' })));
+      const component = render(<ProfilePage />);
+
+      await waitFor(() => {
+        const deleteSkillButtons = component.getAllByText('x');
+        fireEvent.click(deleteSkillButtons[0]);
+
+        component.getByText('error');
+        const closeModalButton = component.getByText('닫기');
+        fireEvent.click(closeModalButton);
       });
     });
   });

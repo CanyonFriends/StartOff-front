@@ -77,12 +77,14 @@ function ChangePostTemplate({ post, totalSkillList, handleSubmit }: ChangePostTe
           <Title fontsize="h3">현재 인원 / 모집 인원</Title>
           <Style.DropdownWrapper>
             <Dropdown
+              ariaLabel="current-people-dropbox"
               isClickValueText
               placeholder={`현재 인원 : ${values.currentPeople}`}
               items={peopleNumber}
               clickItem={handleCurrentPeopleChange}
             />
             <Dropdown
+              ariaLabel="max-people-dropbox"
               isClickValueText
               placeholder={`모집 인원 : ${values.maxPeople}`}
               items={peopleNumber}
