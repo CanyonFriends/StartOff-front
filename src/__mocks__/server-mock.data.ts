@@ -5,6 +5,8 @@ import {
   SummarizedPostServerType,
   BoardServerType,
   PostServerType,
+  CommentServerType,
+  IsDeleted,
 } from '../@types/server';
 import generateUUID from '../utils/generateUUID';
 
@@ -98,6 +100,22 @@ export const makeBoardMock = ({
   };
 };
 
+export const makeCommentMock = ({
+  comment_id = Math.floor(Math.random() * 10000),
+  content = 'content',
+  created_at = '1998-01-22',
+  is_deleted = IsDeleted.N,
+  nickname = 'shellboy',
+}): CommentServerType => {
+  return {
+    comment_id,
+    content,
+    created_at,
+    is_deleted,
+    nickname,
+  };
+};
+
 export const makePostMock = ({
   post_id = Math.floor(Math.random() * 10000),
   user_id = Math.floor(Math.random() * 10000),
@@ -109,6 +127,7 @@ export const makePostMock = ({
   max_people = 10,
   nickname = 'shellboy',
   post_skills = [makeSkillMock({})],
+  comments = [makeCommentMock({})],
 }): PostServerType => {
   return {
     post_id,
@@ -121,5 +140,6 @@ export const makePostMock = ({
     max_people,
     nickname,
     post_skills,
+    comments,
   };
 };

@@ -1,6 +1,7 @@
 import { BoardServerType, SummarizedPostServerType, CreatePostServerType, PostServerType } from '../@types/server';
 import { BoardClientType, SummarizedPostClientType, CreatePostClientType, PostClientType } from '../@types/client';
 import { skillServerType2ClientType } from './skill';
+import { commentServerType2ClientType } from './comment';
 
 export const summarizedPostServerType2ClientType = (
   summarizedPost: SummarizedPostServerType,
@@ -48,5 +49,6 @@ export const postServerType2ClientType = (post: PostServerType): PostClientType 
     nickname: post.nickname,
     postSkills: post.post_skills.map((skill) => skillServerType2ClientType(skill)),
     userId: String(post.user_id),
+    comments: post.comments.map((comment) => commentServerType2ClientType(comment)),
   };
 };

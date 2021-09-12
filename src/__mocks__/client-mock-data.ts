@@ -8,6 +8,7 @@ import {
   BoardClientType,
   CreatePostClientType,
   PostClientType,
+  CommentClientType,
 } from '../@types/client';
 import generateUUID from '../utils/generateUUID';
 
@@ -144,6 +145,22 @@ export const makeCreatePost = ({
   };
 };
 
+export const makeCommentMock = ({
+  commentId = generateUUID(),
+  content = 'content',
+  createdAt = new Date('1998-01-22'),
+  isDeleted = false,
+  nickname = 'shellboy',
+}): CommentClientType => {
+  return {
+    commentId,
+    content,
+    createdAt,
+    isDeleted,
+    nickname,
+  };
+};
+
 export const makePostMock = ({
   postId = generateUUID(),
   category = 'category',
@@ -155,6 +172,7 @@ export const makePostMock = ({
   nickname = 'shellboy',
   userId = '1',
   postSkills = [makeSkillMock({})],
+  comments = [makeCommentMock({})],
 }): PostClientType => {
   return {
     userId,
@@ -167,6 +185,7 @@ export const makePostMock = ({
     maxPeople,
     nickname,
     postSkills,
+    comments,
   };
 };
 

@@ -67,6 +67,19 @@ export interface CreatePostServerType {
   user_id: number;
 }
 
+export enum IsDeleted {
+  Y = 'Y',
+  N = 'N',
+}
+
+export interface CommentServerType {
+  comment_id: number;
+  content: string;
+  created_at: string;
+  is_deleted: string;
+  nickname: string;
+}
+
 export interface PostServerType {
   post_id: number;
   category: string;
@@ -78,5 +91,5 @@ export interface PostServerType {
   nickname: string;
   user_id: number;
   post_skills: SkillServerType[];
-  // TODO: comments 추가
+  comments: CommentServerType[];
 }
