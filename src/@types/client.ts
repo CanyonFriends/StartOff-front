@@ -56,6 +56,14 @@ export interface CreatePostClientType {
   userId: string;
 }
 
+export interface CommentClientType {
+  commentId: string;
+  content: string;
+  createdAt: Date;
+  isDeleted: boolean;
+  nickname: string;
+}
+
 export interface PostClientType {
   postId: string;
   category: string;
@@ -67,5 +75,5 @@ export interface PostClientType {
   nickname: string;
   userId: string;
   postSkills: SkillClientType[];
-  // TODO: comments 추가
+  comments: CommentClientType[];
 }
