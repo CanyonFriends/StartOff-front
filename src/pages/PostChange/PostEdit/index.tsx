@@ -10,6 +10,7 @@ import { PostFormValidatorType } from '../../../validator/postFormValidator';
 import { buildPostPath } from '../../../Routes';
 import { RootState } from '../../../redux/store';
 import { UserState } from '../../../redux/user/types';
+import { AlertModal } from '../../../components/UI/organism';
 
 interface ParamProps {
   postId: string;
@@ -19,6 +20,7 @@ function ModifyPost() {
   const history = useHistory();
   const { postId } = useParams<ParamProps>();
   const [post, setPost] = useState<PostClientType>();
+  const [error, setError] = useState('');
   const [totalSkills, setTotalSkills] = useState<SkillClientType[]>([]);
   const { userId } = useSelector<RootState>((state) => state.user) as UserState;
 
@@ -30,6 +32,7 @@ function ModifyPost() {
   const getPost = async () => {
     const response = await getPostAPI(postId);
     if (isFailed<PostClientType>(response)) {
+      setError(response.error_msg);
       return;
     }
     setPost(response);
@@ -38,6 +41,7 @@ function ModifyPost() {
   const getTotalSkills = async () => {
     const response = await getSkillsAPI();
     if (isFailed<SkillClientType[]>(response)) {
+      setError(response.error_msg);
       return;
     }
     setTotalSkills(response);
@@ -63,7 +67,14 @@ function ModifyPost() {
     return '';
   };
 
-  return post ? <ChangePostTemplate post={post} totalSkillList={totalSkills} handleSubmit={modifyPostSubmit} /> : <></>;
+  const handleModalCloseButton = () => {};
+
+  return (
+    <>
+      {!!error && <AlertModal content={error} clickCloseButton={handleModalCloseButton} />}
+      {post ? <ChangePostTemplate post={post} totalSkillList={totalSkills} handleSubmit={modifyPostSubmit} /> : <></>}
+    </>
+  );
 }
 
 export default ModifyPost;
