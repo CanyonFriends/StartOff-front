@@ -27,7 +27,6 @@ const skillMockList = [
 
 beforeEach(() => {
   jest.resetAllMocks();
-  jest.clearAllMocks();
   getCategoriesMockAPI.mockReturnValue(new Promise((res) => res([])));
   getSkillsMockAPI.mockReturnValue(new Promise((res) => res(skillMockList)));
 });
