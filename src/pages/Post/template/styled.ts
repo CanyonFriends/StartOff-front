@@ -7,3 +7,5 @@ export const Container = styled.main`
 `;
 
 export const PostWrapper = styled.article``;
+
+export const CommentWrapper = styled.div``;

@@ -33,7 +33,11 @@ function Post() {
     setPost(response);
   };
 
-  return post ? <PostTemplate post={post} editableAuthority={userState.userId === post.userId} /> : <></>;
+  return post ? (
+    <PostTemplate post={post} userId={userState.userId} editableAuthority={userState.userId === post.userId} />
+  ) : (
+    <></>
+  );
 }
 
 export default Post;

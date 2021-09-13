@@ -1,17 +1,17 @@
 import React from 'react';
 import * as Style from './styled';
 import useForm from '../../../../hooks/useForm';
-import commentValidator from '../../../../validator/commentValidator';
+import commentValidator, { CommentValidatorType } from '../../../../validator/commentValidator';
 import TextArea, { TextAreaProps } from '../../atom/TextArea';
 import { Button } from '../../atom';
 import { AlertModal } from '..';
 
 interface CommentFormProps {
-  handleSubmit: () => Promise<string>;
+  handleSubmit: (value: CommentValidatorType) => Promise<string>;
 }
 
 function CommentForm({ handleSubmit }: CommentFormProps) {
-  const { values, error, clearError, handleChange, handleSubmitWithErrorControl } = useForm({
+  const { values, error, clearError, handleChange, handleSubmitWithErrorControl } = useForm<CommentValidatorType>({
     initialState: {
       comment: '',
     },
