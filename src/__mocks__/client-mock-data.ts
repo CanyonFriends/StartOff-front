@@ -147,7 +147,7 @@ export const makeCreatePost = ({
 
 export const makeCommentMock = ({
   commentId = generateUUID(),
-  content = 'content',
+  content = 'comment',
   createdAt = new Date('1998-01-22'),
   isDeleted = false,
   nickname = 'shellboy',

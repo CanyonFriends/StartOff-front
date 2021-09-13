@@ -69,7 +69,7 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
           <CommentForm handleSubmit={createComment} />
           <Style.CommentList>
             {commentState.map((comment) => (
-              <Style.CommentItem>
+              <Style.CommentItem key={comment.commentId}>
                 <CommentTemplate editableAuthority={editableAuthority} comment={comment} />
               </Style.CommentItem>
             ))}
