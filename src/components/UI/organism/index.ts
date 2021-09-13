@@ -14,3 +14,4 @@ export { default as PostMarkdownForm } from './PostMarkdownForm';
 export { default as PostTemplate } from './PostTemplate';
 export { default as Pagination } from './Pagination';
 export { default as CommentForm } from './CommentForm';
+export { default as CommentTemplate } from './CommentTemplate';
