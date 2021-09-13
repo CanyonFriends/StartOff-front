@@ -75,7 +75,12 @@ function ProfileIntroduce({ editableAuthority, nickname, introduce, imageurl, ha
         {editableAuthority && <Button size="medium">{editable ? '저장' : '수정'}</Button>}
       </Style.Top>
       <Style.Bottom>
-        <EditableText isEditable={editable} textType="paragraph" inputProps={introduceInfo} />
+        <EditableText
+          isEditable={editable}
+          textType="paragraph"
+          paragraphProps={{ size: 'large', content: '' }}
+          inputProps={introduceInfo}
+        />
       </Style.Bottom>
     </Style.Form>
   );
