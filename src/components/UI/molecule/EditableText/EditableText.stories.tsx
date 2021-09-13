@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import EditableText from '.';
 import StyleWrapper from '../../../../style/styleWrapper';
 import { InputProps } from '../../atom/Input';
+import { TextAreaProps } from '../../atom/TextArea';
 import { TitleProps } from '../../atom/Title/index';
 
 export default {
@@ -50,6 +51,28 @@ export const editableText = () => {
       <div>
         <div className="description">editable</div>
         <EditableText isEditable={false} textType="paragraph" inputProps={inputProps} />
+      </div>
+    </StyleWrapper>
+  );
+};
+
+export const editableTextArea = () => {
+  const [value, setValue] = useState('Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
+  const textareaProps: TextAreaProps = {
+    value,
+    size: 'small',
+    onChange: (event) => setValue(event.target.value),
+  };
+
+  return (
+    <StyleWrapper>
+      <div>
+        <div className="description">initial</div>
+        <EditableText isEditable textType="paragraph" textareaProps={textareaProps} />
+      </div>
+      <div>
+        <div className="description">editable</div>
+        <EditableText isEditable={false} textType="paragraph" textareaProps={textareaProps} />
       </div>
     </StyleWrapper>
   );

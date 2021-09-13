@@ -71,7 +71,12 @@ function ProfileInfoCard({ editableAuthority, title, textValue, iconType, handle
         <Title fontsize="h3">{title}</Title>
       )}
       <BoxWithIcon isContinuous iconProps={signatureIconProps}>
-        <EditableText isEditable={isEditable} textType="paragraph" inputProps={inputProps} />
+        <EditableText
+          isEditable={isEditable}
+          textType="paragraph"
+          paragraphProps={{ size: 'large', content: '' }}
+          inputProps={inputProps}
+        />
       </BoxWithIcon>
     </Style.Container>
   );
