@@ -10,8 +10,10 @@ import { dateToString } from '../../../../utils/date';
 
 describe('Component/Organism/CommentTemplate', () => {
   const commentMock = makeCommentMock({});
+  const handleDelete = () => {};
+
   it('렌더링 테스트(수정 가능)', () => {
-    const component = render(<CommentTemplate editableAuthority comment={commentMock} />);
+    const component = render(<CommentTemplate editableAuthority comment={commentMock} handleDelete={handleDelete} />);
 
     component.getByText('수정');
     component.getByText('삭제');
@@ -21,7 +23,7 @@ describe('Component/Organism/CommentTemplate', () => {
   });
 
   it('수정 버튼 클릭', async () => {
-    const component = render(<CommentTemplate editableAuthority comment={commentMock} />);
+    const component = render(<CommentTemplate editableAuthority comment={commentMock} handleDelete={handleDelete} />);
 
     const editButton = component.getByText('수정');
     fireEvent.click(editButton);
@@ -29,7 +31,7 @@ describe('Component/Organism/CommentTemplate', () => {
   });
 
   it('댓글 수정', async () => {
-    const component = render(<CommentTemplate editableAuthority comment={commentMock} />);
+    const component = render(<CommentTemplate editableAuthority comment={commentMock} handleDelete={handleDelete} />);
 
     const editButton = component.getByText('수정');
     fireEvent.click(editButton);
