@@ -8,4 +8,14 @@ export const Container = styled.main`
 
 export const PostWrapper = styled.article``;
 
-export const CommentWrapper = styled.div``;
+export const CommentWrapper = styled.div`
+  margin-top: 5rem;
+`;
+
+export const CommentList = styled.ul`
+  padding: 0;
+`;
+
+export const CommentItem = styled.li`
+  margin-bottom: 2rem;
+`;

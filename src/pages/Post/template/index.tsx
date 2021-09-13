@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CommentClientType, PostClientType } from '../../../@types/client';
 import CommonHeader from '../../../components/Layout/CommonHeader';
-import { CommentForm, PostTemplate } from '../../../components/UI/organism';
+import { CommentForm, CommentTemplate, PostTemplate } from '../../../components/UI/organism';
 import * as Style from './styled';
 import { deletePostAPI } from '../../../api/post';
 import { isFailed } from '../../../api/error';
@@ -18,6 +18,7 @@ interface PostTemplateProps {
 }
 
 function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps) {
+  const [commentState, setCommentState] = useState(post.comments);
   const history = useHistory();
   const handleModifyPost = async () => {
     history.push(buildModifyPath(post.postId));
@@ -42,6 +43,7 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
       return '';
     }
 
+    setCommentState([response, ...commentState]);
     return '';
   };
 
@@ -63,8 +65,15 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
           />
         </Style.PostWrapper>
         <Style.CommentWrapper>
-          <Title fontsize="h3">댓글 ({post.comments.length})</Title>
+          <Title fontsize="h3">댓글 ({commentState.length})</Title>
           <CommentForm handleSubmit={createComment} />
+          <Style.CommentList>
+            {commentState.map((comment) => (
+              <Style.CommentItem>
+                <CommentTemplate editableAuthority={editableAuthority} comment={comment} />
+              </Style.CommentItem>
+            ))}
+          </Style.CommentList>
         </Style.CommentWrapper>
       </Style.Container>
     </>

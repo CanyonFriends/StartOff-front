@@ -32,10 +32,15 @@ function CommentForm({ handleSubmit }: CommentFormProps) {
     clearError();
   };
 
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    handleSubmitWithErrorControl(event);
+    handleChange({ ...values, comment: '' });
+  };
+
   return (
     <>
       {!!error && <AlertModal content={error} clickCloseButton={handleCloseModal} />}
-      <Style.Container onSubmit={handleSubmitWithErrorControl}>
+      <Style.Container onSubmit={handleFormSubmit}>
         <TextArea ariaLabel="comment-textarea" size="medium" {...commentTextarea} />
         <Button width="150px" size="extraLarge">
           작성
