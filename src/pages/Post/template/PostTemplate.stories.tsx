@@ -9,5 +9,5 @@ export default {
 
 const postMock = makePostMock({});
 
-export const editable = () => <PostTemplate post={postMock} editableAuthority />;
-export const unEditable = () => <PostTemplate post={postMock} editableAuthority={false} />;
+export const editable = () => <PostTemplate post={postMock} userId="1" editableAuthority />;
+export const unEditable = () => <PostTemplate post={postMock} userId="1" editableAuthority={false} />;
