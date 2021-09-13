@@ -9,9 +9,10 @@ import { TextAreaProps } from '../../atom/TextArea';
 interface CommentTemplateProps {
   comment: CommentClientType;
   editableAuthority: boolean;
+  handleDelete: (commentId: string) => void;
 }
 
-function CommentTemplate({ comment, editableAuthority }: CommentTemplateProps) {
+function CommentTemplate({ comment, editableAuthority, handleDelete }: CommentTemplateProps) {
   const [commentEditable, setCommentEditable] = useState(false);
 
   const toggleCommentEditable = () => {
@@ -19,6 +20,10 @@ function CommentTemplate({ comment, editableAuthority }: CommentTemplateProps) {
   };
 
   const handleContentChange = () => {};
+
+  const handleClickDeleteButton = () => {
+    handleDelete(comment.commentId);
+  };
 
   const textareaProps: TextAreaProps = {
     ariaLabel: 'comment-edit-textarea',
@@ -35,7 +40,7 @@ function CommentTemplate({ comment, editableAuthority }: CommentTemplateProps) {
             <Button formButton={false} onClick={toggleCommentEditable}>
               수정
             </Button>
-            <Button formButton={false} theme="secondary">
+            <Button formButton={false} theme="secondary" onClick={handleClickDeleteButton}>
               삭제
             </Button>
           </>

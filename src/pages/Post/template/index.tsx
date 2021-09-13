@@ -8,7 +8,7 @@ import { deletePostAPI } from '../../../api/post';
 import { isFailed } from '../../../api/error';
 import { buildBoardPath, buildModifyPath } from '../../../Routes';
 import { Title } from '../../../components/UI/atom';
-import { createCommentAPI } from '../../../api/comment';
+import { createCommentAPI, deleteCommentAPI } from '../../../api/comment';
 import { CommentValidatorType } from '../../../validator/commentValidator';
 
 interface PostTemplateProps {
@@ -33,6 +33,15 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
     history.push(buildBoardPath(post.category));
   };
 
+  const handleDeleteComment = async (commentId: string) => {
+    const response = await deleteCommentAPI({ commentId, postId: post.postId });
+    if (isFailed<boolean>(response)) {
+      return;
+    }
+    const newComment = commentState.filter((comment) => comment.commentId !== commentId);
+    setCommentState(newComment);
+  };
+
   const createComment = async (value: CommentValidatorType) => {
     const response = await createCommentAPI({
       userId,
@@ -47,6 +56,7 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
     return '';
   };
 
+  // FIXME: comment editable판별시 userId로 해야댐
   return (
     <>
       <CommonHeader />
@@ -70,7 +80,11 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
           <Style.CommentList>
             {commentState.map((comment) => (
               <Style.CommentItem key={comment.commentId}>
-                <CommentTemplate editableAuthority={editableAuthority} comment={comment} />
+                <CommentTemplate
+                  editableAuthority={editableAuthority}
+                  comment={comment}
+                  handleDelete={handleDeleteComment}
+                />
               </Style.CommentItem>
             ))}
           </Style.CommentList>
