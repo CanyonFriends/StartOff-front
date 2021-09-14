@@ -25,7 +25,7 @@ function CommentTemplate({ comment, editableAuthority, handleDelete, handleSubmi
   });
 
   const toggleCommentEditable = () => {
-    setCommentEditable(!commentEditable);
+    setCommentEditable(true);
   };
 
   const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -37,8 +37,7 @@ function CommentTemplate({ comment, editableAuthority, handleDelete, handleSubmi
   };
 
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    const result = await handleSubmitWithErrorControl(event);
-    if (result) setCommentEditable(false);
+    await handleSubmitWithErrorControl(event, () => setCommentEditable(false));
   };
 
   const handleCloseModal = () => {
