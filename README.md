@@ -6,7 +6,7 @@
 
 - 언어 : TypeScript
 - 구현 : React, Redux(toolkit, saga)
-- 테스트 : Jest, React-testing-library
+- 테스트 : Jest, React-testing-library, Storybook
 - 디자인 패턴 : Atomic Design Pattern
 - 스타일 : emotion
 - 통신 : restAPI
