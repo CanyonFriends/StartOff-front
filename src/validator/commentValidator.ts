@@ -1,4 +1,5 @@
 export interface CommentValidatorType {
+  commentId?: string;
   comment: string;
 }
 
