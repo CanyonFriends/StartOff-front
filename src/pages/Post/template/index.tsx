@@ -78,7 +78,6 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
     return '';
   };
 
-  // FIXME: comment editable판별시 userId로 해야댐
   return (
     <>
       <CommonHeader />
@@ -103,7 +102,7 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
             {commentState.map((comment) => (
               <Style.CommentItem key={comment.commentId}>
                 <CommentTemplate
-                  editableAuthority={editableAuthority}
+                  editableAuthority={comment.userId === userId}
                   comment={comment}
                   handleDelete={handleDeleteComment}
                   handleSubmitModify={modifyComment}
