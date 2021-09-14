@@ -58,7 +58,7 @@ export const updateCommentAPI = async ({ postId, userId, content, commentId }: U
   }
 };
 
-export const deleteCommentAPI = async ({ postId, commentId }: DeleteCommentRequest) => {
+export const deleteCommentAPI = async ({ postId, commentId }: DeleteCommentRequest): Promise<boolean | ErrorType> => {
   try {
     await axios({
       method: 'DELETE',

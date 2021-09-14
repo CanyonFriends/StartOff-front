@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CommentClientType, PostClientType } from '../../../@types/client';
 import CommonHeader from '../../../components/Layout/CommonHeader';
-import { CommentForm, CommentTemplate, PostTemplate } from '../../../components/UI/organism';
+import { AlertModal, CommentForm, CommentTemplate, PostTemplate } from '../../../components/UI/organism';
 import * as Style from './styled';
 import { deletePostAPI } from '../../../api/post';
 import { isFailed } from '../../../api/error';
@@ -18,6 +18,7 @@ interface PostTemplateProps {
 }
 
 function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps) {
+  const [error, setError] = useState('');
   const [commentState, setCommentState] = useState(post.comments);
   const history = useHistory();
   const handleModifyPost = async () => {
@@ -36,6 +37,7 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
   const handleDeleteComment = async (commentId: string) => {
     const response = await deleteCommentAPI({ commentId, postId: post.postId });
     if (isFailed<boolean>(response)) {
+      setError(response.error_msg);
       return;
     }
     const newComment = commentState.filter((comment) => comment.commentId !== commentId);
@@ -49,7 +51,7 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
       content: value.comment,
     });
     if (isFailed<CommentClientType>(response)) {
-      return '';
+      return response.error_msg;
     }
 
     setCommentState([...commentState, response]);
@@ -78,8 +80,13 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
     return '';
   };
 
+  const closeModalButton = () => {
+    setError('');
+  };
+
   return (
     <>
+      {!!error && <AlertModal content={error} clickCloseButton={closeModalButton} />}
       <CommonHeader />
       <Style.Container>
         <Style.PostWrapper>
