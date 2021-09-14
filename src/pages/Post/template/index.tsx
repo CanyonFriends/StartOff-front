@@ -8,7 +8,7 @@ import { deletePostAPI } from '../../../api/post';
 import { isFailed } from '../../../api/error';
 import { buildBoardPath, buildModifyPath } from '../../../Routes';
 import { Title } from '../../../components/UI/atom';
-import { createCommentAPI, deleteCommentAPI } from '../../../api/comment';
+import { createCommentAPI, deleteCommentAPI, updateCommentAPI } from '../../../api/comment';
 import { CommentValidatorType } from '../../../validator/commentValidator';
 
 interface PostTemplateProps {
@@ -52,7 +52,29 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
       return '';
     }
 
-    setCommentState([response, ...commentState]);
+    setCommentState([...commentState, response]);
+    return '';
+  };
+
+  const modifyComment = async (value: CommentValidatorType) => {
+    if (!value.commentId) return 'error';
+
+    const response = await updateCommentAPI({
+      userId,
+      commentId: value.commentId,
+      postId: post.postId,
+      content: value.comment,
+    });
+    if (isFailed<CommentClientType>(response)) {
+      return response.error_msg;
+    }
+
+    const newCommentState = commentState.map((comment) => {
+      if (comment.commentId !== value.commentId) return comment;
+      return response;
+    });
+
+    setCommentState(newCommentState);
     return '';
   };
 
@@ -84,6 +106,7 @@ function PostPostTemplate({ editableAuthority, userId, post }: PostTemplateProps
                   editableAuthority={editableAuthority}
                   comment={comment}
                   handleDelete={handleDeleteComment}
+                  handleSubmitModify={modifyComment}
                 />
               </Style.CommentItem>
             ))}

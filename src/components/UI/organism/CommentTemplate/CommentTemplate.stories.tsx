@@ -10,11 +10,25 @@ export default {
 
 const commentMock = makeCommentMock({});
 const clickAction = action('onClick');
+const clickAsyncAction = async () => {
+  clickAction();
+  return '';
+};
 
 export const editable = (): React.ReactElement => (
-  <CommentTemplate editableAuthority comment={commentMock} handleDelete={clickAction} />
+  <CommentTemplate
+    editableAuthority
+    comment={commentMock}
+    handleDelete={clickAction}
+    handleSubmitModify={clickAsyncAction}
+  />
 );
 
 export const uneditable = (): React.ReactElement => (
-  <CommentTemplate editableAuthority={false} comment={commentMock} handleDelete={clickAction} />
+  <CommentTemplate
+    editableAuthority={false}
+    comment={commentMock}
+    handleDelete={clickAction}
+    handleSubmitModify={clickAsyncAction}
+  />
 );
