@@ -5,6 +5,7 @@ import {
   makeMockSummarizedPost as makeServerMockSummarizedPost,
   makeBoardMock,
   makePostMock,
+  makeCommentMock,
 } from '../../__mocks__/server-mock.data';
 import { makeCreatePost, makeProjectMock as makeProjectClientMock } from '../../__mocks__/client-mock-data';
 import { skillServerType2ClientType } from '../skill';
@@ -17,6 +18,7 @@ import {
   createPostClientType2ServerType,
   postServerType2ClientType,
 } from '../post';
+import { commentServerType2ClientType } from '../comment';
 
 jest.mock('../../utils/date');
 
@@ -136,5 +138,19 @@ describe('Converter/post', () => {
     expect(postClient.maxPeople).toBe(postServerMock.max_people);
     expect(postClient.nickname).toBe(postServerMock.nickname);
     expect(postClient.postSkills.length).toBe(postServerMock.post_skills.length);
+  });
+});
+
+describe('Converter/comment', () => {
+  it('commentServerType2ClientType', () => {
+    const commentServerMock = makeCommentMock({});
+    const commentClient = commentServerType2ClientType(commentServerMock);
+
+    expect(commentClient.commentId).toBe(String(commentServerMock.comment_id));
+    expect(commentClient.userId).toBe(String(commentServerMock.user_id));
+    expect(commentClient.content).toBe(commentServerMock.content);
+    expect(commentClient.nickname).toBe(commentServerMock.nickname);
+    expect(commentClient.isDeleted).toBeFalsy();
+    expect(commentClient.createdAt).toEqual(new Date(commentServerMock.created_at));
   });
 });

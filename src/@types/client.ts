@@ -57,6 +57,7 @@ export interface CreatePostClientType {
 }
 
 export interface CommentClientType {
+  userId: string;
   commentId: string;
   content: string;
   createdAt: Date;

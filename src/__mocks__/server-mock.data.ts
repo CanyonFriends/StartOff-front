@@ -101,6 +101,7 @@ export const makeBoardMock = ({
 };
 
 export const makeCommentMock = ({
+  user_id = Math.floor(Math.random() * 10000),
   comment_id = Math.floor(Math.random() * 10000),
   content = 'content',
   created_at = '1998-01-22',
@@ -108,6 +109,7 @@ export const makeCommentMock = ({
   nickname = 'shellboy',
 }): CommentServerType => {
   return {
+    user_id,
     comment_id,
     content,
     created_at,
