@@ -146,6 +146,7 @@ export const makeCreatePost = ({
 };
 
 export const makeCommentMock = ({
+  userId = generateUUID(),
   commentId = generateUUID(),
   content = 'comment',
   createdAt = new Date('1998-01-22'),
@@ -153,6 +154,7 @@ export const makeCommentMock = ({
   nickname = 'shellboy',
 }): CommentClientType => {
   return {
+    userId,
     commentId,
     content,
     createdAt,
