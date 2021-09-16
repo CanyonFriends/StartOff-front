@@ -33,8 +33,8 @@ describe('API/post', () => {
 
   it('getPostsAPI', async () => {
     const serverResponseValue = makeBoardMock({});
-    mock.onGet('/v1/posts?page=0&size=1&category=board').reply(200, serverResponseValue);
-    const response = await getPostsAPI(0, 1, 'board');
+    mock.onGet('/v1/posts?page=0&size=1&category=board&query=').reply(200, serverResponseValue);
+    const response = await getPostsAPI({ page: 0, size: 1, category: 'board' });
 
     expect(isFailed<BoardClientType>(response)).toBeFalsy();
 
@@ -51,8 +51,8 @@ describe('API/post', () => {
   });
 
   it('getPostsAPI error', async () => {
-    mock.onGet('/v1/posts?page=0&size=1&category=board').reply(400, { error_msg: 'error' });
-    const response = await getPostsAPI(0, 1, 'board');
+    mock.onGet('/v1/posts?page=0&size=1&category=board&query=').reply(400, { error_msg: 'error' });
+    const response = await getPostsAPI({ page: 0, size: 1, category: 'board' });
 
     expect(isFailed<BoardClientType>(response)).toBeTruthy();
     expect(response).toHaveProperty('error_msg', 'error');

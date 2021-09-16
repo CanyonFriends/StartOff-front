@@ -19,11 +19,17 @@ function Board() {
   const parsedResult = parseQueryString(location.search);
 
   useEffect(() => {
-    getPosts();
+    getPosts('');
   }, [board, location.search]);
 
-  const getPosts = async () => {
-    const response = await getPostsAPI(parsedResult.page || 0, parsedResult.size || 10, board);
+  const getPosts = async (query: string, type?: string[]) => {
+    const response = await getPostsAPI({
+      type,
+      page: parsedResult.page || 0,
+      size: parsedResult.size || 10,
+      category: board,
+      query: query || '',
+    });
     if (isFailed<BoardClientType>(response)) {
       return;
     }
@@ -38,6 +44,7 @@ function Board() {
     <BoardTemplate
       posts={boardInfo.content}
       board={board}
+      getPosts={getPosts}
       currentPage={(Number(parsedResult.page) || 0) + 1}
       totalPage={boardInfo.totalPages}
       handlePagination={handlePagination}

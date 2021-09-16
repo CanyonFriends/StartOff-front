@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 import theme from '../../../../style/theme';
 
+interface ItemProps {
+  selected?: boolean;
+}
+
 export const Container = styled.div`
   position: relative;
   width: max-content;
@@ -23,10 +27,12 @@ export const MenuWrapper = styled.ul`
   background-color: ${theme.color.color_brightness_900};
 `;
 
-export const Item = styled.li`
+export const Item = styled.li<ItemProps>`
   padding: 0.2rem 0.5rem;
   font-size: 1.8rem;
   cursor: pointer;
+
+  background-color:${(props) => (props.selected ? theme.color.color_brightness_600 : theme.color.color_brightness_900)}
 
   &:hover {
     background-color: ${theme.color.color_brightness_800};

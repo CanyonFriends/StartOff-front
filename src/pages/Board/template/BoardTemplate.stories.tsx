@@ -9,12 +9,16 @@ export default {
 };
 
 const clickAction = action('click');
+const submitAsyncAction = async () => {
+  action('submit');
+};
 export const boardTemplate = (): React.ReactElement => {
   const summarizedPosts = [makeSummarizedPostMock({}), makeSummarizedPostMock({}), makeSummarizedPostMock({})];
   return (
     <BoardTemplate
       posts={summarizedPosts}
       board="board"
+      getPosts={submitAsyncAction}
       totalPage={12}
       currentPage={1}
       handlePagination={clickAction}
