@@ -48,7 +48,7 @@ export const getProfileAPI = async ({ userId }: GetProfileRequest): Promise<Prof
   }
 };
 
-export const updateProfileIntroduce = async ({
+export const updateProfileIntroduceAPI = async ({
   userId,
   introduce,
   nickname,
@@ -69,7 +69,7 @@ export const updateProfileIntroduce = async ({
 };
 
 // TODO: 이름 변경
-export const updateGithubIntroduce = async ({
+export const updateGithubIntroduceAPI = async ({
   userId,
   githubUrl,
 }: UpdateProfileGithubRequest): Promise<boolean | ErrorType> => {
@@ -87,7 +87,7 @@ export const updateGithubIntroduce = async ({
   }
 };
 
-export const updateBlogIntroduce = async ({
+export const updateBlogIntroduceAPI = async ({
   userId,
   blogUrl,
 }: UpdateProfileBlogRequest): Promise<boolean | ErrorType> => {
