@@ -5,12 +5,12 @@ import React from 'react';
 import theme from '../../../../style/theme';
 import { render } from '../../../../test-utils';
 import { dateToString } from '../../../../utils/date';
-import { makeMockSummarizedPost } from '../../../../__mocks__/client-mock-data';
+import { makeSummarizedPostMock } from '../../../../__mocks__/client-mock-data';
 import SummarizedPostItem from '../SummarizedPostItem';
 
 describe('Component/Organism/SummarizedPostItem', () => {
   it('렌더링 테스트(현재인원 != 최대인원', () => {
-    const post = makeMockSummarizedPost({});
+    const post = makeSummarizedPostMock({});
     const component = render(<SummarizedPostItem post={post} />);
 
     component.getByText(post.title);
@@ -25,7 +25,7 @@ describe('Component/Organism/SummarizedPostItem', () => {
   });
 
   it('렌더링 테스트(현재인원 == 최대인원', () => {
-    const post = makeMockSummarizedPost({ currentPeople: 10, maxPeople: 10 });
+    const post = makeSummarizedPostMock({ currentPeople: 10, maxPeople: 10 });
     const component = render(<SummarizedPostItem post={post} />);
 
     component.getByText(post.title);

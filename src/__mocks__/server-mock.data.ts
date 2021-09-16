@@ -68,7 +68,7 @@ export const makeProfileMock = ({
   };
 };
 
-export const makeMockSummarizedPost = ({
+export const makeSummarizedPostMock = ({
   post_id = Math.floor(Math.random() * 10000),
   title = 'title',
   current_people = 5,
@@ -89,7 +89,7 @@ export const makeMockSummarizedPost = ({
 };
 
 export const makeBoardMock = ({
-  content = [makeMockSummarizedPost({})],
+  content = [makeSummarizedPostMock({})],
   totalElements = 1,
   totalPages = 1,
 }): BoardServerType => {
