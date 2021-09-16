@@ -1,12 +1,12 @@
 import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import SkillList from '.';
+import SkillListEditor from '.';
 import { makeSkillMock } from '../../../../__mocks__/client-mock-data';
 
 export default {
-  title: 'Organism/SkillList',
-  component: SkillList,
+  title: 'Organism/SkillListEditor',
+  component: SkillListEditor,
   decorators: [withKnobs],
 };
 
@@ -25,7 +25,7 @@ export const editable = (): React.ReactElement => {
   const title = text('TITLE', '주요기술');
 
   return (
-    <SkillList
+    <SkillListEditor
       editableAuthority
       clickTotalSkillItem={onClickAction}
       deleteMySkill={onClickAction}
@@ -40,7 +40,7 @@ export const uneditable = (): React.ReactElement => {
   const title = text('TITLE', '주요기술');
 
   return (
-    <SkillList
+    <SkillListEditor
       editableAuthority={false}
       deleteMySkill={onClickAction}
       clickTotalSkillItem={onClickAction}

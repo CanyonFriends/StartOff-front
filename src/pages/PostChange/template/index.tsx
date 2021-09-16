@@ -6,7 +6,7 @@ import PostMarkdownForm from '../../../components/UI/organism/PostMarkdownForm';
 import useForm from '../../../hooks/useForm';
 import postFormValidator, { PostFormValidatorType } from '../../../validator/postFormValidator';
 import { InputFieldProps } from '../../../components/UI/molecule/InputField';
-import { SkillList, AlertModal } from '../../../components/UI/organism';
+import { SkillListEditor, AlertModal } from '../../../components/UI/organism';
 import { PostClientType, SkillClientType } from '../../../@types/client';
 import { Button, Title } from '../../../components/UI/atom';
 
@@ -93,7 +93,7 @@ function ChangePostTemplate({ post, totalSkillList, handleSubmit }: ChangePostTe
           </Style.DropdownWrapper>
         </Style.PeopleWrapper>
         <Style.SkillListWrapper>
-          <SkillList
+          <SkillListEditor
             editableAuthority
             title="기술 스택"
             mySkillList={values.postSkills}

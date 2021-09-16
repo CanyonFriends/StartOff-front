@@ -5,7 +5,7 @@ import {
   ProfileIntroduce,
   ProfileInfoCard,
   ProjectModal,
-  SkillList,
+  SkillListEditor,
   AccountInfoModal,
   AlertModal,
   ProjectItem,
@@ -13,7 +13,7 @@ import {
 import { ModifyProfileInfoCardValidatorType } from '../../../validator/modifyProfileInfoCardValidator';
 import { ModifyProfileIntroduceValidatorType } from '../../../validator/modifyProfileIntroduceValidator';
 import { ProfileInfoCardProps } from '../../../components/UI/organism/ProfileInfoCard';
-import { SkillListProps } from '../../../components/UI/organism/SkillList/index';
+import { SkillListEditorProps } from '../../../components/UI/organism/SkillListEditor/index';
 import {
   updateProfileIntroduceAPI,
   updateGithubIntroduceAPI,
@@ -201,7 +201,7 @@ function ProfileTemplate({
     iconType: 'Home',
     handleSubmit: handleSubmitBlog,
   };
-  const skillInfo: SkillListProps = {
+  const skillInfo: SkillListEditorProps = {
     totalSkillList,
     editableAuthority,
     title: '기술 스택',
@@ -248,7 +248,7 @@ function ProfileTemplate({
         <Style.ProfileInfoWrapper>
           <ProfileInfoCard {...githubInfo} />
           <ProfileInfoCard {...blogInfo} />
-          <SkillList {...skillInfo} />
+          <SkillListEditor {...skillInfo} />
         </Style.ProfileInfoWrapper>
         <Style.ProfileImageWrapper>
           <></>

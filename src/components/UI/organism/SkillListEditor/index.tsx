@@ -5,7 +5,7 @@ import { Dropdown } from '../../molecule';
 import { SkillClientType } from '../../../../@types/client';
 import Label, { LabelProps } from '../../atom/Label/index';
 
-export interface SkillListProps {
+export interface SkillListEditorProps {
   title?: string;
   label?: LabelProps;
   editableAuthority: boolean;
@@ -15,7 +15,7 @@ export interface SkillListProps {
   deleteMySkill: (skillId: string) => void;
 }
 
-function SkillList({
+function SkillListEditor({
   title,
   label,
   editableAuthority,
@@ -23,7 +23,7 @@ function SkillList({
   clickTotalSkillItem,
   totalSkillList,
   deleteMySkill,
-}: SkillListProps) {
+}: SkillListEditorProps) {
   const totalSkillListExceptMine = useMemo(() => {
     return totalSkillList.filter((skill) => !mySkillList.find((mySkill) => mySkill.skillName === skill.skillName));
   }, [mySkillList.length, totalSkillList.length]);
@@ -59,4 +59,4 @@ function SkillList({
   );
 }
 
-export default SkillList;
+export default SkillListEditor;
