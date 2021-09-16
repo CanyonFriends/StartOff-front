@@ -2,7 +2,8 @@ import React from 'react';
 import Markdown from 'markdown-to-jsx';
 import * as Style from './styled';
 import { SkillClientType } from '../../../../@types/client';
-import { Button, Tag, Title } from '../../atom';
+import { Button, Title } from '../../atom';
+import { SkillList } from '../../molecule';
 
 interface PostTemplateProps {
   editableAuthority: boolean;
@@ -51,13 +52,7 @@ function PostTemplate({
           )}
         </Style.HeaderRight>
       </Style.Header>
-      <Style.TagList>
-        {postSkills.map((skill) => (
-          <Style.TagItem key={skill.skillId}>
-            <Tag id={skill.skillId} name={skill.skillName} textColor={skill.textColor} color={skill.color} />
-          </Style.TagItem>
-        ))}
-      </Style.TagList>
+      <SkillList skillList={postSkills} />
       <Style.ContentWrapper>
         <Markdown>{content}</Markdown>
       </Style.ContentWrapper>

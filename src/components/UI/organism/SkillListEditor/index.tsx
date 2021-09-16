@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import * as Style from './styled';
-import { Tag, Title } from '../../atom';
-import { Dropdown } from '../../molecule';
+import { Title } from '../../atom';
+import { Dropdown, SkillList } from '../../molecule';
 import { SkillClientType } from '../../../../@types/client';
 import Label, { LabelProps } from '../../atom/Label/index';
 
@@ -42,19 +42,7 @@ function SkillListEditor({
           />
         )}
       </Style.Header>
-      <Style.SkillWrapper>
-        {mySkillList.map((skill) => (
-          <Style.SkillItem key={skill.skillName}>
-            <Tag
-              id={skill.skillId}
-              name={skill.skillName}
-              textColor={skill.textColor}
-              color={skill.color}
-              onClickClose={editableAuthority ? deleteMySkill : undefined}
-            />
-          </Style.SkillItem>
-        ))}
-      </Style.SkillWrapper>
+      <SkillList skillList={mySkillList} handleClickSkill={editableAuthority ? deleteMySkill : undefined} />
     </Style.Container>
   );
 }
