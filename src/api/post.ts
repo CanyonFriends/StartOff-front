@@ -9,6 +9,14 @@ import {
 } from '../converter/post';
 import { CreatePostClientType } from '../@types/client';
 
+interface GetPostsRequest {
+  page: number;
+  size: number;
+  category: string;
+  query?: string;
+  type?: string[];
+}
+
 export const getCategoriesAPI = async () => {
   try {
     const response = await axios({
@@ -22,11 +30,13 @@ export const getCategoriesAPI = async () => {
   }
 };
 
-export const getPostsAPI = async (page: number, size: number, category: string) => {
+export const getPostsAPI = async ({ page, size, category, query = '', type }: GetPostsRequest) => {
   try {
     const response = await axios({
       method: 'GET',
-      url: `/v1/posts?page=${page}&size=${size}&category=${category}`,
+      url: `/v1/posts?page=${page}&size=${size}&category=${category}&query=${query}${
+        type && type.length ? `&type=${type.join(',')}` : ''
+      }`,
     });
 
     return boardServerType2ClientType(response.data as BoardServerType);

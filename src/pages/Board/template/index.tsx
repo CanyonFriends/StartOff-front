@@ -16,17 +16,35 @@ interface BoardTemplateProps {
   board: string;
   totalPage: number;
   currentPage: number;
+  getPosts: (query: string, type?: string[]) => Promise<void>;
   handlePagination: (pageNumber: number) => void;
 }
 
-function BoardTemplate({ posts, board, totalPage, currentPage, handlePagination }: BoardTemplateProps) {
+const DROPDOWN_ITEM: { [name: string]: string } = {
+  제목: 'title',
+  내용: 'content',
+  태그: 'skill',
+};
+function BoardTemplate({ posts, board, totalPage, currentPage, handlePagination, getPosts }: BoardTemplateProps) {
   const history = useHistory();
   const [error, setError] = useState('');
+  const [dropdownItems, setDropdownItems] = useState(
+    Object.keys(DROPDOWN_ITEM).map((item) => ({ text: item, id: item, selected: false })),
+  );
   const { isSignin } = useSelector<RootState>((state) => state.user) as UserState;
 
-  const clickDropdownItem = () => {};
+  const clickDropdownItem = (id: string) => {
+    const updatedSelectedDropdownItems = dropdownItems.map((item) => {
+      if (item.id === id) item.selected = !item.selected;
+      return item;
+    });
+    setDropdownItems(updatedSelectedDropdownItems);
+  };
 
-  const searchSubmit = async () => {
+  const searchSubmit = async (query: string) => {
+    const selectedItems = dropdownItems.filter((item) => item.selected).map((item) => DROPDOWN_ITEM[item.text]);
+    await getPosts(query, selectedItems);
+
     return '';
   };
 
@@ -50,7 +68,16 @@ function BoardTemplate({ posts, board, totalPage, currentPage, handlePagination 
       <Style.Container>
         <Style.Header>
           <Style.HeaderLeft>
-            <Dropdown placeholder="제목" items={[]} clickItem={clickDropdownItem} />
+            <Dropdown
+              placeholder={
+                dropdownItems
+                  .filter((item) => item.selected)
+                  .map((item) => item.text)
+                  .join('. ') || '카테고리 선택'
+              }
+              items={dropdownItems}
+              clickItem={clickDropdownItem}
+            />
             <SearchBox searchSubmit={searchSubmit} />
           </Style.HeaderLeft>
           <Button theme="secondary" size="medium" onClick={clickCreatePostButton}>

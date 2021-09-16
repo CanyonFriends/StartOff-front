@@ -7,6 +7,7 @@ import theme from '../../../../style/theme';
 interface ItemProps {
   id: string;
   text: string;
+  selected?: boolean;
 }
 
 export interface DropdownProps {
@@ -40,6 +41,7 @@ function Dropdown({ ariaLabel = '', placeholder, items, clickItem, isClickValueT
           <Overlay clickOverlay={toggleDropdown} />
           {items.map((item) => (
             <Style.Item
+              selected={item.selected}
               key={item.id}
               id={item.id}
               onClick={() => handleClickItem(isClickValueText ? item.text : item.id)}
