@@ -7,9 +7,9 @@ import { render } from '../../test-utils';
 import ProfilePage from '../Profile';
 import {
   getProfileAPI,
-  updateProfileIntroduce,
-  updateGithubIntroduce,
-  updateBlogIntroduce,
+  updateProfileIntroduceAPI,
+  updateGithubIntroduceAPI,
+  updateBlogIntroduceAPI,
   updateUserSkillAPI,
   deleteUserSkillAPI,
 } from '../../api/profile';
@@ -31,9 +31,11 @@ const getProfileMockAPI = getProfileAPI as jest.MockedFunction<typeof getProfile
 const getSkillsMockAPI = getSkillsAPI as jest.MockedFunction<typeof getSkillsAPI>;
 const updateSkillMockAPI = updateUserSkillAPI as jest.MockedFunction<typeof updateUserSkillAPI>;
 const deleteSkillMockAPI = deleteUserSkillAPI as jest.MockedFunction<typeof deleteUserSkillAPI>;
-const updateProfileIntroduceMockAPI = updateProfileIntroduce as jest.MockedFunction<typeof updateProfileIntroduce>;
-const updateGithubIntroduceMock = updateGithubIntroduce as jest.MockedFunction<typeof updateGithubIntroduce>;
-const updateBlogIntroduceMock = updateBlogIntroduce as jest.MockedFunction<typeof updateBlogIntroduce>;
+const updateProfileIntroduceMockAPI = updateProfileIntroduceAPI as jest.MockedFunction<
+  typeof updateProfileIntroduceAPI
+>;
+const updateGithubIntroduceMock = updateGithubIntroduceAPI as jest.MockedFunction<typeof updateGithubIntroduceAPI>;
+const updateBlogIntroduceMock = updateBlogIntroduceAPI as jest.MockedFunction<typeof updateBlogIntroduceAPI>;
 const updateProjectMockAPI = updateProjectAPI as jest.MockedFunction<typeof updateProjectAPI>;
 const createProjectMockAPI = createProjectAPI as jest.MockedFunction<typeof createProjectAPI>;
 const deleteProjectMockAPI = deleteProjectAPI as jest.MockedFunction<typeof deleteProjectAPI>;

@@ -5,11 +5,11 @@ import { makeProfileMock, makeSkillMock } from '../../__mocks__/server-mock.data
 import { isFailed } from '../error';
 import {
   getProfileAPI,
-  updateBlogIntroduce,
-  updateProfileIntroduce,
+  updateBlogIntroduceAPI,
+  updateProfileIntroduceAPI,
   updateUserSkillAPI,
   deleteUserSkillAPI,
-  updateGithubIntroduce,
+  updateGithubIntroduceAPI,
 } from '../profile';
 
 const mock = new MockAdapter(axios);
@@ -44,50 +44,50 @@ describe('API/profile', () => {
     expect(response).toHaveProperty('error_msg', 'error');
   });
 
-  it('updateProfileIntroduce', async () => {
+  it('updateProfileIntroduceAPI', async () => {
     mock.onPut('/v1/users/1/introduce').reply(200, true);
 
-    const response = await updateProfileIntroduce({ userId: '1', introduce: 'introduce', nickname: 'nickname' });
+    const response = await updateProfileIntroduceAPI({ userId: '1', introduce: 'introduce', nickname: 'nickname' });
     expect(isFailed<boolean>(response)).toBeFalsy();
     expect(response).toBeTruthy();
   });
 
-  it('updateProfileIntroduce error', async () => {
+  it('updateProfileIntroduceAPI error', async () => {
     mock.onPut('/v1/users/1/introduce').reply(400, { error_msg: 'error' });
 
-    const response = await updateProfileIntroduce({ userId: '1', introduce: 'introduce', nickname: 'nickname' });
+    const response = await updateProfileIntroduceAPI({ userId: '1', introduce: 'introduce', nickname: 'nickname' });
     expect(isFailed<boolean>(response)).toBeTruthy();
     expect(response).toHaveProperty('error_msg', 'error');
   });
 
-  it('updateGithubIntroduce', async () => {
+  it('updateGithubIntroduceAPI', async () => {
     mock.onPut('/v1/users/1/github-url').reply(200, true);
 
-    const response = await updateGithubIntroduce({ userId: '1', githubUrl: 'url' });
+    const response = await updateGithubIntroduceAPI({ userId: '1', githubUrl: 'url' });
     expect(isFailed<boolean>(response)).toBeFalsy();
     expect(response).toBeTruthy();
   });
 
-  it('updateGithubIntroduce error', async () => {
+  it('updateGithubIntroduceAPI error', async () => {
     mock.onPut('/v1/users/1/github-url').reply(400, { error_msg: 'error' });
 
-    const response = await updateGithubIntroduce({ userId: '1', githubUrl: 'url' });
+    const response = await updateGithubIntroduceAPI({ userId: '1', githubUrl: 'url' });
     expect(isFailed<boolean>(response)).toBeTruthy();
     expect(response).toHaveProperty('error_msg', 'error');
   });
 
-  it('updateBlogIntroduce', async () => {
+  it('updateBlogIntroduceAPI', async () => {
     mock.onPut('/v1/users/1/blog-url').reply(200, true);
 
-    const response = await updateBlogIntroduce({ userId: '1', blogUrl: 'url' });
+    const response = await updateBlogIntroduceAPI({ userId: '1', blogUrl: 'url' });
     expect(isFailed<boolean>(response)).toBeFalsy();
     expect(response).toBeTruthy();
   });
 
-  it('updateBlogIntroduce error', async () => {
+  it('updateBlogIntroduceAPI error', async () => {
     mock.onPut('/v1/users/1/blog-url').reply(400, { error_msg: 'error' });
 
-    const response = await updateBlogIntroduce({ userId: '1', blogUrl: 'url' });
+    const response = await updateBlogIntroduceAPI({ userId: '1', blogUrl: 'url' });
     expect(isFailed<boolean>(response)).toBeTruthy();
     expect(response).toHaveProperty('error_msg', 'error');
   });
