@@ -10,7 +10,7 @@ import projectValidator, { ProjectValidatorType } from '../../../../validator/pr
 import { InputFieldProps } from '../../molecule/InputField';
 import theme from '../../../../style/theme';
 import { TextAreaFieldProps } from '../../molecule/TextAreaField/index';
-import SkillList from '../SkillList';
+import SkillListEditor from '../SkillListEditor';
 import { LabelProps } from '../../atom/Label';
 
 interface ProjectModalProps {
@@ -204,7 +204,7 @@ function ProjectModal({ isModify, project, totalSkillList, onSubmit, handleModal
         <Style.InputWrapper>
           <InputField {...deployInputInfo} />
         </Style.InputWrapper>
-        <SkillList
+        <SkillListEditor
           editableAuthority
           label={skillListLabel}
           mySkillList={values.projectSklls}

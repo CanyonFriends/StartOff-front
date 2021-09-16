@@ -4,17 +4,17 @@
 import React from 'react';
 // import { fireEvent } from '@testing-library/react';
 import { render } from '../../../../test-utils';
-import SkillList from '../SkillList';
+import SkillListEditor from '../SkillListEditor';
 import { makeSkillMock } from '../../../../__mocks__/client-mock-data';
 
-describe('Component/Organism/SkillList', () => {
+describe('Component/Organism/SkillListEditor', () => {
   const clickTotalSkillItem = () => {};
   const deleteMySkill = () => {};
   const mySkillList = [makeSkillMock({ skillName: 'javascript' }), makeSkillMock({ skillName: 'typescript' })];
 
   it('렌더링 테스트(수정 가능)(title일 경우)', () => {
     const component = render(
-      <SkillList
+      <SkillListEditor
         editableAuthority
         title="title"
         mySkillList={mySkillList}
@@ -33,7 +33,7 @@ describe('Component/Organism/SkillList', () => {
 
   it('렌더링 테스트(수정 가능)(label일 경우)', () => {
     const component = render(
-      <SkillList
+      <SkillListEditor
         editableAuthority
         label={{ content: 'label' }}
         mySkillList={mySkillList}
