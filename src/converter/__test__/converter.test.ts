@@ -2,7 +2,7 @@ import {
   makeProjectResponseMock,
   makeProfileMock as makeProfileServerMock,
   makeSkillMock as makeSkillServerMock,
-  makeMockSummarizedPost as makeServerMockSummarizedPost,
+  makeSummarizedPostMock as makeServerSummarizedPostMock,
   makeBoardMock,
   makePostMock,
   makeCommentMock,
@@ -90,7 +90,7 @@ describe('Converter/profile', () => {
 
 describe('Converter/post', () => {
   it('summarizedPostServerType2ClientType', () => {
-    const summarizedPostServerMock = makeServerMockSummarizedPost({});
+    const summarizedPostServerMock = makeServerSummarizedPostMock({});
     const summarizedPostClient = summarizedPostServerType2ClientType(summarizedPostServerMock);
 
     expect(summarizedPostClient.title).toBe(summarizedPostServerMock.title);

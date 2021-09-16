@@ -6,7 +6,7 @@ import { waitFor, fireEvent } from '@testing-library/react';
 import { render } from '../../test-utils';
 import Board from '../Board';
 import { getCategoriesAPI, getPostsAPI } from '../../api/post';
-import { makeMockBoard } from '../../__mocks__/client-mock-data';
+import { makeBoardMock } from '../../__mocks__/client-mock-data';
 import * as Routes from '../../Routes';
 
 jest.mock('../../api/post');
@@ -17,7 +17,7 @@ const getCategoriesMockAPI = getCategoriesAPI as jest.MockedFunction<typeof getC
 
 beforeEach(() => {
   jest.resetAllMocks();
-  getPostsMockAPI.mockReturnValue(new Promise((res) => res(makeMockBoard({ totalPages: 3 }))));
+  getPostsMockAPI.mockReturnValue(new Promise((res) => res(makeBoardMock({ totalPages: 3 }))));
   getCategoriesMockAPI.mockReturnValue(new Promise((res) => res([])));
 });
 

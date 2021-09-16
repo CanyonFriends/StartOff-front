@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import BoardTemplate from '.';
-import { makeMockSummarizedPost } from '../../../__mocks__/client-mock-data';
+import { makeSummarizedPostMock } from '../../../__mocks__/client-mock-data';
 
 export default {
   title: 'Template/Board',
@@ -10,7 +10,7 @@ export default {
 
 const clickAction = action('click');
 export const boardTemplate = (): React.ReactElement => {
-  const summarizedPosts = [makeMockSummarizedPost({}), makeMockSummarizedPost({}), makeMockSummarizedPost({})];
+  const summarizedPosts = [makeSummarizedPostMock({}), makeSummarizedPostMock({}), makeSummarizedPostMock({})];
   return (
     <BoardTemplate
       posts={summarizedPosts}

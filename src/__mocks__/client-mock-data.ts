@@ -93,7 +93,7 @@ export const makeProfileMock = ({
   };
 };
 
-export const makeMockSummarizedPost = ({
+export const makeSummarizedPostMock = ({
   postId = generateUUID(),
   title = 'title',
   currentPeople = 5,
@@ -113,8 +113,8 @@ export const makeMockSummarizedPost = ({
   };
 };
 
-export const makeMockBoard = ({
-  content = [makeMockSummarizedPost({})],
+export const makeBoardMock = ({
+  content = [makeSummarizedPostMock({})],
   totalElements = 1,
   totalPages = 1,
 }): BoardClientType => {
