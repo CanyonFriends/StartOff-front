@@ -46,3 +46,8 @@ export const selfSuccess = (state: UserState, action: PayloadAction<GetSelfRespo
 export const selfFailure = (state: UserState, action: PayloadAction<ErrorType>) => {
   state.isSignin = false;
 };
+
+// clear error
+export const clearError = (state: UserState) => {
+  state.error = '';
+};

@@ -36,6 +36,7 @@ function SigninPageTemplate() {
   const handleGithubButton = () => {};
 
   const handleModalCloseButton = () => {
+    dispatch(actions.clearError());
     setModalMessage('');
   };
 
