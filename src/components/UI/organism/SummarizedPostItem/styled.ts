@@ -17,7 +17,9 @@ export const Container = styled.li`
   }
 `;
 
-export const Left = styled.div``;
+export const Left = styled.div`
+  width: 50%;
+`;
 
 export const TitleWrapper = styled.div`
   display: flex;

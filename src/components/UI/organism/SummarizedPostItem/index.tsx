@@ -1,8 +1,9 @@
 import React from 'react';
 import * as Style from './styled';
 import { SummarizedPostClientType } from '../../../../@types/client';
-import { Tag, Title } from '../../atom';
+import { Title } from '../../atom';
 import { dateToString } from '../../../../utils/date';
+import { SkillList } from '../../molecule';
 
 interface SummarizedPostItemProps {
   post: SummarizedPostClientType;
@@ -18,19 +19,7 @@ function SummarizedPostItem({ post }: SummarizedPostItemProps) {
             {!post.maxPeople ? '제한없음' : `${post.currentPeople} / ${post.maxPeople}`}
           </Style.FinishTag>
         </Style.TitleWrapper>
-        <Style.SkillWrapper>
-          {post.postSkills.map((skill) => (
-            <Style.SkillItem key={skill.skillId}>
-              <Tag
-                key={skill.skillId}
-                id={skill.skillId}
-                name={skill.skillName}
-                textColor={skill.textColor}
-                color={skill.color}
-              />
-            </Style.SkillItem>
-          ))}
-        </Style.SkillWrapper>
+        <SkillList skillList={post.postSkills} />
       </Style.Left>
       <Style.Right>
         <Style.Nickname>{post.nickname}</Style.Nickname>
